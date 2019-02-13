@@ -1,0 +1,147 @@
+.container {
+  width: 100%;
+  min-height: 100vh;
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.5);
+  background-blend-mode: overlay;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 2em;
+  padding-bottom: 2em;
+}
+
+.card {
+  position: relative;
+  width: 90%;
+  min-height: 90%;
+  padding: 1.5em;
+  background: white;
+  display: flex;
+  flex-direction: column;
+}
+
+.card .close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 32px;
+  height: 32px;
+  margin: 0.5em;
+  cursor: pointer;
+  opacity: 0.3;
+}
+
+.card .close:hover {
+  opacity: 1;
+}
+
+.card .close:before,
+.card .close:after {
+  position: absolute;
+  left: 15px;
+  content: ' ';
+  height: 33px;
+  width: 2px;
+  background-color: #333;
+}
+
+.card .close:before {
+  transform: rotate(45deg);
+}
+.card .close:after {
+  transform: rotate(-45deg);
+}
+
+.card .tagline {
+  font-size: 3.5vw;
+}
+
+.card .logo,
+.card .tagline {
+  justify-self: center;
+  align-self: center;
+}
+
+.card .tagline {
+  margin: 1em;
+  position: relative;
+  font-family: 'Noto Serif', sans-serif;
+}
+
+.card .tagline::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 20%;
+  top: 100%;
+  left: 0;
+  background: linear-gradient(
+    to right,
+    #fd841d 20%,
+    #f5f5f5 40% 60%,
+    #00c900 80% 100%
+  );
+}
+
+.card .mission {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  padding: 0 1em 1em 1em;
+  box-shadow: 3px 3px 0px 0px black;
+}
+
+.card .mission h3 {
+  padding: 1em 0;
+  font-family: 'Noto Serif', sans-serif;
+  text-transform: uppercase;
+}
+
+.card .mission p {
+  font-family: 'Roboto', sans-serif;
+  text-align: center;
+}
+
+.card .connect {
+  padding: 1em;
+}
+
+.card .connect h4 {
+  padding: 0.5em 0.5em 0.5em 0;
+  font-family: 'Noto Serif', sans-serif;
+}
+
+.card .connect ul li {
+  /* display: inline-block; */
+  padding: 0.2em 0;
+  margin-left: 2em;
+  font-family: 'Roboto', sans-serif;
+}
+
+.card .info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card .info p {
+  padding: 0.5em;
+  font-family: 'Open Sans', sans-serif;
+  background-color: black;
+  color: white;
+  margin-right: 1em;
+}
+
+.card .download {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1em;
+}
