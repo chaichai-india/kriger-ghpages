@@ -4,7 +4,7 @@
   position: absolute;
   top: 0;
   right: 0;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.2);
   background-blend-mode: overlay;
   z-index: 10;
   display: flex;
@@ -17,12 +17,31 @@
 
 .card {
   position: relative;
-  width: 90%;
+  width: 80%;
   min-height: 90%;
-  padding: 1.5em;
-  background: white;
+  padding: 0.2em;
+  background: rgb(254, 254, 254);
   display: flex;
   flex-direction: column;
+  font-family: 'Lato', sans-serif;
+  box-shadow: 0px 0px 20px 4px rgba(0, 0, 0, 0.1);
+  background-clip: content-box;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    to right,
+    #fd841d 20%,
+    #f5f5f5 40% 60%,
+    #00c900 80% 100%
+  );
+  z-index: -1;
 }
 
 .card .close {
@@ -57,6 +76,10 @@
   transform: rotate(-45deg);
 }
 
+.card .logo {
+  margin: 1.5em 0;
+}
+
 .card .tagline {
   font-size: 3.5vw;
 }
@@ -70,7 +93,7 @@
 .card .tagline {
   margin: 1em;
   position: relative;
-  font-family: 'Noto Serif', sans-serif;
+  /* font-family: 'Noto Serif', sans-serif; */
 }
 
 .card .tagline::after {
@@ -88,41 +111,65 @@
   );
 }
 
+.card .vision,
 .card .mission {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border: 1px solid rgba(0, 0, 0, 0.5);
   padding: 0 1em 1em 1em;
-  box-shadow: 3px 3px 0px 0px black;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
 }
 
+.card .vision h3,
 .card .mission h3 {
   padding: 1em 0;
-  font-family: 'Noto Serif', sans-serif;
+  /* font-family: 'Noto Serif', sans-serif; */
   text-transform: uppercase;
 }
 
+.card .vision p,
 .card .mission p {
-  font-family: 'Roboto', sans-serif;
+  /* font-family: 'Roboto', sans-serif; */
   text-align: center;
 }
 
+.card .cta {
+  /* font-family: 'Lato', sans-serif; */
+  text-align: center;
+  margin: 2em 0 0 0;
+}
+
 .card .connect {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
   padding: 1em;
+  margin: 1em 8em;
+  align-self: center;
 }
 
 .card .connect h4 {
+  justify-self: flex-start;
   padding: 0.5em 0.5em 0.5em 0;
-  font-family: 'Noto Serif', sans-serif;
+  /* font-family: 'Noto Serif', sans-serif; */
 }
 
+.card .connect .list {
+  display: flex;
+  margin-bottom: 2em;
+}
+
+.card .connect .list ul {
+  flex: 1;
+}
 .card .connect ul li {
   /* display: inline-block; */
   padding: 0.2em 0;
   margin-left: 2em;
-  font-family: 'Roboto', sans-serif;
+  /* font-family: 'Roboto', sans-serif; */
 }
 
 .card .info {
@@ -133,7 +180,7 @@
 
 .card .info p {
   padding: 0.5em;
-  font-family: 'Open Sans', sans-serif;
+  /* font-family: 'Open Sans', sans-serif; */
   background-color: black;
   color: white;
   margin-right: 1em;

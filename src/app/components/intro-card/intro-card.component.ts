@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./intro-card.component.css']
 })
 export class IntroCardComponent implements OnInit {
+  //getting visit count stored in localstorage
+
   dismiss(e: any, t: any) {
     let trigger: boolean =
       e.target.className == 'container' || e.target.className == 'close';
