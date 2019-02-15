@@ -1,4 +1,9 @@
 <div>
   <app-navbar></app-navbar>
+  <ul>
+    <li class="text" *ngFor="let post of (posts | async)">
+      {{ post.text }}
+    </li>
+  </ul>
   <app-intro-card *ngIf="showIntro"></app-intro-card>
 </div>
