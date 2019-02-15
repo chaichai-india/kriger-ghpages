@@ -14,8 +14,8 @@ export class AppComponent implements OnInit {
 
   posts: Observable<any[]>;
   constructor(db: AngularFireDatabase) {
-    this.posts = db.list('/Post').valueChanges();
-    console.log(this.posts);
+    // this.posts = db.list('/Post').valueChanges();
+    // console.log(this.posts);
   }
 
   ngOnInit() {
