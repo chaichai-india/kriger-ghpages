@@ -21,26 +21,11 @@ export class AppComponent implements OnInit {
   };
 
   constructor(db: AngularFireDatabase, private authService: AuthService) {
-    // try {
-    //   this.afAuth.auth.signInWithEmailAndPassword(
-    //     this.user.email,
-    //     this.user.password
-    //   );
-    //   this.afAuth.authState.subscribe(user => {
-    //     if (user) {
-    //       console.log(user, this.user);
-    //       localStorage.setItem('user', JSON.stringify(this.user));
-    //     } else {
-    //       localStorage.setItem('user', null);
-    //     }
-    //   });
-    //   this.posts = db.list('/Post').valueChanges();
-    //   console.log(this.posts);
-    // } catch (e) {
-    //   alert('Error!' + e.message);
-    // }
     authService.login(this.user.email, this.user.password).then(() => {
-      this.posts = db.list('/Post').valueChanges();
+      this.posts = db
+        .list('/Post', ref => ref.orderByChild('timestamp').limitToLast(20))
+        .valueChanges();
+      console.log('login success');
     });
   }
 

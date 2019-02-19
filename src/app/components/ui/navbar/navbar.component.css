@@ -40,9 +40,16 @@
 /* -------------------------------------------------- */
 .nav__container {
   display: grid;
-  grid-template-columns: 1fr 2fr 5fr;
+  grid-template-columns: 2fr 3fr 5fr;
   padding-top: 0.2em;
   box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.4);
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 10;
+  background-color: white;
+  color: black;
 }
 
 .nav__logo,
@@ -50,12 +57,13 @@
 nav,
 nav ul {
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
 }
 
-.nav__logo a img {
-  margin: 0 0.25em 0 2em;
+.nav__logo a span {
+  padding: 0 0.5em;
+  font-size: 1.5em;
 }
 
 nav {
@@ -72,7 +80,7 @@ nav {
 .nav__search input {
   border: 1px solid rgba(0, 0, 0, 0.4);
   font-size: 80%;
-  width: 70%;
+  width: 77%;
   padding: 7px 0 7px 7px;
   margin-right: 0.25em;
   background-color: rgba(0, 0, 0, 0);
@@ -84,6 +92,11 @@ nav {
   box-shadow: inset 0px 0px 2px 0px rgba(0, 0, 0, 0.5);
 }
 
+.nav__search button {
+  line-height: 31px;
+  border-color: rgba(0, 0, 0, 0.4);
+}
+
 nav li {
   list-style: none;
   margin-right: 1em;
@@ -91,6 +104,7 @@ nav li {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  color: #1a1a96;
 }
 
 nav li a {

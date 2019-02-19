@@ -4,11 +4,13 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from '../environments/environment';
-
 import { AppRoutingModule } from './app-routing.module';
+
 import { AppComponent } from './app.component';
 import { IntroCardComponent } from './components/intro-card/intro-card.component';
 import { NavbarComponent } from './components/ui/navbar/navbar.component';
+
+import { ReversePipe } from './pipes/reverse.pipe';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTabsModule } from '@angular/material/tabs';
@@ -18,8 +20,15 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+// import { ScrollingModule } from '@angular/cdk/scrolling';
+
 @NgModule({
-  declarations: [AppComponent, IntroCardComponent, NavbarComponent],
+  declarations: [
+    AppComponent,
+    IntroCardComponent,
+    NavbarComponent,
+    ReversePipe
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
