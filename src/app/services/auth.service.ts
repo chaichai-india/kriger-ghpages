@@ -11,9 +11,24 @@ export class AuthService {
 
   async login(email: string, password: string) {
     try {
-      await this.afauth.auth.signInWithEmailAndPassword(email, password);
+      await this.afauth.auth
+        .signInWithEmailAndPassword(email, password)
+        .then(function(user) {
+          console.log('auth success');
+        })
+        .catch(function(error) {
+          // Handle Errors here.
+          let errorCode = error.code;
+          let errorMessage = error.message;
+          if (errorCode === 'auth/wrong-password') {
+            alert('Wrong password.');
+          } else {
+            alert(errorMessage);
+          }
+          console.log(error);
+        });
     } catch (e) {
-      alert('Error!' + e.message);
+      throw new Error('auth failed');
     }
   }
 

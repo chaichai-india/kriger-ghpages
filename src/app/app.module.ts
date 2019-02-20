@@ -10,6 +10,8 @@ import { AppComponent } from './app.component';
 import { IntroCardComponent } from './components/intro-card/intro-card.component';
 import { NavbarComponent } from './components/ui/navbar/navbar.component';
 
+import { PostModule } from './post/post.module';
+
 import { ReversePipe } from './pipes/reverse.pipe';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -32,6 +34,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    PostModule,
     MatToolbarModule,
     MatTabsModule,
     MatButtonModule,

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFireDatabase } from '@angular/fire/database';
 import { Observable } from 'rxjs';
 
 import { AuthService } from './services/auth.service';
+import { PostService } from './services/database/post.service';
 
 @Component({
   selector: 'app-root',
@@ -20,14 +20,10 @@ export class AppComponent implements OnInit {
     password: '123456'
   };
 
-  constructor(db: AngularFireDatabase, private authService: AuthService) {
-    authService.login(this.user.email, this.user.password).then(() => {
-      this.posts = db
-        .list('/Post', ref => ref.orderByChild('timestamp').limitToLast(20))
-        .valueChanges();
-      console.log('login success');
-    });
-  }
+  constructor(
+    private authService: AuthService,
+    private postService: PostService
+  ) {}
 
   ngOnInit() {
     if (!this.visitCount) {
@@ -37,5 +33,11 @@ export class AppComponent implements OnInit {
       localStorage.setItem('visitCount', this.visitCount.toString());
     }
     console.log(this.visitCount, this.showIntro);
+
+    this.authService.login(this.user.email, this.user.password).then(() => {
+      this.postService.getPosts('timestamp', 20).then(response => {
+        this.posts = response;
+      });
+    });
   }
 }
