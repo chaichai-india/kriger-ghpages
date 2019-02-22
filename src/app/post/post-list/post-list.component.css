@@ -1,0 +1,18 @@
+.post-card {
+  margin-bottom: 1em;
+}
+
+mat-card-content p {
+  font-family: 'Lato', sans-serif;
+  font-size: 1.2em;
+  padding: 1.5em 2em;
+  max-width: 100%;
+  white-space: pre-line;
+  /* height: 3.65em;
+  overflow: hidden; */
+}
+
+.post-header-image {
+  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-size: cover;
+}

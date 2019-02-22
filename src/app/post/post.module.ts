@@ -3,12 +3,22 @@ import { CommonModule } from '@angular/common';
 
 import { PostRoutingModule } from './post-routing.module';
 
+import { MatCardModule } from '@angular/material/card';
+
 import { PostComponent } from './post/post.component';
 import { PostListComponent } from './post-list/post-list.component';
 import { PostDetailComponent } from './post-detail/post-detail.component';
 
+import { ReversePipe } from '../pipes/reverse.pipe';
+
 @NgModule({
-  declarations: [PostComponent, PostListComponent, PostDetailComponent],
-  imports: [CommonModule, PostRoutingModule]
+  declarations: [
+    PostComponent,
+    PostListComponent,
+    PostDetailComponent,
+    ReversePipe
+  ],
+  imports: [CommonModule, PostRoutingModule, MatCardModule],
+  exports: [PostListComponent]
 })
 export class PostModule {}

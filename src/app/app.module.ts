@@ -12,8 +12,6 @@ import { NavbarComponent } from './components/ui/navbar/navbar.component';
 
 import { PostModule } from './post/post.module';
 
-import { ReversePipe } from './pipes/reverse.pipe';
-
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatButtonModule } from '@angular/material/button';
@@ -25,12 +23,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // import { ScrollingModule } from '@angular/cdk/scrolling';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    IntroCardComponent,
-    NavbarComponent,
-    ReversePipe
-  ],
+  declarations: [AppComponent, IntroCardComponent, NavbarComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

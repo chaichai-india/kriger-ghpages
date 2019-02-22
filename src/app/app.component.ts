@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
 
 import { AuthService } from './services/auth.service';
-import { PostService } from './services/database/post.service';
 
 @Component({
   selector: 'app-root',
@@ -14,16 +12,12 @@ export class AppComponent implements OnInit {
   visitCount: number = +localStorage.getItem('visitCount');
   showIntro: boolean = this.visitCount == 0 || this.visitCount % 20 == 0;
 
-  posts: Observable<any[]>;
   user = {
     email: 'ashish@kriger.in',
     password: '123456'
   };
 
-  constructor(
-    private authService: AuthService,
-    private postService: PostService
-  ) {}
+  constructor(private authService: AuthService) {}
 
   ngOnInit() {
     if (!this.visitCount) {
@@ -35,9 +29,7 @@ export class AppComponent implements OnInit {
     console.log(this.visitCount, this.showIntro);
 
     this.authService.login(this.user.email, this.user.password).then(() => {
-      this.postService.getPosts('timestamp', 20).then(response => {
-        this.posts = response;
-      });
+      console.log(this.authService.isLoggedIn);
     });
   }
 }

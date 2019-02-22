@@ -5,22 +5,7 @@ import { PostComponent } from './post/post.component';
 import { PostListComponent } from './post-list/post-list.component';
 import { PostDetailComponent } from './post-detail/post-detail.component';
 
-const routes: Routes = [
-  {
-    path: 'post',
-    component: PostComponent,
-    children: [
-      {
-        path: 'list',
-        component: PostListComponent
-      },
-      {
-        path: 'detail',
-        component: PostDetailComponent
-      }
-    ]
-  }
-];
+const routes: Routes = [];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

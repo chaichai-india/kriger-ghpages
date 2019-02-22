@@ -1,0 +1,17 @@
+.main__container {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-rows: auto;
+  grid-template-areas:
+    'header header header'
+    'leftside main rightside'
+    'footer footer footer';
+}
+
+app-navbar {
+  grid-area: header;
+  height: 70px;
+}
+app-post-list {
+  grid-area: main;
+}
