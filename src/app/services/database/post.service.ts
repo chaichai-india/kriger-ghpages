@@ -26,7 +26,6 @@ export class PostService {
     } catch (err) {
       throw new Error('Posts fetch failed');
     }
-    console.log(this.posts);
     return this.posts;
   }
 

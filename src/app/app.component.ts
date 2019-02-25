@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 
-import { AuthService } from './services/auth.service';
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -12,12 +10,7 @@ export class AppComponent implements OnInit {
   visitCount: number = +localStorage.getItem('visitCount');
   showIntro: boolean = this.visitCount == 0 || this.visitCount % 20 == 0;
 
-  user = {
-    email: 'ashish@kriger.in',
-    password: '123456'
-  };
-
-  constructor(private authService: AuthService) {}
+  constructor() {}
 
   ngOnInit() {
     if (!this.visitCount) {
@@ -27,9 +20,5 @@ export class AppComponent implements OnInit {
       localStorage.setItem('visitCount', this.visitCount.toString());
     }
     console.log(this.visitCount, this.showIntro);
-
-    this.authService.login(this.user.email, this.user.password).then(() => {
-      console.log(this.authService.isLoggedIn);
-    });
   }
 }

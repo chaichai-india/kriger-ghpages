@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 
 import { PostService } from '../../services/database/post.service';
 import { AuthService } from '../../services/auth.service';
+import { UserService } from '../../services/database/user.service';
 
 @Component({
   selector: 'app-post-list',
@@ -10,22 +11,34 @@ import { AuthService } from '../../services/auth.service';
   styleUrls: ['./post-list.component.css']
 })
 export class PostListComponent implements OnInit {
+  user = {
+    email: 'ashish@kriger.in',
+    password: '123456'
+  };
   posts: Observable<any[]>;
   authUser: boolean;
+  getUserDetail(uid: string) {
+    return uid;
+  }
 
   constructor(
     private postService: PostService,
-    private authService: AuthService
+    private authService: AuthService,
+    private userService: UserService
   ) {}
 
   ngOnInit() {
-    this.authUser = this.authService.isLoggedIn;
-    if (this.authUser) {
-      this.postService.getPosts('timestamp', 20).then(response => {
-        this.posts = response;
-      });
-    } else {
-      console.log('auth failure');
-    }
+    this.authService.login(this.user.email, this.user.password).then(() => {
+      console.log(this.authService.isLoggedIn);
+      this.authUser = this.authService.isLoggedIn;
+      if (this.authUser) {
+        this.postService.getPosts('timestamp', 20).then(response => {
+          response.subscribe(post => console.log(post));
+          this.posts = response;
+        });
+      } else {
+        console.log('auth failure');
+      }
+    });
   }
 }
