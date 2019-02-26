@@ -18,7 +18,8 @@ export class PostListComponent implements OnInit {
   posts: Observable<any[]>;
   authUser: boolean;
   getUserDetail(uid: string) {
-    return uid;
+    console.log(uid);
+    this.userService.getUserDetail(uid);
   }
 
   constructor(

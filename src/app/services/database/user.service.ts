@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 
 import { Observable } from 'rxjs';
-import { map, first } from 'rxjs/operators';
+import { take } from 'rxjs/operators';
 
 import { UserDetail } from '../../models/user/user-detail.model';
 
@@ -11,10 +11,12 @@ import { UserDetail } from '../../models/user/user-detail.model';
 })
 export class UserService {
   // userRef: AngularFireList<any>;
-  userDetail: {};
 
   async getUserDetail(uid: string) {
-    return uid; // continues....
+    return this.db
+      .object(`/User_Detail/${uid}`)
+      .valueChanges()
+      .subscribe(data => console.log(data));
   }
 
   constructor(private db: AngularFireDatabase) {}

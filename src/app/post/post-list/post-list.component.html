@@ -1,8 +1,12 @@
 <div *ngFor="let post of (posts | async | reverse); index as i">
   <mat-card class="post-card">
     <mat-card-header>
-      <div mat-card-avatar class="post-header-image"></div>
-      <mat-card-title>{{ getUserDetail(post.uid) }}</mat-card-title>
+      <div
+        mat-card-avatar
+        class="post-header-image"
+        (click)="getUserDetail(post.uid)"
+      ></div>
+      <mat-card-title>Kriger</mat-card-title>
       <mat-card-subtitle>Student</mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
