@@ -4,7 +4,9 @@
       <div
         mat-card-avatar
         class="post-header-image"
-        (click)="getUserDetail(post.uid)"
+        [ngStyle]="{
+          'background-image': 'url(' + (post.userdetail | async)?.thumb + ')'
+        }"
       ></div>
       <mat-card-title>{{ (post.userdetail | async)?.name }}</mat-card-title>
       <mat-card-subtitle>Student</mat-card-subtitle>
