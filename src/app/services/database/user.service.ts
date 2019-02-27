@@ -13,7 +13,7 @@ export class UserService {
   // userRef: AngularFireList<any>;
 
   async getUserDetail(uid: string) {
-    return this.db.object(`/User_Detail/${uid}`).valueChanges();
+    return await this.db.object(`/User_Detail/${uid}`).valueChanges();
   }
 
   constructor(private db: AngularFireDatabase) {}

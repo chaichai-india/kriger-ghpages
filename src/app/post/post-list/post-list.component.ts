@@ -18,7 +18,6 @@ export class PostListComponent implements OnInit {
 
   posts: Observable<any[]>;
   authUser: boolean;
-  userDetail;
 
   constructor(
     private postService: PostService,
@@ -31,9 +30,8 @@ export class PostListComponent implements OnInit {
       console.log(this.authService.isLoggedIn);
       this.authUser = this.authService.isLoggedIn;
       if (this.authUser) {
-        this.postService.getPosts('timestamp', 20).then(response => {
-          response.subscribe(post => console.log(post));
-          this.posts = response;
+        this.postService.getPosts('timestamp', 20).then(res => {
+          this.posts = res;
         });
       } else {
         console.log('auth failure');
