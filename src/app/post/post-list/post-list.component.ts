@@ -15,12 +15,10 @@ export class PostListComponent implements OnInit {
     email: 'ashish@kriger.in',
     password: '123456'
   };
+
   posts: Observable<any[]>;
   authUser: boolean;
-  getUserDetail(uid: string) {
-    console.log(uid);
-    this.userService.getUserDetail(uid);
-  }
+  userDetail;
 
   constructor(
     private postService: PostService,
