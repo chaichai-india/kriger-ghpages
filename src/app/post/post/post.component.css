@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css?family=Cantarell');
+.post-card {
+  margin-bottom: 1em;
+}
+
+mat-card-content p {
+  font-family: 'Cantarell', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  padding: 1.5em 2em;
+  max-width: 100%;
+  white-space: pre-line;
+  /* height: 3.65em;
+  overflow: hidden; */
+}
+
+.post-header-image {
+  background-size: cover;
+}
