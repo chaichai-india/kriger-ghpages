@@ -14,8 +14,6 @@ export class PostService {
     this.postsRef = this.db.list('/Post', ref =>
       ref.orderByChild(orderby).limitToLast(batch)
     );
-
-    // let userSub: Subscription;
     // Use snapshotChanges().map() to store the key
     try {
       this.posts = this.postsRef.snapshotChanges().pipe(
@@ -24,8 +22,12 @@ export class PostService {
             let userdetail = this.db
               .object(`/User_Detail/${c.payload.val().uid}`)
               .valueChanges();
+            let postCounter = this.db
+              .object(`/Post_Counter/${c.payload.key}`)
+              .valueChanges();
             return {
               userdetail,
+              counter: postCounter,
               key: c.payload.key,
               ...c.payload.val()
             };
@@ -36,7 +38,6 @@ export class PostService {
       throw new Error('Posts fetch failed');
     }
     return this.posts;
-    // return this.postsRef.valueChanges();
   }
 
   constructor(private db: AngularFireDatabase) {}

@@ -5,6 +5,8 @@ import { PostRoutingModule } from './post-routing.module';
 
 import { MatCardModule } from '@angular/material/card';
 import { MomentModule } from 'ngx-moment';
+import { LinkyModule } from 'ngx-linky';
+import { MatLinkPreviewModule } from '@angular-material-extensions/link-preview';
 
 import { PostComponent } from './post/post.component';
 import { PostListComponent } from './post-list/post-list.component';
@@ -19,7 +21,14 @@ import { ReversePipe } from '../pipes/reverse.pipe';
     PostDetailComponent,
     ReversePipe
   ],
-  imports: [CommonModule, PostRoutingModule, MatCardModule, MomentModule],
+  imports: [
+    CommonModule,
+    PostRoutingModule,
+    MatCardModule,
+    MomentModule,
+    LinkyModule,
+    MatLinkPreviewModule
+  ],
   exports: [PostListComponent]
 })
 export class PostModule {}

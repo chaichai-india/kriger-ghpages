@@ -3,7 +3,6 @@ import { Observable } from 'rxjs';
 
 import { PostService } from '../../services/database/post.service';
 import { AuthService } from '../../services/auth.service';
-import { UserService } from '../../services/database/user.service';
 
 @Component({
   selector: 'app-post-list',
@@ -21,8 +20,7 @@ export class PostListComponent implements OnInit {
 
   constructor(
     private postService: PostService,
-    private authService: AuthService,
-    private userService: UserService
+    private authService: AuthService
   ) {}
 
   ngOnInit() {
