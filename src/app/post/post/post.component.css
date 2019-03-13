@@ -1,25 +1,27 @@
-@import url('https://fonts.googleapis.com/css?family=Cantarell');
+/* @import url('https://fonts.googleapis.com/css?family=Cantarell'); */
 
 .post-card {
   margin-bottom: 1em;
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15), 0 2px 3px rgba(0, 0, 0, 0.2);
+  border-radius: 0;
 }
 
-mat-card-title {
+.post-card mat-card-title {
   font-size: 14px;
   line-height: 20px;
 }
 
-mat-card-subtitle {
+.post-card mat-card-subtitle {
   font-size: 12px;
   line-height: 16px;
 }
 
-mat-card-content p {
-  font-family: 'Cantarell', sans-serif;
-  font-weight: 400;
+.post-card mat-card-content p {
+  /* font-family: 'Cantarell', sans-serif; */
   font-size: 14px;
   line-height: 20px;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 0.75);
   padding: 0;
   max-width: 100%;
   white-space: pre-line;

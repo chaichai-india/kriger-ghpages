@@ -16,20 +16,16 @@
   </mat-card-header>
   <mat-card-content>
     <p
-      matLinkPreview
       [innerHTML]="
         post.text | linky: { truncate: { length: 32, location: 'end' } }
       "
-    >
-      <!-- {{ post.text | linky }} -->
-    </p>
-    <mat-link-preview-container [multiple]="true"></mat-link-preview-container>
+    ></p>
     <!-- <span>...see more</span> -->
   </mat-card-content>
   <img
-    *ngIf="post.image_url_original"
+    *ngIf="post.image_url"
     mat-card-image
-    src="{{ post.image_url_original }}"
+    src="{{ post.image_url }}"
     alt=""
   />
   <mat-card-subtitle>
