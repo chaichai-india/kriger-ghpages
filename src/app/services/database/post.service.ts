@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 import { Observable } from 'rxjs';
-import { map, tap, shareReplay } from 'rxjs/operators';
+import { map, tap, shareReplay, take } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -10,9 +10,9 @@ export class PostService {
   postsRef: AngularFireList<any>;
   posts: Observable<any[]>;
 
-  async getPosts(orderby: string, batch?: number) {
+  async getPosts(batch?: number) {
     this.postsRef = this.db.list('/Post', ref =>
-      ref.orderByChild(orderby).limitToLast(batch)
+      ref.orderByKey().limitToLast(batch)
     );
     // ref.orderByChild('uid').equalTo('DAqhLs3rLqh4hTdppkTqJYpmPMJ3') --editors all posts
     // Use snapshotChanges().map() to store the key
@@ -28,6 +28,7 @@ export class PostService {
               .object(`/User_Detail/${c.payload.val().uid}`)
               .valueChanges()
               .pipe(
+                take(1),
                 tap(user => console.log(`read user`)),
                 shareReplay(1)
               );
@@ -35,6 +36,7 @@ export class PostService {
               .object(`/Post_Counter/${c.payload.key}`)
               .valueChanges()
               .pipe(
+                take(1),
                 tap(counter => console.log(`read post counter`)),
                 shareReplay(1)
               );

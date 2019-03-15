@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -7,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppComponent implements OnInit {
   title = 'kriger-campus-website';
+
   visitCount: number = +localStorage.getItem('visitCount');
   showIntro: boolean = this.visitCount == 0 || this.visitCount % 20 == 0;
 

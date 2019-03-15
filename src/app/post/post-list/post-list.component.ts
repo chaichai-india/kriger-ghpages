@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 
 import { PostService } from '../../services/database/post.service';
 import { AuthService } from '../../services/auth.service';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-post-list',
@@ -10,25 +11,20 @@ import { AuthService } from '../../services/auth.service';
   styleUrls: ['./post-list.component.css']
 })
 export class PostListComponent implements OnInit {
-  user = {
-    email: 'ashish@kriger.in',
-    password: '123456'
-  };
-
   posts: Observable<any[]>;
   authUser: boolean;
 
   constructor(
     private postService: PostService,
-    private authService: AuthService
+    private authService: AuthService,
+    private loginService: LoginService
   ) {}
 
   ngOnInit() {
-    this.authService.login(this.user.email, this.user.password).then(() => {
-      console.log(this.authService.isLoggedIn);
+    this.loginService.signin().then(() => {
       this.authUser = this.authService.isLoggedIn;
       if (this.authUser) {
-        this.postService.getPosts('timestamp', 20).then(res => {
+        this.postService.getPosts(20).then(res => {
           this.posts = res;
         });
       } else {
