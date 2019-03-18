@@ -10,6 +10,20 @@ export class PostService {
   postsRef: AngularFireList<any>;
   posts: Observable<any[]>;
 
+  getData(ref: string, itemRef: string) {
+    try {
+      return this.db
+        .object(`/${ref}/${itemRef}`)
+        .valueChanges()
+        .pipe(
+          tap(() => console.log(`read ${ref}`)),
+          shareReplay(1)
+        );
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
   async getPosts(batch?: number) {
     this.postsRef = this.db.list('/Post', ref =>
       ref.orderByKey().limitToLast(batch)
@@ -24,22 +38,14 @@ export class PostService {
         ),
         map(changes =>
           changes.map(c => {
-            let userdetail = this.db
-              .object(`/User_Detail/${c.payload.val().uid}`)
-              .valueChanges()
-              .pipe(
-                take(1),
-                tap(user => console.log(`read user`)),
-                shareReplay(1)
-              );
-            let postCounter = this.db
-              .object(`/Post_Counter/${c.payload.key}`)
-              .valueChanges()
-              .pipe(
-                take(1),
-                tap(counter => console.log(`read post counter`)),
-                shareReplay(1)
-              );
+            const userRef = 'User_Detail';
+            let uid = c.payload.val().uid;
+            let userdetail = this.getData(userRef, uid);
+
+            const postCounterRef = 'Post_Counter';
+            let key = c.payload.key;
+            let postCounter = this.getData(postCounterRef, key);
+
             return {
               userdetail,
               counter: postCounter,
@@ -52,16 +58,28 @@ export class PostService {
     } catch (err) {
       throw new Error('Posts fetch failed');
     }
-    return this.posts;
+    return await this.posts;
   }
 
-  getPost(id: string) {
-    return this.db
+  async getPost(id: string) {
+    return await this.db
       .object(`/Post/${id}`)
       .snapshotChanges()
       .pipe(
+        tap(() => console.log('post by id called')),
         map(post => {
+          const userRef = 'User_Detail';
+          let payloadValue: any = post.payload.val();
+          console.log(payloadValue.uid);
+          let uid = payloadValue.uid;
+          let userdetail = this.getData(userRef, uid);
+
+          const postCounterRef = 'Post_Counter';
+          let key = post.payload.key;
+          let postCounter = this.getData(postCounterRef, key);
           return {
+            userdetail,
+            counter: postCounter,
             key: post.payload.key,
             ...post.payload.val()
           };

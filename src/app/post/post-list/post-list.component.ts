@@ -12,7 +12,7 @@ import { LoginService } from 'src/app/services/login.service';
 })
 export class PostListComponent implements OnInit {
   posts: Observable<any[]>;
-  authUser: boolean;
+  isAuth: boolean;
 
   constructor(
     private postService: PostService,
@@ -21,15 +21,18 @@ export class PostListComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.loginService.signin().then(() => {
-      this.authUser = this.authService.isLoggedIn;
-      if (this.authUser) {
+    this.isAuth = this.authService.isLoggedIn;
+    console.log(`isAuth = ${this.isAuth}`);
+    if (this.isAuth) {
+      this.postService.getPosts(20).then(res => {
+        this.posts = res;
+      });
+    } else {
+      this.loginService.signin().then(() => {
         this.postService.getPosts(20).then(res => {
           this.posts = res;
         });
-      } else {
-        console.log('auth failure');
-      }
-    });
+      });
+    }
   }
 }
