@@ -6,6 +6,10 @@
   border-radius: 0;
 }
 
+.post-header-image {
+  background-size: cover;
+}
+
 .post-card mat-card-title {
   font-size: 14px;
   line-height: 20px;
@@ -29,6 +33,10 @@
   overflow: hidden; */
 }
 
-.post-header-image {
-  background-size: cover;
+.post-card mat-card-actions {
+  display: flex;
+  justify-content: space-around;
+  font-size: 14px;
+  line-height: 20px;
+  color: rgba(0, 0, 0, 0.6);
 }

@@ -12,11 +12,12 @@ export class PostService {
 
   getData(ref: string, itemRef: string) {
     try {
+      console.log(ref, itemRef);
       return this.db
         .object(`/${ref}/${itemRef}`)
         .valueChanges()
         .pipe(
-          tap(() => console.log(`read ${ref}`)),
+          tap(() => console.log(`read ${ref} ${itemRef}`)),
           shareReplay(1)
         );
     } catch (err) {

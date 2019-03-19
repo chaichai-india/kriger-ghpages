@@ -4,7 +4,10 @@
       mat-card-avatar
       class="post-header-image"
       [ngStyle]="{
-        'background-image': 'url(' + (post.userdetail | async)?.thumb + ')'
+        'background-image':
+          'url(' +
+          (post.userdetail | async)?.thumb +
+          '), url(../../../assets/images/user.svg)'
       }"
     ></div>
     <mat-card-title>{{ (post.userdetail | async)?.name }}</mat-card-title>
@@ -19,7 +22,7 @@
   <mat-card-content>
     <p
       [innerHTML]="
-        post.text | linky: { truncate: { length: 32, location: 'end' } }
+        post.text | linky: { truncate: { length: 50, location: 'end' } }
       "
     ></p>
     <!-- <span>...see more</span> -->
@@ -35,8 +38,9 @@
     <span> {{ (post.counter | async)?.count_likes || 0 }} Likes </span>
     <span> {{ (post.counter | async)?.count_comments || 0 }} Comments </span>
   </mat-card-subtitle>
-  <!-- <mat-card-actions>
-    <button mat-button>LIKE</button>
-    <button mat-button>SHARE</button>
-  </mat-card-actions> -->
+  <mat-card-actions>
+    <button mat-button><mat-icon>thumb_up_alt</mat-icon>Like</button>
+    <button mat-button><mat-icon>comment</mat-icon>Comment</button>
+    <button mat-button><mat-icon>share</mat-icon>Share</button>
+  </mat-card-actions>
 </mat-card>
