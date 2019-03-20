@@ -24,12 +24,12 @@ export class PostListComponent implements OnInit {
     this.isAuth = this.authService.isLoggedIn;
     console.log(`isAuth = ${this.isAuth}`);
     if (this.isAuth) {
-      this.postService.getPosts(20).then(res => {
+      this.postService.getPosts(5).then(res => {
         this.posts = res;
       });
     } else {
       this.loginService.signin().then(() => {
-        this.postService.getPosts(20).then(res => {
+        this.postService.getPosts(5).then(res => {
           this.posts = res;
         });
       });

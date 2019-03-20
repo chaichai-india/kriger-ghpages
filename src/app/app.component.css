@@ -12,7 +12,3 @@ app-navbar {
   grid-area: header;
   height: 70px;
 }
-
-app-post-list {
-  grid-area: main;
-}

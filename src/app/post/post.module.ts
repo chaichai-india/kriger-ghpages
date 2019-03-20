@@ -9,8 +9,10 @@ import { LinkyModule } from 'ngx-linky';
 import { MatLinkPreviewModule } from '@angular-material-extensions/link-preview';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { PostComponent } from './post/post.component';
+import { DialogComponent } from './post/post.component';
 import { PostListComponent } from './post-list/post-list.component';
 import { PostDetailComponent } from './post-detail/post-detail.component';
 
@@ -19,10 +21,12 @@ import { ReversePipe } from '../pipes/reverse.pipe';
 @NgModule({
   declarations: [
     PostComponent,
+    DialogComponent,
     PostListComponent,
     PostDetailComponent,
     ReversePipe
   ],
+  entryComponents: [DialogComponent],
   imports: [
     CommonModule,
     PostRoutingModule,
@@ -31,7 +35,8 @@ import { ReversePipe } from '../pipes/reverse.pipe';
     LinkyModule,
     MatLinkPreviewModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    MatDialogModule
   ],
   exports: [PostListComponent]
 })
