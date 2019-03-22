@@ -63,29 +63,38 @@ export class PostService {
   }
 
   async getPost(id: string) {
-    return await this.db
-      .object(`/Post/${id}`)
-      .snapshotChanges()
-      .pipe(
-        tap(() => console.log('post by id called')),
-        map(post => {
-          const userRef = 'User_Detail';
-          let payloadValue: any = post.payload.val();
-          console.log(payloadValue.uid);
-          let uid = payloadValue.uid;
-          let userdetail = this.getData(userRef, uid);
+    let id_exists = await this.db.database
+      .ref('/Post')
+      .once('value')
+      .then(snapshot => snapshot.hasChild(id));
+    console.log(id_exists);
+    if (id_exists) {
+      return await this.db
+        .object(`/Post/${id}`)
+        .snapshotChanges()
+        .pipe(
+          tap(() => console.log('post by id called')),
+          map(post => {
+            const userRef = 'User_Detail';
+            let payloadValue: any = post.payload.val();
+            console.log(payloadValue.uid);
+            let uid = payloadValue.uid;
+            let userdetail = this.getData(userRef, uid);
 
-          const postCounterRef = 'Post_Counter';
-          let key = post.payload.key;
-          let postCounter = this.getData(postCounterRef, key);
-          return {
-            userdetail,
-            counter: postCounter,
-            key: post.payload.key,
-            ...post.payload.val()
-          };
-        })
-      );
+            const postCounterRef = 'Post_Counter';
+            let key = post.payload.key;
+            let postCounter = this.getData(postCounterRef, key);
+            return {
+              userdetail,
+              counter: postCounter,
+              key: post.payload.key,
+              ...post.payload.val()
+            };
+          })
+        );
+    } else {
+      return false;
+    }
   }
 
   constructor(private db: AngularFireDatabase) {}

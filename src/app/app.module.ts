@@ -9,8 +9,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { IntroCardComponent } from './components/intro-card/intro-card.component';
 import { NavbarComponent } from './components/ui/navbar/navbar.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 import { PostModule } from './post/post.module';
+import { ProfileModule } from './profile/profile.module';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTabsModule } from '@angular/material/tabs';
@@ -24,11 +26,17 @@ import { MatLinkPreviewModule } from '@angular-material-extensions/link-preview'
 // import { ScrollingModule } from '@angular/cdk/scrolling';
 
 @NgModule({
-  declarations: [AppComponent, IntroCardComponent, NavbarComponent],
+  declarations: [
+    AppComponent,
+    IntroCardComponent,
+    NavbarComponent,
+    PageNotFoundComponent
+  ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     PostModule,
+    ProfileModule,
+    AppRoutingModule,
     MatToolbarModule,
     MatTabsModule,
     MatButtonModule,

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { PostService } from '../../services/database/post.service';
+import { PostService } from '../../../services/database/post.service';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { LoginService } from 'src/app/services/login.service';
@@ -13,6 +13,16 @@ export class PostDetailComponent implements OnInit {
   id: string;
   isAuth: boolean;
   post;
+
+  getPost(id: string) {
+    this.postService.getPost(id).then(res => {
+      if (res) {
+        this.post = res;
+      } else {
+        this.router.navigate(['404']);
+      }
+    });
+  }
   constructor(
     private authService: AuthService,
     private postService: PostService,
@@ -28,12 +38,10 @@ export class PostDetailComponent implements OnInit {
     console.log(this.isAuth);
 
     if (this.isAuth) {
-      this.postService.getPost(this.id).then(res => (this.post = res));
-      console.log(this.post);
+      this.getPost(this.id);
     } else {
       this.loginService.signin().then(() => {
-        this.postService.getPost(this.id).then(res => (this.post = res));
-        console.log(this.post);
+        this.getPost(this.id);
       });
     }
   }

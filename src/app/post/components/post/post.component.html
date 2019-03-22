@@ -38,6 +38,7 @@
     <span> {{ (post.counter | async)?.count_likes || 0 }} Likes </span>
     <span> {{ (post.counter | async)?.count_comments || 0 }} Comments </span>
   </mat-card-subtitle>
+  <hr />
   <mat-card-actions>
     <button (click)="openDialog()" mat-button>
       <mat-icon>thumb_up_alt</mat-icon>Like
