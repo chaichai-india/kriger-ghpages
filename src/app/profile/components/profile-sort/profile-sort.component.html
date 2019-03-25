@@ -1,0 +1,12 @@
+<div class="sort__container">
+  <h2>Profile List: '{{ selected }}'</h2>
+  <hr />
+  <mat-form-field>
+    <mat-label>Browse by:</mat-label>
+    <mat-select [(value)]="selected" (selectionChange)="sendChange()">
+      <mat-option *ngFor="let item of sort_list" [value]="item">
+        {{ item }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
