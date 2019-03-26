@@ -1,2 +1,12 @@
-<app-profile-sort (messageEvent)="receiveSelected($event)"></app-profile-sort>
-{{ selected }}
+<div class="profiles__container">
+  <app-profile-sort (messageEvent)="receiveSelected($event)"></app-profile-sort>
+
+  <div class="list__container">
+    <ul *ngFor="let user of (userList | async); let i = index; let last = last">
+      <li *ngIf="user.name && filterByLetter(user.name, selected)">
+        {{ user.name }}
+      </li>
+      <div *ngIf="last">{{ i + 1 }} results</div>
+    </ul>
+  </div>
+</div>

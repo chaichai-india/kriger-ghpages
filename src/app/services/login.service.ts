@@ -5,10 +5,17 @@ import { AuthService } from './auth.service';
   providedIn: 'root'
 })
 export class LoginService {
+  isAuth: boolean = this.authService.isLoggedIn;
   user = {
     email: 'ashish@kriger.in',
     password: '123456'
   };
+
+  async loginIfNotAuth() {
+    if (!this.isAuth) {
+      await this.signin();
+    }
+  }
 
   async signin() {
     const { email, password } = this.user;

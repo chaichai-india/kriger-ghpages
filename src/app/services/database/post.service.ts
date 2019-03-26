@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 import { Observable } from 'rxjs';
 import { map, tap, shareReplay } from 'rxjs/operators';
+import { AuthService } from '../auth.service';
+import { LoginService } from '../login.service';
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +11,7 @@ import { map, tap, shareReplay } from 'rxjs/operators';
 export class PostService {
   postsRef: AngularFireList<any>;
   posts: Observable<any[]>;
+  isAuth: boolean = this.authService.isLoggedIn;
 
   getData(ref: string, itemRef: string) {
     try {
@@ -25,7 +28,9 @@ export class PostService {
     }
   }
 
-  async getPosts(batch?: number) {
+  async getPosts(batch: number = 10) {
+    console.log(`post service auth = ${this.isAuth}`);
+    await this.loginService.loginIfNotAuth();
     this.postsRef = this.db.list('/Post', ref =>
       ref.orderByKey().limitToLast(batch)
     );
@@ -33,10 +38,8 @@ export class PostService {
     // Use snapshotChanges().map() to store the key
     try {
       this.posts = this.postsRef.snapshotChanges().pipe(
-        tap(
-          changes => console.log(`read ${changes.length} posts`),
-          shareReplay(1)
-        ),
+        tap(changes => console.log(`read ${changes.length} posts`)),
+        shareReplay(1),
         map(changes =>
           changes.map(c => {
             const userRef = 'User_Detail';
@@ -63,6 +66,7 @@ export class PostService {
   }
 
   async getPost(id: string) {
+    await this.loginService.loginIfNotAuth();
     let id_exists = await this.db.database
       .ref('/Post')
       .once('value')
@@ -97,5 +101,9 @@ export class PostService {
     }
   }
 
-  constructor(private db: AngularFireDatabase) {}
+  constructor(
+    private db: AngularFireDatabase,
+    private authService: AuthService,
+    private loginService: LoginService
+  ) {}
 }
