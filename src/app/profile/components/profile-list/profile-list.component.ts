@@ -11,11 +11,11 @@ export class ProfileListComponent implements OnInit, OnDestroy {
   selected: string = 'A';
   userSub: Subscription;
   userList: any[];
-  filteredList: any[] = [{ name: 'Ashish' }, { name: 'Wren' }];
+  filteredList: any[];
 
   receiveSelected($event) {
     this.selected = $event;
-    // this.filterByLetter();
+    this.filterByLetter();
   }
 
   async filterByLetter() {
@@ -28,17 +28,26 @@ export class ProfileListComponent implements OnInit, OnDestroy {
         return false;
       }
     });
+    this.filteredList.sort((a, b) => {
+      let nameA = a.name.toUpperCase();
+      let nameB = b.name.toUpperCase();
+
+      if (nameA < nameB) return -1;
+      if (nameA > nameB) return 1;
+
+      return 0;
+    });
   }
 
   constructor(private userService: UserService) {}
 
   ngOnInit() {
-    // this.userService.getUsers().then(res => {
-    //   this.userSub = res.subscribe(val => {
-    //     this.userList = val;
-    //     this.filterByLetter();
-    //   });
-    // });
+    this.userService.getUsers().then(res => {
+      this.userSub = res.subscribe(val => {
+        this.userList = val;
+        this.filterByLetter();
+      });
+    });
   }
 
   ngOnDestroy() {

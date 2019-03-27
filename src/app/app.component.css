@@ -1,11 +1,8 @@
 .main__container {
   display: grid;
-  grid-template-columns: 1fr 1.5fr 1fr;
+  /* grid-template-columns: 1fr 1.5fr 1fr; */
   grid-template-rows: auto;
-  grid-template-areas:
-    'header header header'
-    'leftside main rightside'
-    'footer footer footer';
+  grid-template-areas: 'header header header';
 }
 
 app-navbar {

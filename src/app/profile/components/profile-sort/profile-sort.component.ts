@@ -8,12 +8,11 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class ProfileSortComponent implements OnInit {
   letters = 'abcdefghijklmopqrstuvwxyz#'.toUpperCase().split('');
-  selected = 'A';
 
   @Output() messageEvent = new EventEmitter<string>();
 
   sendChange(letter: string) {
-    this.messageEvent.emit(this.selected);
+    this.messageEvent.emit(letter);
     console.log(letter);
   }
   constructor() {}
