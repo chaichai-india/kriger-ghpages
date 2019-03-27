@@ -7,13 +7,14 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./profile-sort.component.css']
 })
 export class ProfileSortComponent implements OnInit {
-  sort_list = 'abcdefghijklmopqrstuvwxyz#'.toUpperCase().split('');
+  letters = 'abcdefghijklmopqrstuvwxyz#'.toUpperCase().split('');
   selected = 'A';
 
   @Output() messageEvent = new EventEmitter<string>();
 
-  sendChange() {
+  sendChange(letter: string) {
     this.messageEvent.emit(this.selected);
+    console.log(letter);
   }
   constructor() {}
 

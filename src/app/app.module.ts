@@ -23,8 +23,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatLinkPreviewModule } from '@angular-material-extensions/link-preview';
 
-// import { ScrollingModule } from '@angular/cdk/scrolling';
-
 @NgModule({
   declarations: [
     AppComponent,

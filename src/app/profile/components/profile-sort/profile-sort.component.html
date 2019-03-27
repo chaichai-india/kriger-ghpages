@@ -1,12 +1,23 @@
 <div class="sort__container">
   <h2>Profile List: '{{ selected }}'</h2>
   <hr />
-  <mat-form-field>
+  <!-- <mat-form-field>
     <mat-label>Browse by:</mat-label>
     <mat-select [(value)]="selected" (selectionChange)="sendChange()">
       <mat-option *ngFor="let item of sort_list" [value]="item">
         {{ item }}
       </mat-option>
     </mat-select>
-  </mat-form-field>
+    
+  </mat-form-field> -->
+  <div class="sort__letters">
+    <button
+      mat-button
+      *ngFor="let letter of letters"
+      appDebounceClick
+      (debounceClick)="sendChange(letter)"
+    >
+      {{ letter }}
+    </button>
+  </div>
 </div>
