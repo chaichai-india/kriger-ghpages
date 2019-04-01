@@ -1,6 +1,7 @@
 .sort__container {
   display: grid;
   font-family: 'Rubik', sans-serif;
+  margin-bottom: 1em;
 }
 
 .sort__container h2 {

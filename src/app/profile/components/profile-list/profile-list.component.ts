@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { UserService } from 'src/app/services/database/user.service';
 import { Subscription } from 'rxjs';
+import { ElasticSearchService } from 'src/app/services/database/elastic-search.service';
 
 @Component({
   selector: 'app-profile-list',
@@ -15,7 +16,7 @@ export class ProfileListComponent implements OnInit, OnDestroy {
 
   receiveSelected($event) {
     this.selected = $event;
-    this.filterByLetter();
+    // this.filterByLetter();
   }
 
   async filterByLetter() {
@@ -39,18 +40,19 @@ export class ProfileListComponent implements OnInit, OnDestroy {
     });
   }
 
-  constructor(private userService: UserService) {}
+  constructor(private es: ElasticSearchService) {}
 
   ngOnInit() {
-    this.userService.getUsers().then(res => {
-      this.userSub = res.subscribe(val => {
-        this.userList = val;
-        this.filterByLetter();
-      });
-    });
+    this.es.getUsersByStartChar(this.selected);
+    // this.userService.getUsers().then(res => {
+    //   this.userSub = res.subscribe(val => {
+    //     this.userList = val;
+    //     this.filterByLetter();
+    //   });
+    // });
   }
 
   ngOnDestroy() {
-    this.userSub.unsubscribe();
+    // this.userSub.unsubscribe();
   }
 }

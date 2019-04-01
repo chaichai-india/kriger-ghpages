@@ -1,0 +1,12 @@
+.profiles__container {
+  display: flex;
+  flex-direction: column;
+  padding: 3em;
+}
+
+.profile__container .list__container ul {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  list-style: none;
+  text-align: center;
+}

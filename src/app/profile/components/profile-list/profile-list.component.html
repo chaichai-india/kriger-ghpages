@@ -2,8 +2,9 @@
   <app-profile-sort (messageEvent)="receiveSelected($event)"></app-profile-sort>
 
   <div class="list__container">
-    <ul>
+    <ul *ngIf="filter; else user_not_found">
       <li *ngFor="let user of filteredList">{{ user.name }}</li>
     </ul>
+    <ng-template #user_not_found>No Users Found.</ng-template>
   </div>
 </div>
