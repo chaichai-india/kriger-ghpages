@@ -1,6 +1,6 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
 import { UserService } from 'src/app/services/database/user.service';
-import { Subscription } from 'rxjs';
+import { Subscription, Observable, of } from 'rxjs';
 import { ElasticSearchService } from 'src/app/services/database/elastic-search.service';
 
 @Component({
@@ -10,40 +10,60 @@ import { ElasticSearchService } from 'src/app/services/database/elastic-search.s
 })
 export class ProfileListComponent implements OnInit, OnDestroy {
   selected: string = 'A';
-  userSub: Subscription;
-  userList: any[];
-  filteredList: any[];
+  filteredList: any[] = [];
+  data: boolean = false;
 
   receiveSelected($event) {
     this.selected = $event;
-    // this.filterByLetter();
+    this.filterByLetter();
   }
 
   async filterByLetter() {
-    let list = await this.userList;
-    this.filteredList = list.filter(user => {
-      if (user.name) {
-        let name: string = user.name;
-        return name.toUpperCase().substr(0, 1) === this.selected;
+    {
+      // let list = await this.userList;
+      // this.filteredList = list.filter(user => {
+      //   if (user.name) {
+      //     let name: string = user.name;
+      //     return name.toUpperCase().substr(0, 1) === this.selected;
+      //   } else {
+      //     return false;
+      //   }
+      // });
+      // this.filteredList.sort((a, b) => {
+      //   let nameA = a.name.toUpperCase();
+      //   let nameB = b.name.toUpperCase();
+      //   if (nameA < nameB) return -1;
+      //   if (nameA > nameB) return 1;
+      //   return 0;
+      // });
+    }
+    this.es.getUsersByStartChar(this.selected, res => {
+      console.log(res.hits);
+      if (res.hits) {
+        let data: any[] = res.hits;
+        let dataList: any[] = [];
+        data.forEach(el => {
+          dataList.push(el._source);
+        });
+        console.log(this.filteredList);
+        this.filteredList = dataList;
+        this.data = true;
+        this.chRef.detectChanges();
+        console.log(this.filteredList);
       } else {
-        return false;
+        this.data = false;
+        this.chRef.detectChanges();
       }
-    });
-    this.filteredList.sort((a, b) => {
-      let nameA = a.name.toUpperCase();
-      let nameB = b.name.toUpperCase();
-
-      if (nameA < nameB) return -1;
-      if (nameA > nameB) return 1;
-
-      return 0;
     });
   }
 
-  constructor(private es: ElasticSearchService) {}
+  constructor(
+    private es: ElasticSearchService,
+    private chRef: ChangeDetectorRef
+  ) {}
 
   ngOnInit() {
-    this.es.getUsersByStartChar(this.selected);
+    this.filterByLetter();
     // this.userService.getUsers().then(res => {
     //   this.userSub = res.subscribe(val => {
     //     this.userList = val;

@@ -4,7 +4,7 @@
   padding: 3em;
 }
 
-.profile__container .list__container ul {
+.profiles__container .list__container ul {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   list-style: none;

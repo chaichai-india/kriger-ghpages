@@ -6,18 +6,28 @@ import { AngularFireDatabase } from '@angular/fire/database';
 })
 export class ElasticSearchService {
   path: string = 'search';
+  user_list: any;
 
-  getUsersByStartChar(startChar: string) {
-    const regex = `${startChar.toLowerCase()}*`;
+  async getUsersByStartChar(startChar: string, callback) {
+    const wildcard = startChar.toLowerCase();
     const ref = this.db.database.ref().child(this.path);
 
     //prettier-ignore
     let body = {
       "query": {
-        "wildcard": {
-          "name": {
-            "value": regex
-          }
+        "span_first": {
+          "match": {
+            "span_multi": {
+              "match": {
+                "prefix": {
+                  "name": {
+                    "value": wildcard
+                  }
+                }
+              }
+            }
+          },
+          "end": 1
         }
       }
     };
@@ -30,12 +40,17 @@ export class ElasticSearchService {
 
     const key = ref.child('request').push(query).key;
     console.log('search', query, key);
+    this.getData(key, ref, res => callback(res));
+  }
 
+  getData(key: string, ref, callback) {
+    let data: any;
     let onValueChanges = ref.child(`response/${key}`).on('value', snap => {
       if (!snap.exists()) {
         return;
       } // wait until we get data
-      let data = snap.val().hits;
+      data = snap.val().hits;
+      callback(data);
       console.log(data);
 
       // when a value arrives from the database, stop listening
