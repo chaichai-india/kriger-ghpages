@@ -8,14 +8,16 @@ export class ElasticSearchService {
   path: string = 'search';
 
   getUsersByStartChar(startChar: string) {
-    const regex = `[${startChar.toUpperCase()}|${startChar.toLowerCase()}]*`;
+    const regex = `${startChar.toLowerCase()}*`;
     const ref = this.db.database.ref().child(this.path);
 
     //prettier-ignore
     let body = {
       "query": {
         "wildcard": {
-          "name": regex
+          "name": {
+            "value": regex
+          }
         }
       }
     };
@@ -28,20 +30,19 @@ export class ElasticSearchService {
 
     const key = ref.child('request').push(query).key;
     console.log('search', query, key);
-    ref.child(`response/${key}`).on('value', this.showResults);
-  }
 
-  showResults(snap) {
-    if (!snap.exists()) {
-      return;
-    } // wait until we get data
-    let data = snap.val().hits;
-    console.log(data);
+    let onValueChanges = ref.child(`response/${key}`).on('value', snap => {
+      if (!snap.exists()) {
+        return;
+      } // wait until we get data
+      let data = snap.val().hits;
+      console.log(data);
 
-    // when a value arrives from the database, stop listening
-    // and remove the temporary data from the database
-    // snap.ref.off('value', this.showResults);
-    // snap.ref.remove();
+      // when a value arrives from the database, stop listening
+      // and remove the temporary data from the database
+      snap.ref.off('value', onValueChanges);
+      // snap.ref.remove();
+    });
   }
 
   constructor(private db: AngularFireDatabase) {}
