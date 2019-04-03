@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 // import { of } from 'rxjs/add/observable/of'
 
 @Component({
@@ -7,10 +7,11 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./profile-sort.component.css']
 })
 export class ProfileSortComponent implements OnInit {
-  letters = 'abcdefghijklmopqrstuvwxyz#'.toUpperCase().split('');
+  letters = 'abcdefghijklmopqrstuvwxyz'.toUpperCase().split('');
   selected: string = 'A';
 
   @Output() messageEvent = new EventEmitter<string>();
+  @Input() total: number;
 
   sendChange(letter: string) {
     this.selected = letter;

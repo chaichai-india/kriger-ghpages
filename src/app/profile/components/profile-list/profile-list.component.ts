@@ -12,6 +12,8 @@ export class ProfileListComponent implements OnInit, OnDestroy {
   selected: string = 'A';
   filteredList: any[] = [];
   data: boolean = false;
+  loading: boolean = true;
+  total: number = 0;
 
   receiveSelected($event) {
     this.selected = $event;
@@ -19,24 +21,6 @@ export class ProfileListComponent implements OnInit, OnDestroy {
   }
 
   async filterByLetter() {
-    {
-      // let list = await this.userList;
-      // this.filteredList = list.filter(user => {
-      //   if (user.name) {
-      //     let name: string = user.name;
-      //     return name.toUpperCase().substr(0, 1) === this.selected;
-      //   } else {
-      //     return false;
-      //   }
-      // });
-      // this.filteredList.sort((a, b) => {
-      //   let nameA = a.name.toUpperCase();
-      //   let nameB = b.name.toUpperCase();
-      //   if (nameA < nameB) return -1;
-      //   if (nameA > nameB) return 1;
-      //   return 0;
-      // });
-    }
     this.es.getUsersByStartChar(this.selected, res => {
       console.log(res.hits);
       if (res.hits) {
@@ -47,10 +31,14 @@ export class ProfileListComponent implements OnInit, OnDestroy {
         });
         console.log(this.filteredList);
         this.filteredList = dataList;
+        this.total = res.total;
         this.data = true;
+        this.loading = false;
         this.chRef.detectChanges();
         console.log(this.filteredList);
       } else {
+        this.loading = false;
+        this.chRef.detectChanges();
         this.data = false;
         this.chRef.detectChanges();
       }
@@ -64,15 +52,7 @@ export class ProfileListComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.filterByLetter();
-    // this.userService.getUsers().then(res => {
-    //   this.userSub = res.subscribe(val => {
-    //     this.userList = val;
-    //     this.filterByLetter();
-    //   });
-    // });
   }
 
-  ngOnDestroy() {
-    // this.userSub.unsubscribe();
-  }
+  ngOnDestroy() {}
 }

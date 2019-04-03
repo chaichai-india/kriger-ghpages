@@ -1,16 +1,12 @@
 <div class="sort__container">
-  <h2>Profile List: '{{ selected }}'</h2>
+  <div class="sort--header">
+    <h2>Profile List: '{{ selected }}'</h2>
+    <mat-chip-list>
+      <mat-chip color="primary" selected>{{ total }} users</mat-chip>
+    </mat-chip-list>
+  </div>
   <hr />
-  <!-- <mat-form-field>
-    <mat-label>Browse by:</mat-label>
-    <mat-select [(value)]="selected" (selectionChange)="sendChange()">
-      <mat-option *ngFor="let item of sort_list" [value]="item">
-        {{ item }}
-      </mat-option>
-    </mat-select>
-    
-  </mat-form-field> -->
-  <div class="sort__letters">
+  <div class="sort--letters">
     <button
       mat-button
       *ngFor="let letter of letters"
@@ -20,4 +16,5 @@
       {{ letter }}
     </button>
   </div>
+  <hr />
 </div>
