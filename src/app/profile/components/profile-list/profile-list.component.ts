@@ -10,18 +10,58 @@ import { ElasticSearchService } from 'src/app/services/database/elastic-search.s
 })
 export class ProfileListComponent implements OnInit, OnDestroy {
   selected: string = 'A';
-  filteredList: any[] = [];
-  data: boolean = false;
-  loading: boolean = true;
-  total: number = 0;
+  clicked: any;
+  filteredList: any[];
+  data: boolean;
+  loading: boolean;
+  total: number;
+  pagination: any[];
+
+  resetValues() {
+    this.loading = true;
+    this.filteredList = [];
+    this.data = false;
+    this.total = 0;
+    this.pagination = [];
+    this.clicked = this.clicked > 1 ? this.clicked : 1;
+    this.chRef.detectChanges();
+  }
+
+  setValues(data: any[], total: number) {
+    this.filteredList = data;
+    this.total = total;
+    this.data = true;
+    this.loading = false;
+    this.pagination = this.paginationCounter(total);
+    this.chRef.detectChanges();
+  }
+
+  paginationCounter(total: number, size: number = 10) {
+    let n = total / size;
+    let r = total % size;
+    let a = Math.floor(n);
+    let pages = r === 0 ? a : a + 1;
+    return new Array(pages);
+  }
+
+  getNext(i) {
+    if (i == this.clicked) return;
+    this.clicked = +i;
+    this.chRef.detectChanges();
+    let from = (this.clicked - 1) * 10;
+    this.filterByLetter(from);
+  }
 
   receiveSelected($event) {
+    if ($event == this.selected) return;
     this.selected = $event;
+    this.clicked = 1;
     this.filterByLetter();
   }
 
-  async filterByLetter() {
-    this.es.getUsersByStartChar(this.selected, res => {
+  async filterByLetter(from: number = 0) {
+    this.resetValues();
+    this.es.getUsersByStartChar(this.selected, from, res => {
       console.log(res.hits);
       if (res.hits) {
         let data: any[] = res.hits;
@@ -30,11 +70,7 @@ export class ProfileListComponent implements OnInit, OnDestroy {
           dataList.push(el._source);
         });
         console.log(this.filteredList);
-        this.filteredList = dataList;
-        this.total = res.total;
-        this.data = true;
-        this.loading = false;
-        this.chRef.detectChanges();
+        this.setValues(dataList, res.total);
         console.log(this.filteredList);
       } else {
         this.loading = false;

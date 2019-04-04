@@ -4,9 +4,25 @@
   padding: 3em;
 }
 
-.profiles__container .list__container ul {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  list-style: none;
-  text-align: center;
+.profiles__container .pagination mat-nav-list {
+  display: flex;
+  justify-content: center;
+  padding: 0;
+  flex-wrap: wrap;
+}
+
+.profiles__container .pagination mat-nav-list a {
+  width: auto;
+  height: 40px;
+}
+
+.selected {
+  color: rgba(255, 255, 255, 1);
+  background-color: rgba(0, 0, 255, 0.8);
+  border-radius: 0;
+}
+
+.selected:hover {
+  color: rgba(255, 255, 255, 1);
+  background-color: rgba(0, 0, 255, 1);
 }

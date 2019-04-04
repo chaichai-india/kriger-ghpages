@@ -1,0 +1,10 @@
+.post-detail__container {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1.5fr 1fr;
+  grid-template-rows: auto;
+}
+
+.post-detail__container app-post {
+  grid-column: 2/3;
+}

@@ -2,7 +2,9 @@
   <div class="sort--header">
     <h2>Profile List: '{{ selected }}'</h2>
     <mat-chip-list>
-      <mat-chip color="primary" selected>{{ total }} users</mat-chip>
+      <mat-chip *ngIf="total" color="primary" selected
+        >{{ total }} profiles</mat-chip
+      >
     </mat-chip-list>
   </div>
   <hr />
@@ -12,6 +14,7 @@
       *ngFor="let letter of letters"
       appDebounceClick
       (debounceClick)="sendChange(letter)"
+      [ngClass]="{ 'selected mat-raised-button': selected === letter }"
     >
       {{ letter }}
     </button>

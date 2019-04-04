@@ -7,6 +7,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatChipsModule } from '@angular/material/chips';
+import { MatListModule } from '@angular/material/list';
 
 import { ProfileComponent } from './components/profile/profile.component';
 import { ProfileSortComponent } from './components/profile-sort/profile-sort.component';
@@ -26,7 +27,8 @@ import { DebounceClickDirective } from '../directives/debounce-click.directive';
     MatSelectModule,
     MatButtonModule,
     MatProgressSpinnerModule,
-    MatChipsModule
+    MatChipsModule,
+    MatListModule
   ]
 })
 export class ProfileModule {}
