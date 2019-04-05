@@ -33,9 +33,9 @@ export class PostDetailComponent implements OnInit {
 
   ngOnInit() {
     this.id = this.route.snapshot.params['id'];
-    console.log(this.id);
+    // console.log(this.id);
     this.isAuth = this.authService.isLoggedIn;
-    console.log(this.isAuth);
+    // console.log(this.isAuth);
 
     if (this.isAuth) {
       this.getPost(this.id);

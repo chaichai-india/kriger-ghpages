@@ -16,7 +16,7 @@ export class ProfileSortComponent implements OnInit {
   sendChange(letter: string) {
     this.selected = letter;
     this.messageEvent.emit(letter);
-    console.log(letter);
+    // console.log(letter);
   }
   constructor() {}
 

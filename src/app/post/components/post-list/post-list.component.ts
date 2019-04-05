@@ -20,7 +20,7 @@ export class PostListComponent implements OnInit {
 
   ngOnInit() {
     this.isAuth = this.authService.isLoggedIn;
-    console.log(`isAuth at post list = ${this.isAuth}`);
+    // console.log(`isAuth at post list = ${this.isAuth}`);
 
     this.postService.getPosts(5).then(res => {
       this.posts = res;

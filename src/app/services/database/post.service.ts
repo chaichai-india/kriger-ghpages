@@ -15,12 +15,12 @@ export class PostService {
 
   getData(ref: string, itemRef: string) {
     try {
-      console.log(ref, itemRef);
+      // console.log(ref, itemRef);
       return this.db
         .object(`/${ref}/${itemRef}`)
         .valueChanges()
         .pipe(
-          tap(() => console.log(`read ${ref} ${itemRef}`)),
+          // tap(() => console.log(`read ${ref} ${itemRef}`)),
           shareReplay(1)
         );
     } catch (err) {
@@ -29,7 +29,7 @@ export class PostService {
   }
 
   async getPosts(batch: number = 10) {
-    console.log(`post service auth = ${this.isAuth}`);
+    // console.log(`post service auth = ${this.isAuth}`);
     await this.loginService.loginIfNotAuth();
     this.postsRef = this.db.list('/Post', ref =>
       ref.orderByKey().limitToLast(batch)
@@ -38,7 +38,7 @@ export class PostService {
     // Use snapshotChanges().map() to store the key
     try {
       this.posts = this.postsRef.snapshotChanges().pipe(
-        tap(changes => console.log(`read ${changes.length} posts`)),
+        // tap(changes => console.log(`read ${changes.length} posts`)),
         shareReplay(1),
         map(changes =>
           changes.map(c => {
@@ -71,17 +71,17 @@ export class PostService {
       .ref('/Post')
       .once('value')
       .then(snapshot => snapshot.hasChild(id));
-    console.log(id_exists);
+    // console.log(id_exists);
     if (id_exists) {
       return await this.db
         .object(`/Post/${id}`)
         .snapshotChanges()
         .pipe(
-          tap(() => console.log('post by id called')),
+          // tap(() => console.log('post by id called')),
           map(post => {
             const userRef = 'User_Detail';
             let payloadValue: any = post.payload.val();
-            console.log(payloadValue.uid);
+            // console.log(payloadValue.uid);
             let uid = payloadValue.uid;
             let userdetail = this.getData(userRef, uid);
 

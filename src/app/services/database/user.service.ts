@@ -21,7 +21,7 @@ export class UserService {
 
     try {
       this.userList = this.userRef.snapshotChanges().pipe(
-        tap(users => console.log(`fetch ${users.length} users`)),
+        // tap(users => console.log(`fetch ${users.length} users`)),
         map(users =>
           users.map(user => {
             return {

@@ -45,7 +45,7 @@ export class ElasticSearchService {
 
     let query = this.queryBuilder(wildcard, from);
     const key = ref.child('request').push(query).key;
-    console.log('search', query, key);
+    // console.log('search', query, key);
     this.getData(key, ref, res => callback(res));
   }
 
@@ -57,7 +57,7 @@ export class ElasticSearchService {
       } // wait until we get data
       data = snap.val().hits;
       callback(data);
-      console.log(data, snap.val());
+      // console.log(data, snap.val());
 
       // when a value arrives from the database, stop listening
       // and remove the temporary data from the database

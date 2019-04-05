@@ -62,16 +62,16 @@ export class ProfileListComponent implements OnInit, OnDestroy {
   async filterByLetter(from: number = 0) {
     this.resetValues();
     this.es.getUsersByStartChar(this.selected, from, res => {
-      console.log(res.hits);
+      // console.log(res.hits);
       if (res.hits) {
         let data: any[] = res.hits;
         let dataList: any[] = [];
         data.forEach(el => {
           dataList.push(el._source);
         });
-        console.log(this.filteredList);
+        // console.log(this.filteredList);
         this.setValues(dataList, res.total);
-        console.log(this.filteredList);
+        // console.log(this.filteredList);
       } else {
         this.loading = false;
         this.chRef.detectChanges();

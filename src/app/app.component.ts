@@ -19,6 +19,6 @@ export class AppComponent implements OnInit {
       this.visitCount++;
       localStorage.setItem('visitCount', this.visitCount.toString());
     }
-    console.log(this.visitCount, this.showIntro);
+    // console.log(this.visitCount, this.showIntro);
   }
 }

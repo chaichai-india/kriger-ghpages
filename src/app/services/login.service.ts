@@ -19,9 +19,9 @@ export class LoginService {
 
   async signin() {
     const { email, password } = this.user;
-    return await this.authService
-      .login(email, password)
-      .then(() => console.log('auth status ' + this.authService.isLoggedIn));
+    return await this.authService.login(email, password).then(() => {
+      // console.log('auth status ' + this.authService.isLoggedIn)
+    });
   }
   constructor(private authService: AuthService) {}
 }
