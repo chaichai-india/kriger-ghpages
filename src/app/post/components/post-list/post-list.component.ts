@@ -12,6 +12,7 @@ import { AuthService } from '../../../services/auth.service';
 export class PostListComponent implements OnInit {
   posts: Observable<any[]>;
   isAuth: boolean;
+  lastKey: string;
 
   constructor(
     private postService: PostService,
@@ -24,6 +25,12 @@ export class PostListComponent implements OnInit {
 
     this.postService.getPosts(5).then(res => {
       this.posts = res;
+      this.posts
+        .subscribe(posts => {
+          this.lastKey = posts[0].key;
+          console.log('lastkey', this.lastKey);
+        })
+        .unsubscribe();
     });
   }
 }
