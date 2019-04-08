@@ -5,6 +5,7 @@
   grid-template-rows: auto;
 }
 
-.post-list__container app-post {
+.post-list__container app-post,
+.post-list__container .load__btn {
   grid-column: 2/3;
 }

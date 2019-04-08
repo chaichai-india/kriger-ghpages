@@ -1,4 +1,7 @@
 <div class="post-list__container">
   <app-post *ngFor="let post of (posts | async | reverse)" [post]="post">
   </app-post>
+  <button class="load__btn" mat-button (click)="nextBatch()">
+    Load More Posts
+  </button>
 </div>

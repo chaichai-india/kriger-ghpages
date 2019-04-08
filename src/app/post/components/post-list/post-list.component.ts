@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, concat } from 'rxjs';
 
 import { PostService } from '../../../services/database/post.service';
 import { AuthService } from '../../../services/auth.service';
@@ -14,6 +14,14 @@ export class PostListComponent implements OnInit {
   isAuth: boolean;
   lastKey: string;
 
+  nextBatch() {
+    this.lastKey = this.postService.lastkey;
+    console.log(this.lastKey);
+    this.postService.getPosts(5, this.lastKey).then(res => {
+      this.posts = concat(this.posts, res);
+    });
+  }
+
   constructor(
     private postService: PostService,
     private authService: AuthService
@@ -25,12 +33,6 @@ export class PostListComponent implements OnInit {
 
     this.postService.getPosts(5).then(res => {
       this.posts = res;
-      this.posts
-        .subscribe(posts => {
-          this.lastKey = posts[0].key;
-          console.log('lastkey', this.lastKey);
-        })
-        .unsubscribe();
     });
   }
 }

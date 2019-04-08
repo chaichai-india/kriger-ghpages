@@ -12,6 +12,11 @@ export class PostService {
   postsRef: AngularFireList<any>;
   posts: Observable<any[]>;
   isAuth: boolean = this.authService.isLoggedIn;
+  lastKey: string;
+
+  get lastkey() {
+    return this.lastKey;
+  }
 
   getData(ref: string, itemRef: string) {
     try {
@@ -28,17 +33,31 @@ export class PostService {
     }
   }
 
-  async getPosts(batch: number = 10) {
+  async getPosts(batch: number = 10, lastKey?: string) {
     // console.log(`post service auth = ${this.isAuth}`);
     await this.loginService.loginIfNotAuth();
-    this.postsRef = this.db.list('/Post', ref =>
-      ref.orderByKey().limitToLast(batch)
-    );
+    if (lastKey) {
+      this.postsRef = this.db.list('/Post', ref =>
+        ref
+          .orderByKey()
+          .endAt(lastKey)
+          .limitToLast(batch)
+      );
+    } else {
+      this.postsRef = this.db.list('/Post', ref =>
+        ref.orderByKey().limitToLast(batch)
+      );
+    }
+
     // ref.orderByChild('uid').equalTo('DAqhLs3rLqh4hTdppkTqJYpmPMJ3') --editors all posts
     // Use snapshotChanges().map() to store the key
     try {
       this.posts = this.postsRef.snapshotChanges().pipe(
-        // tap(changes => console.log(`read ${changes.length} posts`)),
+        tap(changes => {
+          console.log(`read ${changes.length} posts`);
+          this.lastKey = changes[0].payload.key;
+          console.log(this.lastKey);
+        }),
         shareReplay(1),
         map(changes =>
           changes.map(c => {
