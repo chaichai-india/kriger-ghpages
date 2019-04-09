@@ -9,3 +9,11 @@
 .post-list__container .load__btn {
   grid-column: 2/3;
 }
+
+.post-list__container .load__btn {
+  display: flex;
+}
+
+.post-list__container .load__btn button {
+  margin: 1em auto;
+}

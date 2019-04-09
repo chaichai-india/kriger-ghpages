@@ -52,7 +52,7 @@ export class PostService {
     // ref.orderByChild('uid').equalTo('DAqhLs3rLqh4hTdppkTqJYpmPMJ3') --editors all posts
     // Use snapshotChanges().map() to store the key
     try {
-      this.posts = this.postsRef.snapshotChanges().pipe(
+      this.posts = await this.postsRef.snapshotChanges().pipe(
         tap(changes => {
           console.log(`read ${changes.length} posts`);
           this.lastKey = changes[0].payload.key;
