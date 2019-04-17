@@ -1,8 +1,13 @@
-import { Component, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
-import { UserService } from 'src/app/services/database/user.service';
-import { Subscription, Observable, of } from 'rxjs';
+import {
+  Component,
+  OnInit,
+  OnDestroy,
+  ChangeDetectorRef,
+  NgZone
+} from '@angular/core';
 import { ElasticSearchService } from 'src/app/services/database/elastic-search.service';
 import { ProfileLinkService } from 'src/app/services/database/profile-link.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-profile-list',
@@ -92,16 +97,22 @@ export class ProfileListComponent implements OnInit, OnDestroy {
 
   profileLink(key: string) {
     this.profileService.getProfileLink(key).then(snap => {
+      let username = Object.values(snap.val())[0];
       console.log(
-        'TCL: ProfileListComponent -> profileLink -> snap',
-        snap.val()
+        'TCL: ProfileListComponent -> profileLink -> username',
+        username
       );
+      this.zone.run(() => {
+        this.router.navigate([`/india/${username}`]);
+      });
     });
   }
 
   constructor(
     private es: ElasticSearchService,
     private profileService: ProfileLinkService,
+    private router: Router,
+    private zone: NgZone,
     private chRef: ChangeDetectorRef
   ) {}
 
