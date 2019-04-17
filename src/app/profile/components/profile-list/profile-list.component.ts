@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
 import { UserService } from 'src/app/services/database/user.service';
 import { Subscription, Observable, of } from 'rxjs';
 import { ElasticSearchService } from 'src/app/services/database/elastic-search.service';
+import { ProfileLinkService } from 'src/app/services/database/profile-link.service';
 
 @Component({
   selector: 'app-profile-list',
@@ -65,13 +66,21 @@ export class ProfileListComponent implements OnInit, OnDestroy {
       // console.log(res.hits);
       if (res.hits) {
         let data: any[] = res.hits;
+        console.log(
+          'TCL: ProfileListComponent -> filterByLetter -> data',
+          data
+        );
         let dataList: any[] = [];
         data.forEach(el => {
-          dataList.push(el._source);
+          const { _id } = el;
+          const { name } = el._source;
+          dataList.push({ _id, name });
         });
-        // console.log(this.filteredList);
         this.setValues(dataList, res.total);
-        // console.log(this.filteredList);
+        console.log(
+          'TCL: ProfileListComponent -> filterByLetter -> this.filteredList',
+          this.filteredList
+        );
       } else {
         this.loading = false;
         this.chRef.detectChanges();
@@ -81,8 +90,18 @@ export class ProfileListComponent implements OnInit, OnDestroy {
     });
   }
 
+  profileLink(key: string) {
+    this.profileService.getProfileLink(key).then(snap => {
+      console.log(
+        'TCL: ProfileListComponent -> profileLink -> snap',
+        snap.val()
+      );
+    });
+  }
+
   constructor(
     private es: ElasticSearchService,
+    private profileService: ProfileLinkService,
     private chRef: ChangeDetectorRef
   ) {}
 

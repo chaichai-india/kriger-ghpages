@@ -26,3 +26,8 @@
   color: rgba(255, 255, 255, 1);
   background-color: rgba(0, 0, 255, 1);
 }
+
+.list__container mat-action-list a {
+  color: rgba(0, 0, 255, 0.9);
+  text-decoration: underline;
+}
