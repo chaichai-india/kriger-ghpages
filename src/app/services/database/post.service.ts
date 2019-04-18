@@ -54,9 +54,9 @@ export class PostService {
     try {
       this.posts = await this.postsRef.snapshotChanges().pipe(
         tap(changes => {
-          console.log(`read ${changes.length} posts`);
+          // console.log(`read ${changes.length} posts`);
           this.lastKey = changes[0].payload.key;
-          console.log(this.lastKey);
+          // console.log(this.lastKey);
         }),
         shareReplay(1),
         map(changes =>

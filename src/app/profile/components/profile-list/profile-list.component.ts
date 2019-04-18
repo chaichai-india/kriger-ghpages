@@ -71,10 +71,10 @@ export class ProfileListComponent implements OnInit, OnDestroy {
       // console.log(res.hits);
       if (res.hits) {
         let data: any[] = res.hits;
-        console.log(
-          'TCL: ProfileListComponent -> filterByLetter -> data',
-          data
-        );
+        // console.log(
+        // 'TCL: ProfileListComponent -> filterByLetter -> data',
+        // data
+        // );
         let dataList: any[] = [];
         data.forEach(el => {
           const { _id } = el;
@@ -82,10 +82,10 @@ export class ProfileListComponent implements OnInit, OnDestroy {
           dataList.push({ _id, name });
         });
         this.setValues(dataList, res.total);
-        console.log(
-          'TCL: ProfileListComponent -> filterByLetter -> this.filteredList',
-          this.filteredList
-        );
+        // console.log(
+        // 'TCL: ProfileListComponent -> filterByLetter -> this.filteredList',
+        // this.filteredList
+        // );
       } else {
         this.loading = false;
         this.chRef.detectChanges();
@@ -98,10 +98,10 @@ export class ProfileListComponent implements OnInit, OnDestroy {
   profileLink(key: string) {
     this.profileService.getProfileLink(key).then(snap => {
       let username = Object.values(snap.val())[0];
-      console.log(
-        'TCL: ProfileListComponent -> profileLink -> username',
-        username
-      );
+      // console.log(
+      // 'TCL: ProfileListComponent -> profileLink -> username',
+      // username
+      // );
       this.zone.run(() => {
         this.router.navigate([`/india/${username}`]);
       });

@@ -13,5 +13,30 @@ export class ProfileLinkService {
       .equalTo(key)
       .once('value');
   }
+
+  isProfileLink(name: string) {
+    // return this.ref
+    //   .orderByValue()
+    //   .equalTo(name)
+    //   .once('value')
+    //   .then(snap => snap.exists());
+    return this.ref
+      .orderByKey()
+      .once('value')
+      .then(snap => {
+        let data = snap.val();
+        let response: any = false;
+        for (const key in data) {
+          if (data.hasOwnProperty(key)) {
+            const username = data[key];
+            if (username === name) {
+              response = { key, username };
+              break;
+            }
+          }
+        }
+        return response;
+      });
+  }
   constructor(private db: AngularFireDatabase) {}
 }

@@ -20,13 +20,13 @@ export class PostListComponent implements OnInit {
 
   nextBatch() {
     let scrollPos = window.scrollY;
-    console.log(scrollPos);
+    // console.log(scrollPos);
     this.lastKey = this.postService.lastkey;
-    console.log(this.lastKey);
+    // console.log(this.lastKey);
     this.postService.getPosts(5, this.lastKey).then(res => {
       let joined_posts = combineLatest(res, this.posts).pipe(
         map(([next, prev]) => {
-          console.log(next, prev);
+          // console.log(next, prev);
           next.pop();
           let posts = next.concat(prev);
           return posts;
