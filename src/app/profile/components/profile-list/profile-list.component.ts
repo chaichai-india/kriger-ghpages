@@ -96,8 +96,8 @@ export class ProfileListComponent implements OnInit, OnDestroy {
   }
 
   profileLink(key: string) {
-    this.profileService.getProfileLink(key).then(snap => {
-      let username = Object.values(snap.val())[0];
+    this.profileLinkService.getProfileLink(key).then(snap => {
+      let username = snap.val();
       // console.log(
       // 'TCL: ProfileListComponent -> profileLink -> username',
       // username
@@ -110,7 +110,7 @@ export class ProfileListComponent implements OnInit, OnDestroy {
 
   constructor(
     private es: ElasticSearchService,
-    private profileService: ProfileLinkService,
+    private profileLinkService: ProfileLinkService,
     private router: Router,
     private zone: NgZone,
     private chRef: ChangeDetectorRef

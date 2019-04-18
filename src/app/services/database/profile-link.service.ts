@@ -8,10 +8,7 @@ export class ProfileLinkService {
   ref = this.db.database.ref().child('User_Profile_Link');
 
   getProfileLink(key: string) {
-    return this.ref
-      .orderByKey()
-      .equalTo(key)
-      .once('value');
+    return this.ref.child(key).once('value');
   }
 
   isProfileLink(name: string) {

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProfileLinkService } from 'src/app/services/database/profile-link.service';
+import { ProfileService } from 'src/app/services/database/profile.service';
 
 @Component({
   selector: 'app-profile',
@@ -13,7 +14,7 @@ export class ProfileComponent implements OnInit {
 
   async getProfileData(name: string) {
     let username = name;
-    let isProfile = await this.profileService
+    let isProfile = await this.profileLinkService
       .isProfileLink(username)
       .then(res => {
         console.log('TCL: ProfileComponent -> getProfileData -> res', res);
@@ -21,11 +22,23 @@ export class ProfileComponent implements OnInit {
       });
 
     if (isProfile) {
+      try {
+        const { key } = isProfile;
+        const details = this.profileService.getDetails(key);
+        const counters = this.profileService.getCounter(key);
+        const userDetails = this.profileService.getUserDetails(key);
+
+        const profileInfo = await Promise.all([details, counters, userDetails]);
+        return profileInfo;
+      } catch (err) {
+        return err;
+      }
     }
   }
   constructor(
     private route: ActivatedRoute,
-    private profileService: ProfileLinkService
+    private profileLinkService: ProfileLinkService,
+    private profileService: ProfileService
   ) {}
 
   ngOnInit() {
@@ -35,6 +48,12 @@ export class ProfileComponent implements OnInit {
       'TCL: ProfileComponent -> ngOnInit -> this.username',
       this.username
     );
-    this.getProfileData(this.username);
+    this.getProfileData(this.username).then(snaps => {
+      console.log('TCL: ProfileComponent -> ngOnInit -> snaps', snaps);
+      snaps.forEach(snap => {
+        let data = snap.val();
+        console.log('TCL: ProfileComponent -> ngOnInit -> data', data);
+      });
+    });
   }
 }
