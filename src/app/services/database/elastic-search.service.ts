@@ -15,27 +15,6 @@ export class ElasticSearchService {
     let body = {
       "from": from,
       "query": {
-        "span_first": {
-          "match": {
-            "span_multi": {
-              "match": {
-                "prefix": {
-                  "name": {
-                    "value": start
-                  }
-                }
-              }
-            }
-          },
-          "end": 1
-        }
-      }
-    };
-
-    //prettier-ignore
-    let body1 = {
-      "from": from,
-      "query": {
         "query_string": {
           "default_field": "firstname",
           "query": wildcard
@@ -52,7 +31,7 @@ export class ElasticSearchService {
     return {
       index: 'firebase1',
       type: 'user',
-      body: body1
+      body
     };
   }
 
