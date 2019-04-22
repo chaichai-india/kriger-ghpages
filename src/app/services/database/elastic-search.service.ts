@@ -10,6 +10,7 @@ export class ElasticSearchService {
   user_list: any;
 
   queryBuilder(start: string, from: number = 0) {
+    let wildcard = start + '*';
     //prettier-ignore
     let body = {
       "from": from,
@@ -31,10 +32,27 @@ export class ElasticSearchService {
       }
     };
 
+    //prettier-ignore
+    let body1 = {
+      "from": from,
+      "query": {
+        "query_string": {
+          "default_field": "firstname",
+          "query": wildcard
+        },
+        
+      },
+      "sort": {
+        "firstname": {
+          "order": "asc"
+        }
+      }
+    };
+
     return {
       index: 'firebase1',
       type: 'user',
-      body
+      body: body1
     };
   }
 
