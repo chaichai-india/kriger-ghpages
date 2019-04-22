@@ -8,6 +8,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatListModule } from '@angular/material/list';
+import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
 
 import { ProfileComponent } from './components/profile/profile.component';
 import { ProfileSortComponent } from './components/profile-sort/profile-sort.component';
@@ -28,7 +30,9 @@ import { DebounceClickDirective } from '../directives/debounce-click.directive';
     MatButtonModule,
     MatProgressSpinnerModule,
     MatChipsModule,
-    MatListModule
+    MatListModule,
+    MatCardModule,
+    MatIconModule
   ]
 })
 export class ProfileModule {}

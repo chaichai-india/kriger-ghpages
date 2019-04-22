@@ -1,0 +1,58 @@
+.profile__container {
+  display: flex;
+  flex-direction: column;
+  width: 50vw;
+  min-width: 25em;
+  margin: 0 auto;
+}
+
+.profile__card {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15), 0 2px 3px rgba(0, 0, 0, 0.2);
+  border-radius: 0;
+}
+
+.profile__photo img {
+  height: 9.5em;
+  width: 9.5em;
+}
+
+.profile__name {
+  font-family: 'Lato', 'Helvetica Neue', sans-serif;
+}
+
+.ribbon {
+  width: 100%;
+  margin: 1em 0;
+  background-color: dodgerblue;
+  text-align: center;
+  color: white;
+  font-size: 1.2em;
+  font-weight: 500;
+  text-shadow: 2px 2px rgba(0, 0, 0, 0.31);
+  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.55);
+}
+
+.full_width {
+  width: 100%;
+}
+
+.content {
+  padding-left: 1em;
+}
+
+.profile__dashboard .content {
+  display: flex;
+  justify-content: space-around;
+}
+
+.profile__dashboard .content div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

@@ -48,12 +48,12 @@ export class ProfileComponent implements OnInit {
       'TCL: ProfileComponent -> ngOnInit -> this.username',
       this.username
     );
-    this.getProfileData(this.username).then(snaps => {
-      console.log('TCL: ProfileComponent -> ngOnInit -> snaps', snaps);
-      snaps.forEach(snap => {
-        let data = snap.val();
-        console.log('TCL: ProfileComponent -> ngOnInit -> data', data);
-      });
-    });
+    // this.getProfileData(this.username).then(snaps => {
+    //   console.log('TCL: ProfileComponent -> ngOnInit -> snaps', snaps);
+    //   snaps.forEach(snap => {
+    //     let data = snap.val();
+    //     console.log('TCL: ProfileComponent -> ngOnInit -> data', data);
+    //   });
+    // });
   }
 }

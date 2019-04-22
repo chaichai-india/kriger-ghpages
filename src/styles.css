@@ -1,6 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 /* @import url('https://fonts.googleapis.com/css?family=Roboto|Lato'); */
 @import url('https://fonts.googleapis.com/css?family=Rubik|Lato');
+@import '~@fortawesome/fontawesome-free/css/all.css';
 
 * {
   box-sizing: border-box;
