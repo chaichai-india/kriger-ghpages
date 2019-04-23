@@ -3,7 +3,7 @@
   flex-direction: column;
   width: 50vw;
   min-width: 25em;
-  margin: 0 auto;
+  margin: 1em auto;
 }
 
 .profile__card {
@@ -16,9 +16,11 @@
   border-radius: 0;
 }
 
-.profile__photo img {
+.profile__photo {
   height: 9.5em;
   width: 9.5em;
+  background-size: cover;
+  background-position: 50%;
 }
 
 .profile__name {

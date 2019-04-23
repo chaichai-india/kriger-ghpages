@@ -13,6 +13,9 @@ export class ProfileComponent implements OnInit {
   key: string;
   profile_found: boolean;
   loading: boolean;
+  details: any;
+  counters: any;
+  userDetails: any;
 
   resetValues() {
     this.loading = true;
@@ -25,14 +28,17 @@ export class ProfileComponent implements OnInit {
       return;
     }
 
-    const details = snaps[0].val();
-    console.log('TCL: ProfileComponent -> setValues -> details', details);
-    const counters = snaps[1];
-    console.log('TCL: ProfileComponent -> setValues -> counters', counters);
-    const userDetails = snaps[2];
+    this.details = snaps[0].val();
+    console.log('TCL: ProfileComponent -> setValues -> details', this.details);
+    this.counters = snaps[1];
+    console.log(
+      'TCL: ProfileComponent -> setValues -> counters',
+      this.counters
+    );
+    this.userDetails = snaps[2];
     console.log(
       'TCL: ProfileComponent -> setValues -> userDetails',
-      userDetails
+      this.userDetails
     );
 
     this.loading = false;

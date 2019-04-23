@@ -3,10 +3,15 @@
   <h1 class="profile__notfound" *ngIf="!profile_found">Profile not Found.</h1>
 
   <mat-card class="profile__card" *ngIf="profile_found && !loading">
-    <div class="profile__photo">
-      <img src="../../../../assets/images/user.svg" width="53" height="53" />
-    </div>
-    <h2 class="profile__name">John Doe</h2>
+    <div
+      mat-card-avatar
+      class="profile__photo"
+      [ngStyle]="{
+        'background-image':
+          'url(' + details?.thumb + '), url(../../../assets/images/user.svg)'
+      }"
+    ></div>
+    <h2 class="profile__name">{{ details?.name }}</h2>
 
     <div class="profile__intro full_width">
       <div class="ribbon">
@@ -15,11 +20,14 @@
       <div class="content">
         <div class="headline">
           <mat-icon fontSet="far" fontIcon="fa-list-alt"></mat-icon>
-          <span> Web Developer at Kriger Campus</span>
+          <span> {{ details?.headline }} </span>
         </div>
         <div class="hometown">
           <mat-icon fontSet="fa" fontIcon="fa-home"></mat-icon>
-          <span> Delhi, India</span>
+          <span>
+            {{ userDetails?.hometown }}, {{ userDetails?.state }},
+            {{ userDetails?.country }}
+          </span>
         </div>
         <div class="birthday">
           <mat-icon fontSet="fa" fontIcon="fa-birthday-cake"></mat-icon>
@@ -32,13 +40,13 @@
       </div>
     </div>
 
-    <div class="profile__about full_width">
+    <div class="profile__about full_width" *ngIf="userDetails?.summary">
       <div class="ribbon">
         <span>About Me</span>
       </div>
       <div class="content">
         <div class="about">
-          <span>Keep it simple</span>
+          <span>{{ userDetails?.summary }}</span>
         </div>
       </div>
     </div>
@@ -50,19 +58,117 @@
       <div class="content">
         <div class="posts">
           <span>Posts</span>
-          <span>10</span>
+          <span>{{ counters?.count_posts }}</span>
         </div>
         <div class="groups">
           <span>Groups</span>
-          <span>10</span>
+          <span>{{ counters?.count_groups }}</span>
         </div>
         <div class="krigers">
           <span>Krigers</span>
-          <span>10</span>
+          <span>{{ counters?.count_connections }}</span>
         </div>
         <div class="views">
           <span>Profile Views</span>
-          <span>10</span>
+          <span>{{ counters?.count_profileviews }}</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="profile__college full_width" *ngIf="userDetails?.college">
+      <div class="ribbon">
+        <span>School/College/Institute</span>
+      </div>
+      <div class="content">
+        <div class="college" *ngFor="let college of userDetails?.college">
+          <span>{{ college.name }}</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="profile__coaching full_width" *ngIf="userDetails?.coaching">
+      <div class="ribbon">
+        <span>Coaching</span>
+      </div>
+      <div class="content">
+        <div class="coaching" *ngFor="let coaching of userDetails?.coaching">
+          <span>{{ coaching.name }}</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="profile__award full_width" *ngIf="userDetails?.award">
+      <div class="ribbon">
+        <span>Award</span>
+      </div>
+      <div class="content">
+        <div class="award" *ngFor="let award of userDetails?.award">
+          <span>{{ award.name }}</span>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="profile__certification full_width"
+      *ngIf="userDetails?.certification"
+    >
+      <div class="ribbon">
+        <span>Certification</span>
+      </div>
+      <div class="content">
+        <div
+          class="certification"
+          *ngFor="let certificate of userDetails?.certification"
+        >
+          <span>{{ certificate.name }}</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="profile__internship full_width" *ngIf="userDetails?.internship">
+      <div class="ribbon">
+        <span>Internship/Research</span>
+      </div>
+      <div class="content">
+        <div
+          class="internship"
+          *ngFor="let internship of userDetails?.internship"
+        >
+          <span>{{ internship.name }}</span>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="profile__publication full_width"
+      *ngIf="userDetails?.publication"
+    >
+      <div class="ribbon">
+        <span>Publication</span>
+      </div>
+      <div class="content">
+        <div
+          class="publication"
+          *ngFor="let publication of userDetails?.publication"
+        >
+          <span>{{ publication.name }}</span>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="profile__specialisation full_width"
+      *ngIf="userDetails?.specialisation"
+    >
+      <div class="ribbon">
+        <span>Area of Specialisation</span>
+      </div>
+      <div class="content">
+        <div
+          class="specialisation"
+          *ngFor="let specialisation of userDetails?.specialisation"
+        >
+          <span>{{ specialisation.name }}</span>
         </div>
       </div>
     </div>
