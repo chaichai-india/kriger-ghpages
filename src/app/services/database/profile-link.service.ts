@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/database';
+import { LoginService } from '../login.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,12 +12,13 @@ export class ProfileLinkService {
     return this.ref.child(key).once('value');
   }
 
-  isProfileLink(name: string) {
+  async isProfileLink(name: string) {
     // return this.ref
     //   .orderByValue()
     //   .equalTo(name)
     //   .once('value')
     //   .then(snap => snap.exists());
+    await this.loginService.loginIfNotAuth();
     return this.ref
       .orderByKey()
       .once('value')
@@ -35,5 +37,8 @@ export class ProfileLinkService {
         return response;
       });
   }
-  constructor(private db: AngularFireDatabase) {}
+  constructor(
+    private db: AngularFireDatabase,
+    private loginService: LoginService
+  ) {}
 }

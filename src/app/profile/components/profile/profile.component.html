@@ -1,5 +1,8 @@
 <div class="profile__container">
-  <mat-card class="profile__card">
+  <mat-spinner *ngIf="loading"></mat-spinner>
+  <h1 class="profile__notfound" *ngIf="!profile_found">Profile not Found.</h1>
+
+  <mat-card class="profile__card" *ngIf="profile_found && !loading">
     <div class="profile__photo">
       <img src="../../../../assets/images/user.svg" width="53" height="53" />
     </div>

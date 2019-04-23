@@ -15,11 +15,57 @@ export class ProfileService {
   }
 
   getCounter(key: string) {
-    return this.counterRef.child(key).once('value');
+    return this.counterRef
+      .child(key)
+      .once('value')
+      .then(snap => {
+        let data = snap.val();
+        const {
+          count_posts,
+          count_groups,
+          count_connections,
+          count_profileviews
+        } = data;
+        return {
+          count_posts,
+          count_groups,
+          count_connections,
+          count_profileviews
+        };
+      });
   }
 
   getUserDetails(key: string) {
-    return this.userRef.child(key).once('value');
+    return this.userRef
+      .child(key)
+      .once('value')
+      .then(snap => {
+        let data = snap.val();
+        const { country, hometown, state, summary } = data;
+        const {
+          award,
+          certification,
+          college,
+          coaching,
+          internship,
+          publication,
+          specialisation
+        } = data;
+
+        return {
+          country,
+          hometown,
+          state,
+          summary,
+          award,
+          certification,
+          college,
+          coaching,
+          internship,
+          publication,
+          specialisation
+        };
+      });
   }
 
   constructor(private db: AngularFireDatabase) {}

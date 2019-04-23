@@ -11,6 +11,32 @@ import { ProfileService } from 'src/app/services/database/profile.service';
 export class ProfileComponent implements OnInit {
   username: string;
   key: string;
+  profile_found: boolean;
+  loading: boolean;
+
+  resetValues() {
+    this.loading = true;
+    this.profile_found = true;
+  }
+
+  setValues(snaps: any[]) {
+    if (!snaps) {
+      this.loading = false;
+      return;
+    }
+
+    const details = snaps[0].val();
+    console.log('TCL: ProfileComponent -> setValues -> details', details);
+    const counters = snaps[1];
+    console.log('TCL: ProfileComponent -> setValues -> counters', counters);
+    const userDetails = snaps[2];
+    console.log(
+      'TCL: ProfileComponent -> setValues -> userDetails',
+      userDetails
+    );
+
+    this.loading = false;
+  }
 
   async getProfileData(name: string) {
     let username = name;
@@ -33,6 +59,8 @@ export class ProfileComponent implements OnInit {
       } catch (err) {
         return err;
       }
+    } else {
+      return false;
     }
   }
   constructor(
@@ -43,17 +71,16 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit() {
     this.username = this.route.snapshot.params['username'];
+    this.resetValues();
 
     console.log(
       'TCL: ProfileComponent -> ngOnInit -> this.username',
       this.username
     );
-    // this.getProfileData(this.username).then(snaps => {
-    //   console.log('TCL: ProfileComponent -> ngOnInit -> snaps', snaps);
-    //   snaps.forEach(snap => {
-    //     let data = snap.val();
-    //     console.log('TCL: ProfileComponent -> ngOnInit -> data', data);
-    //   });
-    // });
+    this.getProfileData(this.username).then(snaps => {
+      console.log('TCL: ProfileComponent -> ngOnInit -> snaps', snaps);
+      this.profile_found = snaps ? true : false;
+      this.setValues(snaps);
+    });
   }
 }
