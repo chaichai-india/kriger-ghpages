@@ -15,6 +15,7 @@ import { PostComponent } from './components/post/post.component';
 import { DialogComponent } from './components/post/post.component';
 import { PostListComponent } from './components/post-list/post-list.component';
 import { PostDetailComponent } from './components/post-detail/post-detail.component';
+import { AdbannerComponent } from '../components/adbanner/adbanner.component';
 
 import { ReversePipe } from '../pipes/reverse.pipe';
 
@@ -24,6 +25,7 @@ import { ReversePipe } from '../pipes/reverse.pipe';
     DialogComponent,
     PostListComponent,
     PostDetailComponent,
+    AdbannerComponent,
     ReversePipe
   ],
   entryComponents: [DialogComponent],

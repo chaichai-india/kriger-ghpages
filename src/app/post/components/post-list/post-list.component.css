@@ -3,6 +3,19 @@
   display: grid;
   grid-template-columns: 1fr 1.5fr 1fr;
   grid-template-rows: auto;
+  grid-auto-flow: dense;
+}
+
+.ad {
+  margin: 0 auto;
+}
+
+.ad.right {
+  grid-column: 3/4;
+}
+
+.ad.left {
+  grid-column: 1/2;
 }
 
 .post-list__container app-post,
