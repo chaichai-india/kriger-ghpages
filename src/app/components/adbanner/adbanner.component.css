@@ -1,0 +1,9 @@
+.ad__container {
+  border: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+.ad__container figure img {
+  width: 300px;
+  height: 400px;
+  object-fit: contain;
+}
