@@ -20,7 +20,9 @@
       <div class="content">
         <div class="headline">
           <mat-icon fontSet="far" fontIcon="fa-list-alt"></mat-icon>
-          <span> {{ details?.headline }} </span>
+          <span>
+            {{ details?.headline ? details?.headline : 'Fill your Info' }}
+          </span>
         </div>
         <div class="hometown">
           <mat-icon fontSet="fa" fontIcon="fa-home"></mat-icon>
@@ -58,19 +60,25 @@
       <div class="content">
         <div class="posts">
           <span>Posts</span>
-          <span>{{ counters?.count_posts }}</span>
+          <span>{{ counters?.count_posts ? counters?.count_posts : '0' }}</span>
         </div>
         <div class="groups">
           <span>Groups</span>
-          <span>{{ counters?.count_groups }}</span>
+          <span>{{
+            counters?.count_groups ? counters?.count_groups : '0'
+          }}</span>
         </div>
         <div class="krigers">
           <span>Krigers</span>
-          <span>{{ counters?.count_connections }}</span>
+          <span>{{
+            counters?.count_connections ? counters?.count_connections : '0'
+          }}</span>
         </div>
         <div class="views">
           <span>Profile Views</span>
-          <span>{{ counters?.count_profileviews }}</span>
+          <span>{{
+            counters?.count_profileviews ? counters?.count_profileviews : '0'
+          }}</span>
         </div>
       </div>
     </div>
@@ -81,7 +89,8 @@
       </div>
       <div class="content">
         <div class="college" *ngFor="let college of userDetails?.college">
-          <span>{{ college.name }}</span>
+          <mat-icon fontSet="fas" fontIcon="fa-graduation-cap"></mat-icon>
+          <span class="name">{{ college.name }}</span>
         </div>
       </div>
     </div>
@@ -92,7 +101,8 @@
       </div>
       <div class="content">
         <div class="coaching" *ngFor="let coaching of userDetails?.coaching">
-          <span>{{ coaching.name }}</span>
+          <mat-icon fontSet="fas" fontIcon="fa-chalkboard-teacher"></mat-icon>
+          <span class="name">{{ coaching.name }}</span>
         </div>
       </div>
     </div>
@@ -103,7 +113,8 @@
       </div>
       <div class="content">
         <div class="award" *ngFor="let award of userDetails?.award">
-          <span>{{ award.name }}</span>
+          <mat-icon fontSet="fas" fontIcon="fa-trophy"></mat-icon>
+          <span class="name">{{ award.name }}</span>
         </div>
       </div>
     </div>
@@ -120,7 +131,8 @@
           class="certification"
           *ngFor="let certificate of userDetails?.certification"
         >
-          <span>{{ certificate.name }}</span>
+          <mat-icon fontSet="fas" fontIcon="fa-award"></mat-icon>
+          <span class="name">{{ certificate.name }}</span>
         </div>
       </div>
     </div>
@@ -134,7 +146,8 @@
           class="internship"
           *ngFor="let internship of userDetails?.internship"
         >
-          <span>{{ internship.name }}</span>
+          <mat-icon fontSet="fas" fontIcon="fa-briefcase"></mat-icon>
+          <span class="name">{{ internship.name }}</span>
         </div>
       </div>
     </div>
@@ -151,7 +164,8 @@
           class="publication"
           *ngFor="let publication of userDetails?.publication"
         >
-          <span>{{ publication.name }}</span>
+          <mat-icon fontSet="fas" fontIcon="fa-book"></mat-icon>
+          <span class="name">{{ publication.name }}</span>
         </div>
       </div>
     </div>
@@ -168,7 +182,8 @@
           class="specialisation"
           *ngFor="let specialisation of userDetails?.specialisation"
         >
-          <span>{{ specialisation.name }}</span>
+          <mat-icon fontSet="fas" fontIcon="fa-medal"></mat-icon>
+          <span class="name">{{ specialisation.name }}</span>
         </div>
       </div>
     </div>
