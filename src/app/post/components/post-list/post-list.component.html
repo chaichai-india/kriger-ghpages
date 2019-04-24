@@ -2,10 +2,12 @@
   <app-adbanner
     class="ad left"
     imgSrc="../../../../assets/images/ad/AD1.png"
+    adLink="https://hbr.org/subscribe"
   ></app-adbanner>
   <app-adbanner
     class="ad right"
     imgSrc="../../../../assets/images/ad/AD2.png"
+    adLink="https://nest.lpu.in/main.aspx"
   ></app-adbanner>
   <app-post
     *ngFor="let post of (posts | async | reverse); trackBy: (post | async)?.key"
