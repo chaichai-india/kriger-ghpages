@@ -27,28 +27,31 @@
         <div class="hometown">
           <mat-icon fontSet="fa" fontIcon="fa-home"></mat-icon>
           <span>
-            {{ userDetails?.hometown }}, {{ userDetails?.state }},
-            {{ userDetails?.country }}
+            {{ userDetails?.hometown ? userDetails?.hometown : 'Hometown' }},
+            {{ userDetails?.state ? userDetails?.state : 'State' }},
+            {{ userDetails?.country ? userDetails?.country : 'Country' }}
           </span>
         </div>
         <div class="birthday">
           <mat-icon fontSet="fa" fontIcon="fa-birthday-cake"></mat-icon>
-          <span> Private Information</span>
+          <span>Private Information</span>
         </div>
         <div class="contact">
           <mat-icon fontSet="fa" fontIcon="fa-phone-square"></mat-icon>
-          <span> Private Information</span>
+          <span>Private Information</span>
         </div>
       </div>
     </div>
 
-    <div class="profile__about full_width" *ngIf="userDetails?.summary">
+    <div class="profile__about full_width">
       <div class="ribbon">
         <span>About Me</span>
       </div>
       <div class="content">
         <div class="about">
-          <span>{{ userDetails?.summary }}</span>
+          <span>{{
+            userDetails?.summary ? userDetails?.summary : 'About Me'
+          }}</span>
         </div>
       </div>
     </div>
@@ -83,107 +86,140 @@
       </div>
     </div>
 
-    <div class="profile__college full_width" *ngIf="userDetails?.college">
+    <div class="profile__college full_width">
       <div class="ribbon">
         <span>School/College/Institute</span>
       </div>
       <div class="content">
-        <div class="college" *ngFor="let college of userDetails?.college">
+        <div *ngIf="userDetails?.college">
+          <div class="college" *ngFor="let college of userDetails?.college">
+            <mat-icon fontSet="fas" fontIcon="fa-graduation-cap"></mat-icon>
+            <span class="name">{{ college.name }}</span>
+          </div>
+        </div>
+        <div class="placeholder" *ngIf="!userDetails?.college">
           <mat-icon fontSet="fas" fontIcon="fa-graduation-cap"></mat-icon>
-          <span class="name">{{ college.name }}</span>
+          <span>Fill your Education Details</span>
         </div>
       </div>
     </div>
 
-    <div class="profile__coaching full_width" *ngIf="userDetails?.coaching">
+    <div class="profile__coaching full_width">
       <div class="ribbon">
         <span>Coaching</span>
       </div>
       <div class="content">
-        <div class="coaching" *ngFor="let coaching of userDetails?.coaching">
+        <div *ngIf="userDetails?.coaching">
+          <div class="coaching" *ngFor="let coaching of userDetails?.coaching">
+            <mat-icon fontSet="fas" fontIcon="fa-chalkboard-teacher"></mat-icon>
+            <span class="name">{{ coaching.name }}</span>
+          </div>
+        </div>
+        <div class="placeholder" *ngIf="!userDetails?.coaching">
           <mat-icon fontSet="fas" fontIcon="fa-chalkboard-teacher"></mat-icon>
-          <span class="name">{{ coaching.name }}</span>
+          <span>Fill your Coaching Details</span>
         </div>
       </div>
     </div>
 
-    <div class="profile__award full_width" *ngIf="userDetails?.award">
+    <div class="profile__award full_width">
       <div class="ribbon">
         <span>Award</span>
       </div>
       <div class="content">
-        <div class="award" *ngFor="let award of userDetails?.award">
+        <div *ngIf="userDetails?.award">
+          <div class="award" *ngFor="let award of userDetails?.award">
+            <mat-icon fontSet="fas" fontIcon="fa-trophy"></mat-icon>
+            <span class="name">{{ award.name }}</span>
+          </div>
+        </div>
+        <div class="placeholder" *ngIf="!userDetails?.award">
           <mat-icon fontSet="fas" fontIcon="fa-trophy"></mat-icon>
-          <span class="name">{{ award.name }}</span>
+          <span>Fill your Award Details</span>
         </div>
       </div>
     </div>
 
-    <div
-      class="profile__certification full_width"
-      *ngIf="userDetails?.certification"
-    >
+    <div class="profile__certification full_width">
       <div class="ribbon">
         <span>Certification</span>
       </div>
       <div class="content">
-        <div
-          class="certification"
-          *ngFor="let certificate of userDetails?.certification"
-        >
+        <div *ngIf="userDetails?.certification">
+          <div
+            class="certification"
+            *ngFor="let certificate of userDetails?.certification"
+          >
+            <mat-icon fontSet="fas" fontIcon="fa-award"></mat-icon>
+            <span class="name">{{ certificate.name }}</span>
+          </div>
+        </div>
+        <div class="placeholder" *ngIf="!userDetails?.certification">
           <mat-icon fontSet="fas" fontIcon="fa-award"></mat-icon>
-          <span class="name">{{ certificate.name }}</span>
+          <span>Fill your Certification Details</span>
         </div>
       </div>
     </div>
 
-    <div class="profile__internship full_width" *ngIf="userDetails?.internship">
+    <div class="profile__internship full_width">
       <div class="ribbon">
         <span>Internship/Research</span>
       </div>
       <div class="content">
-        <div
-          class="internship"
-          *ngFor="let internship of userDetails?.internship"
-        >
+        <div *ngIf="userDetails?.internship">
+          <div
+            class="internship"
+            *ngFor="let internship of userDetails?.internship"
+          >
+            <mat-icon fontSet="fas" fontIcon="fa-briefcase"></mat-icon>
+            <span class="name">{{ internship.name }}</span>
+          </div>
+        </div>
+        <div class="placeholder" *ngIf="!userDetails?.internship">
           <mat-icon fontSet="fas" fontIcon="fa-briefcase"></mat-icon>
-          <span class="name">{{ internship.name }}</span>
+          <span>Fill your Internship Details</span>
         </div>
       </div>
     </div>
 
-    <div
-      class="profile__publication full_width"
-      *ngIf="userDetails?.publication"
-    >
+    <div class="profile__publication full_width">
       <div class="ribbon">
         <span>Publication</span>
       </div>
       <div class="content">
-        <div
-          class="publication"
-          *ngFor="let publication of userDetails?.publication"
-        >
+        <div *ngIf="userDetails?.publication">
+          <div
+            class="publication"
+            *ngFor="let publication of userDetails?.publication"
+          >
+            <mat-icon fontSet="fas" fontIcon="fa-book"></mat-icon>
+            <span class="name">{{ publication.name }}</span>
+          </div>
+        </div>
+        <div class="placeholder" *ngIf="!userDetails?.publication">
           <mat-icon fontSet="fas" fontIcon="fa-book"></mat-icon>
-          <span class="name">{{ publication.name }}</span>
+          <span>Fill your Publication Details</span>
         </div>
       </div>
     </div>
 
-    <div
-      class="profile__specialisation full_width"
-      *ngIf="userDetails?.specialisation"
-    >
+    <div class="profile__specialisation full_width">
       <div class="ribbon">
         <span>Area of Specialisation</span>
       </div>
       <div class="content">
-        <div
-          class="specialisation"
-          *ngFor="let specialisation of userDetails?.specialisation"
-        >
+        <div *ngIf="userDetails?.specialisation">
+          <div
+            class="specialisation"
+            *ngFor="let specialisation of userDetails?.specialisation"
+          >
+            <mat-icon fontSet="fas" fontIcon="fa-medal"></mat-icon>
+            <span class="name">{{ specialisation.name }}</span>
+          </div>
+        </div>
+        <div class="placeholder" *ngIf="!userDetails?.specialisation">
           <mat-icon fontSet="fas" fontIcon="fa-medal"></mat-icon>
-          <span class="name">{{ specialisation.name }}</span>
+          <span>Fill your Specialisation Details</span>
         </div>
       </div>
     </div>
