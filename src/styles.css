@@ -26,3 +26,7 @@ a:focus,
 a:active {
   outline: 0;
 }
+
+mat-spinner {
+  margin: 10vh auto;
+}

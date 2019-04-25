@@ -22,6 +22,10 @@
   margin-left: 1em;
 }
 
+.post-list__container app-post {
+  width: 550px;
+}
+
 .post-list__container app-post,
 .post-list__container .load__btn {
   grid-column: 2/3;

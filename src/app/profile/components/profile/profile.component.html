@@ -3,15 +3,17 @@
   <h1 class="profile__notfound" *ngIf="!profile_found">Profile not Found.</h1>
 
   <mat-card class="profile__card" *ngIf="profile_found && !loading">
-    <div
-      mat-card-avatar
-      class="profile__photo"
-      [ngStyle]="{
-        'background-image':
-          'url(' + details?.thumb + '), url(../../../assets/images/user.svg)'
-      }"
-    ></div>
-    <h2 class="profile__name">{{ details?.name }}</h2>
+    <div class="profile__header">
+      <div
+        mat-card-avatar
+        class="profile__photo"
+        [ngStyle]="{
+          'background-image':
+            'url(' + details?.thumb + '), url(../../../assets/images/user.svg)'
+        }"
+      ></div>
+      <h2 class="profile__name">{{ details?.name }}</h2>
+    </div>
 
     <div class="profile__intro full_width">
       <div class="ribbon">
@@ -92,9 +94,19 @@
       </div>
       <div class="content">
         <div *ngIf="userDetails?.college">
-          <div class="college" *ngFor="let college of userDetails?.college">
+          <div
+            class="college details"
+            *ngFor="let college of userDetails?.college"
+          >
             <mat-icon fontSet="fas" fontIcon="fa-graduation-cap"></mat-icon>
-            <span class="name">{{ college.name }}</span>
+            <div>
+              <span class="name">{{ college.name }}</span>
+              <span class="description">{{ college.description }}</span>
+              <span class="year"
+                >{{ college.year_from }}
+                {{ college.year_to ? '- ' + college.year_to : null }}</span
+              >
+            </div>
           </div>
         </div>
         <div class="placeholder" *ngIf="!userDetails?.college">
@@ -110,9 +122,19 @@
       </div>
       <div class="content">
         <div *ngIf="userDetails?.coaching">
-          <div class="coaching" *ngFor="let coaching of userDetails?.coaching">
+          <div
+            class="coaching details"
+            *ngFor="let coaching of userDetails?.coaching"
+          >
             <mat-icon fontSet="fas" fontIcon="fa-chalkboard-teacher"></mat-icon>
-            <span class="name">{{ coaching.name }}</span>
+            <div>
+              <span class="name">{{ coaching.name }}</span>
+              <span class="description">{{ coaching.description }}</span>
+              <span class="year"
+                >{{ coaching.year_from }}
+                {{ coaching.year_to ? '- ' + coaching.year_to : null }}</span
+              >
+            </div>
           </div>
         </div>
         <div class="placeholder" *ngIf="!userDetails?.coaching">
@@ -128,9 +150,16 @@
       </div>
       <div class="content">
         <div *ngIf="userDetails?.award">
-          <div class="award" *ngFor="let award of userDetails?.award">
+          <div class="award details" *ngFor="let award of userDetails?.award">
             <mat-icon fontSet="fas" fontIcon="fa-trophy"></mat-icon>
-            <span class="name">{{ award.name }}</span>
+            <div>
+              <span class="name">{{ award.name }}</span>
+              <span class="description">{{ award.description }}</span>
+              <span class="year"
+                >{{ award.year_from }}
+                {{ award.year_to ? '- ' + award.year_to : null }}</span
+              >
+            </div>
           </div>
         </div>
         <div class="placeholder" *ngIf="!userDetails?.award">
@@ -147,11 +176,20 @@
       <div class="content">
         <div *ngIf="userDetails?.certification">
           <div
-            class="certification"
+            class="certification details"
             *ngFor="let certificate of userDetails?.certification"
           >
             <mat-icon fontSet="fas" fontIcon="fa-award"></mat-icon>
-            <span class="name">{{ certificate.name }}</span>
+            <div>
+              <span class="name">{{ certificate.name }}</span>
+              <span class="description">{{ certificate.description }}</span>
+              <span class="year"
+                >{{ certificate.year_from }}
+                {{
+                  certificate.year_to ? '- ' + certificate.year_to : null
+                }}</span
+              >
+            </div>
           </div>
         </div>
         <div class="placeholder" *ngIf="!userDetails?.certification">
@@ -168,11 +206,20 @@
       <div class="content">
         <div *ngIf="userDetails?.internship">
           <div
-            class="internship"
+            class="internship details"
             *ngFor="let internship of userDetails?.internship"
           >
             <mat-icon fontSet="fas" fontIcon="fa-briefcase"></mat-icon>
-            <span class="name">{{ internship.name }}</span>
+            <div>
+              <span class="name">{{ internship.name }}</span>
+              <span class="description">{{ internship.description }}</span>
+              <span class="year"
+                >{{ internship.year_from }}
+                {{
+                  internship.year_to ? '- ' + internship.year_to : null
+                }}</span
+              >
+            </div>
           </div>
         </div>
         <div class="placeholder" *ngIf="!userDetails?.internship">
@@ -189,11 +236,20 @@
       <div class="content">
         <div *ngIf="userDetails?.publication">
           <div
-            class="publication"
+            class="publication details"
             *ngFor="let publication of userDetails?.publication"
           >
             <mat-icon fontSet="fas" fontIcon="fa-book"></mat-icon>
-            <span class="name">{{ publication.name }}</span>
+            <div>
+              <span class="name">{{ publication.name }}</span>
+              <span class="description">{{ publication.description }}</span>
+              <span class="year"
+                >{{ publication.year_from }}
+                {{
+                  publication.year_to ? '- ' + publication.year_to : null
+                }}</span
+              >
+            </div>
           </div>
         </div>
         <div class="placeholder" *ngIf="!userDetails?.publication">
@@ -210,11 +266,20 @@
       <div class="content">
         <div *ngIf="userDetails?.specialisation">
           <div
-            class="specialisation"
+            class="specialisation details"
             *ngFor="let specialisation of userDetails?.specialisation"
           >
             <mat-icon fontSet="fas" fontIcon="fa-medal"></mat-icon>
-            <span class="name">{{ specialisation.name }}</span>
+            <div>
+              <span class="name">{{ specialisation.name }}</span>
+              <span class="description">{{ specialisation.description }}</span>
+              <span class="year"
+                >{{ specialisation.year_from }}
+                {{
+                  specialisation.year_to ? '- ' + specialisation.year_to : null
+                }}</span
+              >
+            </div>
           </div>
         </div>
         <div class="placeholder" *ngIf="!userDetails?.specialisation">
