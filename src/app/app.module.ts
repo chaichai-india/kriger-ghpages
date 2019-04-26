@@ -13,6 +13,7 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 
 import { PostModule } from './post/post.module';
 import { ProfileModule } from './profile/profile.module';
+import { BlogModule } from './blog/blog.module';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTabsModule } from '@angular/material/tabs';
@@ -34,6 +35,7 @@ import { MatLinkPreviewModule } from '@angular-material-extensions/link-preview'
     BrowserModule,
     PostModule,
     ProfileModule,
+    BlogModule,
     AppRoutingModule,
     MatToolbarModule,
     MatTabsModule,

@@ -9,6 +9,7 @@ const routes: Routes = [
     path: 'profiles',
     loadChildren: './profile/profile.module#ProfileModule'
   },
+  { path: 'blog', loadChildren: './blog/blog.module#BlogModule' },
   { path: '404', component: PageNotFoundComponent },
   { path: '**', component: PageNotFoundComponent }
 ];
