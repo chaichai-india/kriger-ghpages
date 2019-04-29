@@ -1,0 +1,31 @@
+.performers__container {
+  display: grid;
+  grid-template-columns: repeat(3, 350px);
+  grid-gap: 1em;
+  justify-content: space-between;
+}
+
+.performer__card {
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15), 0 2px 3px rgba(0, 0, 0, 0.2);
+  height: 400px;
+  width: 350px;
+}
+
+.performer__card mat-card-header {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.performer__card mat-card-header .mat-card-header-text {
+  margin-bottom: 1em;
+}
+
+.performer__card .mat-card-avatar {
+  width: 9.5em;
+  height: 9.5em;
+  background-size: cover;
+  background-position: 50%;
+  margin: 1em 0;
+}
