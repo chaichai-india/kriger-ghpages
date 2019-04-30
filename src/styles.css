@@ -6,7 +6,8 @@
 :root {
   --primary-color: #0062ff;
   --accent-color: #00c6ff;
-  --primary-gradient: linear-gradient(to right, #00c6ff, #0062ff);
+  --primary-gradient-right: linear-gradient(to right, #00c6ff, #0062ff);
+  --primary-gradient-left: linear-gradient(to left, #00c6ff, #0062ff);
 }
 
 * {

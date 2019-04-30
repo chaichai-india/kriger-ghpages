@@ -30,6 +30,10 @@
   font-size: xx-large;
 }
 
+.internships__performers h3 {
+  font-size: x-large;
+}
+
 .internships__header .logo {
   display: grid;
   place-items: center;
