@@ -22,6 +22,12 @@
   margin-bottom: 2em;
   border-color: transparent;
   border-bottom: 1px solid black;
+  letter-spacing: 0.05em;
+}
+
+.internships__header h3 {
+  text-align: center;
+  font-size: xx-large;
 }
 
 .internships__header .logo {
@@ -42,6 +48,6 @@
 }
 
 .internships__header .download a:first-child {
-  margin-right: 2em;
+  margin-right: 1em;
   font-size: xx-large;
 }
