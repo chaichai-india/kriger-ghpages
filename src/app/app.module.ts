@@ -24,6 +24,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatLinkPreviewModule } from '@angular-material-extensions/link-preview';
 
+import { SlideshowModule } from 'ng-simple-slideshow';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,7 +49,8 @@ import { MatLinkPreviewModule } from '@angular-material-extensions/link-preview'
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFireDatabaseModule,
-    MatLinkPreviewModule.forRoot()
+    MatLinkPreviewModule.forRoot(),
+    SlideshowModule
   ],
   providers: [],
   bootstrap: [AppComponent]

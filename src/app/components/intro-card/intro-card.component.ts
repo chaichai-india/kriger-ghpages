@@ -6,6 +6,23 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./intro-card.component.css']
 })
 export class IntroCardComponent implements OnInit {
+  imageUrlArray: any[] = [
+    {
+      url: 'assets/images/nav_logo.png',
+      backgroundSize: 'contain',
+      backgroundPosition: 'center'
+    },
+    {
+      url: 'assets/images/nav_logo.png',
+      backgroundSize: 'contain',
+      backgroundPosition: 'center'
+    },
+    {
+      url: 'assets/images/nav_logo.png',
+      backgroundSize: 'contain',
+      backgroundPosition: 'center'
+    }
+  ];
   dismiss(e: any, t: any) {
     let trigger: boolean =
       e.target.className == 'container' || e.target.className == 'close';
