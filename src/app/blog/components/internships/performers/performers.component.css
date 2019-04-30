@@ -1,14 +1,14 @@
 .performers__container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 350px));
+  grid-template-columns: repeat(auto-fit, 300px);
   grid-gap: 1em;
   justify-content: space-evenly;
 }
 
 .performer__card {
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15), 0 2px 3px rgba(0, 0, 0, 0.2);
-  height: 400px;
-  width: 350px;
+  min-height: 400px;
+  width: 300px;
 }
 
 .performer__card mat-card-header {
