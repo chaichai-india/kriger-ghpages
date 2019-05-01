@@ -14,7 +14,98 @@
       The future of our country rests on our ability to successfully educate the
       next generation.
     </p>
-    <slideshow [imageUrls]="imageUrlArray" [height]="'400px'"></slideshow>
+    <slideshow
+      class="slideshow"
+      [imageUrls]="slideImages"
+      [height]="slideConfig.height"
+      [autoPlay]="slideConfig.autoPlay"
+      [backgroundSize]="slideConfig.backgroundSize"
+      [backgroundPosition]="slideConfig.backgroundPosition"
+      [showDots]="slideConfig.showDots"
+      [dotColor]="slideConfig.dotColor"
+    >
+    </slideshow>
+
+    <div class="partners">
+      <h2 class="heading">Our Partners</h2>
+      <div class="images">
+        <img [src]="partner.url" *ngFor="let partner of partnerImages" />
+      </div>
+    </div>
+    <div class="featured">
+      <h2 class="heading">Featured In</h2>
+      <slideshow
+        class="slideshow"
+        [imageUrls]="featuredImages"
+        [height]="'100px'"
+        [autoPlay]="slideConfig.autoPlay"
+        [backgroundSize]="slideConfig.backgroundSize"
+        [backgroundPosition]="slideConfig.backgroundPosition"
+        [showDots]="slideConfig.showDots"
+        [dotColor]="slideConfig.dotColor"
+      >
+      </slideshow>
+    </div>
+    <div class="awards">
+      <h2 class="heading">Awarded At</h2>
+      <div class="images">
+        <img [src]="award.url" *ngFor="let award of awardImages" />
+      </div>
+    </div>
+    <div class="what">
+      <h2 class="heading">What</h2>
+      <p>Kriger Campus is India’s first mobile-based education network.</p>
+      <p>भारत का पहला मोबाइल बेस्ड एजुकेशनल शैक्षणिक एप</p>
+    </div>
+    <div class="mission">
+      <h2 class="heading">Mission</h2>
+      <p>
+        Remove information asymmetry and democratize educational resources by
+        connecting every stakeholder of the Indian education system.
+      </p>
+      <p>
+        मिशन: शिक्षा के क्षेत्र से सरोकार रखने लोगो को एकजुट कर भारत के हर
+        नागरिक को शैक्षणिक सुविधाएं एवं जानकारी देना
+      </p>
+      <ul>
+        <li>Students</li>
+        <li>Parents</li>
+        <li>Teachers</li>
+        <li>Influencers</li>
+        <li>Career Counsellors</li>
+        <li>Subject Experts</li>
+        <li>Tutors</li>
+        <li>Authors</li>
+        <li>Schools</li>
+        <li>Colleges</li>
+        <li>College club/committees</li>
+        <li>Play Schools</li>
+        <li>Coaching Institutes</li>
+        <li>Book Publishers</li>
+        <li>Education service providers</li>
+        <li>Govt. Educational bodies</li>
+        <li>Non-Government Organisations</li>
+      </ul>
+    </div>
+    <div class="contact">
+      <h2 class="heading">Contact us</h2>
+      <div>
+        <span>
+          <mat-icon fontSet="fab" fontIcon="fa-whatsapp-square"></mat-icon>
+          <a
+            href="https://web.whatsapp.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            +918839912611</a
+          >
+        </span>
+        <span>
+          <mat-icon fontSet="fas" fontIcon="fa-envelope"></mat-icon>
+          <a href="mailto:official@kriger.in"> official@kriger.in</a>
+        </span>
+      </div>
+    </div>
     <!-- <div class="vision">
       <h3>Our Vision</h3>
       <p>To Make India 100% Literate</p>

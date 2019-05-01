@@ -112,14 +112,77 @@
   );
 }
 
-.card .inspiration {
+.card .inspiration,
+.card .heading {
   font-size: x-large;
   color: red;
   font-weight: 600;
   letter-spacing: 1px;
   text-align: center;
+  margin: 1em 0;
 }
 
+.card .heading {
+  font-size: xx-large;
+}
+
+.slideshow {
+  width: 80%;
+  margin: 2em 0;
+}
+
+.card .partners,
+.card .featured,
+.card .awards,
+.card .what,
+.card .mission,
+.card .contact {
+  width: 100%;
+}
+
+.card .partners .images,
+.card .awards .images {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 200px);
+  grid-gap: 1em;
+  place-items: center;
+  width: 100%;
+  padding-left: 0.5em;
+}
+
+.card .partners .images img,
+.card .awards .images img {
+  width: 200px;
+  height: 200px;
+  object-fit: scale-down;
+}
+
+.card .what p,
+.card .mission p {
+  text-align: center;
+  font-size: x-large;
+  margin: 1em 0;
+}
+
+.card .mission ul {
+  padding-left: 2em;
+  font-size: large;
+}
+
+.card .contact div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card .contact span {
+  font-size: x-large;
+  padding: 0 1em;
+}
+
+.card .contact span a {
+  text-decoration: none;
+}
 /* .card .vision,
 .card .mission {
   display: flex;
@@ -193,4 +256,5 @@
   justify-content: center;
   align-items: center;
   padding: 1em;
+  margin-top: 1em;
 }
