@@ -31,6 +31,12 @@ nav ul {
   text-shadow: 1px 3px 0px rgba(0, 0, 0, 0.36);
 }
 
+.nav__logo a .beta {
+  font-size: medium;
+  background-color: rgba(239, 19, 19, 0.902);
+  text-shadow: none;
+}
+
 nav {
   justify-content: flex-end;
 }
