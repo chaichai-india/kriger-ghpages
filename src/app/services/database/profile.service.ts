@@ -19,19 +19,28 @@ export class ProfileService {
       .child(key)
       .once('value')
       .then(snap => {
-        let data = snap.val();
-        const {
-          count_posts,
-          count_groups,
-          count_connections,
-          count_profileviews
-        } = data;
-        return {
-          count_posts,
-          count_groups,
-          count_connections,
-          count_profileviews
-        };
+        if (snap.exists()) {
+          let data = snap.val();
+          const {
+            count_posts,
+            count_groups,
+            count_connections,
+            count_profileviews
+          } = data;
+          return {
+            count_posts,
+            count_groups,
+            count_connections,
+            count_profileviews
+          };
+        } else {
+          return Promise.resolve({
+            count_posts: 0,
+            count_groups: 0,
+            count_connections: 0,
+            count_profileviews: 0
+          });
+        }
       });
   }
 
@@ -40,31 +49,47 @@ export class ProfileService {
       .child(key)
       .once('value')
       .then(snap => {
-        let data = snap.val();
-        const { country, hometown, state, summary } = data;
-        const {
-          award,
-          certification,
-          college,
-          coaching,
-          internship,
-          publication,
-          specialisation
-        } = data;
+        if (snap.exists()) {
+          let data = snap.val();
+          const { country, hometown, state, summary } = data;
+          const {
+            award,
+            certification,
+            college,
+            coaching,
+            internship,
+            publication,
+            specialisation
+          } = data;
 
-        return {
-          country,
-          hometown,
-          state,
-          summary,
-          award,
-          certification,
-          college,
-          coaching,
-          internship,
-          publication,
-          specialisation
-        };
+          return {
+            country,
+            hometown,
+            state,
+            summary,
+            award,
+            certification,
+            college,
+            coaching,
+            internship,
+            publication,
+            specialisation
+          };
+        } else {
+          return Promise.resolve({
+            country: undefined,
+            hometown: undefined,
+            state: undefined,
+            summary: undefined,
+            award: undefined,
+            certification: undefined,
+            college: undefined,
+            coaching: undefined,
+            internship: undefined,
+            publication: undefined,
+            specialisation: undefined
+          });
+        }
       });
   }
 

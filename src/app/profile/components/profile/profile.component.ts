@@ -28,7 +28,7 @@ export class ProfileComponent implements OnInit {
       return;
     }
 
-    this.details = snaps[0].val();
+    this.details = snaps[0] ? snaps[0].val() : null;
     console.log('TCL: ProfileComponent -> setValues -> details', this.details);
     this.counters = snaps[1];
     console.log(
