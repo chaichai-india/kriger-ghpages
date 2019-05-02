@@ -1,0 +1,32 @@
+<div class="interns__container">
+  <mat-form-field>
+    <input
+      matInput
+      (keyup)="applyFilter($event.target.value)"
+      placeholder="Search..."
+    />
+  </mat-form-field>
+
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z2">
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef>Name of Participant</th>
+      <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+    </ng-container>
+
+    <!-- Internship Column -->
+    <ng-container matColumnDef="internship">
+      <th mat-header-cell *matHeaderCellDef>Internship</th>
+      <td mat-cell *matCellDef="let element">{{ element.internship }}</td>
+    </ng-container>
+
+    <!-- Month of Completion Column -->
+    <ng-container matColumnDef="completed">
+      <th mat-header-cell *matHeaderCellDef>Month of Completion</th>
+      <td mat-cell *matCellDef="let element">{{ element.completed }}</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+</div>

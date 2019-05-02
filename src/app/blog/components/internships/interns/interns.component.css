@@ -1,0 +1,12 @@
+.interns__container {
+  margin: 2em 0;
+}
+
+.interns__container mat-form-field,
+.interns__container table {
+  width: 100%;
+}
+
+.interns__container table th {
+  font-size: large;
+}

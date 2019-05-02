@@ -5,10 +5,24 @@ import { BlogRoutingModule } from './blog-routing.module';
 
 import { InternshipsComponent } from './components/internships/internships.component';
 import { PerformersComponent } from './components/internships/performers/performers.component';
+import { InternsComponent } from './components/internships/interns/interns.component';
+
 import { MatCardModule } from '@angular/material/card';
+import { MatTableModule } from '@angular/material/table';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
-  declarations: [InternshipsComponent, PerformersComponent],
-  imports: [CommonModule, BlogRoutingModule, MatCardModule]
+  declarations: [InternshipsComponent, PerformersComponent, InternsComponent],
+  imports: [
+    CommonModule,
+    BlogRoutingModule,
+    MatCardModule,
+    MatTableModule,
+    MatFormFieldModule,
+    MatInputModule,
+    SharedModule
+  ]
 })
 export class BlogModule {}

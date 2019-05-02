@@ -124,12 +124,12 @@
 
 .card .heading {
   font-size: xx-large;
-  text-decoration: underline;
 }
 
 .slideshow {
   width: 80%;
   margin: 2em 0;
+  background-color: black;
 }
 
 .card .partners,
@@ -144,21 +144,20 @@
 .card .partners .images,
 .card .awards .images {
   display: grid;
-  grid-template-columns: repeat(auto-fit, 200px);
+  grid-template-columns: repeat(auto-fit, 100px);
   grid-gap: 1em;
   place-items: center;
   width: 100%;
-  padding-left: 0.5em;
-  justify-content: space-evenly;
+  justify-content: center;
 }
 
 .card .partners .images img,
 .card .awards .images img {
-  width: 200px;
-  height: 200px;
-  object-fit: scale-down;
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
   box-shadow: 0 0 1px 0 rgb(0, 0, 0);
-  padding: 0.75em;
+  padding: 0.4em;
 }
 
 .card .what p,
@@ -173,7 +172,7 @@
   font-size: large;
 }
 
-.card .contact div {
+/* .card .contact div {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -182,11 +181,21 @@
 .card .contact span {
   font-size: x-large;
   padding: 0 1em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.card .contact span img {
+  width: 50px;
+  margin-right: 0.5em;
 }
 
 .card .contact span a {
   text-decoration: none;
 }
+.card .contact span a:hover {
+  text-decoration: underline;
+} */
 /* .card .vision,
 .card .mission {
   display: flex;

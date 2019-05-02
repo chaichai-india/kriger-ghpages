@@ -34,7 +34,19 @@
   font-size: x-large;
 }
 
-.internships__header .logo {
+.internships__header > a {
+  color: #fc0000;
+  font-size: 30px;
+  text-align: center;
+  text-decoration: none;
+  margin-bottom: 1em;
+}
+
+.internships__header a:hover {
+  text-decoration: underline;
+}
+
+/* .internships__header .logo {
   display: grid;
   place-items: center;
   margin-bottom: 1em;
@@ -54,4 +66,4 @@
 .internships__header .download a:first-child {
   margin-right: 1em;
   font-size: xx-large;
-}
+} */

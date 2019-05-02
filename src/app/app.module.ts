@@ -25,6 +25,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatLinkPreviewModule } from '@angular-material-extensions/link-preview';
 
 import { SlideshowModule } from 'ng-simple-slideshow';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { SlideshowModule } from 'ng-simple-slideshow';
     AngularFireAuthModule,
     AngularFireDatabaseModule,
     MatLinkPreviewModule.forRoot(),
-    SlideshowModule
+    SlideshowModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]

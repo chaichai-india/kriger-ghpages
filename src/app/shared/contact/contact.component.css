@@ -1,0 +1,23 @@
+.contact__container,
+.contact__container span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contact__container span {
+  font-size: x-large;
+  padding: 0 1em;
+}
+
+.contact__container span img {
+  width: 50px;
+  margin-right: 0.5em;
+}
+
+.contact__container span a {
+  text-decoration: none;
+}
+.contact__container span a:hover {
+  text-decoration: underline;
+}

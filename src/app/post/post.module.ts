@@ -18,6 +18,7 @@ import { PostDetailComponent } from './components/post-detail/post-detail.compon
 import { AdbannerComponent } from '../components/adbanner/adbanner.component';
 
 import { ReversePipe } from '../pipes/reverse.pipe';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { ReversePipe } from '../pipes/reverse.pipe';
     MatLinkPreviewModule,
     MatButtonModule,
     MatIconModule,
-    MatDialogModule
+    MatDialogModule,
+    SharedModule
   ],
   exports: [PostListComponent]
 })
