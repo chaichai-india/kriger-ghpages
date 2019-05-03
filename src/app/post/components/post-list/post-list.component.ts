@@ -1,9 +1,8 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { Observable, forkJoin, combineLatest } from 'rxjs';
-import { map, concat } from 'rxjs/operators';
+import { map, concat, take } from 'rxjs/operators';
 
 import { PostService } from '../../../services/database/post.service';
-import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-post-list',
@@ -14,9 +13,28 @@ export class PostListComponent implements OnInit {
   posts: Observable<any[]>;
   isAuth: boolean;
   lastKey: string;
-  loading: boolean = true;
+  loading: boolean;
 
   @ViewChild('loadbtn', { read: ElementRef }) public laodbtn: ElementRef<any>;
+
+  resetValues() {
+    this.loading = true;
+    // console.log(
+    // 'TCL: PostListComponent -> resetValues -> this.loading',
+    // this.loading
+    // );
+  }
+
+  setValues(data) {
+    this.posts = data;
+    data.pipe(take(1)).subscribe(() => {
+      this.loading = false;
+      // console.log(
+      // 'TCL: PostListComponent -> setValues -> this.loading',
+      // this.loading
+      // );
+    });
+  }
 
   nextBatch() {
     let scrollPos = window.scrollY;
@@ -40,18 +58,19 @@ export class PostListComponent implements OnInit {
   }
 
   async getPosts(batch: number) {
-    const posts = await this.postService.getPosts(batch);
-    return posts;
+    return this.postService.getPosts(batch);
   }
 
-  constructor(
-    private postService: PostService,
-    private authService: AuthService
-  ) {}
+  initialize() {
+    this.resetValues();
+    this.getPosts(5).then(posts => {
+      this.setValues(posts);
+    });
+  }
+
+  constructor(private postService: PostService) {}
 
   ngOnInit() {
-    this.getPosts(5).then(posts => {
-      this.posts = posts;
-    });
+    this.initialize();
   }
 }

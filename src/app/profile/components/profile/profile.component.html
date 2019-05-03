@@ -22,16 +22,41 @@
       <div class="content">
         <div class="headline">
           <mat-icon fontSet="far" fontIcon="fa-list-alt"></mat-icon>
-          <span>
+          <span
+            [ngStyle]="
+              !details?.headline ? { color: 'rgba(0, 0, 0, 0.55)' } : false
+            "
+          >
             {{ details?.headline ? details?.headline : 'Fill your Info' }}
           </span>
         </div>
         <div class="hometown">
           <mat-icon fontSet="fa" fontIcon="fa-home"></mat-icon>
           <span>
-            {{ userDetails?.hometown ? userDetails?.hometown : 'Hometown' }},
-            {{ userDetails?.state ? userDetails?.state : 'State' }},
-            {{ userDetails?.country ? userDetails?.country : 'Country' }}
+            <span
+              [ngStyle]="
+                !userDetails?.hometown
+                  ? { color: 'rgba(0, 0, 0, 0.55)' }
+                  : false
+              "
+              >{{
+                userDetails?.hometown ? userDetails?.hometown : 'Hometown'
+              }},</span
+            >
+            <span
+              [ngStyle]="
+                !userDetails?.state ? { color: 'rgba(0, 0, 0, 0.55)' } : false
+              "
+              >{{ userDetails?.state ? userDetails?.state : 'State' }},</span
+            >
+            <span
+              [ngStyle]="
+                !userDetails?.country ? { color: 'rgba(0, 0, 0, 0.55)' } : false
+              "
+              >{{
+                userDetails?.country ? userDetails?.country : 'Country'
+              }}</span
+            >
           </span>
         </div>
         <div class="birthday">
@@ -51,9 +76,14 @@
       </div>
       <div class="content">
         <div class="about">
-          <span>{{
-            userDetails?.summary ? userDetails?.summary : 'About Me'
-          }}</span>
+          <span
+            [ngStyle]="
+              !userDetails?.summary ? { color: 'rgba(0, 0, 0, 0.55)' } : false
+            "
+            >{{
+              userDetails?.summary ? userDetails?.summary : 'About Me'
+            }}</span
+          >
         </div>
       </div>
     </div>

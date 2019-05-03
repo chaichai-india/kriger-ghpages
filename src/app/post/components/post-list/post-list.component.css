@@ -6,6 +6,13 @@
   grid-auto-flow: dense;
 }
 
+mat-spinner {
+  position: fixed;
+  top: 40vh;
+  left: 45vw;
+  z-index: 2;
+}
+
 .ad {
   margin: 0 auto;
   position: fixed;
