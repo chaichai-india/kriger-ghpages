@@ -26,13 +26,15 @@ import { MatLinkPreviewModule } from '@angular-material-extensions/link-preview'
 
 import { SlideshowModule } from 'ng-simple-slideshow';
 import { SharedModule } from './shared/shared.module';
+import { FooterComponent } from './components/ui/footer/footer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     IntroCardComponent,
     NavbarComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
