@@ -12,9 +12,12 @@ import { MatTableModule } from '@angular/material/table';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material';
 import { SharedModule } from '../shared/shared.module';
+import { MediacoverageComponent } from './components/mediacoverage/mediacoverage.component';
+import { CareersComponent } from './components/careers/careers.component';
+import { TncComponent } from './components/tnc/tnc.component';
 
 @NgModule({
-  declarations: [InternshipsComponent, PerformersComponent, InternsComponent],
+  declarations: [InternshipsComponent, PerformersComponent, InternsComponent, MediacoverageComponent, CareersComponent, TncComponent],
   imports: [
     CommonModule,
     BlogRoutingModule,

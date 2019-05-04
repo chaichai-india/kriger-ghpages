@@ -1,0 +1,45 @@
+.careers__container {
+  width: 80vw;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1em;
+}
+
+.careers__header {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 2em;
+}
+
+.careers__header h3 {
+  padding: 0.5em;
+  margin-bottom: 2em;
+  border-color: transparent;
+  border-bottom: 1px solid black;
+  letter-spacing: 0.05em;
+}
+
+.careers__header h3 {
+  text-align: center;
+  font-size: xx-large;
+}
+
+.careers__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2em;
+}
+
+.careers__content h2 {
+  margin-bottom: 1em;
+}
+
+.careers__content p {
+  margin-bottom: 0.5em;
+}

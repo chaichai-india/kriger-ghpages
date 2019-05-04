@@ -11,6 +11,6 @@ export class PerformersComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
-    console.log('TCL: PerformersComponent -> performers', this.performers);
+    // console.log('TCL: PerformersComponent -> performers', this.performers);
   }
 }

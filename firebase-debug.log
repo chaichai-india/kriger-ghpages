@@ -1,0 +1,29 @@
+[debug] [2019-05-04T11:55:46.823Z] ----------------------------------------------------------------------
+[debug] [2019-05-04T11:55:46.831Z] Command:       /usr/bin/node /usr/bin/firebase serve
+[debug] [2019-05-04T11:55:46.832Z] CLI Version:   6.4.0
+[debug] [2019-05-04T11:55:46.832Z] Platform:      linux
+[debug] [2019-05-04T11:55:46.832Z] Node Version:  v11.13.0
+[debug] [2019-05-04T11:55:46.833Z] Time:          Sat May 04 2019 17:25:46 GMT+0530 (India Standard Time)
+[debug] [2019-05-04T11:55:46.833Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2019-05-04T11:55:46.873Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-05-04T11:55:46.873Z] > authorizing via signed-in user
+[debug] [2019-05-04T11:55:46.873Z] [iam] checking project kriger-campus-cfe41 for permissions ["firebase.projects.get"]
+[debug] [2019-05-04T11:55:46.875Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2019-05-04T11:55:46.875Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2019-05-04T11:55:47.397Z] <<< HTTP RESPONSE 200
+[debug] [2019-05-04T11:55:47.444Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/kriger-campus-cfe41:testIamPermissions  
+
+[debug] [2019-05-04T11:55:49.373Z] <<< HTTP RESPONSE 200
+[debug] [2019-05-04T11:55:49.375Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/kriger-campus-cfe41  
+ 
+[debug] [2019-05-04T11:55:51.133Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from '/home/ashishs/Desktop/Untitled Folder/kriger-campus-website'...
+[info] 
+[debug] [2019-05-04T11:55:51.137Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/144792054319/clients/_:getWebAppConfig  
+ 
+[debug] [2019-05-04T11:55:51.844Z] <<< HTTP RESPONSE 200
+[info] i  hosting: Serving hosting files from: dist/kriger-campus-website
+[info] ✔  hosting: Local server: http://localhost:5000

@@ -1,6 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
-/* @import url('https://fonts.googleapis.com/css?family=Roboto|Lato'); */
-@import url('https://fonts.googleapis.com/css?family=Rubik|Lato');
+@import url('https://fonts.googleapis.com/css?family=Lato');
 @import '~@fortawesome/fontawesome-free/css/all.css';
 
 :root {
@@ -8,6 +7,7 @@
   --accent-color: #00c6ff;
   --primary-gradient-right: linear-gradient(to right, #00c6ff, #0062ff);
   --primary-gradient-left: linear-gradient(to left, #00c6ff, #0062ff);
+  --primary-font-family: 'Lato', sans-serif;
 }
 
 * {
@@ -23,7 +23,7 @@ body {
 
 body {
   margin: 0;
-  font-family: 'Lato', 'Helvetica Neue', sans-serif;
+  font-family: var(--primary-font-family);
   background-color: white;
 }
 

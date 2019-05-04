@@ -1,0 +1,10 @@
+.tnc__header .logo {
+  display: grid;
+  place-items: center;
+  margin-bottom: 1em;
+}
+
+.tnc__header .tagline {
+  text-align: center;
+  margin-bottom: 2em;
+}

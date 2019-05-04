@@ -8,7 +8,7 @@
   left: 0;
   right: 0;
   height: 3em;
-  font-family: 'Lato', sans-serif;
+  font-family: var(--primary-font-family);
   box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.4);
 }
 
@@ -25,7 +25,7 @@
   align-items: center;
   padding: 0;
   font-weight: 600;
-  letter-spacing: 1px;
+  /* letter-spacing: 1px; */
   color: rgba(0, 0, 0, 0.85);
   font-size: small;
 }
@@ -37,6 +37,7 @@
 
 .footer__container ul li a {
   all: unset;
+  font-family: var(--primary-font-family);
 }
 
 .footer__container ul li a.footer-link-active {

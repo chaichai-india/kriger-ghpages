@@ -29,17 +29,17 @@ export class ProfileComponent implements OnInit {
     }
 
     this.details = snaps[0] ? snaps[0].val() : null;
-    console.log('TCL: ProfileComponent -> setValues -> details', this.details);
+    // console.log('TCL: ProfileComponent -> setValues -> details', this.details);
     this.counters = snaps[1];
-    console.log(
-      'TCL: ProfileComponent -> setValues -> counters',
-      this.counters
-    );
+    // console.log(
+    // 'TCL: ProfileComponent -> setValues -> counters',
+    // this.counters
+    // );
     this.userDetails = snaps[2];
-    console.log(
-      'TCL: ProfileComponent -> setValues -> userDetails',
-      this.userDetails
-    );
+    // console.log(
+    // 'TCL: ProfileComponent -> setValues -> userDetails',
+    // this.userDetails
+    // );
 
     this.loading = false;
   }
@@ -49,7 +49,7 @@ export class ProfileComponent implements OnInit {
     let isProfile = await this.profileLinkService
       .isProfileLink(username)
       .then(res => {
-        console.log('TCL: ProfileComponent -> getProfileData -> res', res);
+        // console.log('TCL: ProfileComponent -> getProfileData -> res', res);
         return res;
       });
 
@@ -79,12 +79,12 @@ export class ProfileComponent implements OnInit {
     this.username = this.route.snapshot.params['username'];
     this.resetValues();
 
-    console.log(
-      'TCL: ProfileComponent -> ngOnInit -> this.username',
-      this.username
-    );
+    // console.log(
+    // 'TCL: ProfileComponent -> ngOnInit -> this.username',
+    // this.username
+    // );
     this.getProfileData(this.username).then(snaps => {
-      console.log('TCL: ProfileComponent -> ngOnInit -> snaps', snaps);
+      // console.log('TCL: ProfileComponent -> ngOnInit -> snaps', snaps);
       this.profile_found = snaps ? true : false;
       this.setValues(snaps);
     });

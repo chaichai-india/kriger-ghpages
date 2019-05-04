@@ -14,7 +14,7 @@
   background-image: var(--primary-gradient-right);
   color: white;
   font-family: 'Lato', sans-serif;
-  letter-spacing: 1px;
+  /* letter-spacing: 1px; */
   font-weight: 600;
 }
 
@@ -39,6 +39,7 @@
   padding: 0 0.5em;
   font-size: 1.5em;
   text-shadow: 1px 3px 0px rgba(0, 0, 0, 0.36);
+  height: 50%;
 }
 
 .nav__logo a .beta {
@@ -46,9 +47,10 @@
   background-color: rgba(239, 19, 19, 0.902);
   text-shadow: none;
   box-shadow: 1px 1px 0px 0px rgba(0, 0, 0, 0.4);
-  margin-top: 0.4em;
+  height: 25px;
   margin-left: 0.5em;
   padding: 0.2em 0.5em;
+  transform: scale(0.85);
 }
 
 .nav__logo img {
