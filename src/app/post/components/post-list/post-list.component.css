@@ -36,6 +36,7 @@ mat-spinner {
 .post-list__container app-post,
 .post-list__container .load__btn {
   grid-column: 2/3;
+  justify-self: center;
 }
 
 .post-list__container .load__btn {

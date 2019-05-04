@@ -1,8 +1,9 @@
 .main__container {
-  display: grid;
+  /* display: grid; */
   /* grid-template-columns: 1fr 1.5fr 1fr; */
-  grid-template-rows: auto;
-  grid-template-areas: 'header header header';
+  /* grid-template-rows: auto;
+  grid-template-areas: 'header header header'; */
+  margin: 5em 0;
 }
 
 app-navbar {

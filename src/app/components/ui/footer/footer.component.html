@@ -1,9 +1,15 @@
-<div class="footer__container">
+<div class="footer__container" [@hideFooter]="currentState">
   <div class="blog">
     <ul>
       <li><a>Our Team</a></li>
       <li><a>Careers</a></li>
-      <li><a>Internships</a></li>
+      <li
+        ><a
+          [routerLink]="['/internships']"
+          routerLinkActive="footer-link-active"
+          >Internships</a
+        ></li
+      >
       <li><a>Media Coverage</a></li>
       <li><a>Terms & Conditions</a></li>
     </ul>
@@ -11,43 +17,48 @@
   <div class="socialmedia">
     <ul>
       <span>Follow us..</span>
-      <li
-        ><img src="assets/images/icons/facebook.svg" alt=""/>
+      <li>
         <a
           href="https://www.facebook.com/Krigercampus/"
           target="_blank"
           rel="noopener noreferrer"
-        ></a
+          ><img src="assets/images/icons/facebook.svg" alt=""/></a
       ></li>
-      <li
-        ><img src="assets/images/icons/instagram.svg" alt=""/>
+      <li>
         <a
           href="https://www.instagram.com/krigercampus"
           target="_blank"
           rel="noopener noreferrer"
-        ></a
+          ><img src="assets/images/icons/instagram.svg" alt=""/></a
       ></li>
-      <li
-        ><img src="assets/images/icons/twitter.svg" alt=""/>
+      <li>
         <a
           href="https://twitter.com/krigercampus"
           target="_blank"
           rel="noopener noreferrer"
-        ></a
+          ><img src="assets/images/icons/twitter.svg" alt=""/></a
       ></li>
-      <li
-        ><img src="assets/images/icons/linkedin.svg" alt=""/>
+      <li>
         <a
           href="https://www.linkedin.com/company/kriger-campus/"
           target="_blank"
           rel="noopener noreferrer"
-        ></a
+          ><img src="assets/images/icons/linkedin.svg" alt=""/></a
       ></li>
     </ul>
   </div>
   <div class="footer__close">
-    <button mat-icon-button>
+    <button mat-icon-button (click)="toggleFooter()">
       <mat-icon>close</mat-icon>
     </button>
   </div>
 </div>
+
+<button
+  class="footer__show"
+  mat-raised-button
+  (click)="toggleFooter()"
+  [@showFooter]="currentState"
+>
+  Internships, Career & More
+</button>

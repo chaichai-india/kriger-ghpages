@@ -3,7 +3,7 @@
   display: flex;
   align-items: center;
   width: 100vw;
-  padding: 0.5em 0;
+  height: 4em;
   max-height: 4em;
   box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.4);
   position: fixed;
@@ -32,6 +32,7 @@
   justify-content: center;
   text-decoration: none;
   color: white;
+  height: 100%;
 }
 
 .nav__logo a span {
@@ -60,6 +61,7 @@ nav {
   flex: 1;
   display: flex;
   align-items: center;
+  height: 100%;
 }
 
 nav ul {
@@ -68,15 +70,22 @@ nav ul {
   align-items: center;
   justify-content: center;
   list-style: none;
+  height: 100%;
 }
 
 nav ul li {
   flex: 1;
   display: flex;
   align-items: center;
+  justify-content: center;
   flex-direction: column;
   cursor: pointer;
   max-width: 100px;
+  height: 100%;
+}
+
+nav ul li.nav-link-active {
+  border-bottom: 1px solid white;
 }
 
 nav ul li:last-child {

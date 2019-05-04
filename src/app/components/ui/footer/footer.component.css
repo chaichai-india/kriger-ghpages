@@ -35,6 +35,17 @@
   cursor: pointer;
 }
 
+.footer__container ul li a {
+  all: unset;
+}
+
+.footer__container ul li a.footer-link-active {
+  background-color: rgba(0, 0, 0, 0.75);
+  color: white;
+  padding: 0.5em 0.4em;
+  border-radius: 0%;
+}
+
 .footer__container ul li:hover {
   text-decoration: underline;
 }
@@ -49,6 +60,24 @@
 .footer__close {
   margin-right: 1em;
   color: white;
-  box-shadow: inset 0px 0px 3px 0px white;
+  /* box-shadow: inset 0px 0px 3px 0px white; */
+
+  transition: all 500ms ease-in-out;
+}
+
+.footer__close:hover {
   border-radius: 50%;
+  background-color: white;
+  color: var(--primary-color);
+  transform: scale(0.75);
+}
+
+.footer__show {
+  position: fixed;
+  bottom: 1em;
+  right: 15px;
+  opacity: 0;
+  background-image: var(--primary-gradient-right);
+  color: white;
+  text-shadow: 0px 0px 20px black;
 }
