@@ -1,0 +1,41 @@
+<mat-card
+  class="member__card"
+  *ngFor="let member of members"
+  [ngClass]="{ expertcard: member.description }"
+>
+  <mat-card-header>
+    <div
+      mat-card-avatar
+      [ngStyle]="{
+        'background-image': 'url(../../../../../' + member.image + ')'
+      }"
+    ></div>
+    <mat-card-title
+      >{{ member.firstname }} {{ member.lastname }}</mat-card-title
+    >
+    <mat-card-subtitle>{{ member.job }}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <blockquote *ngIf="member.description">
+      {{ member.description }}
+    </blockquote>
+  </mat-card-content>
+  <mat-card-actions>
+    <a
+      *ngIf="member.linkedin"
+      [href]="member.linkedin"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <img src="assets/images/icons/linkedin_team.png" width="24" height="24" />
+    </a>
+    <a
+      *ngIf="member.otherlink"
+      [href]="member.otherlink"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <img src="assets/images/icons/website_team.png" width="24" height="24" />
+    </a>
+  </mat-card-actions>
+</mat-card>

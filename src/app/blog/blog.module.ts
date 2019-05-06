@@ -16,9 +16,10 @@ import { MediacoverageComponent } from './components/mediacoverage/mediacoverage
 import { CareersComponent } from './components/careers/careers.component';
 import { TncComponent } from './components/tnc/tnc.component';
 import { OurteamComponent } from './components/ourteam/ourteam.component';
+import { TeamMemberComponent } from './components/ourteam/team-member/team-member.component';
 
 @NgModule({
-  declarations: [InternshipsComponent, PerformersComponent, InternsComponent, MediacoverageComponent, CareersComponent, TncComponent, OurteamComponent],
+  declarations: [InternshipsComponent, PerformersComponent, InternsComponent, MediacoverageComponent, CareersComponent, TncComponent, OurteamComponent, TeamMemberComponent],
   imports: [
     CommonModule,
     BlogRoutingModule,

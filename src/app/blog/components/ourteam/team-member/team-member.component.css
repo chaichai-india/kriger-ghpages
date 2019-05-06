@@ -1,22 +1,21 @@
-.performers__container {
+:host {
   display: grid;
-  grid-template-columns: repeat(auto-fit, 300px);
-  grid-gap: 1em;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 350px));
+  grid-gap: 2em;
   place-items: center;
   place-content: center;
 }
 
-.performer__card {
+.member__card {
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15), 0 2px 3px rgba(0, 0, 0, 0.2);
   min-height: 400px;
   width: 300px;
   display: grid;
   place-items: center;
   place-content: center;
-  grid-template-rows: 200px;
 }
 
-.performer__card mat-card-header {
+.member__card mat-card-header {
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -24,11 +23,11 @@
   margin-bottom: 1em;
 }
 
-.performer__card mat-card-header mat-card-title {
+.member__card mat-card-header mat-card-title {
   margin-bottom: 1em;
 }
 
-.performer__card .mat-card-avatar {
+.member__card .mat-card-avatar {
   width: 9.5em;
   height: 9.5em;
   background-size: cover;
@@ -37,7 +36,25 @@
   box-shadow: 0px 0px 2px 1px #ffffff, inset 0 0 2px 0px #0000008c;
 }
 
-.performer__card mat-card-content blockquote {
+.member__card mat-card-content blockquote {
   font-size: medium;
   text-align: center;
+}
+
+.member__card mat-card-actions {
+  display: flex;
+  height: 48px;
+  width: 100%;
+  justify-content: center;
+}
+
+.member__card mat-card-actions a {
+  width: 24px;
+  height: 24px;
+  margin: 0 1em;
+}
+
+.expertcard {
+  width: 350px;
+  grid-template-rows: repeat(auto-fit, 300px);
 }

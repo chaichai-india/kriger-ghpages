@@ -92,5 +92,70 @@ export const EXPERTS = [
       'Raman has worked with several Education Companies, and has also Co-Founded ‘The ZERO Curriculum’ and ‘Preschool For Child Rights’. He has interest in Teacher Education, Curriculum, guiding in starting up new education ventures, Mentoring Education Entrepreneurs.',
     linkedin: 'https://www.linkedin.com/in/iamstillstudyinginpreschool/',
     image: 'assets/images/ourteam/experts/rewati_raman_vishewar.jpeg'
+  },
+  {
+    firstname: 'Dr. Ajay',
+    lastname: 'Kumar',
+    job: 'Associate Professor, JNU',
+    description:
+      "Dr. Ajay Kumar is an Associate Professor at the Department of Adult Education, School of Social Sciences, JNU, New Delhi. He has been the Director of the Department of Adult Education. He is currently also the In-charge (Member-Secretary) of the university’s flagship ‘Community Engagement and Development Program’. Dr. Kumar has been the pioneer in introducing two new courses (first-of-its-kind) in an Indian university, namely ’Development Education' and 'Citizenship Education and Globalisation: Contemporary Issues and Perspectives'.He has worked with Government of India, various state agencies, ILO and UNESCO.",
+    otherlink: 'https://jnu.ac.in/content/ajaykumar',
+    image: 'assets/images/ourteam/experts/ajay_kumar.jpg'
+  },
+  {
+    firstname: 'Rajesh',
+    lastname: 'Kumar',
+    job: 'PG-HRM BA-LLB.',
+    description:
+      "A Mentor, Coach, and Guide for UPSC Examination with a brilliant track record. Earlier associated with Rau's IAS Study Circle in academics and Management(Bangalore and Delhi).He has more than 10 years of experience in the sphere of HR/ IR.Has earlier worked with Murugappa Group.He is also a certified auditor for ISO: 14001.",
+    image: 'assets/images/ourteam/experts/rajesh_kumar.jpeg'
+  }
+];
+
+export const CORETEAM = [
+  {
+    firstname: 'Neeraj',
+    lastname: 'Verma',
+    job: 'Co-founder & Operation',
+    linkedin: 'https://www.linkedin.com/in/neeraj-verma-380bb120/',
+    image: 'assets/images/ourteam/coreteam/neeraj_verma.jpeg'
+  },
+  {
+    firstname: 'Suraj',
+    lastname: 'Satyarthi',
+    job: 'Founder & Marketing',
+    linkedin: 'https://www.linkedin.com/in/surajsatyarthikriger/',
+    image: 'assets/images/ourteam/coreteam/suraj_satyarthi.png'
+  },
+  {
+    firstname: 'Chandan',
+    lastname: 'Satyarthi',
+    job: 'Co-founder & CTO',
+    linkedin: 'https://www.linkedin.com/in/chandansatyarthi/',
+    image: 'assets/images/ourteam/coreteam/chandan_satyarthi.jpg'
+  },
+  {
+    firstname: 'Poojan',
+    lastname: 'Rathod',
+    job: 'Co-Founder & CAO',
+    linkedin: 'https://www.linkedin.com/in/poojan-rathod-8a2013137/',
+    image: 'assets/images/ourteam/coreteam/poojan_rathod.jpg'
+  }
+];
+
+export const TECHNICALTEAM = [
+  {
+    firstname: 'Neelu',
+    lastname: 'Maheshwari',
+    job: 'Software Developer',
+    linkedin: 'https://www.linkedin.com/in/neelu-maheshwari-63222aa8/',
+    image: 'assets/images/ourteam/technicalteam/neelu_maheshwari.jpeg'
+  },
+  {
+    firstname: 'Ashish',
+    lastname: 'Shaji',
+    job: 'Website Developer',
+    linkedin: 'https://www.linkedin.com/in/ashishshaji/',
+    image: 'assets/images/ourteam/technicalteam/ashish_shaji.jpeg'
   }
 ];

@@ -1,4 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import {
+  MENTORS,
+  ADVISORS,
+  EXPERTS,
+  CORETEAM,
+  TECHNICALTEAM
+} from './ourteam-data';
 
 @Component({
   selector: 'app-ourteam',
@@ -6,10 +13,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./ourteam.component.css']
 })
 export class OurteamComponent implements OnInit {
+  mentors = MENTORS;
+  advisors = ADVISORS;
+  experts = EXPERTS;
+  coreteam = CORETEAM;
+  technicalteam = TECHNICALTEAM;
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }
