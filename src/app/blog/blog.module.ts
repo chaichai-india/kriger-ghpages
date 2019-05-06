@@ -15,9 +15,10 @@ import { SharedModule } from '../shared/shared.module';
 import { MediacoverageComponent } from './components/mediacoverage/mediacoverage.component';
 import { CareersComponent } from './components/careers/careers.component';
 import { TncComponent } from './components/tnc/tnc.component';
+import { OurteamComponent } from './components/ourteam/ourteam.component';
 
 @NgModule({
-  declarations: [InternshipsComponent, PerformersComponent, InternsComponent, MediacoverageComponent, CareersComponent, TncComponent],
+  declarations: [InternshipsComponent, PerformersComponent, InternsComponent, MediacoverageComponent, CareersComponent, TncComponent, OurteamComponent],
   imports: [
     CommonModule,
     BlogRoutingModule,
