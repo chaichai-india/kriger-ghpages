@@ -27,11 +27,15 @@
 
 .internships__header h3 {
   text-align: center;
-  font-size: xx-large;
+  font-size: x-large;
 }
 
 .internships__performers h3 {
-  font-size: x-large;
+  font-size: large;
+  text-align: center;
+  text-transform: uppercase;
+  border: none;
+  margin-bottom: 1em;
 }
 
 .internships__header > a {
