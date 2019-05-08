@@ -1,48 +1,54 @@
-<div class="nav__container">
-  <div class="nav__logo">
-    <a [routerLink]="['/']"
-      ><img src="/assets/images/nav_logo.png" /><span>Kriger Campus</span
-      ><span class="beta">Beta</span></a
-    >
-  </div>
-  <!-- <div class="nav__search">
-    <input type="text" placeholder="Search for posts/profiles" />
-    <button mat-stroked-button>Search</button>
-  </div> -->
-  <nav>
-    <ul>
-      <li [routerLink]="['/posts']" routerLinkActive="nav-link-active">
+<nav class="navbar navbar-expand-md navbar-dark bg-primary fixed-top">
+  <a class="navbar-brand" [routerLink]="['/']"
+    ><img src="/assets/images/nav_logo.png" /><span class="name"
+      >Kriger Campus</span
+    ><span class="beta">Beta</span></a
+  >
+  <button
+    class="navbar-toggler hidden-sm-up"
+    type="button"
+    (click)="isNavbarCollapsed = !isNavbarCollapsed"
+    data-target="#navbarsDefault"
+    aria-controls="navbarsDefault"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div
+    [ngbCollapse]="isNavbarCollapsed"
+    class="collapse navbar-collapse"
+    id="navbarsDefault"
+  >
+    <ul class="navbar-nav mr-auto">
+      <li
+        class="nav-item d-flex flex-column align-items-center justify-content-center"
+        [routerLink]="['/posts']"
+        routerLinkActive="nav-link-active"
+      >
         <mat-icon>ballot</mat-icon>
-        <a>Posts</a>
+        <span>Posts</span>
       </li>
-      <li [routerLink]="['/profiles']" routerLinkActive="nav-link-active">
+      <li
+        class="nav-item d-flex flex-column align-items-center justify-content-center"
+        [routerLink]="['/profiles']"
+        routerLinkActive="nav-link-active"
+      >
         <mat-icon>account_box</mat-icon>
-        <a> Profiles</a>
+        <span>Profiles</span>
       </li>
-      <!-- <li>
-        <mat-icon>supervisor_account</mat-icon>
-        <a> Our Team</a>
-      </li>
-      <li>
-        <mat-icon>work</mat-icon>
-        <a> Careers</a>
-      </li>
-      <li>
-        <mat-icon>work_outline</mat-icon>
-        <a> Internships</a>
-      </li>
-      <li>
-        <mat-icon>ballot</mat-icon>
-        <a> Let's Connect</a>
-      </li> -->
-      <li>
+      <li
+        class="nav-item d-flex flex-column align-items-center justify-content-center"
+      >
         <a
           href="https://play.google.com/store/apps/details?id=in.kriger.krigercampus"
           target="_blank"
           rel="noopener"
-          ><img src="/assets/images/play_store.png"/><img
+          ><img
+            class="img-fluid playstore"
+            src="/assets/images/play_store.png"/><img
         /></a>
       </li>
     </ul>
-  </nav>
-</div>
+  </div>
+</nav>
