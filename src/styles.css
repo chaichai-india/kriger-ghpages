@@ -1,5 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
-@import url('https://fonts.googleapis.com/css?family=Lato');
+@import url('https://fonts.googleapis.com/css?family=Lato|Montserrat');
 @import '~@fortawesome/fontawesome-free/css/all.css';
 
 :root {
@@ -8,6 +8,7 @@
   --primary-gradient-right: linear-gradient(to right, #00c6ff, #0062ff);
   --primary-gradient-left: linear-gradient(to left, #00c6ff, #0062ff);
   --primary-font-family: 'Lato', sans-serif;
+  --secondary-font-family: 'Montserrat', sans-serif;
 }
 
 * {

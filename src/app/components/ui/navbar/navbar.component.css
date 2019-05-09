@@ -3,11 +3,11 @@
 
 nav {
   z-index: 10 !important;
+  padding: 0 1rem !important;
   box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.4);
   background-image: var(--primary-gradient-right);
   color: white;
   font-weight: 600;
-  letter-spacing: 1px;
   font-family: var(--primary-font-family);
 }
 
@@ -41,111 +41,44 @@ nav .navbar-brand span.beta {
   transform: scale(0.85);
 }
 
-nav .playstore {
-  max-height: 60px;
-}
-/* .nav__container {
-  display: flex;
-  align-items: center;
-  padding: 0.5em 0;
-  width: 100%;
-  box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.4);
-  position: fixed;
-  left: 0;
-  right: 0;
-  top: 0;
-  z-index: 10;
-  background-image: var(--primary-gradient-right);
-  color: white;
-  font-family: 'Lato', sans-serif;
-  font-weight: 600;
-  letter-spacing: 1px;
-} */
-
-/* .nav__logo,
-.nav__logo a,
-nav,
-nav ul {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
+nav #navbarsDefault {
+  height: 60px;
 }
 
-.nav__logo a span {
-  padding: 0 0.5em;
-  font-size: 1.5em;
-  text-shadow: 1px 3px 0px rgba(0, 0, 0, 0.36);
-}
-
-.nav__logo a .beta {
-  font-size: medium;
-  background-color: rgba(239, 19, 19, 0.902);
-  text-shadow: none;
-}
-
-nav {
-  justify-content: flex-end;
-}
-
-.nav__search {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-}
-
-.nav__search input {
-  border: 1px solid rgba(0, 0, 0, 0.4);
-  font-size: 80%;
-  width: 77%;
-  padding: 7px 0 7px 7px;
-  margin-right: 0.25em;
-  background-color: rgba(0, 0, 0, 0);
-  transition: border 0.5s ease;
-}
-
-.nav__search input:focus {
-  outline: none;
-  box-shadow: inset 0px 0px 2px 0px rgba(0, 0, 0, 0.5);
-}
-
-.nav__search button {
-  line-height: 31px;
-  border-color: rgba(0, 0, 0, 0.4);
-}
-
-nav li {
-  list-style: none;
-  margin-right: 1em;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
+nav #navbarsDefault ul li {
   cursor: pointer;
 }
 
-nav li:focus {
+nav #navbarsDefault ul li:not(:last-child) {
+  width: 60px;
+  font-size: 0.85em;
+  color: rgba(255, 255, 255, 0.95);
+}
+
+nav #navbarsDefault ul li:hover {
+  color: white;
+}
+
+nav #navbarsDefault ul li:focus {
   outline: 0;
 }
 
-nav li a {
-  font-size: 80%;
+nav .playstore {
+  max-height: 50px;
 }
 
-.nav__logo a img,
-nav li a img {
-  max-width: 100%;
-  max-height: 40px;
+.nav-link-active {
+  border-bottom: 1px solid white;
 }
 
-.nav__logo a img {
-  border-radius: 50%;
+/* responsive not collapsed */
+
+nav #navbarsDefault.show {
+  height: auto;
+  padding-bottom: 1rem;
 }
 
-nav a,
-.nav__logo a {
-  text-decoration: none;
-  padding: 0.25em;
-  color: white;
-} */
+nav #navbarsDefault.show ul li:not(:last-child) {
+  width: auto;
+  margin: 1rem 0 !important;
+}
