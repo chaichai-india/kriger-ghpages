@@ -1,34 +1,20 @@
 <div class="footer__container" [@hideFooter]="currentState">
   <div class="blog">
     <ul>
-      <li>
-        <a [routerLink]="['/our-team']" routerLinkActive="footer-link-active"
-          >Our Team</a
-        >
+      <li routerLinkActive="footer-link-active">
+        <a routerLink="/our-team">Our Team</a>
       </li>
-      <li>
-        <a [routerLink]="['/careers']" routerLinkActive="footer-link-active"
-          >Careers</a
-        >
+      <li routerLinkActive="footer-link-active">
+        <a routerLink="/careers">Careers</a>
       </li>
-      <li>
-        <a [routerLink]="['/internships']" routerLinkActive="footer-link-active"
-          >Internships</a
-        >
+      <li routerLinkActive="footer-link-active">
+        <a routerLink="/internships">Internships</a>
       </li>
-      <li>
-        <a
-          [routerLink]="['/media-coverage']"
-          routerLinkActive="footer-link-active"
-          >Media Coverage</a
-        >
+      <li routerLinkActive="footer-link-active">
+        <a routerLink="/media-coverage">Media Coverage</a>
       </li>
-      <li>
-        <a
-          [routerLink]="['/term-conditions']"
-          routerLinkActive="footer-link-active"
-          >Terms & Conditions</a
-        >
+      <li routerLinkActive="footer-link-active">
+        <a routerLink="/term-conditions">Terms & Conditions</a>
       </li>
     </ul>
   </div>

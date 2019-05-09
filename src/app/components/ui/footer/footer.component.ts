@@ -15,13 +15,13 @@ import {
       state(
         'initial',
         style({
-          bottom: '0'
+          opacity: '1'
         })
       ),
       state(
         'final',
         style({
-          bottom: '-5em'
+          opacity: '0'
         })
       ),
       transition('initial<=>final', animate('500ms'))
