@@ -1,7 +1,9 @@
 .post-list__container {
   width: 100%;
   display: grid;
-  grid-template-columns: 1fr 1.5fr 1fr;
+  grid-template-columns: 550px;
+  place-content: center;
+  place-items: center;
   grid-template-rows: auto;
   grid-auto-flow: dense;
 }
@@ -35,7 +37,6 @@ mat-spinner {
 
 .post-list__container app-post,
 .post-list__container .load__btn {
-  grid-column: 2/3;
   justify-self: center;
 }
 
@@ -50,4 +51,38 @@ mat-spinner {
 .load__btn button {
   background-color: #1a1a96;
   color: white;
+}
+
+@media screen and (max-width: 1050px) {
+  .post-list__container {
+    grid-template-columns: 400px;
+  }
+  .post-list__container app-post {
+    width: 400px;
+    overflow-wrap: break-word;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .post-list__container {
+    grid-template-columns: 300px;
+  }
+  .post-list__container app-post {
+    width: 300px;
+    overflow-wrap: break-word;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .post-list__container {
+    grid-template-columns: 90vw;
+  }
+  .post-list__container app-post {
+    width: 90vw;
+    overflow-wrap: break-word;
+  }
+
+  .ad {
+    display: none;
+  }
 }

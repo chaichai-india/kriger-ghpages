@@ -50,6 +50,12 @@
   text-decoration: underline;
 }
 
+@media screen and (max-width: 585px) {
+  .internships__container {
+    width: 100vw;
+  }
+}
+
 /* .internships__header .logo {
   display: grid;
   place-items: center;

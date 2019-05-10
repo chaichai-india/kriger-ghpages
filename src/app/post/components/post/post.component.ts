@@ -23,6 +23,7 @@ export class PostComponent implements OnInit {
 
 @Component({
   selector: 'app-post-dialog',
-  templateUrl: './post.dialog.component.html'
+  templateUrl: './post.dialog.component.html',
+  styleUrls: ['./post.dialog.component.css']
 })
 export class DialogComponent {}

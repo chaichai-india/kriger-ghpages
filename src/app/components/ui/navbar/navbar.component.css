@@ -82,3 +82,13 @@ nav #navbarsDefault.show ul li:not(:last-child) {
   width: auto;
   margin: 1rem 0 !important;
 }
+
+@media screen and (max-width: 585px) {
+  nav .navbar-brand {
+    margin-right: 0;
+  }
+
+  nav {
+    padding: 0 0.25rem !important;
+  }
+}

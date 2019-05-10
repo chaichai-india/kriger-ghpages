@@ -99,4 +99,8 @@
   .footer__close {
     margin-right: 0;
   }
+
+  .footer__container ul li {
+    margin: 0 0.5em;
+  }
 }
