@@ -33,6 +33,7 @@ mat-spinner {
 
 .post-list__container app-post {
   width: 550px;
+  overflow-wrap: break-word;
 }
 
 .post-list__container app-post,
@@ -59,7 +60,6 @@ mat-spinner {
   }
   .post-list__container app-post {
     width: 400px;
-    overflow-wrap: break-word;
   }
 }
 
@@ -69,7 +69,6 @@ mat-spinner {
   }
   .post-list__container app-post {
     width: 300px;
-    overflow-wrap: break-word;
   }
 }
 
@@ -79,7 +78,6 @@ mat-spinner {
   }
   .post-list__container app-post {
     width: 90vw;
-    overflow-wrap: break-word;
   }
 
   .ad {
