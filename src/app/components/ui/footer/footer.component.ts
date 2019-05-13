@@ -71,9 +71,9 @@ export class FooterComponent implements OnInit {
     if (this.innerWidth <= 916) {
       this.currentState = 'final';
     }
-    console.log(
-      'TCL: FooterComponent -> ngOnInit -> this.innerWidth',
-      this.innerWidth
-    );
+    // console.log(
+    // 'TCL: FooterComponent -> ngOnInit -> this.innerWidth',
+    // this.innerWidth
+    // );
   }
 }
