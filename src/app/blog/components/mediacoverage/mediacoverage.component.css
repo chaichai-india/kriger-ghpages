@@ -35,3 +35,10 @@
 .mediacover__container ul li {
   padding: 0.3em;
 }
+
+@media screen and (max-width: 585px) {
+  .mediacover__container {
+    width: 100vw;
+    padding: 1em 0.2em;
+  }
+}

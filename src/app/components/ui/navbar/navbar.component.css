@@ -86,6 +86,7 @@ nav #navbarsDefault.show ul li:not(:last-child) {
 @media screen and (max-width: 585px) {
   nav .navbar-brand {
     margin-right: 0;
+    font-size: 1em;
   }
 
   nav {

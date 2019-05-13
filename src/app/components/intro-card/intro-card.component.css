@@ -79,11 +79,12 @@
 }
 
 .card .logo {
-  margin: 8em 0 3em 0;
+  margin: 3em 0;
 }
 
 .card .tagline {
   font-size: xx-large;
+  text-align: center;
 }
 
 .card .logo,
@@ -117,9 +118,13 @@
   font-size: x-large;
   color: red;
   font-weight: 600;
-  letter-spacing: 1px;
+  /* letter-spacing: 1px; */
   text-align: center;
   margin: 1em 0;
+}
+
+.card .inspiration {
+  padding: 0 1em;
 }
 
 .card .heading {
@@ -139,6 +144,7 @@
 .card .mission,
 .card .contact {
   width: 100%;
+  margin: 1em 0;
 }
 
 .card .partners .images,
@@ -178,4 +184,32 @@
   align-items: center;
   padding: 1em;
   margin-top: 1em;
+}
+
+@media screen and (max-width: 585px) {
+  .card {
+    width: 90%;
+  }
+
+  .card .inspiration {
+    font-size: 1.25em;
+  }
+
+  .slideshow {
+    width: 100%;
+  }
+
+  .card .tagline,
+  .card .heading {
+    font-size: 1.5em;
+  }
+
+  .card .what p,
+  .card .mission p {
+    font-size: 1em;
+  }
+
+  .card .mission ul {
+    padding-left: 2em;
+  }
 }
