@@ -18,6 +18,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material';
 import { SharedModule } from '../shared/shared.module';
+import { PricingComponent } from './components/pricing/pricing.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { SharedModule } from '../shared/shared.module';
     TncComponent,
     OurteamComponent,
     TeamMemberComponent,
-    NewsletterFormComponent
+    NewsletterFormComponent,
+    PricingComponent
   ],
   imports: [
     CommonModule,
