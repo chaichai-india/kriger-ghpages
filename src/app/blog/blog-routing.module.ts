@@ -5,6 +5,7 @@ import { MediacoverageComponent } from './components/mediacoverage/mediacoverage
 import { CareersComponent } from './components/careers/careers.component';
 import { TncComponent } from './components/tnc/tnc.component';
 import { OurteamComponent } from './components/ourteam/ourteam.component';
+import { PricingComponent } from './components/pricing/pricing.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'internships' },
@@ -12,7 +13,8 @@ const routes: Routes = [
   { path: 'media-coverage', component: MediacoverageComponent },
   { path: 'careers', component: CareersComponent },
   { path: 'term-conditions', component: TncComponent },
-  { path: 'our-team', component: OurteamComponent }
+  { path: 'our-team', component: OurteamComponent },
+  { path: 'pricing', component: PricingComponent }
 ];
 
 @NgModule({
