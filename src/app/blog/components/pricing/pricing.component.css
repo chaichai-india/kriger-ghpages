@@ -23,5 +23,10 @@ header h3 {
   border-bottom: 1px solid black;
   letter-spacing: 0.05em;
   text-align: center;
-  font-size: x-large;
+  font-size: 1.5em;
+  font-weight: 600;
+}
+
+.row-head {
+  vertical-align: middle !important;
 }
