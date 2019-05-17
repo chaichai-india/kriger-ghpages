@@ -1591,5 +1591,275 @@ export const INTERNS = [
     name: 'VENKATESH J',
     internship: 'Campus Ambassador',
     completed: 'Feb 20, 2019'
+  },
+  {
+    name: 'G GOPI',
+    internship: 'Campus Ambassador',
+    completed: 'May 10, 2019'
+  },
+  {
+    name: 'SHAAD AHMAD',
+    internship: 'Campus Ambassador',
+    completed: 'May 10, 2019'
+  },
+  {
+    name: 'SHAGUN SINGH DASAWAT',
+    internship: 'Campus Ambassador',
+    completed: 'May 10, 2019'
+  },
+  {
+    name: 'PRIYANSH KESARWANI',
+    internship: 'Campus Ambassador',
+    completed: 'May 10, 2019'
+  },
+  {
+    name: 'ANKITA SANWARIA',
+    internship: 'Campus Ambassador',
+    completed: 'May 10, 2019'
+  },
+  {
+    name: 'SATABDI ACHARYA',
+    internship: 'Campus Ambassador',
+    completed: 'May 10, 2019'
+  },
+  {
+    name: 'SHUBHAM JHA',
+    internship: 'Campus Ambassador',
+    completed: 'May 10, 2019'
+  },
+  {
+    name: 'SHREYA SHYAM POHARKAR',
+    internship: 'Campus Ambassador',
+    completed: 'May 10, 2019'
+  },
+  {
+    name: 'B.BHAVAN KUMAR',
+    internship: 'Campus Ambassador',
+    completed: 'May 10, 2019'
+  },
+  {
+    name: 'SWATI RAMAN',
+    internship: 'Campus Ambassador',
+    completed: 'May 10, 2019'
+  },
+  {
+    name: 'VASUDHA GUPTA',
+    internship: 'Campus Ambassador',
+    completed: 'May 10, 2019'
+  },
+  {
+    name: 'SHRADDHA RAVINDRA CHOBHE',
+    internship: 'Campus Ambassador',
+    completed: 'May 10, 2019'
+  },
+  {
+    name: 'J. GAYATRI',
+    internship: 'Campus Ambassador',
+    completed: 'May 10, 2019'
+  },
+  {
+    name: 'PEDDI SANDEEP',
+    internship: 'Campus Ambassador',
+    completed: 'May 10, 2019'
+  },
+  {
+    name: 'FAHAD FEEROZ',
+    internship: 'Campus Ambassador',
+    completed: 'May 10, 2019'
+  },
+  {
+    name: 'SNEHA MAJI',
+    internship: 'Campus Ambassador',
+    completed: 'May 10, 2019'
+  },
+  {
+    name: 'RIYA SINGH',
+    internship: 'Campus Ambassador',
+    completed: 'May 10, 2019'
+  },
+  {
+    name: 'PUSHPITA GANGULY',
+    internship: 'Campus Ambassador',
+    completed: 'May 10, 2019'
+  },
+  {
+    name: 'SASHYAT SINGH',
+    internship: 'Campus Ambassador',
+    completed: 'May 10, 2019'
+  },
+  {
+    name: 'PRASHANT MANU',
+    internship: 'Campus Ambassador',
+    completed: 'May 10, 2019'
+  },
+  {
+    name: 'SAI SHARANYA',
+    internship: 'Campus Ambassador',
+    completed: 'May 10, 2019'
+  },
+  {
+    name: 'SHIVAM GUPTA',
+    internship: 'Campus Ambassador',
+    completed: 'May 10, 2019'
+  },
+  {
+    name: 'SONALI SAXENA',
+    internship: 'Campus Ambassador',
+    completed: 'May 10, 2019'
+  },
+  {
+    name: 'RACHNA R KURUP',
+    internship: 'Campus Ambassador',
+    completed: 'May 10, 2019'
+  },
+  {
+    name: 'BHUVNESH YADAV',
+    internship: 'Campus Ambassador',
+    completed: 'May 10, 2019'
+  },
+  {
+    name: 'YAMINI SAI SRI KARICHETI',
+    internship: 'Campus Ambassador',
+    completed: 'May 10, 2019'
+  },
+  {
+    name: 'V.SRIDHARAN',
+    internship: 'Campus Ambassador',
+    completed: 'May 10, 2019'
+  },
+  {
+    name: 'SREEHARI C',
+    internship: 'Campus Ambassador',
+    completed: 'May 10, 2019'
+  },
+  {
+    name: 'RATAN KUMAR SINHA',
+    internship: 'Campus Ambassador',
+    completed: 'May 10, 2019'
+  },
+  {
+    name: 'CHETNA BHURANI',
+    internship: 'Campus Ambassador',
+    completed: 'May 10, 2019'
+  },
+  {
+    name: 'VAIBHAV SAWHNEY',
+    internship: 'Campus Ambassador',
+    completed: 'May 10, 2019'
+  },
+  {
+    name: 'YASH BHAGORIA',
+    internship: 'Campus Ambassador',
+    completed: 'May 10, 2019'
+  },
+  {
+    name: 'ANIRUDHA BANSAL',
+    internship: 'Campus Ambassador',
+    completed: 'May 10, 2019'
+  },
+  {
+    name: 'SHUBHAM KUMAR',
+    internship: 'Campus Ambassador',
+    completed: 'May 10, 2019'
+  },
+  {
+    name: 'SHUBHAM PRATAP SINGH',
+    internship: 'Campus Ambassador',
+    completed: 'May 10, 2019'
+  },
+  {
+    name: 'RAMADEVI AVALA',
+    internship: 'Campus Ambassador',
+    completed: 'May 10, 2019'
+  },
+  {
+    name: 'JUHI KHAN AFRIDI',
+    internship: 'Campus Ambassador',
+    completed: 'May 10, 2019'
+  },
+  {
+    name: 'RAHUL KUMAR',
+    internship: 'Campus Ambassador',
+    completed: 'May 10, 2019'
+  },
+  {
+    name: 'JAMAL AHMAD',
+    internship: 'Campus Ambassador',
+    completed: 'May 10, 2019'
+  },
+  {
+    name: 'APOORVA GUPTA',
+    internship: 'Campus Ambassador',
+    completed: 'May 10, 2019'
+  },
+  {
+    name: 'JOGESH RAJIYAN',
+    internship: 'Campus Ambassador',
+    completed: 'May 10, 2019'
+  },
+  {
+    name: 'ARVIND K',
+    internship: 'Campus Ambassador',
+    completed: 'May 10, 2019'
+  },
+  {
+    name: 'NEHA BONAGIRI',
+    internship: 'Campus Ambassador',
+    completed: 'May 10, 2019'
+  },
+  {
+    name: 'SALIM MAULA MAHAT',
+    internship: 'Campus Ambassador',
+    completed: 'May 10, 2019'
+  },
+  {
+    name: 'PRAKHAR GOYAL',
+    internship: 'Campus Ambassador',
+    completed: 'May 10, 2019'
+  },
+  {
+    name: 'BHUMIKA GOYAL',
+    internship: 'Campus Ambassador',
+    completed: 'May 10, 2019'
+  },
+  {
+    name: 'SONALIKA RAJ',
+    internship: 'Campus Ambassador',
+    completed: 'May 10, 2019'
+  },
+  {
+    name: 'KAUSTUBH SONNI',
+    internship: 'Campus Ambassador',
+    completed: 'May 10, 2019'
+  },
+  {
+    name: 'MD.TABISH KHAN',
+    internship: 'Campus Ambassador',
+    completed: 'May 10, 2019'
+  },
+  {
+    name: 'DINESH.R',
+    internship: 'Campus Ambassador',
+    completed: 'May 10, 2019'
+  },
+  {
+    name: 'CHAKILELA VASANTH KUMAR',
+    internship: 'Campus Ambassador',
+    completed: 'May 10, 2019'
+  },
+  {
+    name: 'THUMMALA ABHIGNA',
+    internship: 'Campus Ambassador',
+    completed: 'May 10, 2019'
+  },
+  {
+    name: 'GARVIT KAUSHIK',
+    internship: 'Campus Ambassador',
+    completed: 'May 10, 2019'
+  },
+  {
+    name: 'VIJAY SELVARAJAN',
+    internship: 'Campus Ambassador',
+    completed: 'May 10, 2019'
   }
 ];
