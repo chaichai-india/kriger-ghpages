@@ -56,5 +56,12 @@ export const PERFORMERS: Performer[] = [
     job: 'Internship: User Engagement',
     description:
       'Interaction with teams was friendly. I felt the ambience of a team work in an organisation. How a app is shared,tested,Branding,Used, and removal of bugs, learnt through kriger.'
+  },
+  {
+    image_url: 'sashwat_tanwar',
+    name: 'Sashwat Tanwar',
+    job: 'Internship: User Engagement',
+    description:
+      'Kriger Campus gave me opportunity to learn key values like time management, team work and taught me how smart work can outrun hard work. During my internship we had regular meetings to plan out better working of the application. Thus improvising my decision making and leadership skills.'
   }
 ];

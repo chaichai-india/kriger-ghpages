@@ -8,7 +8,7 @@
 
 .performer__card {
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15), 0 2px 3px rgba(0, 0, 0, 0.2);
-  height: 400px;
+  height: 450px;
   width: 300px;
   display: grid;
   place-items: center;
@@ -23,7 +23,7 @@
   justify-content: center;
   text-align: center;
   margin-top: 1em;
-  height: 250px;
+  height: 280px;
   width: 260px;
 }
 
@@ -43,5 +43,5 @@
 .performer__card mat-card-content blockquote {
   font-size: 1em;
   text-align: center;
-  height: 150px;
+  height: 180px;
 }
