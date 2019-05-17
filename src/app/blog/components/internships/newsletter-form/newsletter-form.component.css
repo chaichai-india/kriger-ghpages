@@ -3,4 +3,11 @@
   place-items: center;
   place-items: center;
   text-align: center;
+  grid-gap: 1em;
+  margin-top: 2em;
+}
+
+.gform,
+.gform iframe {
+  width: 100%;
 }

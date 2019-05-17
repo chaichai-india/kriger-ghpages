@@ -16,7 +16,11 @@ import { NewsletterFormComponent } from './components/internships/newsletter-for
 import { MatCardModule } from '@angular/material/card';
 import { MatTableModule } from '@angular/material/table';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule, MatIconModule } from '@angular/material';
+import {
+  MatInputModule,
+  MatIconModule,
+  MatChipsModule
+} from '@angular/material';
 import { SharedModule } from '../shared/shared.module';
 import { PricingComponent } from './components/pricing/pricing.component';
 
@@ -41,6 +45,7 @@ import { PricingComponent } from './components/pricing/pricing.component';
     MatFormFieldModule,
     MatInputModule,
     MatIconModule,
+    MatChipsModule,
     SharedModule
   ]
 })
