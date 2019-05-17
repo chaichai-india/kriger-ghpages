@@ -7,9 +7,16 @@ import { DomSanitizer } from '@angular/platform-browser';
   styleUrls: ['./careers.component.css']
 })
 export class CareersComponent implements OnInit {
-  indeedUrl: string =
-    'https://www.indeedjobs.com/kriger-campus-indias-education-network/_hl/en_US?cpref=JXWAtnzf3XW5aRnY2g_zouV7xMD8uRK8SCWKYC7QXG4';
+  indeedUrl;
   constructor(public sanitizer: DomSanitizer) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.getTrustedUrl(
+      'https://www.indeedjobs.com/kriger-campus-indias-education-network'
+    );
+  }
+
+  getTrustedUrl(url: any) {
+    this.indeedUrl = this.sanitizer.bypassSecurityTrustResourceUrl(url);
+  }
 }
