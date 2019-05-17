@@ -19,14 +19,62 @@ header {
 
 header h3 {
   padding: 0.5em;
-  border-color: transparent;
-  border-bottom: 1px solid black;
+  /* border-color: transparent; */
+  /* border-bottom: 1px solid black; */
   letter-spacing: 0.05em;
   text-align: center;
-  font-size: 1.5em;
+  font-size: 2.5em;
+  text-transform: uppercase;
+  color: var(--primary-color);
   font-weight: 600;
+}
+
+table {
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  margin: 0;
+}
+
+table thead tr {
+  height: 4.5em;
+  background-image: var(--primary-gradient-right);
+  color: white;
+  text-shadow: 1px 1px 2px black;
 }
 
 .row-head {
   vertical-align: middle !important;
+}
+
+table tr td:nth-child(2),
+table tr td:nth-child(3),
+table tr td:nth-child(4),
+table tr td:nth-child(5),
+table tr th:not(:first-child) {
+  text-align: center;
+}
+
+table thead tr th {
+  font-size: 1.5em;
+  vertical-align: middle;
+}
+
+tr:hover {
+  background-color: #ffa;
+}
+
+td,
+th {
+  position: relative;
+}
+
+th:not(:first-child):hover::after {
+  content: '';
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.075);
+  left: 0;
+  top: -5000px;
+  height: 10000px;
+  width: 100%;
+  z-index: -1;
 }
