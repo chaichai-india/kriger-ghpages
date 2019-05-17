@@ -32,7 +32,7 @@ header h3 {
 table {
   border: 1px solid rgba(0, 0, 0, 0.2);
   overflow: hidden;
-  margin: 0;
+  margin-bottom: 0 !important;
 }
 
 table thead tr {
