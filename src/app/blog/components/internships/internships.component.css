@@ -38,13 +38,20 @@
 
 mat-chip-list {
   padding: 1em 0;
+  display: flex;
+  justify-content: center;
 }
 
 mat-chip {
-  border: 1px solid var(--primary-color);
+  border: 2px solid var(--primary-color);
   background-color: white !important;
   color: var(--primary-color) !important;
   margin: 2px !important;
+  padding: 0 5px;
+}
+
+mat-chip::after {
+  background-color: var(--primary-color) !important;
 }
 
 .internships__performers h3 {
