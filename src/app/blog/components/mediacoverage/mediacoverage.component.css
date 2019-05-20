@@ -17,11 +17,14 @@
 
 .mediacover__header h3 {
   padding: 0.5em;
-  border-color: transparent;
-  border-bottom: 1px solid black;
+  /* border-color: transparent; */
+  /* border-bottom: 1px solid black; */
   letter-spacing: 0.05em;
   text-align: center;
-  font-size: x-large;
+  font-size: 2.5em;
+  text-transform: uppercase;
+  color: var(--primary-color);
+  font-weight: 600;
 }
 
 .mediacover__container ul {
