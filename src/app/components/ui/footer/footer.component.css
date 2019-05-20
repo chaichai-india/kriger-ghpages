@@ -31,12 +31,13 @@
   font-weight: 600;
   /* letter-spacing: 1px; */
   color: rgba(0, 0, 0, 0.85);
-  font-size: small;
+  font-size: 0.8em;
 }
 
 .footer__container ul li {
-  margin: 0 1em;
+  margin: 0 0 0 1em;
   cursor: pointer;
+  text-align: center;
 }
 
 .footer__container ul li a {
@@ -101,6 +102,12 @@
   }
 
   .footer__container ul li {
-    margin: 0 0.5em;
+    margin: 0 0 0 0.5em;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .footer__container ul {
+    font-size: 0.7em;
   }
 }
