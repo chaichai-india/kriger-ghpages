@@ -5,7 +5,7 @@ import { Observable, Subscription } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 
 import { UserDetail } from '../../models/user/user-detail.model';
-import { LoginService } from '../login.service';
+import { LoginService } from '../authentication/login.service';
 
 @Injectable({
   providedIn: 'root'

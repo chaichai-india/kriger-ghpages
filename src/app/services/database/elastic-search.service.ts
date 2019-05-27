@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/database';
-import { LoginService } from '../login.service';
+import { LoginService } from '../authentication/login.service';
 
 @Injectable({
   providedIn: 'root'

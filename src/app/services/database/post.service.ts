@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 import { Observable } from 'rxjs';
 import { map, tap, shareReplay } from 'rxjs/operators';
-import { AuthService } from '../auth.service';
-import { LoginService } from '../login.service';
+import { AuthService } from '../authentication/auth.service';
+import { LoginService } from '../authentication/login.service';
 
 @Injectable({
   providedIn: 'root'
