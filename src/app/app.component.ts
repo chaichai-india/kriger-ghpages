@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+// import { SeoService } from './services/seo/seo.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -10,7 +11,9 @@ export class AppComponent implements OnInit {
   // visitCount: number = +localStorage.getItem('visitCount');
   // showIntro: boolean = this.visitCount == 0 || this.visitCount % 20 == 0;
 
-  constructor() {}
+  constructor() {
+    // seo.setMetaTags();
+  }
 
   ngOnInit() {
     // if (!this.visitCount) {
