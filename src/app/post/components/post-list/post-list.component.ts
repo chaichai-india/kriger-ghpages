@@ -1,6 +1,12 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
-import { Observable, forkJoin, combineLatest } from 'rxjs';
-import { map, concat, take } from 'rxjs/operators';
+import {
+  Observable,
+  forkJoin,
+  combineLatest,
+  BehaviorSubject,
+  Subject
+} from 'rxjs';
+import { map, concat, take, tap } from 'rxjs/operators';
 
 import { PostService } from '../../../services/database/post.service';
 
@@ -11,6 +17,7 @@ import { PostService } from '../../../services/database/post.service';
 })
 export class PostListComponent implements OnInit {
   posts: Observable<any[]>;
+  posts2 = new BehaviorSubject([]);
   isAuth: boolean;
   lastKey: string;
   loading: boolean;
@@ -42,7 +49,7 @@ export class PostListComponent implements OnInit {
     this.lastKey = this.postService.lastkey;
     // console.log(this.lastKey);
     this.postService.getPosts(5, this.lastKey).then(res => {
-      let joined_posts = combineLatest(res, this.posts).pipe(
+      this.posts = combineLatest(res, this.posts).pipe(
         map(([next, prev]) => {
           // console.log(next, prev);
           next.pop();
@@ -50,7 +57,7 @@ export class PostListComponent implements OnInit {
           return posts;
         })
       );
-      this.posts = joined_posts;
+
       setTimeout(() => {
         window.scrollTo(0, scrollPos + 200);
       }, 500);
@@ -65,6 +72,26 @@ export class PostListComponent implements OnInit {
     this.resetValues();
     this.getPosts(5).then(posts => {
       this.setValues(posts);
+    });
+  }
+
+  private getPosts2(key?) {
+    this.postService.getPosts(5).then(res => {
+      res.pipe(
+        tap(post => {
+          /// set the lastKey in preparation for next query
+          this.lastKey = post[0].key;
+          const newMovies = post.slice(0, 5);
+
+          /// Get current movies in BehaviorSubject
+          const currentMovies = this.posts2.getValue();
+
+          /// If data is identical, stop making queries
+
+          /// Concatenate new movies to current movies
+          this.posts2.next(currentMovies.concat(newMovies));
+        })
+      );
     });
   }
 
