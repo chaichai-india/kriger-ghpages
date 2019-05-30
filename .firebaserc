@@ -1,5 +1,17 @@
 {
   "projects": {
     "default": "kriger-campus-cfe41"
+  },
+  "targets": {
+    "kriger-campus-cfe41": {
+      "hosting": {
+        "prod": [
+          "kriger-campus-cfe41"
+        ],
+        "test": [
+          "kriger-campus-cfe41-test"
+        ]
+      }
+    }
   }
 }
