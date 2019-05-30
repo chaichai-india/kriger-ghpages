@@ -10,6 +10,7 @@ import { MatLinkPreviewModule } from '@angular-material-extensions/link-preview'
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 import { PostComponent } from './components/post/post.component';
 import { DialogComponent } from './components/post/post.component';
@@ -40,6 +41,7 @@ import { SharedModule } from '../shared/shared.module';
     MatButtonModule,
     MatIconModule,
     MatDialogModule,
+    InfiniteScrollModule,
     SharedModule
   ],
   exports: [PostListComponent]

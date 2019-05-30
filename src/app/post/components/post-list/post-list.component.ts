@@ -21,6 +21,7 @@ export class PostListComponent implements OnInit {
   isAuth: boolean;
   lastKey: string;
   loading: boolean;
+  infinite: boolean = false;
 
   @ViewChild('loadbtn', { read: ElementRef }) public laodbtn: ElementRef<any>;
 
@@ -64,34 +65,51 @@ export class PostListComponent implements OnInit {
     });
   }
 
+  nextBatch2() {
+    this.getPosts2();
+  }
+
   async getPosts(batch: number) {
     return this.postService.getPosts(batch);
   }
 
   initialize() {
     this.resetValues();
-    this.getPosts(5).then(posts => {
-      this.setValues(posts);
-    });
+    this.getPosts2();
+    // this.getPosts(5).then(posts => {
+    //   this.setValues(posts);
+    // });
   }
 
   private getPosts2(key?) {
-    this.postService.getPosts(5).then(res => {
-      res.pipe(
-        tap(post => {
-          /// set the lastKey in preparation for next query
-          this.lastKey = post[0].key;
-          const newMovies = post.slice(0, 5);
+    this.postService.getPosts(6, this.lastKey).then(res => {
+      console.log('TCL: PostListComponent -> res', res);
+      res
+        .pipe(
+          tap(post => {
+            console.log('TCL: PostListComponent -> post', post);
+            /// set the lastKey in preparation for next query
+            this.lastKey = post[0].key;
+            console.log('TCL: PostListComponent -> lastKey', this.lastKey);
+            const newPosts = post.slice(1, 6);
+            console.log('TCL: PostListComponent -> newPosts', newPosts);
 
-          /// Get current movies in BehaviorSubject
-          const currentMovies = this.posts2.getValue();
+            /// Get current Posts in BehaviorSubject
+            let currentPosts = this.posts2.getValue();
+            console.log('TCL: PostListComponent -> currentPosts', currentPosts);
 
-          /// If data is identical, stop making queries
-
-          /// Concatenate new movies to current movies
-          this.posts2.next(currentMovies.concat(newMovies));
-        })
-      );
+            /// If data is identical, stop making queries
+            if (!this.infinite) {
+              currentPosts = currentPosts.reverse();
+            }
+            /// Concatenate new Posts to current Posts
+            this.posts2.next([...currentPosts, ...newPosts.reverse()]);
+            this.infinite = true;
+            console.log('TCL: PostListComponent -> this.posts2', this.posts2);
+          }),
+          take(1)
+        )
+        .subscribe();
     });
   }
 

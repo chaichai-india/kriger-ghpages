@@ -1,13 +1,17 @@
-<div class="post-list__container">
-  <mat-spinner *ngIf="loading"></mat-spinner>
+<div
+  class="post-list__container"
+  infinite-scroll
+  (scrolled)="nextBatch2()"
+  [infiniteScrollThrottle]="2000"
+>
+  <!-- <mat-spinner *ngIf="loading"></mat-spinner> -->
 
-  <app-post *ngFor="let post of posts | async | reverse" [post]="post">
-  </app-post>
-  <div class="load__btn">
-    <button mat-stroked-button (click)="nextBatch()" *ngIf="posts | async">
+  <app-post *ngFor="let post of posts2 | async" [post]="post"> </app-post>
+  <!-- <div class="load__btn">
+    <button mat-stroked-button (click)="nextBatch2()" *ngIf="posts2 | async">
       Load More Posts
     </button>
-  </div>
+  </div> -->
 </div>
 
 <app-adbanner
