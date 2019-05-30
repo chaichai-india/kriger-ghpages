@@ -1,12 +1,6 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
-import {
-  Observable,
-  forkJoin,
-  combineLatest,
-  BehaviorSubject,
-  Subject
-} from 'rxjs';
-import { map, concat, take, tap } from 'rxjs/operators';
+import { Observable, combineLatest, BehaviorSubject } from 'rxjs';
+import { map, take, tap } from 'rxjs/operators';
 
 import { PostService } from '../../../services/database/post.service';
 
@@ -22,6 +16,8 @@ export class PostListComponent implements OnInit {
   lastKey: string;
   loading: boolean;
   infinite: boolean = false;
+  scrollCount: number = 1;
+  infiniteDisable: boolean = false;
 
   @ViewChild('loadbtn', { read: ElementRef }) public laodbtn: ElementRef<any>;
 
@@ -66,7 +62,19 @@ export class PostListComponent implements OnInit {
   }
 
   nextBatch2() {
-    this.getPosts2();
+    this.scrollCount++;
+    if (this.scrollCount >= 4) {
+      this.infiniteDisable = true;
+      this.loading = false;
+    } else {
+      this.getPosts2();
+    }
+  }
+
+  resetInfinite() {
+    this.scrollCount = 1;
+    this.infiniteDisable = false;
+    this.loading = true;
   }
 
   async getPosts(batch: number) {
@@ -105,6 +113,7 @@ export class PostListComponent implements OnInit {
             /// Concatenate new Posts to current Posts
             this.posts2.next([...currentPosts, ...newPosts.reverse()]);
             this.infinite = true;
+            this.loading = true;
             console.log('TCL: PostListComponent -> this.posts2', this.posts2);
           }),
           take(1)
