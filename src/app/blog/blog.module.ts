@@ -23,6 +23,7 @@ import {
 } from '@angular/material';
 import { SharedModule } from '../shared/shared.module';
 import { PricingComponent } from './components/pricing/pricing.component';
+import { InternshipTncComponent } from './components/internship-tnc/internship-tnc.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { PricingComponent } from './components/pricing/pricing.component';
     OurteamComponent,
     TeamMemberComponent,
     NewsletterFormComponent,
-    PricingComponent
+    PricingComponent,
+    InternshipTncComponent
   ],
   imports: [
     CommonModule,
