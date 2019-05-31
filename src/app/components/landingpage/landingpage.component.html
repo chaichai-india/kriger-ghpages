@@ -1,3 +1,8 @@
+<p class="inspiration">
+  The future of our country rests on our ability to successfully educate the
+  next generation.
+</p>
+
 <h2 class="tagline">
   Connecting Educators and Learners to make India 100% Literate
 </h2>
@@ -61,4 +66,38 @@
     >
     <span><span class="counter">5</span><span>Learn on the go</span></span>
   </div>
+</div>
+
+<div class="partners">
+  <h2 class="heading">Our Partners</h2>
+  <div class="images">
+    <img [src]="partner.url" *ngFor="let partner of partnerImages" />
+  </div>
+</div>
+
+<div class="featured">
+  <h2 class="heading">Featured In</h2>
+  <div class="images">
+    <img [src]="featured.url" *ngFor="let featured of featuredImages" />
+  </div>
+</div>
+
+<div class="awards">
+  <h2 class="heading">Awarded At</h2>
+  <div class="images">
+    <img [src]="award.url" *ngFor="let award of awardImages" />
+  </div>
+</div>
+
+<div class="contact">
+  <h2 class="heading">Contact us</h2>
+  <app-contact></app-contact>
+</div>
+<div class="download">
+  <a
+    href="https://play.google.com/store/apps/details?id=in.kriger.krigercampus"
+    target="_blank"
+    rel="noopener"
+    ><img src="/assets/images/play_store.png" width="300" height="100"/><img
+  /></a>
 </div>

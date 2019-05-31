@@ -94,3 +94,51 @@ h2.tagline {
 .steps.learner .counter {
   background-color: #138808;
 }
+
+/* from intro card */
+
+.partners,
+.featured,
+.awards,
+.contact {
+  width: 100%;
+  margin: 1em 0;
+}
+
+.heading {
+  /* font-size: x-large; */
+  color: red;
+  /* font-weight: 600; */
+  /* letter-spacing: 1px; */
+  text-align: center;
+  margin: 1em 0;
+}
+
+.partners .images,
+.featured .images,
+.awards .images {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 100px);
+  grid-gap: 1em;
+  place-items: center;
+  width: 100%;
+  justify-content: center;
+}
+
+.partners .images img,
+.featured .images img,
+.awards .images img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  box-shadow: 0 0 1px 0 rgb(0, 0, 0);
+  padding: 0.4em;
+}
+
+.download {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1em;
+  margin-top: 1em;
+}
