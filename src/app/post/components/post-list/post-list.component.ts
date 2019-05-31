@@ -23,47 +23,47 @@ export class PostListComponent implements OnInit {
 
   resetValues() {
     this.loading = true;
-    // console.log(
-    // 'TCL: PostListComponent -> resetValues -> this.loading',
-    // this.loading
-    // );
+    // // console.log(
+    // // 'TCL: PostListComponent -> resetValues -> this.loading',
+    // // this.loading
+    // // );
   }
 
   setValues(data) {
     this.posts = data;
     data.pipe(take(1)).subscribe(() => {
       this.loading = false;
-      // console.log(
-      // 'TCL: PostListComponent -> setValues -> this.loading',
-      // this.loading
-      // );
+      // // console.log(
+      // // 'TCL: PostListComponent -> setValues -> this.loading',
+      // // this.loading
+      // // );
     });
   }
 
-  nextBatch() {
-    let scrollPos = window.scrollY;
-    // console.log(scrollPos);
-    this.lastKey = this.postService.lastkey;
-    // console.log(this.lastKey);
-    this.postService.getPosts(5, this.lastKey).then(res => {
-      this.posts = combineLatest(res, this.posts).pipe(
-        map(([next, prev]) => {
-          // console.log(next, prev);
-          next.pop();
-          let posts = next.concat(prev);
-          return posts;
-        })
-      );
+  // nextBatch() {
+  //   let scrollPos = window.scrollY;
+  //   // console.log(scrollPos);
+  //   this.lastKey = this.postService.lastkey;
+  //   // console.log(this.lastKey);
+  //   this.postService.getPosts(5, this.lastKey).then(res => {
+  //     this.posts = combineLatest(res, this.posts).pipe(
+  //       map(([next, prev]) => {
+  //         // console.log(next, prev);
+  //         next.pop();
+  //         let posts = next.concat(prev);
+  //         return posts;
+  //       })
+  //     );
 
-      setTimeout(() => {
-        window.scrollTo(0, scrollPos + 200);
-      }, 500);
-    });
-  }
+  //     setTimeout(() => {
+  //       window.scrollTo(0, scrollPos + 200);
+  //     }, 500);
+  //   });
+  // }
 
   nextBatch2() {
     this.scrollCount++;
-    if (this.scrollCount >= 4) {
+    if (this.scrollCount >= 3) {
       this.infiniteDisable = true;
       this.loading = false;
     } else {
@@ -91,20 +91,20 @@ export class PostListComponent implements OnInit {
 
   private getPosts2(key?) {
     this.postService.getPosts(6, this.lastKey).then(res => {
-      console.log('TCL: PostListComponent -> res', res);
+      // console.log('TCL: PostListComponent -> res', res);
       res
         .pipe(
           tap(post => {
-            console.log('TCL: PostListComponent -> post', post);
+            // console.log('TCL: PostListComponent -> post', post);
             /// set the lastKey in preparation for next query
             this.lastKey = post[0].key;
-            console.log('TCL: PostListComponent -> lastKey', this.lastKey);
+            // console.log('TCL: PostListComponent -> lastKey', this.lastKey);
             const newPosts = post.slice(1, 6);
-            console.log('TCL: PostListComponent -> newPosts', newPosts);
+            // console.log('TCL: PostListComponent -> newPosts', newPosts);
 
             /// Get current Posts in BehaviorSubject
             let currentPosts = this.posts2.getValue();
-            console.log('TCL: PostListComponent -> currentPosts', currentPosts);
+            // console.log('TCL: PostListComponent -> currentPosts', currentPosts);
 
             /// If data is identical, stop making queries
             if (!this.infinite) {
@@ -114,7 +114,7 @@ export class PostListComponent implements OnInit {
             this.posts2.next([...currentPosts, ...newPosts.reverse()]);
             this.infinite = true;
             this.loading = true;
-            console.log('TCL: PostListComponent -> this.posts2', this.posts2);
+            // console.log('TCL: PostListComponent -> this.posts2', this.posts2);
           }),
           take(1)
         )
