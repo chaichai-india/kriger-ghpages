@@ -7,7 +7,6 @@ import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
-import { IntroCardComponent } from './components/intro-card/intro-card.component';
 import { NavbarComponent } from './components/ui/navbar/navbar.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
@@ -24,17 +23,18 @@ import { MatIconModule } from '@angular/material/icon';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatLinkPreviewModule } from '@angular-material-extensions/link-preview';
 
-import { SlideshowModule } from 'ng-simple-slideshow';
+// import { SlideshowModule } from 'ng-simple-slideshow';
 import { SharedModule } from './shared/shared.module';
 import { FooterComponent } from './components/ui/footer/footer.component';
+import { LandingpageComponent } from './components/landingpage/landingpage.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    IntroCardComponent,
     NavbarComponent,
     PageNotFoundComponent,
-    FooterComponent
+    FooterComponent,
+    LandingpageComponent
   ],
   imports: [
     BrowserModule,
@@ -53,7 +53,7 @@ import { FooterComponent } from './components/ui/footer/footer.component';
     AngularFireAuthModule,
     AngularFireDatabaseModule,
     MatLinkPreviewModule.forRoot(),
-    SlideshowModule,
+    // SlideshowModule,
     SharedModule
   ],
   providers: [],

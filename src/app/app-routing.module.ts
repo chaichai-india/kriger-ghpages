@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { LandingpageComponent } from './components/landingpage/landingpage.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'posts', pathMatch: 'full' },
+  { path: '', component: LandingpageComponent },
   { path: 'posts', loadChildren: './post/post.module#PostModule' },
   {
     path: 'profiles',

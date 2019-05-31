@@ -8,7 +8,6 @@ import { OurteamComponent } from './components/ourteam/ourteam.component';
 import { InternshipTncComponent } from './components/internship-tnc/internship-tnc.component';
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: 'internships' },
   { path: 'internships', component: InternshipsComponent },
   { path: 'media-coverage', component: MediacoverageComponent },
   { path: 'careers', component: CareersComponent },

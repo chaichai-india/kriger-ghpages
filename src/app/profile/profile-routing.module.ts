@@ -4,7 +4,6 @@ import { ProfileListComponent } from './components/profile-list/profile-list.com
 import { ProfileComponent } from './components/profile/profile.component';
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: 'profiles' },
   { path: 'profiles', component: ProfileListComponent },
   { path: 'india/:username', component: ProfileComponent }
 ];
