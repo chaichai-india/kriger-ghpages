@@ -3,10 +3,11 @@
 @import '~@fortawesome/fontawesome-free/css/all.css';
 
 :root {
-  --primary-color: #0062ff;
-  --accent-color: #00c6ff;
-  --primary-gradient-right: linear-gradient(to right, #00c6ff, #0062ff);
-  --primary-gradient-left: linear-gradient(to left, #00c6ff, #0062ff);
+  /* --primary-color: #0062ff;
+  --accent-color: #00c6ff; */
+  --primary-color: #1da1f2;
+  /* --primary-gradient-right: linear-gradient(to right, #00c6ff, #0062ff);
+  --primary-gradient-left: linear-gradient(to left, #00c6ff, #0062ff); */
   --primary-font-family: 'Lato', sans-serif;
   --secondary-font-family: 'Montserrat', sans-serif;
 }

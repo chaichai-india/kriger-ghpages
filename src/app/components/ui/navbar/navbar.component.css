@@ -5,7 +5,7 @@ nav {
   z-index: 10 !important;
   padding: 0 1rem !important;
   box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.4);
-  background-image: var(--primary-gradient-right);
+  background-color: var(--primary-color);
   color: white;
   font-weight: 600;
   font-family: var(--primary-font-family);

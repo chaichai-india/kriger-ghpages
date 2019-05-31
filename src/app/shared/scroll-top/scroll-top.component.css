@@ -7,7 +7,7 @@
 }
 
 .scroll-to-top button {
-  background-image: var(--primary-gradient-right);
+  background-color: var(--primary-color);
   color: white;
   font-size: 28px;
 }

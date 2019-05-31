@@ -39,7 +39,7 @@
   width: 100%;
   margin: 1em 0;
   /* background-color: dodgerblue; */
-  background-image: var(--primary-gradient-left);
+  background-color: var(--primary-color);
   text-align: center;
   color: white;
   font-size: 1.2em;

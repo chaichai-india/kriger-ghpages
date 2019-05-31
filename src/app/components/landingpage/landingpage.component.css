@@ -1,0 +1,96 @@
+:host {
+  width: 80vw;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1em;
+}
+
+h2.tagline {
+  margin: 0 0 1em 0;
+  word-spacing: 0.5em;
+  letter-spacing: 0.1em;
+  text-align: center;
+}
+
+.educators,
+.learners {
+  width: 100%;
+}
+
+.educators h2,
+.learners h2 {
+  margin: 1em 0;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.educators h2 {
+  color: #ff9933;
+}
+
+.learners h2 {
+  color: #138808;
+}
+
+.educators__list,
+.learners__list {
+  margin: 0.5em 0;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(0, auto));
+  place-items: center;
+  place-content: center;
+  grid-gap: 1em 1em;
+  text-align: center;
+}
+
+.steps {
+  width: 100%;
+  margin-bottom: 2em;
+}
+
+.steps h2 {
+  margin: 1em 0;
+  text-align: center;
+}
+
+.steps div {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(0, auto));
+  grid-gap: 1em;
+  place-items: flex-start;
+  place-content: center;
+  text-align: center;
+}
+
+.steps div > span {
+  display: flex;
+  height: 40px;
+  justify-content: center;
+  align-items: center;
+}
+
+.steps .counter {
+  color: white;
+  border-radius: 50%;
+  /* background-color: var(--primary-color); */
+  padding: 0.5em;
+  text-align: center;
+  font-weight: bold;
+  margin-right: 0.5em;
+  width: 30px;
+  height: 30px;
+  line-height: 13px;
+}
+
+.steps.educator .counter {
+  background-color: #ff9933;
+}
+
+.steps.learner .counter {
+  background-color: #138808;
+}
