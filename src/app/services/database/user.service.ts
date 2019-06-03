@@ -16,7 +16,7 @@ export class UserService {
   userList: Observable<any[]>;
 
   async getUsers() {
-    await this.loginService.loginIfNotAuth();
+    // await this.loginService.loginIfNotAuth();
     this.userRef = this.db.list(`/User_Detail`, ref => ref.orderByKey());
 
     try {
@@ -39,7 +39,7 @@ export class UserService {
   }
 
   async getUserDetail(uid: string) {
-    await this.loginService.loginIfNotAuth();
+    // await this.loginService.loginIfNotAuth();
     return await this.db.object(`/User_Detail/${uid}`).valueChanges();
   }
 

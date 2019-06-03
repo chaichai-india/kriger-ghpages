@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { LoginService } from './services/authentication/login.service';
+import { AuthService } from './services/authentication/auth.service';
+// import { LoginService } from './services/authentication/login.service';
 // import { SeoService } from './services/seo/seo.service';
 @Component({
   selector: 'app-root',
@@ -9,18 +10,28 @@ import { LoginService } from './services/authentication/login.service';
 export class AppComponent implements OnInit {
   title = 'kriger-campus-website';
 
-  // visitCount: number = +localStorage.getItem('visitCount');
-  // showIntro: boolean = this.visitCount == 0 || this.visitCount % 20 == 0;
-
-  constructor(private loginService: LoginService) {
+  constructor(private authService: AuthService) {
     // seo.setMetaTags();
   }
 
-  async login() {
-    await this.loginService.loginIfNotAuth();
+  logoutIfLogin() {
+    this.authService.isLoggedIn().then(user => {
+      if (user) {
+        const { email } = user;
+        if (email === 'ashish@kriger.in') {
+          this.authService.signout();
+        }
+      }
+    });
   }
+
+  // async login() {
+  //   await this.loginService.loginIfNotAuth();
+  // }
 
   ngOnInit() {
     // this.login().then(() => console.log('logged In'));
+    localStorage.setItem('user', null);
+    this.logoutIfLogin();
   }
 }

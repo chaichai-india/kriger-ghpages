@@ -24,9 +24,8 @@ export class PostDetailComponent implements OnInit {
     });
   }
   constructor(
-    private authService: AuthService,
     private postService: PostService,
-    private loginService: LoginService,
+
     private router: Router,
     private route: ActivatedRoute
   ) {}
@@ -34,15 +33,9 @@ export class PostDetailComponent implements OnInit {
   ngOnInit() {
     this.id = this.route.snapshot.params['id'];
     // console.log(this.id);
-    this.isAuth = this.authService.isLoggedIn;
+    // this.isAuth = this.authService.isLoggedIn;
     // console.log(this.isAuth);
 
-    if (this.isAuth) {
-      this.getPost(this.id);
-    } else {
-      this.loginService.signin().then(() => {
-        this.getPost(this.id);
-      });
-    }
+    this.getPost(this.id);
   }
 }

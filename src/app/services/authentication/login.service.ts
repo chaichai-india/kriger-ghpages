@@ -5,23 +5,23 @@ import { AuthService } from './auth.service';
   providedIn: 'root'
 })
 export class LoginService {
-  isAuth: boolean = this.authService.isLoggedIn;
-  user = {
-    email: 'ashish@kriger.in',
-    password: '123456'
-  };
+  isAuth = this.authService.isLoggedIn();
+  // user = {
+  //   email: 'ashish@kriger.in',
+  //   password: '123456'
+  // };
 
-  async loginIfNotAuth() {
-    if (!this.isAuth) {
-      await this.signin();
-    }
-  }
+  // async loginIfNotAuth() {
+  //   if (!this.isAuth) {
+  //     await this.signin();
+  //   }
+  // }
 
-  async signin() {
-    const { email, password } = this.user;
-    return await this.authService.login(email, password).then(() => {
-      // console.log('auth status ' + this.authService.isLoggedIn)
-    });
-  }
+  // async signin() {
+  //   const { email, password } = this.user;
+  //   return await this.authService.login(email, password).then(() => {
+  //     // console.log('auth status ' + this.authService.isLoggedIn)
+  //   });
+  // }
   constructor(private authService: AuthService) {}
 }

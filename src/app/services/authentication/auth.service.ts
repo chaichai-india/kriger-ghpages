@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { User } from 'firebase';
-import * as firebase from 'firebase/app';
+import { first } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -32,31 +32,34 @@ export class AuthService {
     }
   }
 
-  get isLoggedIn(): boolean {
-    const user = JSON.parse(localStorage.getItem('user'));
-    return user !== null;
+  isLoggedIn() {
+    return this.afauth.authState.pipe(first()).toPromise();
   }
 
-  getCurrentUser() {
-    return new Promise<any>((resolve, reject) => {
-      var user = firebase.auth().onAuthStateChanged(function(user) {
-        if (user) {
-          resolve(user);
-        } else {
-          reject('No user logged in');
-        }
-      });
-    });
+  signout() {
+    this.afauth.auth.signOut();
   }
+
+  // getCurrentUser() {
+  //   return new Promise<any>((resolve, reject) => {
+  //     var user = firebase.auth().onAuthStateChanged(function(user) {
+  //       if (user) {
+  //         resolve(user);
+  //       } else {
+  //         reject('No user logged in');
+  //       }
+  //     });
+  //   });
+  // }
 
   constructor(public afauth: AngularFireAuth) {
-    this.afauth.authState.subscribe(user => {
-      if (user) {
-        this.user = user;
-        localStorage.setItem('user', JSON.stringify(this.user));
-      } else {
-        localStorage.setItem('user', null);
-      }
-    });
+    // this.afauth.authState.subscribe(user => {
+    //   if (user) {
+    //     this.user = user;
+    //     localStorage.setItem('user', JSON.stringify(this.user));
+    //   } else {
+    //     localStorage.setItem('user', null);
+    //   }
+    // });
   }
 }

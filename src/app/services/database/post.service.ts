@@ -3,7 +3,6 @@ import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 import { Observable } from 'rxjs';
 import { map, tap, shareReplay } from 'rxjs/operators';
 import { AuthService } from '../authentication/auth.service';
-import { LoginService } from '../authentication/login.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +10,6 @@ import { LoginService } from '../authentication/login.service';
 export class PostService {
   postsRef: AngularFireList<any>;
   posts: Observable<any[]>;
-  isAuth: boolean = this.authService.isLoggedIn;
   lastKey: string;
 
   get lastkey() {
@@ -35,7 +33,7 @@ export class PostService {
 
   async getPosts(batch: number = 10, lastKey?: string) {
     // console.log(`post service auth = ${this.isAuth}`);
-    await this.loginService.loginIfNotAuth();
+    // await this.loginService.loginIfNotAuth();
     if (lastKey) {
       this.postsRef = this.db.list('/Post', ref =>
         ref
@@ -85,7 +83,7 @@ export class PostService {
   }
 
   async getPost(id: string) {
-    await this.loginService.loginIfNotAuth();
+    // await this.loginService.loginIfNotAuth();
     let id_exists = await this.db.database
       .ref('/Post')
       .once('value')
@@ -122,7 +120,6 @@ export class PostService {
 
   constructor(
     private db: AngularFireDatabase,
-    private authService: AuthService,
-    private loginService: LoginService
+    private authService: AuthService
   ) {}
 }

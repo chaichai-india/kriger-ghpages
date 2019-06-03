@@ -18,7 +18,7 @@ export class ProfileLinkService {
     //   .equalTo(name)
     //   .once('value')
     //   .then(snap => snap.exists());
-    await this.loginService.loginIfNotAuth();
+    // await this.loginService.loginIfNotAuth();
     return this.ref
       .orderByKey()
       .once('value')

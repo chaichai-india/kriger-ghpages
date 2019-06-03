@@ -36,7 +36,7 @@ export class ElasticSearchService {
   }
 
   async getUsersByStartChar(startChar: string, from: number = 0, callback) {
-    await this.loginService.loginIfNotAuth();
+    // await this.loginService.loginIfNotAuth();
     const wildcard = startChar.toLowerCase();
     const ref = this.db.database.ref().child(this.path);
 
