@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { User } from 'firebase';
+import * as firebase from 'firebase/app';
 
 @Injectable({
   providedIn: 'root'
@@ -34,6 +35,18 @@ export class AuthService {
   get isLoggedIn(): boolean {
     const user = JSON.parse(localStorage.getItem('user'));
     return user !== null;
+  }
+
+  getCurrentUser() {
+    return new Promise<any>((resolve, reject) => {
+      var user = firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+          resolve(user);
+        } else {
+          reject('No user logged in');
+        }
+      });
+    });
   }
 
   constructor(public afauth: AngularFireAuth) {

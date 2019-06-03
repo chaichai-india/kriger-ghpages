@@ -27,6 +27,7 @@ import { MatLinkPreviewModule } from '@angular-material-extensions/link-preview'
 import { SharedModule } from './shared/shared.module';
 import { FooterComponent } from './components/ui/footer/footer.component';
 import { LandingpageComponent } from './components/landingpage/landingpage.component';
+import { AuthGuard } from './services/authentication/auth.guard';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,7 @@ import { LandingpageComponent } from './components/landingpage/landingpage.compo
     // SlideshowModule,
     SharedModule
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
