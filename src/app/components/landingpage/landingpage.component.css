@@ -179,3 +179,44 @@ h2.tagline::after {
   padding: 1em;
   margin-top: 1em;
 }
+
+@media screen and (max-width: 1076px) {
+  :host {
+    width: 100vw;
+  }
+}
+
+@media screen and (max-width: 966px) {
+  h2.tagline {
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 780px) {
+  :host {
+    width: 100vw;
+  }
+
+  h2.tagline {
+    text-align: center;
+  }
+
+  .educators__list,
+  .learners__list {
+    grid-template-columns: 1fr;
+  }
+
+  .steps div {
+    grid-template-columns: 1fr;
+  }
+
+  .steps div > span {
+    grid-template-columns: 1fr 1.5fr;
+    width: 100%;
+    place-items: flex-start;
+    align-items: center;
+  }
+  .steps div > span > span:first-child {
+    justify-self: flex-end;
+  }
+}
