@@ -63,6 +63,11 @@ nav #navbarsDefault ul li:focus {
   outline: 0;
 }
 
+#signup mat-icon,
+#login mat-icon {
+  font-size: 1.5em;
+}
+
 nav .playstore {
   max-height: 50px;
 }
