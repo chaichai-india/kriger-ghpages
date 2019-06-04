@@ -1,44 +1,44 @@
-export const SLIDEIMAGES = [
-  {
-    url: 'assets/images/slideshow/image1.webp'
-  },
-  {
-    url: 'assets/images/slideshow/image2.webp'
-  },
-  {
-    url: 'assets/images/slideshow/image3.webp'
-  },
-  {
-    url: 'assets/images/slideshow/image4.webp'
-  },
-  {
-    url: 'assets/images/slideshow/image5.webp'
-  },
-  {
-    url: 'assets/images/slideshow/image6.webp'
-  },
-  {
-    url: 'assets/images/slideshow/image7.webp'
-  },
-  {
-    url: 'assets/images/slideshow/image8.webp'
-  },
-  {
-    url: 'assets/images/slideshow/image9.webp'
-  },
-  {
-    url: 'assets/images/slideshow/image10.webp'
-  }
-];
+// export const SLIDEIMAGES = [
+//   {
+//     url: 'assets/images/slideshow/image1.webp'
+//   },
+//   {
+//     url: 'assets/images/slideshow/image2.webp'
+//   },
+//   {
+//     url: 'assets/images/slideshow/image3.webp'
+//   },
+//   {
+//     url: 'assets/images/slideshow/image4.webp'
+//   },
+//   {
+//     url: 'assets/images/slideshow/image5.webp'
+//   },
+//   {
+//     url: 'assets/images/slideshow/image6.webp'
+//   },
+//   {
+//     url: 'assets/images/slideshow/image7.webp'
+//   },
+//   {
+//     url: 'assets/images/slideshow/image8.webp'
+//   },
+//   {
+//     url: 'assets/images/slideshow/image9.webp'
+//   },
+//   {
+//     url: 'assets/images/slideshow/image10.webp'
+//   }
+// ];
 
-export const SlideConfig = {
-  height: '400px',
-  autoPlay: true,
-  backgroundSize: 'contain',
-  backgroundPosition: 'center',
-  showDots: true,
-  dotColor: '#FFF'
-};
+// export const SlideConfig = {
+//   height: '400px',
+//   autoPlay: true,
+//   backgroundSize: 'contain',
+//   backgroundPosition: 'center',
+//   showDots: true,
+//   dotColor: '#FFF'
+// };
 
 export const PARTNERS = [
   {
