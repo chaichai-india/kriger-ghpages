@@ -5,7 +5,6 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
-import { NgxAuthFirebaseUIModule } from 'ngx-auth-firebaseui';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/ui/navbar/navbar.component';
@@ -54,7 +53,6 @@ import { AuthGuard } from './services/authentication/auth.guard';
     MatIconModule,
     BrowserAnimationsModule,
     AngularFireModule.initializeApp(environment.firebase),
-    NgxAuthFirebaseUIModule.forRoot(environment.firebase),
     AngularFireAuthModule,
     AngularFireDatabaseModule,
     MatLinkPreviewModule.forRoot(),

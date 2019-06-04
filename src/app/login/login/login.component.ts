@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from 'src/app/services/authentication/auth.service';
+
+// import { AuthProvider } from 'ngx-auth-firebaseui';
 
 @Component({
   selector: 'app-login',
@@ -7,16 +11,34 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  constructor(private router: Router) {}
+  loginForm: FormGroup;
+  isSubmitted = false;
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private formBuilder: FormBuilder
+  ) {}
 
-  printUser(event) {
-    console.log(event);
-    this.router.navigate(['/posts']);
+  get formControls() {
+    return this.loginForm.controls;
   }
 
-  printError(event) {
-    console.error(event);
+  login() {
+    console.log(this.loginForm.value);
+    this.isSubmitted = true;
+    if (this.loginForm.invalid) {
+      return;
+    }
+    const { email, password } = this.loginForm.value;
+    this.authService.login(email, password).then(() => {
+      this.router.navigate(['/posts']);
+    });
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.loginForm = this.formBuilder.group({
+      email: ['', Validators.required],
+      password: ['', Validators.required]
+    });
+  }
 }

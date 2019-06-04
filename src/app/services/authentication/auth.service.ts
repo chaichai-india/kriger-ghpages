@@ -14,7 +14,7 @@ export class AuthService {
       await this.afauth.auth
         .signInWithEmailAndPassword(email, password)
         .then(function(user) {
-          // console.log('auth success');
+          console.log('auth success');
         })
         .catch(function(error) {
           // Handle Errors here.
