@@ -11,12 +11,15 @@ import { AuthService } from 'src/app/services/authentication/auth.service';
 export class NavbarComponent implements OnInit {
   isNavbarCollapsed: boolean = true;
   isLoggedIn: boolean;
+  isLoggedInObservable;
   constructor(private authService: AuthService, public dialog: MatDialog) {}
 
   setLoggedIn() {
-    this.authService.isLoggedIn().then(user => {
-      this.isLoggedIn = user ? true : false;
-    });
+    // this.authService.isLoggedIn().then(user => {
+    //   this.isLoggedIn = user ? true : false;
+    // });
+
+    this.isLoggedInObservable = this.authService.isLoggedInObservable();
   }
 
   openDialog() {

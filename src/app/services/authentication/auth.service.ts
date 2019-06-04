@@ -36,6 +36,10 @@ export class AuthService {
     return this.afauth.authState.pipe(first()).toPromise();
   }
 
+  isLoggedInObservable() {
+    return this.afauth.authState.pipe(first());
+  }
+
   signout() {
     this.afauth.auth.signOut();
   }
