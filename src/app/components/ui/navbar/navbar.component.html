@@ -22,7 +22,7 @@
   >
     <ul class="navbar-nav ml-auto h-100">
       <li
-        *ngIf="isLoggedIn"
+        *ngIf="isLoggedInObservable | async"
         class="nav-item d-flex flex-column align-items-center justify-content-center mr-4 font-weight-bold"
         [routerLink]="['/posts']"
         routerLinkActive="nav-link-active"
@@ -31,7 +31,7 @@
         <span>Posts</span>
       </li>
       <li
-        *ngIf="isLoggedIn"
+        *ngIf="isLoggedInObservable | async"
         class="nav-item d-flex flex-column align-items-center justify-content-center mr-4 font-weight-bold"
         [routerLink]="['/profiles']"
         routerLinkActive="nav-link-active"
@@ -40,7 +40,7 @@
         <span>Profiles</span>
       </li>
       <li
-        *ngIf="!isLoggedIn"
+        *ngIf="!(isLoggedInObservable | async)"
         id="signup"
         class="nav-item d-flex flex-column align-items-center justify-content-center mr-4 font-weight-bold"
         (click)="openDialog()"
@@ -54,7 +54,7 @@
         <span>Sign Up</span>
       </li>
       <li
-        *ngIf="!isLoggedIn"
+        *ngIf="!(isLoggedInObservable | async)"
         id="login"
         class="nav-item d-flex flex-column align-items-center justify-content-center mr-4 font-weight-bold"
         [routerLink]="['/login']"
@@ -66,6 +66,20 @@
           fontIcon="fa-sign-in-alt"
         ></mat-icon>
         <span>Login</span>
+      </li>
+      <li
+        *ngIf="isLoggedInObservable | async"
+        id="logout"
+        class="nav-item d-flex flex-column align-items-center justify-content-center mr-4 font-weight-bold"
+        (click)="logout()"
+        routerLinkActive="nav-link-active"
+      >
+        <mat-icon
+          class="text-center"
+          fontSet="fas"
+          fontIcon="fa-sign-out-alt"
+        ></mat-icon>
+        <span>Logout</span>
       </li>
       <li
         class="nav-item d-flex flex-column align-items-center justify-content-center"

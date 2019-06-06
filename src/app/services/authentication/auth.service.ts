@@ -2,19 +2,22 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { User } from 'firebase';
 import { first } from 'rxjs/operators';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   user: User;
+  loggedInUpdate = new BehaviorSubject<boolean>(false);
 
   async login(email: string, password: string) {
     try {
       await this.afauth.auth
         .signInWithEmailAndPassword(email, password)
-        .then(function(user) {
+        .then(user => {
           console.log('auth success');
+          this.loggedInUpdate.next(true);
         })
         .catch(function(error) {
           // Handle Errors here.
@@ -32,16 +35,28 @@ export class AuthService {
     }
   }
 
-  isLoggedIn() {
+  isLoggedInPromise() {
     return this.afauth.authState.pipe(first()).toPromise();
   }
 
-  isLoggedInObservable() {
-    return this.afauth.authState.pipe(first());
+  isLoggedIn() {
+    this.isLoggedInPromise().then(user => {
+      this.loggedInUpdate.next(user ? true : false);
+    });
   }
+
+  async loggedInUpdateObservable() {
+    await this.isLoggedIn();
+    return this.loggedInUpdate.asObservable();
+  }
+
+  // isLoggedInObservable() {
+  //   return this.afauth.authState.pipe(first());
+  // }
 
   signout() {
     this.afauth.auth.signOut();
+    this.loggedInUpdate.next(false);
   }
 
   // getCurrentUser() {

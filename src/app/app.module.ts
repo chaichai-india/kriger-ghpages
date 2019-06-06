@@ -29,6 +29,7 @@ import { SharedModule } from './shared/shared.module';
 import { FooterComponent } from './components/ui/footer/footer.component';
 import { LandingpageComponent } from './components/landingpage/landingpage.component';
 import { AuthGuard } from './services/authentication/auth.guard';
+import { LoginGuard } from './services/authentication/login.guard';
 
 @NgModule({
   declarations: [
@@ -59,7 +60,7 @@ import { AuthGuard } from './services/authentication/auth.guard';
     // SlideshowModule,
     SharedModule
   ],
-  providers: [AuthGuard],
+  providers: [AuthGuard, LoginGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

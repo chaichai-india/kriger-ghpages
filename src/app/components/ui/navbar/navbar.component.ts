@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { DialogComponent } from '../../../post/components/post/post.component';
 import { AuthService } from 'src/app/services/authentication/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -12,14 +13,25 @@ export class NavbarComponent implements OnInit {
   isNavbarCollapsed: boolean = true;
   isLoggedIn: boolean;
   isLoggedInObservable;
-  constructor(private authService: AuthService, public dialog: MatDialog) {}
+  constructor(
+    private authService: AuthService,
+    public dialog: MatDialog,
+    private router: Router
+  ) {}
 
   setLoggedIn() {
     // this.authService.isLoggedIn().then(user => {
     //   this.isLoggedIn = user ? true : false;
     // });
 
-    this.isLoggedInObservable = this.authService.isLoggedInObservable();
+    this.authService
+      .loggedInUpdateObservable()
+      .then(status => (this.isLoggedInObservable = status));
+  }
+
+  async logout() {
+    await this.authService.signout();
+    this.router.navigate(['/']);
   }
 
   openDialog() {

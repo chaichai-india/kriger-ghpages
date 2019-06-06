@@ -4,7 +4,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { AuthService } from './auth.service';
 
 @Injectable()
-export class AuthGuard implements CanActivate {
+export class LoginGuard implements CanActivate {
   constructor(
     public afAuth: AngularFireAuth,
     public authService: AuthService,
@@ -15,15 +15,15 @@ export class AuthGuard implements CanActivate {
     return new Promise((resolve, reject) => {
       this.authService.isLoggedInPromise().then(
         user => {
-          if (user) {
+          if (!user) {
             return resolve(true);
           } else {
-            this.router.navigate(['/login']);
+            this.router.navigate(['/']);
             return resolve(true);
           }
         },
         err => {
-          this.router.navigate(['/login']);
+          this.router.navigate(['/']);
           return resolve(true);
         }
       );

@@ -15,7 +15,7 @@ export class AppComponent implements OnInit {
   }
 
   logoutIfLogin() {
-    this.authService.isLoggedIn().then(user => {
+    this.authService.isLoggedInPromise().then(user => {
       if (user) {
         const { email } = user;
         if (email === 'ashish@kriger.in') {
