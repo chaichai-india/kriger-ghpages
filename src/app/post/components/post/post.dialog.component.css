@@ -1,5 +1,6 @@
 :host {
   display: grid;
+  overflow: hidden;
 }
 
 div a img {
