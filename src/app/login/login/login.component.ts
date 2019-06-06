@@ -23,6 +23,14 @@ export class LoginComponent implements OnInit {
     return this.loginForm.controls;
   }
 
+  get email() {
+    return this.loginForm.get('email');
+  }
+
+  get password() {
+    return this.loginForm.get('password');
+  }
+
   login() {
     console.log(this.loginForm.value);
     this.isSubmitted = true;
@@ -37,7 +45,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
-      email: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required]
     });
   }
