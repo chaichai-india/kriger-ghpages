@@ -20,6 +20,7 @@ import { AdbannerComponent } from '../components/adbanner/adbanner.component';
 
 import { ReversePipe } from '../pipes/reverse.pipe';
 import { SharedModule } from '../shared/shared.module';
+import { CreatePostComponent } from './components/create-post/create-post.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { SharedModule } from '../shared/shared.module';
     PostListComponent,
     PostDetailComponent,
     AdbannerComponent,
-    ReversePipe
+    ReversePipe,
+    CreatePostComponent
   ],
   entryComponents: [DialogComponent],
   imports: [
