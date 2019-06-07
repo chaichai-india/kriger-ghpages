@@ -13,7 +13,8 @@ import {
   MatInputModule,
   MatCardModule,
   MatButtonModule,
-  MatToolbarModule
+  MatToolbarModule,
+  MatProgressBarModule
 } from '@angular/material';
 // import { NgxAuthFirebaseUIModule } from 'ngx-auth-firebaseui';
 
@@ -27,7 +28,8 @@ import {
     MatInputModule,
     MatCardModule,
     MatButtonModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatProgressBarModule
   ]
   // schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA]
 })

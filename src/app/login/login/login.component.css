@@ -1,22 +1,28 @@
 :host {
   width: 100%;
   display: grid;
+  grid-gap: 1em;
   place-items: center;
   place-content: center;
   height: 70vh;
 }
 
+.logo {
+  margin-top: 3em;
+}
+
 mat-toolbar {
   color: var(--primary-color);
-
   display: grid;
-
   place-items: center;
+}
+
+.login-card {
+  box-shadow: var(--primary-box-shadow);
 }
 
 mat-form-field {
   width: 100%;
-
   margin: 1em 0;
 }
 
@@ -28,6 +34,7 @@ mat-card-actions {
   display: grid;
   place-items: center;
   margin-bottom: 0 !important;
+  margin-left: 0;
 }
 
 button {
@@ -41,4 +48,5 @@ button#login:enabled {
 
 button#forgotpassword {
   color: var(--primary-color);
+  display: none;
 }

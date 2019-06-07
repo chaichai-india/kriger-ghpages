@@ -1,0 +1,42 @@
+@import '~@angular/material/theming';
+@include mat-core();
+
+$mat-kriger-blue: (
+    50 : #e4f4fd,
+    100 : #bbe3fb,
+    200 : #8ed0f9,
+    300 : #61bdf6,
+    400 : #3faff4,
+    500 : #1da1f2,
+    600 : #1a99f0,
+    700 : #158fee,
+    800 : #1185ec,
+    900 : #0a74e8,
+    A100 : #ffffff,
+    A200 : #dfedff,
+    A400 : #acd0ff,
+    A700 : #92c1ff,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #000000,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+$primary: mat-palette($mat-kriger-blue,500);
+  $accent: mat-palette($mat-kriger-blue,500);
+
+  $theme: mat-light-theme($primary, $accent);
+
+@include angular-material-theme($theme);
