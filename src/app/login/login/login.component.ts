@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/authentication/auth.service';
 import { BehaviorSubject } from 'rxjs';
+import { MatSnackBar } from '@angular/material';
 
 // import { AuthProvider } from 'ngx-auth-firebaseui';
 
@@ -18,7 +19,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private router: Router,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private _snackBar: MatSnackBar
   ) {}
 
   get formControls() {
@@ -41,9 +43,18 @@ export class LoginComponent implements OnInit {
       return;
     }
     const { email, password } = this.loginForm.value;
-    this.authService.login(email, password).then(() => {
+    this.authService.login(email, password).then(res => {
       this.loading.next(false);
+      const { message, action } = res;
+      this.openSnackBar(message, action);
       this.router.navigate(['/posts']);
+    });
+  }
+
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action, {
+      duration: 2000,
+      panelClass: 'success-dialog'
     });
   }
 

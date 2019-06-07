@@ -30,6 +30,7 @@ import { FooterComponent } from './components/ui/footer/footer.component';
 import { LandingpageComponent } from './components/landingpage/landingpage.component';
 import { AuthGuard } from './services/authentication/auth.guard';
 import { LoginGuard } from './services/authentication/login.guard';
+import { MatSnackBarModule } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { LoginGuard } from './services/authentication/login.guard';
     MatFormFieldModule,
     MatInputModule,
     MatIconModule,
+    MatSnackBarModule,
     BrowserAnimationsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,

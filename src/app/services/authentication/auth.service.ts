@@ -12,11 +12,13 @@ export class AuthService {
   loggedInUpdate = new BehaviorSubject<boolean>(false);
 
   async login(email: string, password: string) {
+    let response = { message: 'Failed!!', action: 'OH NO' };
     try {
       await this.afauth.auth
         .signInWithEmailAndPassword(email, password)
         .then(user => {
           console.log('auth success');
+          response = { message: 'Success!', action: 'Logged In' };
           this.loggedInUpdate.next(true);
         })
         .catch(function(error) {
@@ -24,15 +26,20 @@ export class AuthService {
           let errorCode = error.code;
           let errorMessage = error.message;
           if (errorCode === 'auth/wrong-password') {
+            response = { message: 'Wrong Password!!', action: 'OH NO' };
             alert('Wrong password.');
           } else {
+            response = { message: errorMessage, action: 'Error' };
             alert(errorMessage);
           }
           console.log(error);
         });
     } catch (e) {
+      response = { message: 'Failed!!', action: 'OH NO' };
       throw new Error('auth failed');
     }
+
+    return response;
   }
 
   isLoggedInPromise() {

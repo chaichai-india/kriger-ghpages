@@ -50,3 +50,7 @@ button#forgotpassword {
   color: var(--primary-color);
   display: none;
 }
+
+::ng-deep .success-dialog .mat-simple-snackbar-action {
+  color: var(--primary-color) !important;
+}
