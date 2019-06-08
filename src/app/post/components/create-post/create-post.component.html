@@ -12,8 +12,25 @@
       required
       #text
     ></textarea>
-    <small class="text-counter"
+    <small style="float: right" class="text-counter"
       ><code>{{ text.value.length }}</code> of <code>5000</code></small
     >
   </mat-form-field>
+  <input type="file" name="image" id="image" *ngIf="imageBtnClicked" />
+  <button
+    type="button"
+    mat-icon-button
+    (click)="imageBtnClicked = !imageBtnClicked"
+    *ngIf="!pdfBtnClicked"
+  >
+    <mat-icon>add_photo_alternate</mat-icon>
+  </button>
+  <button
+    type="button"
+    mat-icon-button
+    (click)="pdfBtnClicked = !pdfBtnClicked"
+    *ngIf="!imageBtnClicked"
+  >
+    <mat-icon>picture_as_pdf</mat-icon>
+  </button>
 </form>

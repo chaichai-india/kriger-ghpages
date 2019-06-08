@@ -9,6 +9,8 @@ import { CdkTextareaAutosize } from '@angular/cdk/text-field';
 })
 export class CreatePostComponent implements OnInit {
   postForm: FormGroup;
+  imageBtnClicked: boolean = false;
+  pdfBtnClicked: boolean = false;
 
   constructor(private formBuilder: FormBuilder) {}
   @ViewChild('autosize') autosize: CdkTextareaAutosize;
