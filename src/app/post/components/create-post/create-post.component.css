@@ -1,0 +1,13 @@
+:host {
+  width: 100%;
+  display: grid;
+  place-items: center;
+}
+
+form.post-form {
+  width: 100%;
+}
+
+#text {
+  width: 100%;
+}

@@ -125,6 +125,6 @@ export class PostListComponent implements OnInit {
   constructor(private postService: PostService) {}
 
   ngOnInit() {
-    this.initialize();
+    // this.initialize();
   }
 }

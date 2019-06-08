@@ -1,20 +1,19 @@
-<mat-expansion-panel>
-  <mat-expansion-panel-header>
-    <mat-panel-title>
-      Write Post
-    </mat-panel-title>
-    <mat-panel-description>
-      Post
-      <mat-icon>account_circle</mat-icon>
-    </mat-panel-description>
-  </mat-expansion-panel-header>
-
-  <form class="example-form">
-    <mat-form-field>
-      <textarea
-        matInput
-        placeholder="Grow your knowledge by sharing photo, text, or file. Don't post any political or unparliamentary content."
-      ></textarea>
-    </mat-form-field>
-  </form>
-</mat-expansion-panel>
+<form [formGroup]="postForm" class="post-form">
+  <mat-form-field id="text" appearance="outline">
+    <textarea
+      matInput
+      maxlength="5000"
+      formControlName="text"
+      cdkTextareaAutosize
+      #autosize="cdkTextareaAutosize"
+      cdkAutosizeMinRows="5"
+      cdkAutosizeMaxRows="10"
+      placeholder="Write Post"
+      required
+      #text
+    ></textarea>
+    <small class="text-counter"
+      ><code>{{ text.value.length }}</code> of <code>5000</code></small
+    >
+  </mat-form-field>
+</form>

@@ -21,6 +21,8 @@ import { AdbannerComponent } from '../components/adbanner/adbanner.component';
 import { ReversePipe } from '../pipes/reverse.pipe';
 import { SharedModule } from '../shared/shared.module';
 import { CreatePostComponent } from './components/create-post/create-post.component';
+import { MatFormFieldModule, MatInputModule } from '@angular/material';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -43,6 +45,9 @@ import { CreatePostComponent } from './components/create-post/create-post.compon
     MatButtonModule,
     MatIconModule,
     MatDialogModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
     InfiniteScrollModule,
     SharedModule
   ],
