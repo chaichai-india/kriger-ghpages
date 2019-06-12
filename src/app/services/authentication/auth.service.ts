@@ -66,6 +66,10 @@ export class AuthService {
     this.loggedInUpdate.next(false);
   }
 
+  get userID() {
+    return this.afauth.auth.currentUser.uid;
+  }
+
   // getCurrentUser() {
   //   return new Promise<any>((resolve, reject) => {
   //     var user = firebase.auth().onAuthStateChanged(function(user) {

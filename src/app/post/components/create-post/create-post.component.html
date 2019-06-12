@@ -1,4 +1,4 @@
-<form [formGroup]="postForm" class="post-form">
+<form [formGroup]="postForm" (ngSubmit)="postSubmit()" class="post-form">
   <mat-form-field id="text" appearance="outline">
     <textarea
       matInput
@@ -16,6 +16,8 @@
       ><code>{{ text.value.length }}</code> of <code>5000</code></small
     >
   </mat-form-field>
+  <p>{{text.value}}</p>
+  <button mat-raised-button id="submit" [disabled]="!postForm.valid" type="submit">Post</button>
   <!-- <input
     type="file"
     accept="image/jpeg, image/png"

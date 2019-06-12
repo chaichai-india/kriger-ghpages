@@ -24,3 +24,9 @@ form.post-form {
 #preview img {
   width: 100%;
 }
+
+button#submit:enabled {
+  background-color: var(--primary-color);
+  color: white;
+  float: right;
+}
