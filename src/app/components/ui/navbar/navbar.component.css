@@ -63,6 +63,15 @@ nav #navbarsDefault ul li:focus {
   outline: 0;
 }
 
+#signup,
+#login {
+  display: none;
+}
+
+/* .show {
+  display: 
+} */
+
 #signup mat-icon,
 #login mat-icon,
 #logout mat-icon {

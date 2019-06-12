@@ -16,7 +16,27 @@
       ><code>{{ text.value.length }}</code> of <code>5000</code></small
     >
   </mat-form-field>
-  <input type="file" name="image" id="image" *ngIf="imageBtnClicked" />
+  <input
+    type="file"
+    accept="image/jpeg, image/png"
+    name="image"
+    id="image"
+    *ngIf="imageBtnClicked"
+    (change)="onImageChange($event)"
+  />
+  <input
+    type="file"
+    accept="application/pdf"
+    name="pdf"
+    id="pdf"
+    *ngIf="pdfBtnClicked"
+  />
+  <figure id="preview">
+    <img
+      *ngIf="imagePreview"
+      [src]="sanitizer.bypassSecurityTrustUrl(imagePreview)"
+    />
+  </figure>
   <button
     type="button"
     mat-icon-button

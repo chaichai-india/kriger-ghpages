@@ -11,6 +11,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+// import { ImageCropperModule } from 'ngx-image-cropper';
 
 import { PostComponent } from './components/post/post.component';
 import { DialogComponent } from './components/post/post.component';
@@ -49,6 +50,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatFormFieldModule,
     MatInputModule,
     InfiniteScrollModule,
+    // ImageCropperModule,
     SharedModule
   ],
   exports: [PostListComponent]

@@ -39,6 +39,7 @@
         <mat-icon>account_box</mat-icon>
         <span>Profiles</span>
       </li>
+
       <li
         *ngIf="!(isLoggedInObservable | async)"
         id="signup"
@@ -67,6 +68,7 @@
         ></mat-icon>
         <span>Login</span>
       </li>
+
       <li
         *ngIf="isLoggedInObservable | async"
         id="logout"

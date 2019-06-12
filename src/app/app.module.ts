@@ -23,6 +23,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatLinkPreviewModule } from '@angular-material-extensions/link-preview';
+import { Ng2ImgMaxModule } from 'ng2-img-max'
 
 // import { SlideshowModule } from 'ng-simple-slideshow';
 import { SharedModule } from './shared/shared.module';
@@ -59,6 +60,7 @@ import { MatSnackBarModule } from '@angular/material';
     AngularFireAuthModule,
     AngularFireDatabaseModule,
     MatLinkPreviewModule.forRoot(),
+    Ng2ImgMaxModule,
     // SlideshowModule,
     SharedModule
   ],

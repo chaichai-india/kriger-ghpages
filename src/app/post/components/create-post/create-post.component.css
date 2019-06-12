@@ -19,3 +19,8 @@ form.post-form {
 #image {
   width: 100%;
 }
+
+#preview,
+#preview img {
+  width: 100%;
+}
