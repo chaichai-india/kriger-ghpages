@@ -35,7 +35,7 @@ h2.tagline {
 } */
 
 h2.tagline::after {
-  content: '';
+  content: "";
   position: absolute;
   width: 100%;
   height: 20%;
@@ -208,6 +208,7 @@ h2.tagline::after {
 
   .steps div {
     grid-template-columns: 1fr;
+    text-align: left;
   }
 
   .steps div > span {

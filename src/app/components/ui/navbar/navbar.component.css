@@ -1,5 +1,5 @@
 /* -------------------------------------------------- */
-@import '~bootstrap/dist/css/bootstrap.min.css';
+@import "~bootstrap/dist/css/bootstrap.min.css";
 
 nav {
   z-index: 10 !important;
@@ -73,9 +73,12 @@ nav #navbarsDefault ul li:focus {
 } */
 
 #signup mat-icon,
-#login mat-icon,
-#logout mat-icon {
+#login mat-icon {
   font-size: 1.5em;
+}
+
+#logout button {
+  outline: none;
 }
 
 nav .playstore {

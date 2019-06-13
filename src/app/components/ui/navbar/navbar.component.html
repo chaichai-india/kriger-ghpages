@@ -73,6 +73,38 @@
         *ngIf="isLoggedInObservable | async"
         id="logout"
         class="nav-item d-flex flex-column align-items-center justify-content-center mr-4 font-weight-bold"
+      >
+        <button mat-button [matMenuTriggerFor]="menu" style="height: 100%">
+          <img
+            src="assets/images/nav_logo.png"
+            height="32"
+            width="32"
+            style="border-radius: 50%"
+          />
+          <mat-icon>arrow_drop_down</mat-icon>
+        </button>
+
+        <mat-menu #menu="matMenu" xPosition="before">
+          <span mat-menu-item>Hello, Ashish</span>
+          <span
+            mat-menu-item
+            class="d-flex align-items-center justify-content-center"
+            (click)="logout()"
+          >
+            <mat-icon
+              class="d-flex align-items-center justify-content-center"
+              fontSet="fas"
+              fontIcon="fa-sign-out-alt"
+            ></mat-icon>
+            <span>Logout</span>
+          </span>
+        </mat-menu>
+      </li>
+
+      <!-- <li
+        *ngIf="isLoggedInObservable | async"
+        id="logout"
+        class="nav-item d-flex flex-column align-items-center justify-content-center mr-4 font-weight-bold"
         (click)="logout()"
         routerLinkActive="nav-link-active"
       >
@@ -82,7 +114,7 @@
           fontIcon="fa-sign-out-alt"
         ></mat-icon>
         <span>Logout</span>
-      </li>
+      </li> -->
       <li
         class="nav-item d-flex flex-column align-items-center justify-content-center"
       >
