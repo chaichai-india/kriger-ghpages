@@ -60,6 +60,9 @@ export class CreatePostComponent implements OnInit {
   async postSubmit() {
     // console.log(this.postForm.value);
     const { text } = this.postForm.value;
+    if(text === '') {
+      return;
+    }
     const uid = await this.authService.userID;
     const timestamp = this.timeService.timestamp;
     this.newPost = {
