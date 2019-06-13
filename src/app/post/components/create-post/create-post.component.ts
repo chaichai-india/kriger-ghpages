@@ -58,7 +58,7 @@ export class CreatePostComponent implements OnInit {
   // }
 
   async postSubmit() {
-    console.log(this.postForm.value);
+    // console.log(this.postForm.value);
     const { text } = this.postForm.value;
     const uid = await this.authService.userID;
     const timestamp = this.timeService.timestamp;
@@ -69,7 +69,7 @@ export class CreatePostComponent implements OnInit {
     }
     console.log(this.newPost);
     this.postService.addPost(this.newPost).then(post => {
-      console.log(post.key);
+      // console.log(post.key);
       this.postForm.reset();
       this.redirectTo('posts');
     }).catch(err => console.log(err));          

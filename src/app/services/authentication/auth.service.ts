@@ -17,7 +17,7 @@ export class AuthService {
       await this.afauth.auth
         .signInWithEmailAndPassword(email, password)
         .then(user => {
-          console.log('auth success');
+          // console.log('auth success');
           response = { message: 'Success!', action: 'Logged In' };
           this.loggedInUpdate.next(true);
         })
