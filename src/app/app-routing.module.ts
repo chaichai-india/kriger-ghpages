@@ -5,10 +5,7 @@ import { LandingpageComponent } from './components/landingpage/landingpage.compo
 
 const routes: Routes = [
   { path: '', component: LandingpageComponent },
-  {
-    path: 'posts',
-    loadChildren: './post/post.module#PostModule'
-  },
+  { path: 'posts', loadChildren: './post/post.module#PostModule' },
   {
     path: 'profiles',
     loadChildren: './profile/profile.module#ProfileModule'

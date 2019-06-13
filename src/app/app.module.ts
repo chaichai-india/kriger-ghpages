@@ -36,6 +36,7 @@ import { MatSnackBarModule } from '@angular/material';
 @NgModule({
   declarations: [
     AppComponent,
+    LandingpageComponent,
     NavbarComponent,
     PageNotFoundComponent,
     FooterComponent,
