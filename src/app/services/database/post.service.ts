@@ -118,6 +118,11 @@ export class PostService {
     }
   }
 
+  async addPost(post) {
+    this.postsRef = this.db.list('/Post');
+    return this.postsRef.push(post);
+  }
+
   constructor(
     private db: AngularFireDatabase,
     private authService: AuthService

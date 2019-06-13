@@ -1,9 +1,11 @@
 <form [formGroup]="postForm" (ngSubmit)="postSubmit()" class="post-form">
   <mat-form-field id="text" appearance="outline">
+      
     <textarea
       matInput
       maxlength="5000"
       formControlName="text"
+      wrap="hard"
       cdkTextareaAutosize
       #autosize="cdkTextareaAutosize"
       cdkAutosizeMinRows="5"
@@ -16,7 +18,7 @@
       ><code>{{ text.value.length }}</code> of <code>5000</code></small
     >
   </mat-form-field>
-  <p>{{text.value}}</p>
+  <!-- <p id="text-test">{{text.value}}</p> -->
   <button mat-raised-button id="submit" [disabled]="!postForm.valid" type="submit">Post</button>
   <!-- <input
     type="file"

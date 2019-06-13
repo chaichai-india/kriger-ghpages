@@ -2,6 +2,7 @@
   width: 100%;
   display: grid;
   place-items: center;
+  margin-bottom: 1em;
 }
 
 form.post-form {
@@ -28,5 +29,9 @@ form.post-form {
 button#submit:enabled {
   background-color: var(--primary-color);
   color: white;
+  float: right;
+}
+
+button#submit:disabled {
   float: right;
 }
