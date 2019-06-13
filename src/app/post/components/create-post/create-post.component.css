@@ -26,6 +26,11 @@ form.post-form {
   width: 100%;
 }
 
+button#submit:enabled,
+button#submit:disabled {
+  width: 100%;
+}
+
 button#submit:enabled {
   background-color: var(--primary-color);
   color: white;
