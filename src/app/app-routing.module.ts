@@ -2,10 +2,15 @@ import { NgModule } from "@angular/core";
 import { Routes, RouterModule, PreloadAllModules } from "@angular/router";
 import { PageNotFoundComponent } from "./components/page-not-found/page-not-found.component";
 import { LandingpageComponent } from "./components/landingpage/landingpage.component";
+import { CustomPreloadingStrategy } from "./custom-preloading-strategy";
 
 const routes: Routes = [
   { path: "", component: LandingpageComponent },
-  { path: "posts", loadChildren: "./post/post.module#PostModule" },
+  {
+    path: "posts",
+    loadChildren: "./post/post.module#PostModule",
+    data: { preload: true }
+  },
   {
     path: "profiles",
     loadChildren: "./profile/profile.module#ProfileModule"
@@ -33,9 +38,10 @@ const routes: Routes = [
   imports: [
     RouterModule.forRoot(routes, {
       scrollPositionRestoration: "enabled",
-      preloadingStrategy: PreloadAllModules
+      preloadingStrategy: CustomPreloadingStrategy
     })
   ],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [CustomPreloadingStrategy]
 })
 export class AppRoutingModule {}
