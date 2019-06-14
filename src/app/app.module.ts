@@ -38,7 +38,9 @@ import { LoginGuard } from "./services/authentication/login.guard";
 import {
   MatSnackBarModule,
   MatMenuModule,
-  MatDialogModule
+  MatDialogModule,
+  MatProgressBarModule,
+  MatProgressSpinnerModule
 } from "@angular/material";
 
 @NgModule({
@@ -60,6 +62,7 @@ import {
     // LoginModule,
     AppRoutingModule,
     MatToolbarModule,
+    MatProgressBarModule,
     MatTabsModule,
     MatButtonModule,
     MatFormFieldModule,

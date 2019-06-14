@@ -1,5 +1,12 @@
 <div class="main__container">
   <app-navbar></app-navbar>
+  <mat-progress-bar
+    style="margin-top: -1.3em"
+    *ngIf="loading"
+    color="primary"
+    mode="indeterminate"
+  >
+  </mat-progress-bar>
   <router-outlet></router-outlet>
   <app-footer></app-footer>
 </div>
