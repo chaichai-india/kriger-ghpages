@@ -1,0 +1,11 @@
+:host {
+  display: grid;
+  overflow: hidden;
+}
+
+div a img {
+  max-height: 100px;
+  max-width: 300px;
+  width: 100%;
+  height: 100%;
+}

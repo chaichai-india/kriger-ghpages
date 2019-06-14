@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { MatDialog, MatSnackBar } from "@angular/material";
-import { DialogComponent } from "../../../post/components/post/post.component";
+// import { DialogComponent } from "../../../post/components/post/post.component";
 import { AuthService } from "src/app/services/authentication/auth.service";
 import { Router } from "@angular/router";
 // import { BehaviorSubject } from "rxjs";
@@ -61,7 +61,7 @@ export class NavbarComponent implements OnInit {
   }
 
   openDialog() {
-    const dialogRef = this.dialog.open(DialogComponent);
+    const dialogRef = this.dialog.open(NavDialogComponent);
 
     dialogRef.afterClosed().subscribe(result => {
       // console.log(`Dialog result: ${result}`);
@@ -72,3 +72,10 @@ export class NavbarComponent implements OnInit {
     this.setLoggedIn();
   }
 }
+
+@Component({
+  selector: "nav-post-dialog",
+  templateUrl: "./nav.dialog.component.html",
+  styleUrls: ["./nav.dialog.component.css"]
+})
+export class NavDialogComponent {}
