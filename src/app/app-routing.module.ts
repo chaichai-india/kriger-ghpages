@@ -1,5 +1,5 @@
 import { NgModule } from "@angular/core";
-import { Routes, RouterModule } from "@angular/router";
+import { Routes, RouterModule, PreloadAllModules } from "@angular/router";
 import { PageNotFoundComponent } from "./components/page-not-found/page-not-found.component";
 import { LandingpageComponent } from "./components/landingpage/landingpage.component";
 
@@ -31,7 +31,10 @@ const routes: Routes = [
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes, { scrollPositionRestoration: "enabled" })
+    RouterModule.forRoot(routes, {
+      scrollPositionRestoration: "enabled",
+      preloadingStrategy: PreloadAllModules
+    })
   ],
   exports: [RouterModule]
 })
