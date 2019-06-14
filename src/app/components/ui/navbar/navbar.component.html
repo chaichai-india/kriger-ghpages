@@ -69,7 +69,7 @@
         <span>Login</span>
       </li>
 
-      <li
+      <!-- <li
         *ngIf="isLoggedInObservable | async"
         id="logout"
         class="nav-item d-flex flex-column align-items-center justify-content-center mr-4 font-weight-bold"
@@ -99,6 +99,48 @@
             <span>Logout</span>
           </span>
         </mat-menu>
+      </li> -->
+
+      <li
+        *ngIf="isLoggedInObservable | async"
+        id="logout"
+        class="nav-item dropdown d-flex flex-column align-items-center justify-content-center mr-4 font-weight-bold"
+      >
+        <span
+          class="nav-link dropdown-toggle"
+          id="navbarDropdown"
+          role="button"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+        >
+          <img
+            [src]="
+              userDetails?.details
+                ? userDetails?.details?.thumb
+                : 'assets/images/user.svg'
+            "
+            height="40"
+            width="40"
+            style="border-radius: 50%; object-fit: cover;"
+          />
+        </span>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <span class="dropdown-item text-center"
+            >Hello, {{ userDetails?.details?.name }}</span
+          >
+          <div class="dropdown-divider"></div>
+          <span
+            class="dropdown-item d-flex align-items-center justify-content-center"
+            (click)="logout()"
+            ><mat-icon
+              class="d-flex align-items-center justify-content-center"
+              fontSet="fas"
+              fontIcon="fa-sign-out-alt"
+            ></mat-icon>
+            <span style="height: 24px">Logout</span></span
+          >
+        </div>
       </li>
 
       <!-- <li
