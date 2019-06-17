@@ -25,37 +25,63 @@
     accept="image/jpeg, image/png"
     name="image"
     id="image"
+    #image
+    formControlName="image"
     (change)="onImageChange($event)"
   />
+  <!-- *ngIf="pdfBtnClicked" -->
   <input
+    style="display: none"
     type="file"
     accept="application/pdf"
     name="pdf"
     id="pdf"
-    *ngIf="pdfBtnClicked"
+    #pdf
+    formControlName="pdf"
+    (change)="onPdfChange($event)"
   />
+  <div class="labels__container">
+    <div class="labels">
+      <!-- (click)="imageBtnClicked = !imageBtnClicked" -->
+      <label for="image" mat-icon-button *ngIf="!pdfBtnClicked">
+        <mat-icon>{{
+          imageBtnClicked ? "photo" : "add_photo_alternate"
+        }}</mat-icon>
+        <span>{{ imageName ? imageName : "Attach IMAGE" }}</span>
+      </label>
+      <button
+        type="button"
+        mat-icon-button
+        *ngIf="imageBtnClicked"
+        (click)="removeImage()"
+      >
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+    <div class="labels">
+      <!-- (click)="pdfBtnClicked = !pdfBtnClicked" -->
+      <label for="pdf" mat-icon-button *ngIf="!imageBtnClicked">
+        <mat-icon>picture_as_pdf</mat-icon>
+        <span>{{ pdfName ? pdfName : "Attach PDF" }}</span>
+      </label>
+      <button
+        type="button"
+        mat-icon-button
+        *ngIf="pdfBtnClicked"
+        (click)="removePdf()"
+      >
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+  </div>
+
   <figure id="preview">
     <img
       *ngIf="imagePreview"
       [src]="sanitizer.bypassSecurityTrustUrl(imagePreview)"
     />
   </figure>
-  <label
-    for="image"
-    mat-icon-button
-    (click)="imageBtnClicked = !imageBtnClicked"
-    *ngIf="!pdfBtnClicked"
-  >
-    <mat-icon>add_photo_alternate</mat-icon>
-  </label>
-  <button
-    type="button"
-    mat-icon-button
-    (click)="pdfBtnClicked = !pdfBtnClicked"
-    *ngIf="!imageBtnClicked"
-  >
-    <mat-icon>picture_as_pdf</mat-icon>
-  </button>
+
   <button
     mat-raised-button
     id="submit"
