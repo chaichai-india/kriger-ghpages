@@ -1,6 +1,5 @@
 <form [formGroup]="postForm" (ngSubmit)="postSubmit()" class="post-form">
   <mat-form-field id="text" appearance="outline">
-      
     <textarea
       matInput
       maxlength="5000"
@@ -18,14 +17,14 @@
       ><code>{{ text.value.length }}</code> of <code>5000</code></small
     >
   </mat-form-field>
-  <!-- <p id="text-test">{{text.value}}</p> -->
-  <button mat-raised-button id="submit" [disabled]="!postForm.valid" type="submit">Post</button>
-  <!-- <input
+  <!-- <label for="image">Add Image</label> -->
+  <!-- *ngIf="imageBtnClicked" -->
+  <input
+    style="display: none"
     type="file"
     accept="image/jpeg, image/png"
     name="image"
     id="image"
-    *ngIf="imageBtnClicked"
     (change)="onImageChange($event)"
   />
   <input
@@ -41,14 +40,14 @@
       [src]="sanitizer.bypassSecurityTrustUrl(imagePreview)"
     />
   </figure>
-  <button
-    type="button"
+  <label
+    for="image"
     mat-icon-button
     (click)="imageBtnClicked = !imageBtnClicked"
     *ngIf="!pdfBtnClicked"
   >
     <mat-icon>add_photo_alternate</mat-icon>
-  </button>
+  </label>
   <button
     type="button"
     mat-icon-button
@@ -56,5 +55,13 @@
     *ngIf="!imageBtnClicked"
   >
     <mat-icon>picture_as_pdf</mat-icon>
-  </button> -->
+  </button>
+  <button
+    mat-raised-button
+    id="submit"
+    [disabled]="!postForm.valid"
+    type="submit"
+  >
+    Post
+  </button>
 </form>

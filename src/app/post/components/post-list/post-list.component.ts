@@ -1,13 +1,13 @@
-import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
-import { Observable, combineLatest, BehaviorSubject } from 'rxjs';
-import { map, take, tap } from 'rxjs/operators';
+import { Component, OnInit, ElementRef, ViewChild } from "@angular/core";
+import { Observable, combineLatest, BehaviorSubject } from "rxjs";
+import { map, take, tap } from "rxjs/operators";
 
-import { PostService } from '../../../services/database/post.service';
+import { PostService } from "../../../services/database/post.service";
 
 @Component({
-  selector: 'app-post-list',
-  templateUrl: './post-list.component.html',
-  styleUrls: ['./post-list.component.css']
+  selector: "app-post-list",
+  templateUrl: "./post-list.component.html",
+  styleUrls: ["./post-list.component.css"]
 })
 export class PostListComponent implements OnInit {
   posts: Observable<any[]>;
@@ -19,7 +19,7 @@ export class PostListComponent implements OnInit {
   scrollCount: number = 1;
   infiniteDisable: boolean = false;
 
-  @ViewChild('loadbtn', { read: ElementRef }) public laodbtn: ElementRef<any>;
+  @ViewChild("loadbtn", { read: ElementRef }) public laodbtn: ElementRef<any>;
 
   resetValues() {
     this.loading = true;
@@ -125,6 +125,6 @@ export class PostListComponent implements OnInit {
   constructor(private postService: PostService) {}
 
   ngOnInit() {
-    this.initialize();
+    // this.initialize();
   }
 }

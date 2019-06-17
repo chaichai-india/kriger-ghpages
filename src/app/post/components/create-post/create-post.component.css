@@ -26,6 +26,11 @@ form.post-form {
   width: 100%;
 }
 
+#preview img {
+  height: 200px;
+  object-fit: contain;
+}
+
 button#submit:enabled,
 button#submit:disabled {
   width: 100%;
