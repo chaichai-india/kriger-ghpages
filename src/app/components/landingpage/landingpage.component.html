@@ -80,7 +80,7 @@
   </div>
 </div>
 
-<div class="featured">
+<div class="featured" [routerLink]="['/media-coverage']">
   <h2 class="heading">Featured In</h2>
   <div class="images">
     <img [src]="featured.url" *ngFor="let featured of featuredImages" />

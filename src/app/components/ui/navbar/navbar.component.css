@@ -26,14 +26,14 @@ nav .navbar-brand img {
 nav .navbar-brand span.name {
   padding: 0 0.5em;
   font-size: 1.2em;
-  text-shadow: 1px 3px 0px rgba(0, 0, 0, 0.36);
+  /* text-shadow: 1px 3px 0px rgba(0, 0, 0, 0.36); */
   margin-bottom: 2px;
 }
 
 nav .navbar-brand span.beta {
   font-size: medium;
   background-color: rgba(239, 19, 19, 0.902);
-  box-shadow: 1px 1px 0px 0px rgba(0, 0, 0, 0.4);
+  /* box-shadow: 1px 1px 0px 0px rgba(0, 0, 0, 0.4); */
   height: 25px;
   margin-left: 0.5em;
   margin-top: 4px;
