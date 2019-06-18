@@ -9,7 +9,7 @@ import { Router } from "@angular/router";
 import { Ng2ImgMaxService } from "ng2-img-max";
 import { DomSanitizer } from "@angular/platform-browser";
 import { AngularFireStorage } from "@angular/fire/storage";
-import { Observable } from "rxjs";
+// import { Observable } from "rxjs";
 import { finalize } from "rxjs/operators";
 
 @Component({
@@ -51,6 +51,7 @@ export class CreatePostComponent implements OnInit {
     this.imagePreview = "";
     this.imageName = "";
     this.image.nativeElement.value = null;
+    this.postForm.controls["image"].reset();
     this.postImage = null;
   }
 
@@ -58,6 +59,8 @@ export class CreatePostComponent implements OnInit {
     this.pdfBtnClicked = false;
     this.pdfName = "";
     this.pdf.nativeElement.value = null;
+    this.postForm.controls["pdf"].reset();
+    this.postPdf = null;
   }
 
   onImageChange(event) {
@@ -67,11 +70,11 @@ export class CreatePostComponent implements OnInit {
     // this.postImage = image;
     this.ng2ImgMax.compressImage(image, 0.075, true).subscribe(
       result => {
-        console.log(result.type);
+        // console.log(result.type);
         this.postImage = new File([result], result.name, { type: result.type });
         // this.postImage.type = result.type;
         this.getImagePreview(this.postImage);
-        console.log(this.postImage);
+        // console.log(this.postImage);
       },
       error => {
         console.log("😢 Oh no!", error);
@@ -96,7 +99,7 @@ export class CreatePostComponent implements OnInit {
     this.postPdf = pdf;
     this.pdfName = pdf.name;
     this.pdfBtnClicked = true;
-    console.log(pdf.size, pdf);
+    // console.log(pdf.size, pdf);
   }
 
   getImagePreview(file: File) {
@@ -116,7 +119,7 @@ export class CreatePostComponent implements OnInit {
       .pipe(
         finalize(async () => {
           this.imageDownloadUrl = await ref.getDownloadURL().toPromise();
-          console.log(this.imageDownloadUrl);
+          // console.log(this.imageDownloadUrl);
           this.postService.addPostImageUrl(this.imageDownloadUrl, postid);
         })
       )
@@ -132,7 +135,7 @@ export class CreatePostComponent implements OnInit {
       .pipe(
         finalize(async () => {
           this.pdfDownloadUrl = await ref.getDownloadURL().toPromise();
-          console.log(this.pdfDownloadUrl);
+          // console.log(this.pdfDownloadUrl);
           this.postService.addPostPdfUrl(this.pdfDownloadUrl, postid);
         })
       )
@@ -140,7 +143,7 @@ export class CreatePostComponent implements OnInit {
   }
 
   async postSubmit() {
-    console.log(this.postForm.value);
+    // console.log(this.postForm.value);
     const { text } = this.postForm.value;
     const image = this.postImage ? this.postImage : null;
     const pdf = this.postPdf ? this.postPdf : null;
@@ -171,7 +174,7 @@ export class CreatePostComponent implements OnInit {
       this.newPost.pdf_url = "";
     }
 
-    console.log(this.newPost);
+    // console.log(this.newPost);
     this.postService
       .addPost(this.newPost)
       .then(async post => {

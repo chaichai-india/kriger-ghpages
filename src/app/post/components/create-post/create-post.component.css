@@ -21,23 +21,43 @@ form.post-form {
   width: 100%;
 }
 
+.labels__container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin-top: 0.2em;
+}
+
 .labels {
   display: flex;
-  width: 50%;
-  margin: 0.2em 0;
+  width: 36px;
+  height: 36px;
+  justify-content: center;
+  align-items: center;
+  /* margin: 0.2em 0; */
   cursor: pointer;
-  border: 1px solid black;
-  border-radius: 2px;
-  padding-left: 0.5em;
+  /* border: 1px solid black; */
+  border-radius: 50%;
+  /* padding-left: 0.5em; */
+  color: white;
+  background-color: var(--primary-color);
+  margin-right: 0.5em;
 }
 
 .labels label {
   display: flex;
   align-items: center;
+  cursor: pointer;
 }
 
 .labels button {
   margin-left: auto;
+}
+
+#preview {
+  display: grid;
+  grid-gap: 1em;
+  margin-top: 1em;
 }
 
 #preview,
@@ -50,17 +70,18 @@ form.post-form {
   object-fit: contain;
 }
 
+#preview button {
+  width: 80px;
+  justify-self: center;
+}
+
 button#submit:enabled,
 button#submit:disabled {
-  width: 100%;
+  margin-left: auto;
 }
 
 button#submit:enabled {
   background-color: var(--primary-color);
   color: white;
-  float: right;
-}
-
-button#submit:disabled {
   float: right;
 }
