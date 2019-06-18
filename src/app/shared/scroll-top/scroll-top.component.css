@@ -15,6 +15,10 @@
   justify-content: center;
 }
 
+::ng-deep .scroll-to-top button .mat-button-wrapper {
+  padding: 0;
+}
+
 .show-scrollTop {
   opacity: 1;
   transition: all 0.2s ease-in-out;
