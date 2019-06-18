@@ -1,6 +1,7 @@
-:host {
+.nav-dialog {
   display: grid;
   overflow: hidden;
+  padding: 1em;
 }
 
 div a img {
@@ -8,4 +9,8 @@ div a img {
   max-width: 300px;
   width: 100%;
   height: 100%;
+}
+
+::ng-deep .mat-dialog-container {
+  padding: 0;
 }

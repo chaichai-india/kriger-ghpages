@@ -142,6 +142,10 @@ h2.tagline::after {
   margin: 1em 0;
 }
 
+.featured {
+  cursor: pointer;
+}
+
 .heading {
   /* font-size: x-large; */
   color: red;

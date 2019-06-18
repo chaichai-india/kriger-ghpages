@@ -10,6 +10,13 @@
   background-color: var(--primary-color);
   color: white;
   font-size: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+::ng-deep .scroll-to-top button .mat-button-wrapper {
+  padding: 0;
 }
 
 .show-scrollTop {
