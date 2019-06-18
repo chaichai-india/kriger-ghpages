@@ -3,6 +3,7 @@ import { NgModule } from "@angular/core";
 import { AngularFireModule } from "@angular/fire";
 import { AngularFireDatabaseModule } from "@angular/fire/database";
 import { AngularFireAuthModule } from "@angular/fire/auth";
+import { AngularFireStorageModule } from "@angular/fire/storage";
 import { environment } from "../environments/environment";
 import { AppRoutingModule } from "./app-routing.module";
 
@@ -11,13 +12,13 @@ import {
   NavbarComponent,
   NavDialogComponent
 } from "./components/ui/navbar/navbar.component";
-import { DialogComponent } from "../app/post/components/post/post.component";
+// import { DialogComponent } from "../app/post/components/post/post.component";
 import { PageNotFoundComponent } from "./components/page-not-found/page-not-found.component";
 
-import { PostModule } from "./post/post.module";
-import { ProfileModule } from "./profile/profile.module";
-import { BlogModule } from "./blog/blog.module";
-import { LoginModule } from "./login/login.module";
+// import { PostModule } from "./post/post.module";
+// import { ProfileModule } from "./profile/profile.module";
+// import { BlogModule } from "./blog/blog.module";
+// import { LoginModule } from "./login/login.module";
 
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatTabsModule } from "@angular/material/tabs";
@@ -75,6 +76,7 @@ import {
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFireDatabaseModule,
+    AngularFireStorageModule,
     MatLinkPreviewModule.forRoot(),
     Ng2ImgMaxModule,
     // SlideshowModule,

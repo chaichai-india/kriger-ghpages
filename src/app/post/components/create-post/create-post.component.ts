@@ -8,6 +8,9 @@ import { PostService } from "src/app/services/database/post.service";
 import { Router } from "@angular/router";
 import { Ng2ImgMaxService } from "ng2-img-max";
 import { DomSanitizer } from "@angular/platform-browser";
+import { AngularFireStorage } from "@angular/fire/storage";
+import { Observable } from "rxjs";
+import { finalize } from "rxjs/operators";
 
 @Component({
   selector: "app-create-post",
@@ -18,6 +21,7 @@ export class CreatePostComponent implements OnInit {
   postForm: FormGroup;
   imageBtnClicked: boolean = false;
   imageName: string;
+  imageDownloadUrl: Observable<string>;
   pdfBtnClicked: boolean = false;
   pdfName: string;
   newPost: Post;
@@ -27,6 +31,7 @@ export class CreatePostComponent implements OnInit {
     private authService: AuthService,
     private timeService: TimestampService,
     private postService: PostService,
+    private storage: AngularFireStorage,
     private router: Router,
     private ng2ImgMax: Ng2ImgMaxService,
     public sanitizer: DomSanitizer
@@ -58,9 +63,12 @@ export class CreatePostComponent implements OnInit {
     let image = event.target.files[0];
     this.imageName = image.name;
     this.imageBtnClicked = true;
+    // this.postImage = image;
     this.ng2ImgMax.compressImage(image, 0.075, true).subscribe(
       result => {
-        this.postImage = new File([result], result.name);
+        console.log(result.type);
+        this.postImage = new File([result], result.name, { type: result.type });
+        // this.postImage.type = result.type;
         this.getImagePreview(this.postImage);
         console.log(this.postImage);
       },
@@ -90,7 +98,20 @@ export class CreatePostComponent implements OnInit {
     };
   }
 
-  uploadImage(image: File) {}
+  uploadImage(image: File, postid) {
+    const imagePath = `Posts neelu/new_${postid + image.name}`;
+    const ref = this.storage.ref(imagePath);
+    const task = this.storage.upload(imagePath, image);
+    task
+      .snapshotChanges()
+      .pipe(
+        finalize(async () => {
+          this.imageDownloadUrl = await ref.getDownloadURL().toPromise();
+          console.log(this.imageDownloadUrl);
+        })
+      )
+      .subscribe();
+  }
 
   uploadPdf(pdf: File) {}
 
@@ -104,7 +125,9 @@ export class CreatePostComponent implements OnInit {
     }
 
     if (image) {
-      await this.uploadImage(image);
+      console.log(image);
+
+      // await this.uploadImage(image, "test1");
     }
 
     if (pdf) {
@@ -121,7 +144,10 @@ export class CreatePostComponent implements OnInit {
     console.log(this.newPost);
     // this.postService
     //   .addPost(this.newPost)
-    //   .then(post => {
+    //   .then(async post => {
+    //     if (image) {
+    //       await this.uploadImage(image, post.key);
+    //     }
     //     // console.log(post.key);
     //     this.postForm.reset();
     //     this.redirectTo("posts");
