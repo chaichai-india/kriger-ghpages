@@ -21,9 +21,10 @@ export class CreatePostComponent implements OnInit {
   postForm: FormGroup;
   imageBtnClicked: boolean = false;
   imageName: string;
-  imageDownloadUrl: Observable<string>;
+  imageDownloadUrl: string;
   pdfBtnClicked: boolean = false;
   pdfName: string;
+  pdfDownloadUrl: string;
   newPost: Post;
 
   constructor(
@@ -74,13 +75,21 @@ export class CreatePostComponent implements OnInit {
       },
       error => {
         console.log("😢 Oh no!", error);
+        this.removeImage();
+        alert("Unsupported image type");
       }
     );
   }
 
   onPdfChange(event) {
     let pdf = event.target.files[0];
+    if (pdf.name.slice(-3) != "pdf") {
+      this.removePdf();
+      alert("Attached file is not pdf!!");
+      return;
+    }
     if (pdf.size > 5242880) {
+      this.removePdf();
       alert("Attached PDF size exceeds allowed limit of 5 MB!!");
       return;
     }
@@ -99,7 +108,7 @@ export class CreatePostComponent implements OnInit {
   }
 
   uploadImage(image: File, postid) {
-    const imagePath = `Posts neelu/new_${postid + image.name}`;
+    const imagePath = `Posts/new_${postid}`;
     const ref = this.storage.ref(imagePath);
     const task = this.storage.upload(imagePath, image);
     task
@@ -108,12 +117,27 @@ export class CreatePostComponent implements OnInit {
         finalize(async () => {
           this.imageDownloadUrl = await ref.getDownloadURL().toPromise();
           console.log(this.imageDownloadUrl);
+          this.postService.addPostImageUrl(this.imageDownloadUrl, postid);
         })
       )
       .subscribe();
   }
 
-  uploadPdf(pdf: File) {}
+  uploadPdf(pdf: File, postid) {
+    const pdfPath = `Pdfs/pdf#${postid}`;
+    const ref = this.storage.ref(pdfPath);
+    const task = this.storage.upload(pdfPath, pdf);
+    task
+      .snapshotChanges()
+      .pipe(
+        finalize(async () => {
+          this.pdfDownloadUrl = await ref.getDownloadURL().toPromise();
+          console.log(this.pdfDownloadUrl);
+          this.postService.addPostPdfUrl(this.pdfDownloadUrl, postid);
+        })
+      )
+      .subscribe();
+  }
 
   async postSubmit() {
     console.log(this.postForm.value);
@@ -121,17 +145,15 @@ export class CreatePostComponent implements OnInit {
     const image = this.postImage ? this.postImage : null;
     const pdf = this.postPdf ? this.postPdf : null;
     if (text === "") {
+      alert("Post text content cannot be empty!");
       return;
     }
 
-    if (image) {
-      console.log(image);
-
-      // await this.uploadImage(image, "test1");
-    }
-
-    if (pdf) {
-      await this.uploadPdf(pdf);
+    if (image && pdf) {
+      this.removeImage();
+      this.removePdf();
+      alert("Only 1 attachment allowed!!");
+      return;
     }
     const uid = await this.authService.userID;
     const timestamp = this.timeService.timestamp;
@@ -141,18 +163,29 @@ export class CreatePostComponent implements OnInit {
       timestamp
     };
 
+    if (image) {
+      this.newPost.image_url = "";
+    }
+
+    if (pdf) {
+      this.newPost.pdf_url = "";
+    }
+
     console.log(this.newPost);
-    // this.postService
-    //   .addPost(this.newPost)
-    //   .then(async post => {
-    //     if (image) {
-    //       await this.uploadImage(image, post.key);
-    //     }
-    //     // console.log(post.key);
-    //     this.postForm.reset();
-    //     this.redirectTo("posts");
-    //   })
-    //   .catch(err => console.log(err));
+    this.postService
+      .addPost(this.newPost)
+      .then(async post => {
+        if (image) {
+          await this.uploadImage(image, post.key);
+        }
+        if (pdf) {
+          await this.uploadPdf(pdf, post.key);
+        }
+        // console.log(post.key);
+        this.postForm.reset();
+        this.redirectTo("posts");
+      })
+      .catch(err => console.log(err));
   }
 
   redirectTo(uri: string) {

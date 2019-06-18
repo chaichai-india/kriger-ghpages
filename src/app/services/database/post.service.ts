@@ -1,11 +1,11 @@
-import { Injectable } from '@angular/core';
-import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
-import { Observable } from 'rxjs';
-import { map, tap, shareReplay } from 'rxjs/operators';
-import { AuthService } from '../authentication/auth.service';
+import { Injectable } from "@angular/core";
+import { AngularFireDatabase, AngularFireList } from "@angular/fire/database";
+import { Observable } from "rxjs";
+import { map, tap, shareReplay } from "rxjs/operators";
+import { AuthService } from "../authentication/auth.service";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class PostService {
   postsRef: AngularFireList<any>;
@@ -35,14 +35,14 @@ export class PostService {
     // console.log(`post service auth = ${this.isAuth}`);
     // await this.loginService.loginIfNotAuth();
     if (lastKey) {
-      this.postsRef = this.db.list('/Post', ref =>
+      this.postsRef = this.db.list("/Post", ref =>
         ref
           .orderByKey()
           .endAt(lastKey)
           .limitToLast(batch)
       );
     } else {
-      this.postsRef = this.db.list('/Post', ref =>
+      this.postsRef = this.db.list("/Post", ref =>
         ref.orderByKey().limitToLast(batch)
       );
     }
@@ -59,11 +59,11 @@ export class PostService {
         shareReplay(1),
         map(changes =>
           changes.map(c => {
-            const userRef = 'User_Detail';
+            const userRef = "User_Detail";
             let uid = c.payload.val().uid;
             let userdetail = this.getData(userRef, uid);
 
-            const postCounterRef = 'Post_Counter';
+            const postCounterRef = "Post_Counter";
             let key = c.payload.key;
             let postCounter = this.getData(postCounterRef, key);
 
@@ -77,7 +77,7 @@ export class PostService {
         )
       );
     } catch (err) {
-      throw new Error('Posts fetch failed');
+      throw new Error("Posts fetch failed");
     }
     return await this.posts;
   }
@@ -85,8 +85,8 @@ export class PostService {
   async getPost(id: string) {
     // await this.loginService.loginIfNotAuth();
     let id_exists = await this.db.database
-      .ref('/Post')
-      .once('value')
+      .ref("/Post")
+      .once("value")
       .then(snapshot => snapshot.hasChild(id));
     // console.log(id_exists);
     if (id_exists) {
@@ -96,13 +96,13 @@ export class PostService {
         .pipe(
           // tap(() => console.log('post by id called')),
           map(post => {
-            const userRef = 'User_Detail';
+            const userRef = "User_Detail";
             let payloadValue: any = post.payload.val();
             // console.log(payloadValue.uid);
             let uid = payloadValue.uid;
             let userdetail = this.getData(userRef, uid);
 
-            const postCounterRef = 'Post_Counter';
+            const postCounterRef = "Post_Counter";
             let key = post.payload.key;
             let postCounter = this.getData(postCounterRef, key);
             return {
@@ -119,8 +119,18 @@ export class PostService {
   }
 
   async addPost(post) {
-    this.postsRef = this.db.list('/Post');
+    this.postsRef = this.db.list("/Post");
     return this.postsRef.push(post);
+  }
+
+  async addPostImageUrl(url: string, key) {
+    this.postsRef = this.db.list("/Post");
+    return this.postsRef.update(key, { image_url: url });
+  }
+
+  async addPostPdfUrl(url: string, key) {
+    this.postsRef = this.db.list("/Post");
+    return this.postsRef.update(key, { pdf_url: url });
   }
 
   constructor(
