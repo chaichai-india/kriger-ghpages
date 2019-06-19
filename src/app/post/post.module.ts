@@ -1,29 +1,33 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
 
-import { PostRoutingModule } from './post-routing.module';
+import { PostRoutingModule } from "./post-routing.module";
 
-import { MatCardModule } from '@angular/material/card';
-import { MomentModule } from 'ngx-moment';
-import { LinkyModule } from 'ngx-linky';
-import { MatLinkPreviewModule } from '@angular-material-extensions/link-preview';
-import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
-import { MatDialogModule } from '@angular/material/dialog';
-import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { MatCardModule } from "@angular/material/card";
+import { MomentModule } from "ngx-moment";
+import { LinkyModule } from "ngx-linky";
+import { MatLinkPreviewModule } from "@angular-material-extensions/link-preview";
+import { MatButtonModule } from "@angular/material/button";
+import { MatIconModule } from "@angular/material/icon";
+import { MatDialogModule } from "@angular/material/dialog";
+import { InfiniteScrollModule } from "ngx-infinite-scroll";
 // import { ImageCropperModule } from 'ngx-image-cropper';
 
-import { PostComponent } from './components/post/post.component';
-import { DialogComponent } from './components/post/post.component';
-import { PostListComponent } from './components/post-list/post-list.component';
-import { PostDetailComponent } from './components/post-detail/post-detail.component';
-import { AdbannerComponent } from '../components/adbanner/adbanner.component';
+import { PostComponent } from "./components/post/post.component";
+import { DialogComponent } from "./components/post/post.component";
+import { PostListComponent } from "./components/post-list/post-list.component";
+import { PostDetailComponent } from "./components/post-detail/post-detail.component";
+import { AdbannerComponent } from "../components/adbanner/adbanner.component";
 
-import { ReversePipe } from '../pipes/reverse.pipe';
-import { SharedModule } from '../shared/shared.module';
-import { CreatePostComponent } from './components/create-post/create-post.component';
-import { MatFormFieldModule, MatInputModule } from '@angular/material';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReversePipe } from "../pipes/reverse.pipe";
+import { SharedModule } from "../shared/shared.module";
+import { CreatePostComponent } from "./components/create-post/create-post.component";
+import {
+  MatFormFieldModule,
+  MatInputModule,
+  MatProgressBarModule
+} from "@angular/material";
+import { ReactiveFormsModule } from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -46,6 +50,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatButtonModule,
     MatIconModule,
     MatDialogModule,
+    MatProgressBarModule,
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,

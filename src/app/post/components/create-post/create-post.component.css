@@ -85,3 +85,7 @@ button#submit:enabled {
   color: white;
   float: right;
 }
+
+progress::-webkit-progress-inner-value {
+  transition: width 0.1s ease;
+}

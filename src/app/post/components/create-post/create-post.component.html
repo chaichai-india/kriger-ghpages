@@ -17,8 +17,7 @@
       ><code>{{ text.value.length }}</code> of <code>5000</code></small
     >
   </mat-form-field>
-  <!-- <label for="image">Add Image</label> -->
-  <!-- *ngIf="imageBtnClicked" -->
+
   <input
     style="display: none"
     type="file"
@@ -29,8 +28,8 @@
     formControlName="image"
     (change)="onImageChange($event)"
   />
-  <!-- *ngIf="pdfBtnClicked" -->
-  <input
+
+  <!-- <input
     style="display: none"
     type="file"
     accept="application/pdf"
@@ -39,8 +38,9 @@
     #pdf
     formControlName="pdf"
     (change)="onPdfChange($event)"
-  />
-  <figure id="preview">
+  /> -->
+
+  <figure id="preview" *ngIf="imagePreview">
     <img
       *ngIf="imagePreview"
       [src]="sanitizer.bypassSecurityTrustUrl(imagePreview)"
@@ -48,18 +48,16 @@
     <button
       type="button"
       mat-flat-button
-      color="primary"
+      color="warn"
       *ngIf="imageBtnClicked"
       (click)="removeImage()"
     >
       Remove
-      <!-- <mat-icon>close</mat-icon> -->
     </button>
   </figure>
 
   <div class="labels__container">
     <div class="labels" *ngIf="!pdfBtnClicked && !imageBtnClicked">
-      <!-- (click)="imageBtnClicked = !imageBtnClicked" -->
       <label
         for="image"
         mat-icon-button
@@ -68,11 +66,10 @@
         <mat-icon>{{
           imageBtnClicked ? "photo" : "add_photo_alternate"
         }}</mat-icon>
-        <!-- <span>{{ imageName ? imageName : "Attach IMAGE" }}</span> -->
       </label>
     </div>
-    <div class="labels" *ngIf="!pdfBtnClicked && !imageBtnClicked">
-      <!-- (click)="pdfBtnClicked = !pdfBtnClicked" -->
+
+    <!-- <div class="labels" *ngIf="!pdfBtnClicked && !imageBtnClicked"> 
       <label
         for="pdf"
         mat-icon-button
@@ -92,7 +89,7 @@
       >
         <mat-icon>close</mat-icon>
       </button>
-    </div>
+    </div> -->
     <button
       mat-raised-button
       id="submit"
@@ -103,3 +100,8 @@
     </button>
   </div>
 </form>
+<mat-progress-bar
+  *ngIf="progress"
+  style="margin-top: 1em"
+  mode="indeterminate"
+></mat-progress-bar>

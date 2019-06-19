@@ -26,6 +26,7 @@ export class CreatePostComponent implements OnInit {
   pdfName: string;
   pdfDownloadUrl: string;
   newPost: Post;
+  progress: boolean;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -114,13 +115,21 @@ export class CreatePostComponent implements OnInit {
     const imagePath = `Posts/new_${postid}`;
     const ref = this.storage.ref(imagePath);
     const task = this.storage.upload(imagePath, image);
+    // this.progress = task.percentageChanges();
     task
       .snapshotChanges()
       .pipe(
         finalize(async () => {
           this.imageDownloadUrl = await ref.getDownloadURL().toPromise();
           // console.log(this.imageDownloadUrl);
-          this.postService.addPostImageUrl(this.imageDownloadUrl, postid);
+          this.postService
+            .addPostImageUrl(this.imageDownloadUrl, postid)
+            .then(() => {
+              this.progress = false;
+              this.postForm.reset();
+              this.redirectTo("posts");
+            })
+            .catch(err => console.log(err));
         })
       )
       .subscribe();
@@ -130,13 +139,21 @@ export class CreatePostComponent implements OnInit {
     const pdfPath = `Pdfs/pdf#${postid}`;
     const ref = this.storage.ref(pdfPath);
     const task = this.storage.upload(pdfPath, pdf);
+
     task
       .snapshotChanges()
       .pipe(
         finalize(async () => {
           this.pdfDownloadUrl = await ref.getDownloadURL().toPromise();
           // console.log(this.pdfDownloadUrl);
-          this.postService.addPostPdfUrl(this.pdfDownloadUrl, postid);
+          this.postService
+            .addPostPdfUrl(this.pdfDownloadUrl, postid)
+            .then(() => {
+              this.progress = false;
+              this.postForm.reset();
+              this.redirectTo("posts");
+            })
+            .catch(err => console.log(err));
         })
       )
       .subscribe();
@@ -158,6 +175,7 @@ export class CreatePostComponent implements OnInit {
       alert("Only 1 attachment allowed!!");
       return;
     }
+    this.progress = true;
     const uid = await this.authService.userID;
     const timestamp = this.timeService.timestamp;
     this.newPost = {
@@ -175,6 +193,7 @@ export class CreatePostComponent implements OnInit {
     }
 
     // console.log(this.newPost);
+    this.postForm.reset();
     this.postService
       .addPost(this.newPost)
       .then(async post => {
@@ -185,8 +204,11 @@ export class CreatePostComponent implements OnInit {
           await this.uploadPdf(pdf, post.key);
         }
         // console.log(post.key);
-        this.postForm.reset();
-        this.redirectTo("posts");
+        if (!image && !pdf) {
+          this.progress = false;
+          this.postForm.reset();
+          this.redirectTo("posts");
+        }
       })
       .catch(err => console.log(err));
   }
