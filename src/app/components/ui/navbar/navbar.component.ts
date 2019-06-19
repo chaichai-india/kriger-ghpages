@@ -49,6 +49,8 @@ export class NavbarComponent implements OnInit {
 
   async logout() {
     await this.authService.signout();
+    !this.isNavbarCollapsed ? (this.isNavbarCollapsed = true) : false;
+
     this.openSnackBar("Success!", "Logged Out");
     this.router.navigate(["/"]);
   }

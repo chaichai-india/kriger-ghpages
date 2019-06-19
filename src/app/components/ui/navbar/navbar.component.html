@@ -26,6 +26,7 @@
         class="nav-item d-flex flex-column align-items-center justify-content-center mr-4 font-weight-bold"
         [routerLink]="['/posts']"
         routerLinkActive="nav-link-active"
+        (click)="!isNavbarCollapsed ? (isNavbarCollapsed = true) : false"
       >
         <mat-icon>ballot</mat-icon>
         <span>Posts</span>
@@ -35,6 +36,7 @@
         class="nav-item d-flex flex-column align-items-center justify-content-center mr-4 font-weight-bold"
         [routerLink]="['/profiles']"
         routerLinkActive="nav-link-active"
+        (click)="!isNavbarCollapsed ? (isNavbarCollapsed = true) : false"
       >
         <mat-icon>account_box</mat-icon>
         <span>Profiles</span>
@@ -46,6 +48,7 @@
         class="nav-item d-flex flex-column align-items-center justify-content-center mr-4 font-weight-bold"
         (click)="openDialog()"
         routerLinkActive="nav-link-active"
+        (click)="!isNavbarCollapsed ? (isNavbarCollapsed = true) : false"
       >
         <mat-icon
           class="text-center"
@@ -60,6 +63,7 @@
         class="nav-item d-flex flex-column align-items-center justify-content-center mr-4 font-weight-bold"
         [routerLink]="['/login']"
         routerLinkActive="nav-link-active"
+        (click)="!isNavbarCollapsed ? (isNavbarCollapsed = true) : false"
       >
         <mat-icon
           class="text-center"
