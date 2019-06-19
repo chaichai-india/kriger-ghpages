@@ -14,7 +14,7 @@
     <mat-card-subtitle>
       {{ (post.userdetail | async)?.headline }}
       <br />
-      {{ post.timestamp.substring(0, 8) | amDateFormat: 'LL' }}
+      {{ post.timestamp.substring(0, 8) | amDateFormat: "LL" }}
       <!-- <br />
       {{ post.key }} -->
     </mat-card-subtitle>
@@ -33,6 +33,23 @@
     src="{{ post.image_url }}"
     alt=""
   />
+
+  <a
+    class="post-pdf"
+    *ngIf="post.pdf_url"
+    href="{{ post.pdf_url }}"
+    target="_blank"
+    rel="noopener"
+  >
+    <img
+      src="assets/images/icons/pdf.png"
+      alt="pdf attachment"
+      width="64px"
+      height="64px"
+    />
+    <span style="margin-left: 1em">Click here to open</span></a
+  >
+
   <mat-card-subtitle>
     <span> {{ (post.counter | async)?.count_views || 0 }} Views </span>
     <span> {{ (post.counter | async)?.count_likes || 0 }} Likes </span>
