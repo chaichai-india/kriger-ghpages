@@ -1,8 +1,9 @@
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, OnInit, Input, NgZone } from "@angular/core";
 import { MatDialog } from "@angular/material";
 import { LikeService } from "src/app/services/database/like.service";
 import { AuthService } from "src/app/services/authentication/auth.service";
 import { TimestampService } from "src/app/services/utility/timestamp.service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-post",
@@ -18,7 +19,9 @@ export class PostComponent implements OnInit {
     public dialog: MatDialog,
     private likeService: LikeService,
     private authService: AuthService,
-    private timeService: TimestampService
+    private timeService: TimestampService,
+    private router: Router,
+    private zone: NgZone
   ) {}
 
   openDialog() {
@@ -47,10 +50,26 @@ export class PostComponent implements OnInit {
     }
   }
 
-  ngOnInit() {
+  openProfile() {
+    this.post.profileLink.then(snap => {
+      let username = snap.val();
+
+      this.zone.run(() => {
+        this.router.navigate([`/india/${username}`]);
+      });
+    });
+  }
+
+  initialize() {
     this.postLiked(this.post.key, this.uid).then(res => {
       this.isPostLiked = res ? true : false;
     });
+
+    console.log(this.post.profileLink);
+  }
+
+  ngOnInit() {
+    this.initialize();
   }
 }
 

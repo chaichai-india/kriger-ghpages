@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { AngularFireDatabase, AngularFireList } from "@angular/fire/database";
 import { Observable } from "rxjs";
 import { map, tap, shareReplay } from "rxjs/operators";
+import { ProfileLinkService } from "./profile-link.service";
 // import { AuthService } from "../authentication/auth.service";
 
 @Injectable({
@@ -62,6 +63,7 @@ export class PostService {
             const userRef = "User_Detail";
             let uid = c.payload.val().uid;
             let userdetail = this.getData(userRef, uid);
+            let profileLink = this.profileLinkService.getProfileLink(uid);
 
             const postCounterRef = "Post_Counter";
             let key = c.payload.key;
@@ -69,6 +71,7 @@ export class PostService {
 
             return {
               userdetail,
+              profileLink,
               counter: postCounter,
               key: c.payload.key,
               ...c.payload.val()
@@ -101,12 +104,14 @@ export class PostService {
             // console.log(payloadValue.uid);
             let uid = payloadValue.uid;
             let userdetail = this.getData(userRef, uid);
+            let profileLink = this.profileLinkService.getProfileLink(uid);
 
             const postCounterRef = "Post_Counter";
             let key = post.payload.key;
             let postCounter = this.getData(postCounterRef, key);
             return {
               userdetail,
+              profileLink,
               counter: postCounter,
               key: post.payload.key,
               ...post.payload.val()
@@ -133,5 +138,8 @@ export class PostService {
     return this.postsRef.update(key, { pdf_url: url });
   }
 
-  constructor(private db: AngularFireDatabase) {}
+  constructor(
+    private db: AngularFireDatabase,
+    private profileLinkService: ProfileLinkService
+  ) {}
 }

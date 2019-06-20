@@ -1,6 +1,8 @@
 <mat-card class="post-card" *ngIf="post">
   <mat-card-header>
     <div
+      (click)="openProfile()"
+      style="cursor: pointer"
       mat-card-avatar
       class="post-header-image"
       [ngStyle]="{
@@ -10,7 +12,9 @@
           '), url(../../../assets/images/user.svg)'
       }"
     ></div>
-    <mat-card-title>{{ (post.userdetail | async)?.name }}</mat-card-title>
+    <mat-card-title (click)="openProfile()" style="cursor: pointer">{{
+      (post.userdetail | async)?.name
+    }}</mat-card-title>
     <mat-card-subtitle>
       {{ (post.userdetail | async)?.headline }}
       <br />
