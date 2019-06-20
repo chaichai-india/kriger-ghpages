@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { AngularFireDatabase, AngularFireList } from "@angular/fire/database";
 import { Observable } from "rxjs";
 import { map, tap, shareReplay } from "rxjs/operators";
-import { AuthService } from "../authentication/auth.service";
+// import { AuthService } from "../authentication/auth.service";
 
 @Injectable({
   providedIn: "root"
@@ -133,8 +133,5 @@ export class PostService {
     return this.postsRef.update(key, { pdf_url: url });
   }
 
-  constructor(
-    private db: AngularFireDatabase,
-    private authService: AuthService
-  ) {}
+  constructor(private db: AngularFireDatabase) {}
 }

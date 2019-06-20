@@ -29,7 +29,7 @@
     (change)="onImageChange($event)"
   />
 
-  <!-- <input
+  <input
     style="display: none"
     type="file"
     accept="application/pdf"
@@ -38,7 +38,7 @@
     #pdf
     formControlName="pdf"
     (change)="onPdfChange($event)"
-  /> -->
+  />
 
   <figure id="preview" *ngIf="imagePreview">
     <img
@@ -69,7 +69,7 @@
       </label>
     </div>
 
-    <!-- <div class="labels" *ngIf="!pdfBtnClicked && !imageBtnClicked"> 
+    <div class="labels" *ngIf="!pdfBtnClicked && !imageBtnClicked">
       <label
         for="pdf"
         mat-icon-button
@@ -89,7 +89,7 @@
       >
         <mat-icon>close</mat-icon>
       </button>
-    </div> -->
+    </div>
     <button
       mat-raised-button
       id="submit"

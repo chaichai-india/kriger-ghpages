@@ -15,8 +15,8 @@
       {{ (post.userdetail | async)?.headline }}
       <br />
       {{ post.timestamp.substring(0, 8) | amDateFormat: "LL" }}
-      <!-- <br />
-      {{ post.key }} -->
+      <br />
+      {{ post.key }}
     </mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
@@ -57,14 +57,21 @@
   </mat-card-subtitle>
   <hr />
   <mat-card-actions>
-    <button (click)="openDialog()" mat-button>
-      <mat-icon>thumb_up_alt</mat-icon>Like
+    <button
+      (click)="likePost(post.key)"
+      [ngStyle]="{ color: isPostLiked ? 'var(--primary-color)' : 'inherit' }"
+      mat-button
+    >
+      <mat-icon>thumb_up_alt</mat-icon>
+      <span>Like</span>
     </button>
     <button (click)="openDialog()" mat-button>
-      <mat-icon>comment</mat-icon>Comment
+      <mat-icon>comment</mat-icon>
+      <span>Comment</span>
     </button>
     <button (click)="openDialog()" mat-button>
-      <mat-icon>share</mat-icon>Share
+      <mat-icon>share</mat-icon>
+      <span>Share</span>
     </button>
   </mat-card-actions>
 </mat-card>

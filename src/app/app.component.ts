@@ -59,6 +59,6 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     // this.login().then(() => console.log('logged In'));
     localStorage.setItem("user", null);
-    this.logoutIfLogin();
+    // this.logoutIfLogin();
   }
 }
