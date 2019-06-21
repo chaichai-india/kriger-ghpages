@@ -40,7 +40,7 @@ export class PostComponent implements OnInit {
     const uid = await this.authService.userID;
     const timestamp = this.timeService.timestamp;
 
-    console.log({ postid, uid });
+    // console.log({ postid, uid });
     if (!this.isPostLiked) {
       this.isPostLiked = true;
       this.likeService.postLike(postid, uid, timestamp);
@@ -65,7 +65,7 @@ export class PostComponent implements OnInit {
       this.isPostLiked = res ? true : false;
     });
 
-    console.log(this.post.profileLink);
+    // console.log(this.post.profileLink);
   }
 
   ngOnInit() {

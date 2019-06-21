@@ -89,7 +89,7 @@ nav .playstore {
   border-bottom: 1px solid white;
 }
 
-.success-dialog .mat-simple-snackbar-action {
+::ng-deep .success-dialog .mat-simple-snackbar-action {
   color: var(--primary-color) !important;
 }
 
