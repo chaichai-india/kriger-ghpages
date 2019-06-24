@@ -14,6 +14,7 @@ export class PostComponent implements OnInit {
   @Input() post;
   uid = this.authService.userID;
   isPostLiked: boolean;
+  showComments: boolean;
 
   constructor(
     public dialog: MatDialog,
@@ -30,6 +31,10 @@ export class PostComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       // console.log(`Dialog result: ${result}`);
     });
+  }
+
+  openComments() {
+    this.showComments = true;
   }
 
   postLiked(postid, uid) {

@@ -1,3 +1,54 @@
-<p>
-  comment works!
-</p>
+<!-- <p *ngIf="comment">
+  {{ comment.string }}
+  <span *ngIf="comment.userdetail | async as userdetail">
+    {{ userdetail.name }}</span
+  >
+</p> -->
+
+<mat-card *ngIf="comment" class="comment-card">
+  <mat-card-header>
+    <div
+      (click)="openProfile()"
+      style="cursor: pointer"
+      mat-card-avatar
+      class="comment-header-image"
+      [ngStyle]="{
+        'background-image':
+          'url(' +
+          (comment.userdetail | async)?.thumb +
+          '), url(../../../assets/images/user.svg)'
+      }"
+    ></div>
+    <mat-card-title
+      (click)="openProfile()"
+      style="cursor: pointer; margin-bottom: 6px"
+      >{{ (comment.userdetail | async)?.name }}</mat-card-title
+    >
+    <mat-card-subtitle style="margin-bottom: 6px;">
+      {{ (comment.userdetail | async)?.headline }}
+      <br />
+      {{ comment.timestamp.substring(0, 8) | amDateFormat: "LL" }}
+      <!-- <br />
+      {{ post.key }} -->
+    </mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content style="margin-bottom: 0">
+    <p>{{ comment.string }}</p>
+  </mat-card-content>
+  <mat-card-actions>
+    <mat-card-subtitle style="margin-bottom: 0; margin-left: 8px;">
+      <span>
+        {{ (comment.commentLikes | async)?.count_likes || 0 }} Likes
+      </span>
+    </mat-card-subtitle>
+    <button
+      style="padding: 0; margin:0"
+      (click)="likeComment(comment.postid, comment.key)"
+      [ngStyle]="{ color: isCommentLiked ? 'var(--primary-color)' : 'inherit' }"
+      mat-button
+    >
+      <mat-icon>thumb_up_alt</mat-icon>
+      <span>Like</span>
+    </button>
+  </mat-card-actions>
+</mat-card>

@@ -8,6 +8,7 @@
 
 .post-header-image {
   background-size: cover;
+  background-position: center;
 }
 
 .post-card mat-card-title {
@@ -33,16 +34,15 @@
   overflow: hidden; */
 }
 
-.post-card hr {
-  color: #fff;
-}
-
 .post-card mat-card-actions {
   display: flex;
   justify-content: space-around;
   font-size: 14px;
   line-height: 20px;
   color: rgba(0, 0, 0, 0.6);
+  padding: 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.54);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.54);
 }
 
 .post-pdf {

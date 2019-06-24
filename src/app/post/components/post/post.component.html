@@ -19,8 +19,8 @@
       {{ (post.userdetail | async)?.headline }}
       <br />
       {{ post.timestamp.substring(0, 8) | amDateFormat: "LL" }}
-      <!-- <br />
-      {{ post.key }} -->
+      <br />
+      {{ post.key }}
     </mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
@@ -59,7 +59,7 @@
     <span> {{ (post.counter | async)?.count_likes || 0 }} Likes </span>
     <span> {{ (post.counter | async)?.count_comments || 0 }} Comments </span>
   </mat-card-subtitle>
-  <hr />
+  <!-- <hr /> -->
   <mat-card-actions>
     <button
       (click)="likePost(post.key)"
@@ -69,7 +69,7 @@
       <mat-icon>thumb_up_alt</mat-icon>
       <span>Like</span>
     </button>
-    <button (click)="openDialog()" mat-button>
+    <button (click)="openComments()" mat-button>
       <mat-icon>comment</mat-icon>
       <span>Comment</span>
     </button>
@@ -78,5 +78,8 @@
       <span>Share</span>
     </button>
   </mat-card-actions>
-  <app-comment-list></app-comment-list>
+  <app-comment-list
+    *ngIf="(post.counter | async)?.count_comments && showComments"
+    [postid]="post.key"
+  ></app-comment-list>
 </mat-card>
