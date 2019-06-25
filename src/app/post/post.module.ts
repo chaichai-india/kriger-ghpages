@@ -25,12 +25,13 @@ import { CreatePostComponent } from "./components/create-post/create-post.compon
 import {
   MatFormFieldModule,
   MatInputModule,
-  MatProgressBarModule
+  MatProgressBarModule,
+  MatSnackBarModule
 } from "@angular/material";
 import { ReactiveFormsModule } from "@angular/forms";
-import { CommentListComponent } from './components/comment-list/comment-list.component';
-import { CommentComponent } from './components/comment/comment.component';
-import { CreateCommentComponent } from './components/create-comment/create-comment.component';
+import { CommentListComponent } from "./components/comment-list/comment-list.component";
+import { CommentComponent } from "./components/comment/comment.component";
+import { CreateCommentComponent } from "./components/create-comment/create-comment.component";
 
 @NgModule({
   declarations: [
@@ -61,6 +62,7 @@ import { CreateCommentComponent } from './components/create-comment/create-comme
     MatFormFieldModule,
     MatInputModule,
     InfiniteScrollModule,
+    MatSnackBarModule,
     // ImageCropperModule,
     SharedModule
   ],

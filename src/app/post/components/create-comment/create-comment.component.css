@@ -1,0 +1,46 @@
+:host {
+  width: 100%;
+  display: grid;
+  place-items: center;
+  margin-bottom: 0.75em;
+}
+
+form.post-comment-form {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+form.post-comment-form button:enabled {
+  background-color: var(--primary-color);
+}
+
+form.post-comment-form button {
+  margin-left: 1em;
+}
+
+::ng-deep mat-form-field#comment-text .mat-form-field-wrapper {
+  padding-bottom: 0;
+}
+
+::ng-deep
+  mat-form-field#comment-text
+  .mat-form-field-wrapper
+  .mat-form-field-flex
+  .mat-form-field-infix {
+  padding-top: 0 !important;
+}
+
+#comment-text {
+  /* width: 100%; */
+  flex: 1;
+}
+
+#comment-text textarea {
+  min-height: 22px;
+  height: 22px;
+}
+
+::ng-deep .success-dialog .mat-simple-snackbar-action {
+  color: var(--primary-color) !important;
+}

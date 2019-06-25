@@ -11,6 +11,7 @@ import { DomSanitizer } from "@angular/platform-browser";
 import { AngularFireStorage } from "@angular/fire/storage";
 // import { Observable } from "rxjs";
 import { finalize } from "rxjs/operators";
+import { MatSnackBar } from "@angular/material";
 
 @Component({
   selector: "app-create-post",
@@ -36,7 +37,8 @@ export class CreatePostComponent implements OnInit {
     private storage: AngularFireStorage,
     private router: Router,
     private ng2ImgMax: Ng2ImgMaxService,
-    public sanitizer: DomSanitizer
+    public sanitizer: DomSanitizer,
+    private _snackBar: MatSnackBar
   ) {}
 
   @ViewChild("autosize") autosize: CdkTextareaAutosize;
@@ -47,6 +49,13 @@ export class CreatePostComponent implements OnInit {
   postPdf: File;
   imagePreview: any;
 
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action, {
+      duration: 2000,
+      panelClass: "success-dialog"
+    });
+  }
+
   removeImage() {
     this.imageBtnClicked = false;
     this.imagePreview = "";
@@ -54,6 +63,7 @@ export class CreatePostComponent implements OnInit {
     this.image.nativeElement.value = null;
     this.postForm.controls["image"].reset();
     this.postImage = null;
+    this.openSnackBar("Image removed!", "REMOVED");
   }
 
   removePdf() {
@@ -62,6 +72,7 @@ export class CreatePostComponent implements OnInit {
     this.pdf.nativeElement.value = null;
     this.postForm.controls["pdf"].reset();
     this.postPdf = null;
+    this.openSnackBar("PDF removed!", "REMOVED");
   }
 
   onImageChange(event) {
@@ -199,14 +210,17 @@ export class CreatePostComponent implements OnInit {
       .then(async post => {
         if (image) {
           await this.uploadImage(image, post.key);
+          this.openSnackBar("Post", "Success");
         }
         if (pdf) {
           await this.uploadPdf(pdf, post.key);
+          this.openSnackBar("Post", "Success");
         }
         // console.log(post.key);
         if (!image && !pdf) {
           this.progress = false;
           this.postForm.reset();
+          this.openSnackBar("Post", "Success");
           this.redirectTo("posts");
         }
       })

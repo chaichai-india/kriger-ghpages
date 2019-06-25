@@ -8,6 +8,7 @@ import { ProfileLinkService } from "./profile-link.service";
 })
 export class CommentService {
   postCommentRef = this.db.database.ref("/Post_Comment");
+  postCommentListRef = this.db.list("Post_Comment");
   constructor(
     private db: AngularFireDatabase,
     private profileLinkService: ProfileLinkService
@@ -56,5 +57,9 @@ export class CommentService {
           })
         )
       );
+  }
+
+  async addPostComment(postid, comment) {
+    return this.postCommentRef.child(postid).push(comment);
   }
 }

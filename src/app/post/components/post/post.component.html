@@ -78,7 +78,10 @@
       <span>Share</span>
     </button>
   </mat-card-actions>
-  <app-create-comment *ngIf="showComments"></app-create-comment>
+  <app-create-comment
+    *ngIf="showComments"
+    [postid]="post.key"
+  ></app-create-comment>
   <app-comment-list
     *ngIf="(post.counter | async)?.count_comments && showComments"
     [postid]="post.key"

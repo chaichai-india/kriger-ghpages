@@ -1,5 +1,5 @@
 <p>Comments</p>
 <app-comment
-  *ngFor="let comment of comments$ | async"
+  *ngFor="let comment of comments$ | async | reverse"
   [comment]="comment"
 ></app-comment>

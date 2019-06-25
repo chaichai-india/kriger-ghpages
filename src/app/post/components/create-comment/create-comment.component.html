@@ -3,19 +3,27 @@
   (ngSubmit)="postCommentSubmit()"
   class="post-comment-form"
 >
-  <mat-form-field id="comment-text" appearence="outline">
+  <mat-form-field id="comment-text" appearance="outline">
     <textarea
       matInput
       maxlength="5000"
       formControlName="text"
       wrap="hard"
       cdkTextareaAutosize
-      #autosize="cdkTextareaAutosize"
+      #commentautosize="cdkTextareaAutosize"
       cdkAutosizeMinRows="1"
       cdkAutosizeMaxRows="10"
-      placeholder="Grow your knowledge by sharing. Don't post any political or unparliamentary content."
+      placeholder="Share your thoughts!"
       required
-      #text
+      #commenttext
     ></textarea>
   </mat-form-field>
+  <button type="submit" mat-mini-fab [disabled]="!postCommentForm.valid">
+    <mat-icon>send</mat-icon>
+  </button>
 </form>
+<mat-progress-bar
+  *ngIf="progress"
+  style="margin-top: 1em"
+  mode="indeterminate"
+></mat-progress-bar>
