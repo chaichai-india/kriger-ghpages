@@ -1,3 +1,21 @@
-<p>
-  create-comment works!
-</p>
+<form
+  [formGroup]="postCommentForm"
+  (ngSubmit)="postCommentSubmit()"
+  class="post-comment-form"
+>
+  <mat-form-field id="comment-text" appearence="outline">
+    <textarea
+      matInput
+      maxlength="5000"
+      formControlName="text"
+      wrap="hard"
+      cdkTextareaAutosize
+      #autosize="cdkTextareaAutosize"
+      cdkAutosizeMinRows="1"
+      cdkAutosizeMaxRows="10"
+      placeholder="Grow your knowledge by sharing. Don't post any political or unparliamentary content."
+      required
+      #text
+    ></textarea>
+  </mat-form-field>
+</form>
