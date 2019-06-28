@@ -29,6 +29,7 @@ form.post-comment-form button {
   .mat-form-field-flex
   .mat-form-field-infix {
   padding-top: 0 !important;
+  padding-bottom: 8px !important;
 }
 
 #comment-text {

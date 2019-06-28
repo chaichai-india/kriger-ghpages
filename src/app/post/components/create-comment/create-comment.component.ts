@@ -56,12 +56,12 @@ export class CreateCommentComponent implements OnInit {
     this.commentService
       .addPostComment(this.postid, newComment)
       .then(() => {
-        console.log("comment posted");
+        // console.log("comment posted");
         this.progress = false;
         this.openSnackBar("Comment", "Success");
       })
       .catch(err => {
-        console.log(" comment not posted");
+        // console.log(" comment not posted");
         this.progress = false;
         this.openSnackBar("Comment", "Failed");
       });
