@@ -1,0 +1,25 @@
+<mat-card class="learner-educator-card">
+  <mat-toolbar>
+    <span>I am a</span>
+  </mat-toolbar>
+  <mat-card-content>
+    <div class="learner">
+      <header>Learner</header>
+      <div class="checkbox-group">
+        <!-- add ngfor -->
+        <mat-checkbox [(ngModel)]="item.checked" (change)="getCheckboxes()">{{
+          item.name
+        }}</mat-checkbox>
+      </div>
+    </div>
+    <div class="educator">
+      <header>Educator</header>
+    </div>
+  </mat-card-content>
+</mat-card>
+
+<mat-card class="signup-card">
+  <mat-toolbar>
+    <span>Register</span>
+  </mat-toolbar>
+</mat-card>

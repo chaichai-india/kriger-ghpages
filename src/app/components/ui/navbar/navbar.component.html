@@ -46,7 +46,7 @@
         *ngIf="!(isLoggedInObservable | async)"
         id="signup"
         class="nav-item d-flex flex-column align-items-center justify-content-center mr-4 font-weight-bold"
-        (click)="openDialog()"
+        [routerLink]="['/signup']"
         routerLinkActive="nav-link-active"
         (click)="!isNavbarCollapsed ? (isNavbarCollapsed = true) : false"
       >

@@ -20,6 +20,10 @@ const routes: Routes = [
     loadChildren: "./profile/profile.module#ProfileModule"
   },
   {
+    path: "signup",
+    loadChildren: "./signup/signup.module#SignupModule"
+  },
+  {
     path: "login",
     loadChildren: "./login/login.module#LoginModule"
   },
