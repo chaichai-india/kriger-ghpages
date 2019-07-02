@@ -2,8 +2,62 @@
   width: 100%;
   display: grid;
   grid-gap: 1em;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 400px));
+  grid-template-columns: minmax(300px, 400px);
   place-items: center;
   place-content: center;
-  height: 70vh;
+}
+
+.learner-educator-card mat-card-content {
+  display: grid;
+  grid-gap: 1em;
+  grid-template-columns: 210px 144px;
+}
+
+.learner-educator-card header {
+  display: flex;
+  align-items: center;
+}
+
+.learner-educator-card header mat-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1em;
+  font-size: 3em;
+  height: 2em;
+}
+
+mat-toolbar {
+  color: var(--primary-color);
+  background-color: white;
+  display: grid;
+  place-items: center;
+}
+
+.learner-educator-card,
+.signup-card {
+  box-shadow: var(--primary-box-shadow);
+}
+
+mat-form-field {
+  width: 100%;
+  margin: 0;
+}
+
+mat-card-actions {
+  width: 100%;
+  display: grid;
+  /* place-items: center; */
+  margin-bottom: 0 !important;
+  margin-left: 0;
+}
+
+button {
+  margin: 0.5em 0 !important;
+}
+
+button#signup:enabled,
+button#next:enabled {
+  background-color: var(--primary-color);
+  color: white;
 }

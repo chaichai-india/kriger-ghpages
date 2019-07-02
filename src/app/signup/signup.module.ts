@@ -3,7 +3,7 @@ import { CommonModule } from "@angular/common";
 
 import { SignupRoutingModule } from "./signup-routing.module";
 import { SignupComponent } from "./components/signup/signup.component";
-import { ReactiveFormsModule } from "@angular/forms";
+import { ReactiveFormsModule, FormsModule } from "@angular/forms";
 import {
   MatFormFieldModule,
   MatInputModule,
@@ -12,7 +12,9 @@ import {
   MatToolbarModule,
   MatProgressBarModule,
   MatSnackBarModule,
-  MatCheckboxModule
+  MatCheckboxModule,
+  MatIconModule,
+  MatStepperModule
 } from "@angular/material";
 
 @NgModule({
@@ -20,6 +22,9 @@ import {
   imports: [
     CommonModule,
     SignupRoutingModule,
+    MatStepperModule,
+    FormsModule,
+    MatIconModule,
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
