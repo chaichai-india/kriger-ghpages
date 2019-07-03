@@ -16,10 +16,16 @@ export class AuthService {
     try {
       await this.afauth.auth
         .signInWithEmailAndPassword(email, password)
-        .then(user => {
-          // console.log('auth success');
-          response = { message: "Success!", action: "Logged In" };
-          this.loggedInUpdate.next(true);
+        .then(res => {
+          if (res.user.emailVerified) {
+            response = { message: "Success!", action: "Logged In" };
+            this.loggedInUpdate.next(true);
+          } else {
+            response = {
+              message: "Email not verified",
+              action: "Please Verify"
+            };
+          }
         })
         .catch(function(error) {
           // Handle Errors here.

@@ -1,16 +1,16 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AuthService } from 'src/app/services/authentication/auth.service';
-import { BehaviorSubject } from 'rxjs';
-import { MatSnackBar } from '@angular/material';
+import { Component, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { AuthService } from "src/app/services/authentication/auth.service";
+import { BehaviorSubject } from "rxjs";
+import { MatSnackBar } from "@angular/material";
 
 // import { AuthProvider } from 'ngx-auth-firebaseui';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  selector: "app-login",
+  templateUrl: "./login.component.html",
+  styleUrls: ["./login.component.css"]
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
@@ -28,11 +28,11 @@ export class LoginComponent implements OnInit {
   }
 
   get email() {
-    return this.loginForm.get('email');
+    return this.loginForm.get("email");
   }
 
   get password() {
-    return this.loginForm.get('password');
+    return this.loginForm.get("password");
   }
 
   login() {
@@ -46,22 +46,25 @@ export class LoginComponent implements OnInit {
     this.authService.login(email, password).then(res => {
       this.loading.next(false);
       const { message, action } = res;
+      if (message === "Success!") {
+        this.router.navigate(["/posts"]);
+      }
+
       this.openSnackBar(message, action);
-      this.router.navigate(['/posts']);
     });
   }
 
   openSnackBar(message: string, action: string) {
     this._snackBar.open(message, action, {
       duration: 2000,
-      panelClass: 'success-dialog'
+      panelClass: "success-dialog"
     });
   }
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required]
+      email: ["", [Validators.required, Validators.email]],
+      password: ["", Validators.required]
     });
   }
 }

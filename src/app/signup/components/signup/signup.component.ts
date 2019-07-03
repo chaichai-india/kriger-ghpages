@@ -7,6 +7,10 @@ import {
   animate,
   transition
 } from "@angular/animations";
+import { TimestampService } from "src/app/services/utility/timestamp.service";
+import { SignupService } from "src/app/services/authentication/signup.service";
+import { AuthService } from "src/app/services/authentication/auth.service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-signup",
@@ -109,7 +113,13 @@ export class SignupComponent implements OnInit {
   currentFormState = "initial";
   currentCheckboxState = "final";
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private timeService: TimestampService,
+    private signupService: SignupService,
+    private authService: AuthService,
+    private router: Router
+  ) {}
 
   getLearnerCheckboxes() {
     this.resetEducatorCheckbox();
@@ -171,10 +181,24 @@ export class SignupComponent implements OnInit {
 
   buildSignupForm() {
     this.signupForm = this.formBuilder.group({
-      firstname: ["", [Validators.required, Validators.pattern("[a-zA-Z ]*")]],
-      lastname: ["", [Validators.required, Validators.pattern("[a-zA-Z ]*")]],
+      firstname: [
+        "",
+        [
+          Validators.required,
+          Validators.pattern("[a-zA-Z ]*"),
+          Validators.maxLength(50)
+        ]
+      ],
+      lastname: [
+        "",
+        [
+          Validators.required,
+          Validators.pattern("[a-zA-Z ]*"),
+          Validators.maxLength(50)
+        ]
+      ],
       email: ["", [Validators.required, Validators.email]],
-      password: ["", Validators.required],
+      password: ["", [Validators.required, Validators.minLength(6)]],
       city: ["", [Validators.required, Validators.pattern("[a-zA-Z ]*")]],
       phone: [
         "",
@@ -215,22 +239,52 @@ export class SignupComponent implements OnInit {
     return this.signupForm.get("phone");
   }
 
-  signup() {
+  async signup() {
     const isFormValid = this.signupForm.valid;
     if (!isFormValid) {
       alert("Form Details Invalid. Please Check.");
       return;
     }
     const {
-      firstname,
-      lastname,
       email,
       password,
-      city,
-      phone
+      // city: current_city,
+      phone: contact
     } = this.signupForm.value;
     const type = this.checkBoxValue;
-    console.log({ firstname, lastname, email, password, city, phone, type });
+    const date_of_joining = this.timeService.timestamp;
+    let firstname: string = this.signupForm.value.firstname;
+    let first_name = firstname.trim();
+    let lastname: string = this.signupForm.value.lastname;
+    let last_name = lastname.trim();
+    let city: string = this.signupForm.value.city;
+    let current_city = city.trim();
+    const name = first_name + " " + last_name;
+    console.log({
+      first_name,
+      last_name,
+      email,
+      password,
+      current_city,
+      contact,
+      type,
+      date_of_joining,
+      name
+    });
+    const data = {
+      first_name,
+      last_name,
+      email,
+      password,
+      current_city,
+      contact,
+      type,
+      date_of_joining,
+      name
+    };
+
+    await this.signupService.signup(data);
+    this.router.navigate(["/login"]);
   }
 
   ngOnInit() {
