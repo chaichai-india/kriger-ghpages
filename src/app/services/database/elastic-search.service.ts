@@ -1,16 +1,15 @@
-import { Injectable } from '@angular/core';
-import { AngularFireDatabase } from '@angular/fire/database';
-import { LoginService } from '../authentication/login.service';
+import { Injectable } from "@angular/core";
+import { AngularFireDatabase } from "@angular/fire/database";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class ElasticSearchService {
-  path: string = 'search';
+  path: string = "search";
   user_list: any;
 
   queryBuilder(start: string, from: number = 0) {
-    let wildcard = start + '*';
+    let wildcard = start + "*";
     //prettier-ignore
     let body = {
       "from": from,
@@ -29,8 +28,8 @@ export class ElasticSearchService {
     };
 
     return {
-      index: 'firebase1',
-      type: 'user',
+      index: "firebase1",
+      type: "user",
       body
     };
   }
@@ -41,14 +40,14 @@ export class ElasticSearchService {
     const ref = this.db.database.ref().child(this.path);
 
     let query = this.queryBuilder(wildcard, from);
-    const key = ref.child('request').push(query).key;
+    const key = ref.child("request").push(query).key;
     // console.log('search', query, key);
     this.getData(key, ref, res => callback(res));
   }
 
   getData(key: string, ref, callback) {
     let data: any;
-    let onValueChanges = ref.child(`response/${key}`).on('value', snap => {
+    let onValueChanges = ref.child(`response/${key}`).on("value", snap => {
       if (!snap.exists()) {
         return;
       } // wait until we get data
@@ -58,13 +57,10 @@ export class ElasticSearchService {
 
       // when a value arrives from the database, stop listening
       // and remove the temporary data from the database
-      snap.ref.off('value', onValueChanges);
+      snap.ref.off("value", onValueChanges);
       // snap.ref.remove();
     });
   }
 
-  constructor(
-    private db: AngularFireDatabase,
-    private loginService: LoginService
-  ) {}
+  constructor(private db: AngularFireDatabase) {}
 }

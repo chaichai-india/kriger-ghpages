@@ -1,13 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 
-import { PostService } from '../../../services/database/post.service';
-import { Router, ActivatedRoute, Params } from '@angular/router';
-import { AuthService } from 'src/app/services/authentication/auth.service';
-import { LoginService } from 'src/app/services/authentication/login.service';
+import { PostService } from "../../../services/database/post.service";
+import { Router, ActivatedRoute, Params } from "@angular/router";
+import { AuthService } from "src/app/services/authentication/auth.service";
+
 @Component({
-  selector: 'app-post-detail',
-  templateUrl: './post-detail.component.html',
-  styleUrls: ['./post-detail.component.css']
+  selector: "app-post-detail",
+  templateUrl: "./post-detail.component.html",
+  styleUrls: ["./post-detail.component.css"]
 })
 export class PostDetailComponent implements OnInit {
   id: string;
@@ -19,7 +19,7 @@ export class PostDetailComponent implements OnInit {
       if (res) {
         this.post = res;
       } else {
-        this.router.navigate(['404']);
+        this.router.navigate(["404"]);
       }
     });
   }
@@ -31,7 +31,7 @@ export class PostDetailComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.id = this.route.snapshot.params['id'];
+    this.id = this.route.snapshot.params["id"];
     // console.log(this.id);
     // this.isAuth = this.authService.isLoggedIn;
     // console.log(this.isAuth);

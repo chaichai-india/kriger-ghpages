@@ -68,6 +68,9 @@
           formControlName="firstname"
           required
         />
+        <mat-error *ngIf="firstname.invalid && firstname.touched"
+          >Not a valid first name</mat-error
+        >
       </mat-form-field>
       <mat-form-field>
         <input
@@ -77,6 +80,9 @@
           formControlName="lastname"
           required
         />
+        <mat-error *ngIf="lastname.invalid && lastname.touched"
+          >Not a valid last name</mat-error
+        >
       </mat-form-field>
       <mat-form-field>
         <input
@@ -98,6 +104,9 @@
           formControlName="password"
           required
         />
+        <mat-error *ngIf="password.invalid && password.touched"
+          >Password field cannot be empty</mat-error
+        >
       </mat-form-field>
       <mat-form-field>
         <input
@@ -107,17 +116,23 @@
           formControlName="city"
           required
         />
+        <mat-error *ngIf="city.invalid && city.touched"
+          >Not a valid city name</mat-error
+        >
       </mat-form-field>
       <mat-form-field>
         <input
           matInput
-          type="number"
+          type="text"
           maxlength="10"
-          pattern="[0-9]{10}"
+          pattern="^[6-9][0-9]{9}$"
           placeholder="Mobile Number"
           formControlName="phone"
           required
         />
+        <mat-error *ngIf="phone.invalid && phone.touched"
+          >Not a valid phone number</mat-error
+        >
       </mat-form-field>
       <mat-card-subtitle style="text-align: center; font-size: 0.75em">
         <p>

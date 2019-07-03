@@ -1,5 +1,6 @@
 :host {
   width: 100%;
+  height: 85vh;
   display: grid;
   grid-gap: 1em;
   grid-template-columns: minmax(300px, 400px);
@@ -10,7 +11,7 @@
 .learner-educator-card mat-card-content {
   display: grid;
   grid-gap: 1em;
-  grid-template-columns: 210px 144px;
+  grid-template-columns: minmax(144px, 210px) 144px;
 }
 
 .learner-educator-card header {
@@ -60,4 +61,16 @@ button#signup:enabled,
 button#next:enabled {
   background-color: var(--primary-color);
   color: white;
+}
+
+@media screen and (max-width: 550px) {
+  :host {
+    width: 95%;
+    margin: 0 auto;
+  }
+
+  .learner-educator-card,
+  .signup-card {
+    box-shadow: none;
+  }
 }

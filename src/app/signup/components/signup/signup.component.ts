@@ -104,6 +104,7 @@ export class SignupComponent implements OnInit {
     }
   ];
 
+  checkBoxValue;
   signupForm: FormGroup;
   currentFormState = "initial";
   currentCheckboxState = "final";
@@ -116,9 +117,11 @@ export class SignupComponent implements OnInit {
       .filter(learner => learner.checked)
       .map(learner => learner.id);
     console.log(checked);
+    this.checkBoxValue = checked;
   }
 
   resetLearnerCheckbox() {
+    this.checkBoxValue = [];
     this.learnerCheckbox.forEach(learner => {
       learner.checked = false;
     });
@@ -130,9 +133,11 @@ export class SignupComponent implements OnInit {
       .filter(educator => educator.checked)
       .map(educator => educator.id);
     console.log(checked);
+    this.checkBoxValue = checked;
   }
 
   resetEducatorCheckbox() {
+    this.checkBoxValue = [];
     this.educatorCheckbox.forEach(educator => {
       educator.checked = false;
     });
@@ -171,7 +176,14 @@ export class SignupComponent implements OnInit {
       email: ["", [Validators.required, Validators.email]],
       password: ["", Validators.required],
       city: ["", [Validators.required, Validators.pattern("[a-zA-Z ]*")]],
-      phone: ["", [Validators.required, Validators.pattern("[0-9]{10}")]]
+      phone: [
+        "",
+        [
+          Validators.required,
+          Validators.pattern("^[6-9][0-9]{9}$"),
+          Validators.maxLength(10)
+        ]
+      ]
     });
   }
 
@@ -201,6 +213,24 @@ export class SignupComponent implements OnInit {
 
   get phone() {
     return this.signupForm.get("phone");
+  }
+
+  signup() {
+    const isFormValid = this.signupForm.valid;
+    if (!isFormValid) {
+      alert("Form Details Invalid. Please Check.");
+      return;
+    }
+    const {
+      firstname,
+      lastname,
+      email,
+      password,
+      city,
+      phone
+    } = this.signupForm.value;
+    const type = this.checkBoxValue;
+    console.log({ firstname, lastname, email, password, city, phone, type });
   }
 
   ngOnInit() {
