@@ -40,6 +40,10 @@ mat-toolbar {
   box-shadow: var(--primary-box-shadow);
 }
 
+.signup-card {
+  margin-top: 2em;
+}
+
 mat-form-field {
   width: 100%;
   margin: 0;

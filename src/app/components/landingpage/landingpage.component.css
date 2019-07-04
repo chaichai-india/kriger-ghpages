@@ -10,7 +10,9 @@
 
 .logo {
   margin-bottom: 1em;
+  display: none;
 }
+
 p.inspiration {
   font-size: 1.5em;
   text-align: center;

@@ -38,7 +38,11 @@
         />
       </mat-form-field>
       <mat-card-actions>
-        <button id="login" mat-raised-button [disabled]="loginForm.invalid">
+        <button
+          id="login"
+          mat-raised-button
+          [disabled]="loginForm.invalid || isSubmitted"
+        >
           Login
         </button>
         <button id="forgotpassword" mat-button>Forgot Password?</button>

@@ -9,6 +9,7 @@
 
 .logo {
   margin-top: 3em;
+  display: none;
 }
 
 mat-toolbar {

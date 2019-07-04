@@ -110,6 +110,7 @@ export class SignupComponent implements OnInit {
 
   checkBoxValue;
   signupForm: FormGroup;
+  isFormSubmitted: boolean;
   currentFormState = "initial";
   currentCheckboxState = "final";
 
@@ -241,16 +242,13 @@ export class SignupComponent implements OnInit {
 
   async signup() {
     const isFormValid = this.signupForm.valid;
+    this.isFormSubmitted = true;
     if (!isFormValid) {
       alert("Form Details Invalid. Please Check.");
+      this.isFormSubmitted = false;
       return;
     }
-    const {
-      email,
-      password,
-      // city: current_city,
-      phone: contact
-    } = this.signupForm.value;
+    const { email, password, phone: contact } = this.signupForm.value;
     const type = this.checkBoxValue;
     const date_of_joining = this.timeService.timestamp;
     let firstname: string = this.signupForm.value.firstname;
@@ -260,17 +258,6 @@ export class SignupComponent implements OnInit {
     let city: string = this.signupForm.value.city;
     let current_city = city.trim();
     const name = first_name + " " + last_name;
-    console.log({
-      first_name,
-      last_name,
-      email,
-      password,
-      current_city,
-      contact,
-      type,
-      date_of_joining,
-      name
-    });
     const data = {
       first_name,
       last_name,
@@ -282,9 +269,17 @@ export class SignupComponent implements OnInit {
       date_of_joining,
       name
     };
+    console.log(data);
 
-    await this.signupService.signup(data);
-    this.router.navigate(["/login"]);
+    await this.signupService
+      .signup(data)
+      .then(() => {
+        this.router.navigate(["/login"]);
+      })
+      .catch(err => {
+        alert("something went wrong!! Please try again.");
+        this.isFormSubmitted = false;
+      });
   }
 
   ngOnInit() {

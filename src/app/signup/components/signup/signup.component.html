@@ -100,7 +100,7 @@
         <input
           matInput
           type="password"
-          placeholder="Choose a password"
+          placeholder="Choose a password (6 or more characters)"
           formControlName="password"
           required
         />
@@ -137,20 +137,29 @@
       <mat-card-subtitle style="text-align: center; font-size: 0.75em">
         <p>
           Click Register, If you agree to our
-          <span
-            [routerLink]="['/term-conditions']"
-            routerLinkActive="router-link-active"
+          <a
+            href="kriger.in/term-conditions"
+            target="_blank"
             style="color: var(--primary-color); cursor:pointer"
-            >terms and conditions.</span
+            >terms and conditions.</a
           >
         </p>
         <p>You will recieve verification mail</p>
       </mat-card-subtitle>
       <mat-card-actions>
-        <button id="signup" mat-raised-button [disabled]="signupForm.invalid">
+        <button
+          id="signup"
+          mat-raised-button
+          [disabled]="signupForm.invalid || isFormSubmitted"
+        >
           Accept & Register
         </button>
-        <button type="button" (click)="showCheckedBox()" mat-stroked-button>
+        <button
+          type="button"
+          (click)="showCheckedBox()"
+          mat-stroked-button
+          [disabled]="isFormSubmitted"
+        >
           Back
         </button>
       </mat-card-actions>

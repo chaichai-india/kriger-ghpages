@@ -11,13 +11,14 @@ export class SignupService {
     private userService: UserService
   ) {}
 
-  signup(data) {
+  async signup(data) {
     const { email, password } = data;
-    this.afauth.auth
+    return this.afauth.auth
       .createUserWithEmailAndPassword(email, password)
-      .then(value => {
+      .then(async value => {
+        // returns a new user and signs in automatically
         console.log("Success!", value);
-        this.SendVerificationMail(data).then(() => {
+        await this.SendVerificationMail(data).then(() => {
           alert(
             "Kindly check your mail for verification email.\n" +
               "Link is valid for 15 minutes.\n\n" +
@@ -35,11 +36,12 @@ export class SignupService {
   async SendVerificationMail(data) {
     const user = this.afauth.auth.currentUser;
     const uid = user.uid;
-    return this.userService.setNewUserData(uid, data).then(() => {
+    await this.userService.setNewUserData(uid, data).then(() => {
       console.log("new user data added");
-      user.sendEmailVerification().then(() => {
+      user.sendEmailVerification().then(async () => {
         console.log("Email Verification Sent");
-        this.afauth.auth.signOut();
+        await this.afauth.auth.signOut();
+        console.log("signedout");
       });
     });
   }

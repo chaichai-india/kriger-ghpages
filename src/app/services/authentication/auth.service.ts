@@ -3,6 +3,7 @@ import { AngularFireAuth } from "@angular/fire/auth";
 import { User } from "firebase";
 import { first } from "rxjs/operators";
 import { BehaviorSubject } from "rxjs";
+import { SignupService } from "./signup.service";
 
 @Injectable({
   providedIn: "root"
@@ -21,6 +22,11 @@ export class AuthService {
             response = { message: "Success!", action: "Logged In" };
             this.loggedInUpdate.next(true);
           } else {
+            this.SendVerificationMail();
+            alert(
+              "Your email is not verified!\n" +
+                "Kindly check your mail for verification email.\n"
+            );
             response = {
               message: "Email not verified",
               action: "Please Verify"
@@ -38,7 +44,7 @@ export class AuthService {
             response = { message: errorMessage, action: "Error" };
             alert(errorMessage);
           }
-          console.log(error);
+          // console.log(error);
         });
     } catch (e) {
       response = { message: "Failed!!", action: "OH NO" };
@@ -46,6 +52,15 @@ export class AuthService {
     }
 
     return response;
+  }
+
+  async SendVerificationMail() {
+    const user = this.afauth.auth.currentUser;
+    user.sendEmailVerification().then(async () => {
+      console.log("Email Verification Sent");
+      await this.signout();
+      console.log("signedout");
+    });
   }
 
   isLoggedInPromise() {

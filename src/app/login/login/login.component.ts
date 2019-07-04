@@ -40,6 +40,7 @@ export class LoginComponent implements OnInit {
     // console.log(this.loginForm.value);
     this.isSubmitted = true;
     if (this.loginForm.invalid) {
+      this.isSubmitted = false;
       return;
     }
     const { email, password } = this.loginForm.value;
@@ -48,6 +49,8 @@ export class LoginComponent implements OnInit {
       const { message, action } = res;
       if (message === "Success!") {
         this.router.navigate(["/posts"]);
+      } else {
+        this.isSubmitted = false;
       }
 
       this.openSnackBar(message, action);
