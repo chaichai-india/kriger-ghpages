@@ -36,9 +36,9 @@ export class SignupService {
   async SendVerificationMail(data) {
     const user = this.afauth.auth.currentUser;
     const uid = user.uid;
-    await this.userService.setNewUserData(uid, data).then(() => {
+    await this.userService.setNewUserData(uid, data).then(async () => {
       console.log("new user data added");
-      user.sendEmailVerification().then(async () => {
+      await user.sendEmailVerification().then(async () => {
         console.log("Email Verification Sent");
         await this.afauth.auth.signOut();
         console.log("signedout");

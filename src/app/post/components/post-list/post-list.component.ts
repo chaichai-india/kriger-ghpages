@@ -1,6 +1,6 @@
 import { Component, OnInit, ElementRef, ViewChild } from "@angular/core";
 import { Observable, combineLatest, BehaviorSubject } from "rxjs";
-import { map, take, tap } from "rxjs/operators";
+import { map, take, tap, shareReplay } from "rxjs/operators";
 
 import { PostService } from "../../../services/database/post.service";
 

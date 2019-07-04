@@ -1,4 +1,9 @@
-<form [formGroup]="postForm" (ngSubmit)="postSubmit()" class="post-form">
+<form
+  #postform="ngForm"
+  [formGroup]="postForm"
+  (ngSubmit)="postSubmit()"
+  class="post-form"
+>
   <mat-form-field id="text" appearance="outline">
     <textarea
       matInput

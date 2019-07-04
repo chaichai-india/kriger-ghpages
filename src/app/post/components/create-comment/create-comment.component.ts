@@ -23,7 +23,9 @@ export class CreateCommentComponent implements OnInit {
     private timeService: TimestampService,
     private _snackBar: MatSnackBar
   ) {}
+
   @ViewChild("commentautosize") autosize: CdkTextareaAutosize;
+  @ViewChild("postcommentform") postcommentform;
 
   buildform() {
     this.postCommentForm = this.formBuilder.group({
@@ -52,6 +54,7 @@ export class CreateCommentComponent implements OnInit {
       uid
     };
     this.postCommentForm.reset();
+    this.postcommentform.resetForm();
     this.progress = true;
     this.commentService
       .addPostComment(this.postid, newComment)

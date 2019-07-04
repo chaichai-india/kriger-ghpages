@@ -41,6 +41,7 @@ export class CreatePostComponent implements OnInit {
     private _snackBar: MatSnackBar
   ) {}
 
+  @ViewChild("postform") postform;
   @ViewChild("autosize") autosize: CdkTextareaAutosize;
   @ViewChild("image") image: ElementRef;
   @ViewChild("pdf") pdf: ElementRef;
@@ -138,6 +139,7 @@ export class CreatePostComponent implements OnInit {
             .then(() => {
               this.progress = false;
               this.postForm.reset();
+              this.postform.resetForm();
               this.redirectTo("posts");
             })
             .catch(err => console.log(err));
@@ -162,6 +164,7 @@ export class CreatePostComponent implements OnInit {
             .then(() => {
               this.progress = false;
               this.postForm.reset();
+              this.postform.resetForm();
               this.redirectTo("posts");
             })
             .catch(err => console.log(err));
@@ -205,6 +208,7 @@ export class CreatePostComponent implements OnInit {
 
     // console.log(this.newPost);
     this.postForm.reset();
+    this.postform.resetForm();
     this.postService
       .addPost(this.newPost)
       .then(async post => {
@@ -220,6 +224,7 @@ export class CreatePostComponent implements OnInit {
         if (!image && !pdf) {
           this.progress = false;
           this.postForm.reset();
+          this.postform.resetForm();
           this.openSnackBar("Post", "Success");
           this.redirectTo("posts");
         }
