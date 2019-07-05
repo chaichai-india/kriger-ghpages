@@ -71,6 +71,9 @@
         <mat-error *ngIf="firstname.invalid && firstname.touched"
           >Not a valid first name</mat-error
         >
+        <mat-hint align="start"
+          >Name cannot be changed after you register</mat-hint
+        >
       </mat-form-field>
       <mat-form-field>
         <input
@@ -82,6 +85,9 @@
         />
         <mat-error *ngIf="lastname.invalid && lastname.touched"
           >Not a valid last name</mat-error
+        >
+        <mat-hint align="start"
+          >Name cannot be changed after you register</mat-hint
         >
       </mat-form-field>
       <mat-form-field>
@@ -162,7 +168,7 @@
             >terms and conditions.</a
           >
         </p>
-        <p>You will recieve verification mail</p>
+        <p>You will a recieve verification mail</p>
       </mat-card-subtitle>
       <mat-progress-bar *ngIf="isFormSubmitted" mode="query"></mat-progress-bar>
       <mat-card-actions>
