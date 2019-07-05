@@ -111,6 +111,7 @@ export class SignupComponent implements OnInit {
   checkBoxValue;
   signupForm: FormGroup;
   isFormSubmitted: boolean;
+  showPassword = false;
   currentFormState = "initial";
   currentCheckboxState = "final";
 

@@ -46,7 +46,7 @@
         *ngIf="!(isLoggedInObservable | async)"
         id="signup"
         class="nav-item d-flex flex-column align-items-center justify-content-center mr-4 font-weight-bold"
-        [routerLink]="['/signup']"
+        [routerLink]="['/register']"
         routerLinkActive="nav-link-active"
         (click)="!isNavbarCollapsed ? (isNavbarCollapsed = true) : false"
       >
@@ -55,7 +55,7 @@
           fontSet="fas"
           fontIcon="fa-user"
         ></mat-icon>
-        <span>Sign Up</span>
+        <span>Register</span>
       </li>
       <li
         *ngIf="!(isLoggedInObservable | async)"

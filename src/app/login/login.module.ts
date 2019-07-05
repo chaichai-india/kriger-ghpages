@@ -2,11 +2,11 @@ import {
   NgModule,
   NO_ERRORS_SCHEMA,
   CUSTOM_ELEMENTS_SCHEMA
-} from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { LoginRoutingModule } from './login-routing.module';
-import { LoginComponent } from './login/login.component';
-import { ReactiveFormsModule } from '@angular/forms';
+} from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { LoginRoutingModule } from "./login-routing.module";
+import { LoginComponent } from "./login/login.component";
+import { ReactiveFormsModule } from "@angular/forms";
 import {
   MatFormFieldModule,
   MatInputModule,
@@ -14,8 +14,9 @@ import {
   MatButtonModule,
   MatToolbarModule,
   MatProgressBarModule,
-  MatSnackBarModule
-} from '@angular/material';
+  MatSnackBarModule,
+  MatIconModule
+} from "@angular/material";
 // import { NgxAuthFirebaseUIModule } from 'ngx-auth-firebaseui';
 
 @NgModule({
@@ -28,6 +29,7 @@ import {
     MatInputModule,
     MatCardModule,
     MatButtonModule,
+    MatIconModule,
     MatToolbarModule,
     MatProgressBarModule,
     MatSnackBarModule

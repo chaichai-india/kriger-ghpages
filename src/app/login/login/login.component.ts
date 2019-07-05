@@ -15,7 +15,9 @@ import { MatSnackBar } from "@angular/material";
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   isSubmitted = false;
+  showPassword = false;
   loading = new BehaviorSubject<boolean>(false);
+
   constructor(
     private authService: AuthService,
     private router: Router,
@@ -67,7 +69,7 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
       email: ["", [Validators.required, Validators.email]],
-      password: ["", Validators.required]
+      password: ["", [Validators.required, Validators.minLength(6)]]
     });
   }
 }

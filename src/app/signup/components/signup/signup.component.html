@@ -99,11 +99,29 @@
       <mat-form-field>
         <input
           matInput
-          type="password"
+          [type]="showPassword ? 'text' : 'password'"
           placeholder="Choose a password (6 or more characters)"
           formControlName="password"
           required
         />
+        <button
+          type="button"
+          mat-button
+          matSuffix
+          mat-icon-button
+          (click)="showPassword = !showPassword"
+        >
+          <mat-icon
+            *ngIf="showPassword"
+            fontSet="fa"
+            fontIcon="fa-eye"
+          ></mat-icon>
+          <mat-icon
+            *ngIf="!showPassword"
+            fontSet="fa"
+            fontIcon="fa-eye-slash"
+          ></mat-icon>
+        </button>
         <mat-error *ngIf="password.invalid && password.touched"
           >Not a valid password (minimum 6 characters)</mat-error
         >
