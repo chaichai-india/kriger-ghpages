@@ -54,6 +54,9 @@
             fontIcon="fa-eye-slash"
           ></mat-icon>
         </button>
+        <mat-error *ngIf="password.invalid && password.touched"
+          >Not a valid password (6 or more characters)</mat-error
+        >
       </mat-form-field>
       <mat-card-actions>
         <button
