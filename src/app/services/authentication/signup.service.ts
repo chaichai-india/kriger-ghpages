@@ -40,9 +40,9 @@ export class SignupService {
       console.log("new user data added");
       await user.sendEmailVerification().then(async () => {
         console.log("Email Verification Sent");
-        await this.afauth.auth.signOut();
-        console.log("signedout");
       });
+      await this.afauth.auth.signOut();
+      console.log("signedout");
     });
   }
 }
