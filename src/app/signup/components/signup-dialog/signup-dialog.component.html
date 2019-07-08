@@ -1,4 +1,12 @@
-<h1 mat-dialog-title style="margin: 0">{{ data.message }}</h1>
-<mat-dialog-actions align="end">
-  <button mat-button mat-dialog-close>OK</button>
+<h1 mat-dialog-title style="margin: 0; font-size: 1em; text-align: center;">
+  {{ data.message }}
+</h1>
+<mat-dialog-actions align="center">
+  <button
+    mat-button
+    mat-dialog-close
+    style="background-color: var(--primary-color); color: white;"
+  >
+    OK
+  </button>
 </mat-dialog-actions>
