@@ -68,6 +68,13 @@ export class LoginComponent implements OnInit {
     });
   }
 
+  openForgotPassword() {
+    this.dialog.open(ForgotPasswordDialogComponent);
+  }
+  openHavingTrouble() {
+    this.dialog.open(HavingTroubleDialogComponent);
+  }
+
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
       email: ["", [Validators.required, Validators.email]],
@@ -82,5 +89,24 @@ export class LoginComponent implements OnInit {
   styleUrls: ["../login-dialog/login-dialog.component.css"]
 })
 export class LoginDialogComponent {
+  constructor(@Inject(MAT_DIALOG_DATA) public data) {}
+}
+
+@Component({
+  selector: "app-forgot-password-dialog",
+  templateUrl:
+    "../forgot-password-dialog/forgot-password-dialog.component.html",
+  styleUrls: ["../forgot-password-dialog/forgot-password-dialog.component.css"]
+})
+export class ForgotPasswordDialogComponent {
+  constructor(@Inject(MAT_DIALOG_DATA) public data) {}
+}
+
+@Component({
+  selector: "app-having-trouble-dialog",
+  templateUrl: "../having-trouble-dialog/having-trouble-dialog.component.html",
+  styleUrls: ["../having-trouble-dialog/having-trouble-dialog.component.css"]
+})
+export class HavingTroubleDialogComponent {
   constructor(@Inject(MAT_DIALOG_DATA) public data) {}
 }

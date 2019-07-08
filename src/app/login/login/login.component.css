@@ -49,9 +49,10 @@ button#login:enabled {
   color: white;
 }
 
-button#forgotpassword {
-  color: var(--primary-color);
-  display: none;
+button#forgotpassword,
+button#havingtrouble {
+  color: var(--danger-color);
+  /* display: none; */
 }
 
 ::ng-deep .success-dialog .mat-simple-snackbar-action {

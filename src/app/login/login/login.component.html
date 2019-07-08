@@ -66,7 +66,24 @@
         >
           Login
         </button>
-        <button id="forgotpassword" mat-button>Forgot Password?</button>
+        <div style="display:flex; width:100%">
+          <button
+            type="button"
+            id="forgotpassword"
+            (click)="openForgotPassword()"
+            mat-button
+          >
+            Forgot Password?
+          </button>
+          <button
+            type="button"
+            id="havingtrouble"
+            (click)="openHavingTrouble()"
+            mat-button
+          >
+            Having Trouble?
+          </button>
+        </div>
       </mat-card-actions>
     </form>
   </mat-card-content>
