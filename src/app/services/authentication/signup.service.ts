@@ -13,23 +13,30 @@ export class SignupService {
 
   async signup(data) {
     const { email, password } = data;
-    return this.afauth.auth
+    let response;
+    await this.afauth.auth
       .createUserWithEmailAndPassword(email, password)
       .then(async value => {
         // returns a new user and signs in automatically
         console.log("Success!", value);
         await this.SendVerificationMail(data).then(() => {
-          alert(
+          // alert(
+          //   "Kindly check your mail for verification email.\n" +
+          //     "Link is valid for 15 minutes.\n\n" +
+          //     "If you don't see the mail in your inbox, please check your spam or junk folder."
+          // );
+          response =
             "Kindly check your mail for verification email.\n" +
-              "Link is valid for 15 minutes.\n\n" +
-              "If you don't see the mail in your inbox, please check your spam or junk folder."
-          );
+            "Link is valid for 15 minutes.\n\n" +
+            "If you don't see the mail in your inbox, please check your spam or junk folder.";
         });
       })
       .catch(err => {
         console.log("Something went wrong!", err.message);
-        alert(err.message);
+        // alert(err.message);
+        response = err.message;
       });
+    return response;
   }
 
   // Send email verfificaiton when new user sign up

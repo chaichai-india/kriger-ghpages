@@ -1,9 +1,9 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Inject } from "@angular/core";
 import { Router } from "@angular/router";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { AuthService } from "src/app/services/authentication/auth.service";
 import { BehaviorSubject } from "rxjs";
-import { MatSnackBar } from "@angular/material";
+import { MatSnackBar, MatDialog, MAT_DIALOG_DATA } from "@angular/material";
 
 // import { AuthProvider } from 'ngx-auth-firebaseui';
 
@@ -22,7 +22,8 @@ export class LoginComponent implements OnInit {
     private authService: AuthService,
     private router: Router,
     private formBuilder: FormBuilder,
-    private _snackBar: MatSnackBar
+    private _snackBar: MatSnackBar,
+    public dialog: MatDialog
   ) {}
 
   get formControls() {
@@ -52,10 +53,11 @@ export class LoginComponent implements OnInit {
       if (message === "Success!") {
         this.router.navigate(["/posts"]);
       } else {
+        this.dialog.open(LoginDialogComponent, { data: { message } });
         this.isSubmitted = false;
       }
 
-      this.openSnackBar(message, action);
+      // this.openSnackBar(message, action);
     });
   }
 
@@ -72,4 +74,13 @@ export class LoginComponent implements OnInit {
       password: ["", [Validators.required, Validators.minLength(6)]]
     });
   }
+}
+
+@Component({
+  selector: "app-login-dialog",
+  templateUrl: "../login-dialog/login-dialog.component.html",
+  styleUrls: ["../login-dialog/login-dialog.component.css"]
+})
+export class LoginDialogComponent {
+  constructor(@Inject(MAT_DIALOG_DATA) public data) {}
 }

@@ -23,10 +23,10 @@ export class AuthService {
             this.loggedInUpdate.next(true);
           } else {
             this.SendVerificationMail();
-            alert(
-              "Your email is not verified!\n" +
-                "Kindly check your mail for verification email.\n"
-            );
+            // alert(
+            //   "Your email is not verified!\n" +
+            //     "Kindly check your mail for verification email.\n"
+            // );
             response = {
               message: "Email not verified",
               action: "Please Verify"
@@ -39,16 +39,16 @@ export class AuthService {
           let errorMessage = error.message;
           if (errorCode === "auth/wrong-password") {
             response = { message: "Wrong Password!!", action: "OH NO" };
-            alert("Wrong password.");
+            // alert("Wrong password.");
           } else {
             response = { message: errorMessage, action: "Error" };
-            alert(errorMessage);
+            // alert(errorMessage);
           }
           // console.log(error);
         });
     } catch (e) {
       response = { message: "Failed!!", action: "OH NO" };
-      throw new Error("auth failed");
+      // throw new Error("auth failed");
     }
 
     return response;

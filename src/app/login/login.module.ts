@@ -5,7 +5,7 @@ import {
 } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { LoginRoutingModule } from "./login-routing.module";
-import { LoginComponent } from "./login/login.component";
+import { LoginComponent, LoginDialogComponent } from "./login/login.component";
 import { ReactiveFormsModule } from "@angular/forms";
 import {
   MatFormFieldModule,
@@ -15,12 +15,14 @@ import {
   MatToolbarModule,
   MatProgressBarModule,
   MatSnackBarModule,
-  MatIconModule
+  MatIconModule,
+  MatDialogModule
 } from "@angular/material";
 // import { NgxAuthFirebaseUIModule } from 'ngx-auth-firebaseui';
 
 @NgModule({
-  declarations: [LoginComponent],
+  declarations: [LoginComponent, LoginDialogComponent],
+  entryComponents: [LoginDialogComponent],
   imports: [
     CommonModule,
     LoginRoutingModule,
@@ -32,7 +34,8 @@ import {
     MatIconModule,
     MatToolbarModule,
     MatProgressBarModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatDialogModule
   ]
   // schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA]
 })

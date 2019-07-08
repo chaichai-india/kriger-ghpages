@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Inject } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import {
   trigger,
@@ -11,6 +11,7 @@ import { TimestampService } from "src/app/services/utility/timestamp.service";
 import { SignupService } from "src/app/services/authentication/signup.service";
 import { AuthService } from "src/app/services/authentication/auth.service";
 import { Router } from "@angular/router";
+import { MAT_DIALOG_DATA, MatDialog } from "@angular/material";
 
 @Component({
   selector: "app-signup",
@@ -120,7 +121,8 @@ export class SignupComponent implements OnInit {
     private timeService: TimestampService,
     private signupService: SignupService,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    public dialog: MatDialog
   ) {}
 
   getLearnerCheckboxes() {
@@ -271,14 +273,23 @@ export class SignupComponent implements OnInit {
       name
     };
     console.log(data);
-
+    // this.dialog.open(SignupDialogComponent, {
+    //   data: { message: "works" }
+    // });
     await this.signupService
       .signup(data)
-      .then(() => {
+      .then(response => {
+        console.log(response);
+        this.dialog.open(SignupDialogComponent, {
+          data: { message: response }
+        });
         this.router.navigate(["/login"]);
       })
       .catch(err => {
-        alert("something went wrong!! Please try again.");
+        // alert("something went wrong!! Please try again.");
+        this.dialog.open(SignupDialogComponent, {
+          data: { message: "something went wrong!! Please try again." }
+        });
         this.isFormSubmitted = false;
       });
   }
@@ -286,4 +297,13 @@ export class SignupComponent implements OnInit {
   ngOnInit() {
     this.buildSignupForm();
   }
+}
+
+@Component({
+  selector: "app-signup-dialog",
+  templateUrl: "../signup-dialog/signup-dialog.component.html",
+  styleUrls: ["../signup-dialog/signup-dialog.component.css"]
+})
+export class SignupDialogComponent {
+  constructor(@Inject(MAT_DIALOG_DATA) public data) {}
 }
