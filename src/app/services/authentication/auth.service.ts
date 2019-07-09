@@ -63,6 +63,21 @@ export class AuthService {
     });
   }
 
+  async sendPasswordResetMail(email) {
+    let response: string;
+    await this.afauth.auth
+      .sendPasswordResetEmail(email)
+      .then(() => {
+        console.log("password reset email");
+        response = "Success";
+      })
+      .catch(err => {
+        console.log("error in sending password reset email", err.message);
+        response = "Error";
+      });
+    return response;
+  }
+
   isLoggedInPromise() {
     return this.afauth.authState.pipe(first()).toPromise();
   }

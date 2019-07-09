@@ -98,8 +98,32 @@ export class LoginDialogComponent {
     "../forgot-password-dialog/forgot-password-dialog.component.html",
   styleUrls: ["../forgot-password-dialog/forgot-password-dialog.component.css"]
 })
-export class ForgotPasswordDialogComponent {
-  constructor(@Inject(MAT_DIALOG_DATA) public data) {}
+export class ForgotPasswordDialogComponent implements OnInit {
+  forgotPasswordForm: FormGroup;
+  constructor(
+    private formBuilder: FormBuilder,
+    private authService: AuthService
+  ) {}
+
+  get email() {
+    return this.forgotPasswordForm.get("email");
+  }
+
+  async sendPasswordReset() {
+    if (this.forgotPasswordForm.invalid) {
+      return;
+    }
+    const { email } = this.forgotPasswordForm.value;
+    await this.authService
+      .sendPasswordResetMail(email)
+      .then(res => console.log(res));
+  }
+
+  ngOnInit(): void {
+    this.forgotPasswordForm = this.formBuilder.group({
+      email: ["", [Validators.required, Validators.email]]
+    });
+  }
 }
 
 @Component({
@@ -108,5 +132,5 @@ export class ForgotPasswordDialogComponent {
   styleUrls: ["../having-trouble-dialog/having-trouble-dialog.component.css"]
 })
 export class HavingTroubleDialogComponent {
-  constructor(@Inject(MAT_DIALOG_DATA) public data) {}
+  constructor() {}
 }
