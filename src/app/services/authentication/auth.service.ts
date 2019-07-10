@@ -37,11 +37,12 @@ export class AuthService {
           // Handle Errors here.
           let errorCode = error.code;
           let errorMessage = error.message;
+          console.log(errorCode, errorMessage);
           if (errorCode === "auth/wrong-password") {
-            response = { message: "Wrong Password!!", action: "OH NO" };
+            response = { message: "Wrong Password!", action: "OH NO" };
             // alert("Wrong password.");
-          } else {
-            response = { message: errorMessage, action: "Error" };
+          } else if (errorCode === "auth/user-not-found") {
+            response = { message: "No user found!", action: "Error" };
             // alert(errorMessage);
           }
           // console.log(error);
@@ -51,6 +52,20 @@ export class AuthService {
       // throw new Error("auth failed");
     }
 
+    return response;
+  }
+
+  async signInAndVerifyMail(email, password) {
+    let response;
+    await this.afauth.auth
+      .signInWithEmailAndPassword(email, password)
+      .then(async res => {
+        await this.SendVerificationMail();
+        response = "Verification mail sent.";
+      })
+      .catch(err => {
+        response = err.message;
+      });
     return response;
   }
 
@@ -73,7 +88,7 @@ export class AuthService {
       })
       .catch(err => {
         console.log("error in sending password reset email", err.message);
-        response = "Error";
+        response = err.message;
       });
     return response;
   }

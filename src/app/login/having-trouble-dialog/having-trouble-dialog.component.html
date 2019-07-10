@@ -6,22 +6,87 @@
   
 </div> -->
 <mat-dialog-actions align="center">
-  <button
+  <a
+    href="mailto:support@kriger.in"
+    target="_blank"
+    rel="noopener noreferrer"
     mat-button
-    style="background-color: var(--primary-color); color: white;"
   >
     Email
-  </button>
-  <button
+  </a>
+  <a
+    href="https://chat.whatsapp.com/EZCcHHMWQVE32STn3OTSlJ"
+    target="_blank"
+    rel="noopener noreferrer"
     mat-button
-    style="background-color: var(--primary-color); color: white;"
   >
     Whatsapp
-  </button>
-  <button
-    mat-button
-    style="background-color: var(--primary-color); color: white;"
-  >
+  </a>
+  <button mat-button (click)="showVerificationForm()">
     Didn't receive verification mail
   </button>
 </mat-dialog-actions>
+
+<div *ngIf="isVerification">
+  <p>To receive verification mail, fill your details</p>
+  <form [formGroup]="emailVerifyForm" (ngSubmit)="sendVerificationMail()">
+    <mat-form-field>
+      <input
+        (input)="message = ''"
+        matInput
+        type="email"
+        formControlName="email"
+        placeholder="Your Registered Email"
+      />
+      <mat-error *ngIf="email.invalid && email.touched"
+        >Not a valid email</mat-error
+      >
+    </mat-form-field>
+    <mat-form-field>
+      <input
+        (input)="message = ''"
+        matInput
+        [type]="showPassword ? 'text' : 'password'"
+        placeholder="Enter your password"
+        formControlName="password"
+        required
+      />
+      <button
+        type="button"
+        mat-button
+        matSuffix
+        mat-icon-button
+        (click)="showPassword = !showPassword"
+      >
+        <mat-icon
+          *ngIf="showPassword"
+          fontSet="fa"
+          fontIcon="fa-eye"
+        ></mat-icon>
+        <mat-icon
+          *ngIf="!showPassword"
+          fontSet="fa"
+          fontIcon="fa-eye-slash"
+        ></mat-icon>
+      </button>
+      <mat-error *ngIf="password.invalid && password.touched"
+        >Not a valid password (6 or more characters)</mat-error
+      >
+    </mat-form-field>
+    <button
+      id="sendVerificationMail"
+      mat-button
+      type="submit"
+      [disabled]="emailVerifyForm.invalid || isSubmitted"
+    >
+      Send
+    </button>
+  </form>
+</div>
+
+<div *ngIf="isSubmitted || message">
+  <mat-progress-bar *ngIf="!message" mode="indeterminate"></mat-progress-bar>
+  <h1 *ngIf="message" mat-dialog-title style="margin: 0; font-size: 1em;">
+    {{ message }}
+  </h1>
+</div>

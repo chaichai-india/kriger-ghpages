@@ -53,6 +53,7 @@ export class LoginComponent implements OnInit {
       if (message === "Success!") {
         this.router.navigate(["/posts"]);
       } else {
+        console.log(message);
         this.dialog.open(LoginDialogComponent, { data: { message } });
         this.isSubmitted = false;
       }
@@ -100,6 +101,8 @@ export class LoginDialogComponent {
 })
 export class ForgotPasswordDialogComponent implements OnInit {
   forgotPasswordForm: FormGroup;
+  message: string;
+  isSubmitted: boolean;
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService
@@ -110,13 +113,20 @@ export class ForgotPasswordDialogComponent implements OnInit {
   }
 
   async sendPasswordReset() {
+    this.isSubmitted = true;
     if (this.forgotPasswordForm.invalid) {
+      this.isSubmitted = false;
       return;
     }
     const { email } = this.forgotPasswordForm.value;
-    await this.authService
-      .sendPasswordResetMail(email)
-      .then(res => console.log(res));
+    await this.authService.sendPasswordResetMail(email).then(res => {
+      if (res === "Success") {
+        this.message = "Password reset link sent!";
+      } else {
+        this.message = res;
+        this.isSubmitted = false;
+      }
+    });
   }
 
   ngOnInit(): void {
@@ -131,6 +141,50 @@ export class ForgotPasswordDialogComponent implements OnInit {
   templateUrl: "../having-trouble-dialog/having-trouble-dialog.component.html",
   styleUrls: ["../having-trouble-dialog/having-trouble-dialog.component.css"]
 })
-export class HavingTroubleDialogComponent {
-  constructor() {}
+export class HavingTroubleDialogComponent implements OnInit {
+  isVerification: boolean;
+  emailVerifyForm: FormGroup;
+  showPassword: boolean = false;
+  message: string;
+  isSubmitted: boolean;
+  constructor(
+    private formBuilder: FormBuilder,
+    private authService: AuthService
+  ) {}
+
+  get email() {
+    return this.emailVerifyForm.get("email");
+  }
+
+  get password() {
+    return this.emailVerifyForm.get("password");
+  }
+
+  showVerificationForm() {
+    if (this.isVerification) {
+      return;
+    }
+    this.isVerification = true;
+    this.emailVerifyForm = this.formBuilder.group({
+      email: ["", [Validators.required, Validators.email]],
+      password: ["", [Validators.required, Validators.minLength(6)]]
+    });
+  }
+
+  async sendVerificationMail() {
+    this.isSubmitted = true;
+    if (this.emailVerifyForm.invalid) {
+      this.isSubmitted = false;
+      return;
+    }
+    const { email, password } = this.emailVerifyForm.value;
+    this.authService.signInAndVerifyMail(email, password).then(res => {
+      this.message = res;
+      if (res !== "Verification mail sent.") {
+        this.isSubmitted = false;
+      }
+    });
+  }
+
+  ngOnInit(): void {}
 }

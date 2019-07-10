@@ -1,0 +1,20 @@
+mat-dialog-actions {
+  margin-top: 1em;
+}
+
+mat-dialog-actions button,
+mat-dialog-actions a {
+  background-color: var(--primary-color);
+  color: white;
+  margin-bottom: 1em;
+}
+
+form {
+  display: grid;
+  margin-top: 2em;
+}
+
+form button#sendVerificationMail:enabled {
+  background-color: var(--primary-color);
+  color: white;
+}
