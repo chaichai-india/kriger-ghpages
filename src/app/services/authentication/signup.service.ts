@@ -34,6 +34,8 @@ export class SignupService {
       .catch(err => {
         console.log("Something went wrong!", err.message);
         // alert(err.message);
+        console.log(err.code);
+
         response = err.message;
       });
     return response;

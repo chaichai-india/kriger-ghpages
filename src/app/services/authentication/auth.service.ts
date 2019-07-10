@@ -44,6 +44,8 @@ export class AuthService {
           } else if (errorCode === "auth/user-not-found") {
             response = { message: "No user found!", action: "Error" };
             // alert(errorMessage);
+          } else {
+            response = { message: "Something went wrong!", action: "Error" };
           }
           // console.log(error);
         });
@@ -64,7 +66,13 @@ export class AuthService {
         response = "Verification mail sent.";
       })
       .catch(err => {
-        response = err.message;
+        if (err.code === "auth/user-not-found") {
+          response = "No user found!";
+        } else if (err.code === "auth/wrong-password") {
+          response = "Wrong password!";
+        } else {
+          response = "Something went wrong!";
+        }
       });
     return response;
   }
@@ -87,8 +95,12 @@ export class AuthService {
         response = "Success";
       })
       .catch(err => {
-        console.log("error in sending password reset email", err.message);
-        response = err.message;
+        console.log("error in sending password reset email", err.code);
+        if (err.code === "auth/user-not-found") {
+          response = "No user found!";
+        } else {
+          response = "Something went wrong!";
+        }
       });
     return response;
   }

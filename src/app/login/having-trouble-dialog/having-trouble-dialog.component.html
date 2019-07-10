@@ -1,12 +1,17 @@
-<h1 mat-dialog-title style="margin: 0; font-size: 1em; text-align: center;">
+<h1
+  *ngIf="!isVerification"
+  mat-dialog-title
+  style="margin: 0; font-size: 1em; text-align: center;"
+>
   Having Trouble?
 </h1>
-<p style="text-align: center">Connect via</p>
+<p *ngIf="!isVerification" style="text-align: center">Connect via</p>
 <!-- <div mat-dialog-content>
   
 </div> -->
 <mat-dialog-actions align="center">
   <a
+    *ngIf="!isVerification"
     href="mailto:support@kriger.in"
     target="_blank"
     rel="noopener noreferrer"
@@ -15,6 +20,7 @@
     Email
   </a>
   <a
+    *ngIf="!isVerification"
     href="https://chat.whatsapp.com/EZCcHHMWQVE32STn3OTSlJ"
     target="_blank"
     rel="noopener noreferrer"
@@ -28,7 +34,9 @@
 </mat-dialog-actions>
 
 <div *ngIf="isVerification">
-  <p>To receive verification mail, fill your details</p>
+  <p style="text-align: center; margin-top:1em">
+    To receive verification mail, fill your details
+  </p>
   <form [formGroup]="emailVerifyForm" (ngSubmit)="sendVerificationMail()">
     <mat-form-field>
       <input
@@ -37,6 +45,7 @@
         type="email"
         formControlName="email"
         placeholder="Your Registered Email"
+        required
       />
       <mat-error *ngIf="email.invalid && email.touched"
         >Not a valid email</mat-error
