@@ -18,7 +18,7 @@ export class SignupService {
       .createUserWithEmailAndPassword(email, password)
       .then(async value => {
         // returns a new user and signs in automatically
-        console.log("Success!", value);
+        // console.log("Success!", value);
         await this.SendVerificationMail(data).then(() => {
           // alert(
           //   "Kindly check your mail for verification email.\n" +
@@ -32,9 +32,9 @@ export class SignupService {
         });
       })
       .catch(err => {
-        console.log("Something went wrong!", err.message);
+        // console.log("Something went wrong!", err.message);
         // alert(err.message);
-        console.log(err.code);
+        // console.log(err.code);
 
         response = err.message;
       });
@@ -46,12 +46,12 @@ export class SignupService {
     const user = this.afauth.auth.currentUser;
     const uid = user.uid;
     await this.userService.setNewUserData(uid, data).then(async () => {
-      console.log("new user data added");
+      // console.log("new user data added");
       await user.sendEmailVerification().then(async () => {
-        console.log("Email Verification Sent");
+        // console.log("Email Verification Sent");
       });
       await this.afauth.auth.signOut();
-      console.log("signedout");
+      // console.log("signedout");
     });
   }
 }

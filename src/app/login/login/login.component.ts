@@ -53,7 +53,7 @@ export class LoginComponent implements OnInit {
       if (message === "Success!") {
         this.router.navigate(["/posts"]);
       } else {
-        console.log(message);
+        // console.log(message);
         this.dialog.open(LoginDialogComponent, { data: { message } });
         this.isSubmitted = false;
       }

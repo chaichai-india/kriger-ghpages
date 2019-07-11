@@ -130,7 +130,7 @@ export class SignupComponent implements OnInit {
     let checked = this.learnerCheckbox
       .filter(learner => learner.checked)
       .map(learner => learner.id);
-    console.log(checked);
+    // console.log(checked);
     this.checkBoxValue = checked;
   }
 
@@ -146,7 +146,7 @@ export class SignupComponent implements OnInit {
     let checked = this.educatorCheckbox
       .filter(educator => educator.checked)
       .map(educator => educator.id);
-    console.log(checked);
+    // console.log(checked);
     this.checkBoxValue = checked;
   }
 
@@ -272,14 +272,14 @@ export class SignupComponent implements OnInit {
       date_of_joining,
       name
     };
-    console.log(data);
+    // console.log(data);
     // this.dialog.open(SignupDialogComponent, {
     //   data: { message: "works" }
     // });
     await this.signupService
       .signup(data)
       .then(response => {
-        console.log(response);
+        // console.log(response);
         this.dialog.open(SignupDialogComponent, {
           data: { message: response }
         });

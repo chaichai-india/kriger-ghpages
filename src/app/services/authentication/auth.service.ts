@@ -39,7 +39,7 @@ export class AuthService {
           // Handle Errors here.
           let errorCode = error.code;
           let errorMessage = error.message;
-          console.log(errorCode, errorMessage);
+          // console.log(errorCode, errorMessage);
           if (errorCode === "auth/wrong-password") {
             response = { message: "Wrong Password!", action: "OH NO" };
             // alert("Wrong password.");
@@ -82,9 +82,9 @@ export class AuthService {
   async SendVerificationMail() {
     const user = this.afauth.auth.currentUser;
     user.sendEmailVerification().then(async () => {
-      console.log("Email Verification Sent");
+      // console.log("Email Verification Sent");
       await this.signout();
-      console.log("signedout");
+      // console.log("signedout");
     });
   }
 
@@ -93,11 +93,11 @@ export class AuthService {
     await this.afauth.auth
       .sendPasswordResetEmail(email)
       .then(() => {
-        console.log("password reset email");
+        // console.log("password reset email");
         response = "Success";
       })
       .catch(err => {
-        console.log("error in sending password reset email", err.code);
+        // console.log("error in sending password reset email", err.code);
         if (err.code === "auth/user-not-found") {
           response = "No user found!";
         } else {
