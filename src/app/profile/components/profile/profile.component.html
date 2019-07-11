@@ -40,21 +40,21 @@
                   : false
               "
               >{{
-                userDetails?.hometown ? userDetails?.hometown : 'Hometown'
+                userDetails?.hometown ? 'New Delhi' : 'Hometown'
               }},</span
             >
             <span
               [ngStyle]="
                 !userDetails?.state ? { color: 'rgba(0, 0, 0, 0.55)' } : false
               "
-              >{{ userDetails?.state ? userDetails?.state : 'State' }},</span
+              >{{ userDetails?.state ? ' Delhi' : 'State' }},</span
             >
             <span
               [ngStyle]="
                 !userDetails?.country ? { color: 'rgba(0, 0, 0, 0.55)' } : false
               "
               >{{
-                userDetails?.country ? userDetails?.country : 'Country'
+                userDetails?.country ? ' India' : 'Country'
               }}</span
             >
           </span>
