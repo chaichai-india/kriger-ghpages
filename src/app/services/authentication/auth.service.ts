@@ -17,18 +17,20 @@ export class AuthService {
     try {
       await this.afauth.auth
         .signInWithEmailAndPassword(email, password)
-        .then(res => {
+        .then(async res => {
           if (res.user.emailVerified) {
             response = { message: "Success!", action: "Logged In" };
             this.loggedInUpdate.next(true);
           } else {
-            this.SendVerificationMail();
+            await this.SendVerificationMail();
             // alert(
             //   "Your email is not verified!\n" +
             //     "Kindly check your mail for verification email.\n"
             // );
             response = {
-              message: "Email not verified",
+              message:
+                "Email not verified!\n" +
+                "Kindly check your mail for verification email.",
               action: "Please Verify"
             };
           }
@@ -45,7 +47,7 @@ export class AuthService {
             response = { message: "No user found!", action: "Error" };
             // alert(errorMessage);
           } else {
-            response = { message: "Something went wrong!", action: "Error" };
+            response = { message: "Something went wrong! \n", action: "Error" };
           }
           // console.log(error);
         });
