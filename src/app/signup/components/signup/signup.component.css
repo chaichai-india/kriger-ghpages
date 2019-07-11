@@ -17,6 +17,12 @@
 .learner-educator-card header {
   display: flex;
   align-items: center;
+  color: var(--primary-color);
+}
+
+.learner-educator-card header .checkbox-group-title {
+  font-weight: 500;
+  color: var(--primary-color);
 }
 
 .learner-educator-card header mat-icon {
@@ -55,6 +61,11 @@ mat-card-actions {
   /* place-items: center; */
   margin-bottom: 0 !important;
   margin-left: 0;
+}
+
+mat-hint,
+mat-card-subtitle {
+  color: black !important;
 }
 
 button {

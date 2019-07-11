@@ -1861,5 +1861,90 @@ export const INTERNS = [
     name: 'VIJAY SELVARAJAN',
     internship: 'Campus Ambassador',
     completed: 'May 10, 2019'
-  }
+  },
+  {
+    name: 'RIYA DABAS',
+    internship: 'Social Media',
+    completed: 'June 20, 2019'
+  },
+  {
+    name: 'AMANPREET SETHI',
+    internship: 'Social Media',
+    completed: 'June 20, 2019'
+  },
+  {
+    name: 'NIKHIL AGARWAL',
+    internship: 'Campus Ambassador',
+    completed: 'June 20, 2019'
+  },
+  {
+    name: 'FAIZAN KHAN AFRIDI',
+    internship: 'Campus Ambassador',
+    completed: 'June 20, 2019'
+  },
+  {
+    name: 'JUHI KHAN AFRIDI',
+    internship: 'Campus Ambassador',
+    completed: 'June 20, 2019'
+  },
+  {
+    name: 'P. MEHER LASYA',
+    internship: 'Campus Ambassador',
+    completed: 'June 20, 2019'
+  },
+  {
+    name: 'MURARISHETTY SUPRIYA',
+    internship: 'Campus Ambassador',
+    completed: 'June 20, 2019'
+  },
+  {
+    name: 'ALEKHYA PEDDISETTI',
+    internship: 'Campus Ambassador',
+    completed: 'June 20, 2019'
+  },
+  {
+    name: 'VITIKA SOOD',
+    internship: 'Campus Ambassador',
+    completed: 'June 20, 2019'
+  },
+  {
+    name: 'SUDHARSAN',
+    internship: 'Campus Ambassador',
+    completed: 'June 20, 2019'
+  },
+  {
+    name: 'A. NIRMAL KUMAR',
+    internship: 'Campus Ambassador',
+    completed: 'June 20, 2019'
+  },
+  {
+    name: 'NAALLA VIGNATHA',
+    internship: 'Campus Ambassador',
+    completed: 'June 20, 2019'
+  },
+  {
+    name: 'KURAPATI VIDYA CHANDANA',
+    internship: 'Campus Ambassador',
+    completed: 'June 20, 2019'
+  },
+  {
+    name: 'KAMRAN KHAN AFRIDI',
+    internship: 'Campus Ambassador',
+    completed: 'June 20, 2019'
+  },
+  {
+    name: 'PRASHANT MANU',
+    internship: 'Campus Ambassador',
+    completed: 'June 20, 2019'
+  },
+  {
+    name: 'PRIYANSH KESARWANI',
+    internship: 'Campus Ambassador',
+    completed: 'June 20, 2019'
+  },
+  {
+    name: 'BHUMIKA GOYAL',
+    internship: 'Campus Ambassador',
+    completed: 'June 20, 2019'
+  },
 ];
