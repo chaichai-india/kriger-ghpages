@@ -43,6 +43,7 @@ import {
   MatProgressBarModule,
   MatProgressSpinnerModule
 } from "@angular/material";
+import { NewlandingpageComponent } from './components/newlandingpage/newlandingpage.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import {
     NavDialogComponent,
     PageNotFoundComponent,
     FooterComponent,
-    LandingpageComponent
+    LandingpageComponent,
+    NewlandingpageComponent
   ],
   entryComponents: [NavDialogComponent],
   imports: [
