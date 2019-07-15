@@ -1,4 +1,11 @@
-import { Component, OnInit, ElementRef, ViewChild } from "@angular/core";
+import {
+  Component,
+  OnInit,
+  ElementRef,
+  ViewChild,
+  Renderer2,
+  OnDestroy
+} from "@angular/core";
 import { Observable, combineLatest, BehaviorSubject } from "rxjs";
 import { map, take, tap, shareReplay } from "rxjs/operators";
 
@@ -9,7 +16,7 @@ import { PostService } from "../../../services/database/post.service";
   templateUrl: "./post-list.component.html",
   styleUrls: ["./post-list.component.css"]
 })
-export class PostListComponent implements OnInit {
+export class PostListComponent implements OnInit, OnDestroy {
   posts: Observable<any[]>;
   posts2 = new BehaviorSubject([]);
   isAuth: boolean;
@@ -122,9 +129,15 @@ export class PostListComponent implements OnInit {
     });
   }
 
-  constructor(private postService: PostService) {}
+  constructor(private postService: PostService, private renderer: Renderer2) {
+    this.renderer.addClass(document.body, "body-bg");
+  }
 
   ngOnInit() {
     this.initialize();
+  }
+
+  ngOnDestroy() {
+    this.renderer.removeClass(document.body, "body-bg");
   }
 }

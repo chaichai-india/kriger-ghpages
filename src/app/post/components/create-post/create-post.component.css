@@ -3,6 +3,9 @@
   display: grid;
   place-items: center;
   margin-bottom: 0.75em;
+  background-color: white;
+  padding: 1em;
+  box-shadow: var(--primary-box-shadow);
 }
 
 form.post-form {

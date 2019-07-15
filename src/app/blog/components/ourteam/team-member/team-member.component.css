@@ -55,8 +55,15 @@
 }
 
 .expertcard {
-  width: 350px;
+  width: 320px;
   height: 550px;
   grid-template-rows: auto;
   place-content: flex-start;
+}
+
+@media screen and (max-width: 320px) {
+  .expertcard {
+    width: 300px;
+    height: auto;
+  }
 }
