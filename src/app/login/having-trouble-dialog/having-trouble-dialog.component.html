@@ -1,15 +1,20 @@
-<h1
-  *ngIf="!isVerification"
-  mat-dialog-title
-  style="margin: 0; font-size: 1em; text-align: center;"
+<button
+  mat-icon-button
+  style="float: right; margin-top: -1.5em;
+margin-right: -1.7em;"
+  mat-dialog-close
+  tabindex="-1"
 >
+  <mat-icon>close</mat-icon>
+</button>
+<h1 *ngIf="!isVerification" mat-dialog-title>
   Having Trouble?
 </h1>
 <p *ngIf="!isVerification" style="text-align: center">Connect via</p>
 <!-- <div mat-dialog-content>
   
 </div> -->
-<mat-dialog-actions align="center">
+<mat-dialog-actions align="center" *ngIf="!isVerification">
   <a
     *ngIf="!isVerification"
     href="mailto:support@kriger.in"
@@ -28,12 +33,13 @@
   >
     Whatsapp
   </a>
-  <button mat-button (click)="showVerificationForm()">
+  <button *ngIf="!isVerification" mat-button (click)="showVerificationForm()">
     Didn't receive verification mail
   </button>
 </mat-dialog-actions>
 
 <div *ngIf="isVerification">
+  <h1 mat-dialog-title>Didn't receive verification mail</h1>
   <p style="text-align: center; margin-top:1em">
     To receive verification mail, fill your details
   </p>
@@ -84,7 +90,7 @@
     </mat-form-field>
     <button
       id="sendVerificationMail"
-      mat-button
+      mat-raised-button
       type="submit"
       [disabled]="emailVerifyForm.invalid || isSubmitted"
     >

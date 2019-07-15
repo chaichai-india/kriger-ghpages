@@ -1,9 +1,14 @@
-import { Component, OnInit, Inject } from "@angular/core";
+import { Component, OnInit, Inject, Renderer2, OnDestroy } from "@angular/core";
 import { Router } from "@angular/router";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { AuthService } from "src/app/services/authentication/auth.service";
 import { BehaviorSubject } from "rxjs";
-import { MatSnackBar, MatDialog, MAT_DIALOG_DATA } from "@angular/material";
+import {
+  MatSnackBar,
+  MatDialog,
+  MAT_DIALOG_DATA,
+  MatDialogConfig
+} from "@angular/material";
 
 // import { AuthProvider } from 'ngx-auth-firebaseui';
 
@@ -12,7 +17,7 @@ import { MatSnackBar, MatDialog, MAT_DIALOG_DATA } from "@angular/material";
   templateUrl: "./login.component.html",
   styleUrls: ["./login.component.css"]
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
   loginForm: FormGroup;
   isSubmitted = false;
   showPassword = false;
@@ -23,8 +28,11 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private formBuilder: FormBuilder,
     private _snackBar: MatSnackBar,
-    public dialog: MatDialog
-  ) {}
+    public dialog: MatDialog,
+    private renderer: Renderer2
+  ) {
+    this.renderer.addClass(document.body, "body-bg");
+  }
 
   get formControls() {
     return this.loginForm.controls;
@@ -70,10 +78,16 @@ export class LoginComponent implements OnInit {
   }
 
   openForgotPassword() {
-    this.dialog.open(ForgotPasswordDialogComponent);
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.width = "400px";
+    dialogConfig.minWidth = "300px";
+    this.dialog.open(ForgotPasswordDialogComponent, dialogConfig);
   }
   openHavingTrouble() {
-    this.dialog.open(HavingTroubleDialogComponent);
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.width = "400px";
+    dialogConfig.minWidth = "300px";
+    this.dialog.open(HavingTroubleDialogComponent, dialogConfig);
   }
 
   ngOnInit() {
@@ -81,6 +95,10 @@ export class LoginComponent implements OnInit {
       email: ["", [Validators.required, Validators.email]],
       password: ["", [Validators.required, Validators.minLength(6)]]
     });
+  }
+
+  ngOnDestroy() {
+    this.renderer.removeClass(document.body, "body-bg");
   }
 }
 

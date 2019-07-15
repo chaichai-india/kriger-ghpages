@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from "@angular/core";
+import { Component, OnInit, Inject, Renderer2, OnDestroy } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import {
   trigger,
@@ -37,7 +37,7 @@ import { MAT_DIALOG_DATA, MatDialog } from "@angular/material";
     ])
   ]
 })
-export class SignupComponent implements OnInit {
+export class SignupComponent implements OnInit, OnDestroy {
   learnerCheckbox = [
     {
       id: 0,
@@ -122,8 +122,11 @@ export class SignupComponent implements OnInit {
     private signupService: SignupService,
     private authService: AuthService,
     private router: Router,
-    public dialog: MatDialog
-  ) {}
+    public dialog: MatDialog,
+    private renderer: Renderer2
+  ) {
+    this.renderer.addClass(document.body, "body-bg");
+  }
 
   getLearnerCheckboxes() {
     this.resetEducatorCheckbox();
@@ -296,6 +299,10 @@ export class SignupComponent implements OnInit {
 
   ngOnInit() {
     this.buildSignupForm();
+  }
+
+  ngOnDestroy() {
+    this.renderer.removeClass(document.body, "body-bg");
   }
 }
 

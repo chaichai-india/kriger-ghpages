@@ -68,12 +68,13 @@
           formControlName="firstname"
           required
         />
-        <mat-error *ngIf="firstname.invalid && firstname.touched"
+        <mat-error
+          *ngIf="firstname.invalid && firstname.touched && firstname.dirty"
           >Not a valid first name</mat-error
         >
-        <mat-hint align="start"
+        <!-- <mat-hint align="start"
           >Name cannot be changed after you register</mat-hint
-        >
+        > -->
       </mat-form-field>
       <mat-form-field>
         <input
@@ -83,12 +84,13 @@
           formControlName="lastname"
           required
         />
-        <mat-error *ngIf="lastname.invalid && lastname.touched"
+        <mat-error
+          *ngIf="lastname.invalid && lastname.touched && lastname.dirty"
           >Not a valid last name</mat-error
         >
-        <mat-hint align="start"
+        <!-- <mat-hint align="start"
           >Name cannot be changed after you register</mat-hint
-        >
+        > -->
       </mat-form-field>
       <mat-form-field>
         <input
@@ -97,7 +99,7 @@
           formControlName="email"
           required
         />
-        <mat-error *ngIf="email.invalid && email.touched"
+        <mat-error *ngIf="email.invalid && email.touched && email.dirty"
           >Not a valid email id</mat-error
         >
       </mat-form-field>
@@ -128,7 +130,8 @@
             fontIcon="fa-eye-slash"
           ></mat-icon>
         </button>
-        <mat-error *ngIf="password.invalid && password.touched"
+        <mat-error
+          *ngIf="password.invalid && password.touched && password.dirty"
           >Not a valid password (minimum 6 characters)</mat-error
         >
       </mat-form-field>
@@ -140,7 +143,7 @@
           formControlName="city"
           required
         />
-        <mat-error *ngIf="city.invalid && city.touched"
+        <mat-error *ngIf="city.invalid && city.touched && city.dirty"
           >Not a valid city name</mat-error
         >
       </mat-form-field>
@@ -154,7 +157,7 @@
           formControlName="phone"
           required
         />
-        <mat-error *ngIf="phone.invalid && phone.touched"
+        <mat-error *ngIf="phone.invalid && phone.touched && phone.dirty"
           >Not a valid phone number</mat-error
         >
       </mat-form-field>

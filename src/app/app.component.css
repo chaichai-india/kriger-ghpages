@@ -3,9 +3,5 @@
   /* grid-template-columns: 1fr 1.5fr 1fr; */
   /* grid-template-rows: auto;
   grid-template-areas: 'header header header'; */
-  margin: 5em 0;
-}
-
-app-navbar {
-  grid-area: header;
+  margin-top: 60px;
 }
