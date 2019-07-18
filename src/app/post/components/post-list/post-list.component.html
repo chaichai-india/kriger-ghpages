@@ -9,7 +9,7 @@
   <app-create-post></app-create-post>
   <hr style="width: 100%; margin-bottom:1em;" />
   <app-post *ngFor="let post of posts2 | async" [post]="post"> </app-post>
-  <mat-spinner diameter="50"></mat-spinner>
+  <mat-spinner diameter="50" *ngIf="loading"></mat-spinner>
 
   <div class="load__btn">
     <button

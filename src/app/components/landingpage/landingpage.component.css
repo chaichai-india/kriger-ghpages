@@ -188,7 +188,7 @@ h2.tagline::after {
 
 @media screen and (max-width: 1076px) {
   :host {
-    width: 100vw;
+    width: 100%;
   }
 }
 
@@ -200,7 +200,7 @@ h2.tagline::after {
 
 @media screen and (max-width: 780px) {
   :host {
-    width: 100vw;
+    width: 100%;
   }
 
   h2.tagline {

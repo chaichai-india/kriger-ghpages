@@ -1,7 +1,6 @@
-<div class="main__container">
-  <app-navbar></app-navbar>
-  <mat-progress-bar *ngIf="loading" color="primary" mode="indeterminate">
-  </mat-progress-bar>
-  <router-outlet></router-outlet>
-  <app-footer></app-footer>
-</div>
+<app-navbar></app-navbar>
+<div class="navbar-placeholder"></div>
+<mat-progress-bar *ngIf="loading" color="primary" mode="indeterminate">
+</mat-progress-bar>
+<router-outlet></router-outlet>
+<app-footer></app-footer>
