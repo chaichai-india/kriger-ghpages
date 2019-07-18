@@ -21,32 +21,35 @@
     id="navbarsDefault"
   >
     <ul class="navbar-nav ml-auto h-100">
-      <li
+      <a
         *ngIf="isLoggedInObservable | async"
         class="nav-item d-flex flex-column align-items-center justify-content-center mr-4 font-weight-bold"
         [routerLink]="['/posts']"
+        href="/posts"
         routerLinkActive="nav-link-active"
         (click)="!isNavbarCollapsed ? (isNavbarCollapsed = true) : false"
       >
         <mat-icon>ballot</mat-icon>
         <span>Posts</span>
-      </li>
-      <li
+      </a>
+      <a
         *ngIf="isLoggedInObservable | async"
         class="nav-item d-flex flex-column align-items-center justify-content-center mr-4 font-weight-bold"
         [routerLink]="['/profiles']"
+        href="/profiles"
         routerLinkActive="nav-link-active"
         (click)="!isNavbarCollapsed ? (isNavbarCollapsed = true) : false"
       >
         <mat-icon>account_box</mat-icon>
         <span>Profiles</span>
-      </li>
+      </a>
 
-      <li
+      <a
         *ngIf="!(isLoggedInObservable | async)"
         id="signup"
         class="nav-item d-flex flex-column align-items-center justify-content-center mr-4 font-weight-bold"
         [routerLink]="['/register']"
+        href="/register"
         routerLinkActive="nav-link-active"
         (click)="!isNavbarCollapsed ? (isNavbarCollapsed = true) : false"
       >
@@ -56,12 +59,13 @@
           fontIcon="fa-user"
         ></mat-icon>
         <span>Register</span>
-      </li>
-      <li
+      </a>
+      <a
         *ngIf="!(isLoggedInObservable | async)"
         id="login"
         class="nav-item d-flex flex-column align-items-center justify-content-center mr-4 font-weight-bold"
         [routerLink]="['/login']"
+        href="/login"
         routerLinkActive="nav-link-active"
         (click)="!isNavbarCollapsed ? (isNavbarCollapsed = true) : false"
       >
@@ -71,7 +75,7 @@
           fontIcon="fa-sign-in-alt"
         ></mat-icon>
         <span>Login</span>
-      </li>
+      </a>
 
       <!-- <li
         *ngIf="isLoggedInObservable | async"
@@ -136,6 +140,7 @@
           <div class="dropdown-divider"></div>
           <span
             class="dropdown-item d-flex align-items-center justify-content-center"
+            id="logout-btn"
             (click)="logout()"
             ><mat-icon
               class="d-flex align-items-center justify-content-center"

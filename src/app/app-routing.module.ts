@@ -6,8 +6,8 @@ import { NewlandingpageComponent } from "./components/newlandingpage/newlandingp
 import { CustomPreloadingStrategy } from "./custom-preloading-strategy";
 
 const routes: Routes = [
-  // { path: "", component: NewLandingpageComponent },
-  { path: "", component: NewlandingpageComponent },
+  { path: "", component: LandingpageComponent },
+  // { path: "", component: NewlandingpageComponent },
   {
     path: "posts",
     loadChildren: "./post/post.module#PostModule",

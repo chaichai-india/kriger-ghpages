@@ -1,5 +1,5 @@
 <div class="profile__container">
-  <mat-spinner *ngIf="loading"></mat-spinner>
+  <mat-spinner diameter="50" *ngIf="loading"></mat-spinner>
   <h1 class="profile__notfound" *ngIf="!profile_found">Profile not Found.</h1>
 
   <mat-card class="profile__card" *ngIf="profile_found && !loading">

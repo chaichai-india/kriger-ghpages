@@ -5,3 +5,8 @@
   grid-template-areas: 'header header header'; */
   margin-top: 60px;
 }
+
+mat-progress-bar {
+  position: absolute;
+  top: 60px;
+}

@@ -45,9 +45,9 @@ a:active {
   outline: 0;
 }
 
-mat-spinner {
+/* mat-spinner {
   margin: 10vh auto;
-}
+} */
 
 .mat-form-field-label {
   color: black !important;
