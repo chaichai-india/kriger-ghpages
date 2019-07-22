@@ -34,7 +34,11 @@ export class PostComponent implements OnInit {
   }
 
   openComments() {
-    this.showComments = true;
+    if (this.uid) {
+      this.showComments = true;
+    }
+
+    this.openDialog();
   }
 
   postLiked(postid, uid) {
@@ -42,33 +46,43 @@ export class PostComponent implements OnInit {
   }
 
   async likePost(postid: string) {
-    const uid = await this.authService.userID;
-    const timestamp = this.timeService.timestamp;
+    if (this.uid) {
+      const uid = await this.authService.userID;
+      const timestamp = this.timeService.timestamp;
 
-    // console.log({ postid, uid });
-    if (!this.isPostLiked) {
-      this.isPostLiked = true;
-      this.likeService.postLike(postid, uid, timestamp);
-    } else {
-      this.isPostLiked = false;
-      this.likeService.postDislike(postid, uid);
+      // console.log({ postid, uid });
+      if (!this.isPostLiked) {
+        this.isPostLiked = true;
+        this.likeService.postLike(postid, uid, timestamp);
+      } else {
+        this.isPostLiked = false;
+        this.likeService.postDislike(postid, uid);
+      }
     }
+
+    this.openDialog();
   }
 
   openProfile() {
-    this.post.profileLink.then(snap => {
-      let username = snap.val();
+    if (this.uid) {
+      this.post.profileLink.then(snap => {
+        let username = snap.val();
 
-      this.zone.run(() => {
-        this.router.navigate([`/india/${username}`]);
+        this.zone.run(() => {
+          this.router.navigate([`/india/${username}`]);
+        });
       });
-    });
+    }
+
+    this.openDialog();
   }
 
   initialize() {
-    this.postLiked(this.post.key, this.uid).then(res => {
-      this.isPostLiked = res ? true : false;
-    });
+    if (this.uid) {
+      this.postLiked(this.post.key, this.uid).then(res => {
+        this.isPostLiked = res ? true : false;
+      });
+    }
 
     // console.log(this.post.profileLink);
   }

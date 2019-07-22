@@ -8,8 +8,8 @@ import { PostDetailComponent } from "./components/post-detail/post-detail.compon
 const routes: Routes = [
   {
     path: "",
-    component: PostListComponent,
-    canActivate: [AuthGuard]
+    component: PostListComponent
+    // canActivate: [AuthGuard]
   },
   { path: ":id", component: PostDetailComponent, canActivate: [AuthGuard] }
 ];

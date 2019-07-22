@@ -132,7 +132,10 @@ export class AuthService {
   }
 
   get userID() {
-    return this.afauth.auth.currentUser.uid;
+    if (this.afauth.auth.currentUser) {
+      return this.afauth.auth.currentUser.uid;
+    }
+    return null;
   }
 
   get userName() {

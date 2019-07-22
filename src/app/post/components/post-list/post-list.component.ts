@@ -6,10 +6,11 @@ import {
   Renderer2,
   OnDestroy
 } from "@angular/core";
-import { Observable, combineLatest, BehaviorSubject } from "rxjs";
-import { map, take, tap, shareReplay } from "rxjs/operators";
+import { Observable, BehaviorSubject } from "rxjs";
+import { take, tap, shareReplay } from "rxjs/operators";
 
 import { PostService } from "../../../services/database/post.service";
+import { AuthService } from "../../../services/authentication/auth.service";
 
 @Component({
   selector: "app-post-list",
@@ -19,7 +20,7 @@ import { PostService } from "../../../services/database/post.service";
 export class PostListComponent implements OnInit, OnDestroy {
   posts: Observable<any[]>;
   posts2 = new BehaviorSubject([]);
-  isAuth: boolean;
+  isAuth: boolean = this.authService.userID ? true : false;
   lastKey: string;
   loading: boolean;
   infinite: boolean = false;
@@ -129,7 +130,11 @@ export class PostListComponent implements OnInit, OnDestroy {
     });
   }
 
-  constructor(private postService: PostService, private renderer: Renderer2) {
+  constructor(
+    private authService: AuthService,
+    private postService: PostService,
+    private renderer: Renderer2
+  ) {
     this.renderer.addClass(document.body, "body-bg");
   }
 
