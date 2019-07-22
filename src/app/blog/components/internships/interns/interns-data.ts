@@ -1947,4 +1947,9 @@ export const INTERNS = [
     internship: 'Campus Ambassador',
     completed: 'June 20, 2019'
   },
+  {
+    name: 'BHAWNA CHOPRA',
+    internship: 'Social Media Marketing',
+    completed: 'June 20, 2019'
+  }
 ];
