@@ -53,11 +53,12 @@
         routerLinkActive="nav-link-active"
         (click)="!isNavbarCollapsed ? (isNavbarCollapsed = true) : false"
       >
-        <mat-icon
+        <!-- <mat-icon
           class="text-center"
           fontSet="fas"
           fontIcon="fa-user"
-        ></mat-icon>
+        ></mat-icon> -->
+        <img src="assets/add-contact.svg" width="32" />
         <span>Register</span>
       </a>
       <a
@@ -69,12 +70,13 @@
         routerLinkActive="nav-link-active"
         (click)="!isNavbarCollapsed ? (isNavbarCollapsed = true) : false"
       >
-        <mat-icon
+        <!-- <mat-icon
           class="text-center"
           fontSet="fas"
           fontIcon="fa-sign-in-alt"
-        ></mat-icon>
-        <span>Login</span>
+        ></mat-icon> -->
+        <img src="assets/login.svg" width="24" />
+        <span style="margin-top: 8px">Login</span>
       </a>
 
       <!-- <li
