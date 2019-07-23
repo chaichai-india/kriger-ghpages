@@ -1,7 +1,7 @@
 :host {
   width: 100%;
-  height: 100%;
-  min-height: 100%;
+  height: 100vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
@@ -91,9 +91,10 @@ section.image-with-text .text {
 
 /* proto 3 */
 
-section {
+section#header {
   width: 100%;
-  height: 80%;
+  min-height: 80vh;
+  max-height: 80vh;
   /* background-image: url("/assets/landing-bg.jpg");
   background-size: cover; */
   position: relative;
@@ -105,7 +106,7 @@ section {
   letter-spacing: 0.32px;
 }
 
-.bg-image {
+section#header .bg-image {
   position: absolute;
   top: 0;
   bottom: 0;
@@ -117,29 +118,31 @@ section {
   z-index: -1;
 }
 
-.heading {
+section#header .heading {
   font-size: 3.5rem;
   margin-bottom: 1rem;
   color: white;
   border-bottom: 2px solid white;
 }
 
-.subheading {
+section#header .subheading {
   font-size: 1.25rem;
   margin-bottom: 1rem;
 }
 
-.cta {
+section#header .cta {
   display: flex;
   align-items: center;
+  justify-content: center;
+  width: 100%;
 }
 
-.cta a {
+section#header .cta a {
   width: 120px;
   height: 36px;
 }
 
-.cta a:not(:last-child) {
+section#header .cta a:not(:last-child) {
   height: 36px;
   text-align: center;
   border-radius: 5px;
@@ -150,7 +153,53 @@ section {
   color: white;
 }
 
-.playstore {
+section#header .playstore {
   width: 120px;
   height: 36px;
+}
+
+section#featured,
+section#awarded,
+section#partners {
+  width: 100%;
+  margin: 2rem 0;
+  padding: 2rem 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: var(--secondary-font-family);
+  letter-spacing: 0.32px;
+}
+
+section#featured .heading,
+section#awarded .heading,
+section#partners .heading {
+  font-size: 2.5rem;
+  margin: 2rem 0;
+  color: black;
+}
+
+section#featured .images,
+section#awarded .images,
+section#partners .images {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 100px);
+  grid-gap: 1em;
+  place-items: center;
+  width: 100%;
+  justify-content: center;
+}
+
+section#featured .images img,
+section#awarded .images img,
+section#partners .images img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  padding: 0.4em;
+}
+
+section#awarded {
+  background-color: #f3f3f3;
 }

@@ -122,7 +122,7 @@
 
 <!-- proto2 -->
 
-<section>
+<section id="header">
   <div class="bg-image"></div>
   <p class="heading">
     India's Education Network
@@ -139,5 +139,26 @@
       rel="noopener"
       ><img class="playstore" src="/assets/images/play_store.png"/><img
     /></a>
+  </div>
+</section>
+
+<section id="featured">
+  <p class="heading">Featured In</p>
+  <div class="images">
+    <img [src]="featured.url" *ngFor="let featured of featuredImages" />
+  </div>
+</section>
+
+<section id="awarded">
+  <p class="heading">Awarded at</p>
+  <div class="images">
+    <img [src]="award.url" *ngFor="let award of awardImages" />
+  </div>
+</section>
+
+<section id="partners">
+  <p class="heading">Our Partners</p>
+  <div class="images">
+    <img [src]="partner.url" *ngFor="let partner of partnerImages" />
   </div>
 </section>
