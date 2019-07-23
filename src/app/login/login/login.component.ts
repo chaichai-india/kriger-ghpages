@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject, Renderer2, OnDestroy } from "@angular/core";
 import { Router } from "@angular/router";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { AuthService } from "src/app/services/authentication/auth.service";
+import { AuthService } from "../../services/authentication/auth.service";
 import { BehaviorSubject } from "rxjs";
 import {
   MatSnackBar,

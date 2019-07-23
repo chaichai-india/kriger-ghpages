@@ -7,9 +7,9 @@ import {
   animate,
   transition
 } from "@angular/animations";
-import { TimestampService } from "src/app/services/utility/timestamp.service";
-import { SignupService } from "src/app/services/authentication/signup.service";
-import { AuthService } from "src/app/services/authentication/auth.service";
+import { TimestampService } from "../../../services/utility/timestamp.service";
+import { SignupService } from "../../../services/authentication/signup.service";
+import { AuthService } from "../../../services/authentication/auth.service";
 import { Router } from "@angular/router";
 import { MAT_DIALOG_DATA, MatDialog } from "@angular/material";
 

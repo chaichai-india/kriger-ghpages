@@ -29,11 +29,14 @@ const routes: Routes = [
     path: "login",
     loadChildren: "./login/login.module#LoginModule"
   },
-  // { path: 'blog', loadChildren: './blog/blog.module#BlogModule' },
+  // { path: 'blog', loadChildren: 'blog/blog.module#BlogModule' },
   { path: "internships", loadChildren: "./blog/blog.module#BlogModule" },
   { path: "media-coverage", loadChildren: "./blog/blog.module#BlogModule" },
   { path: "careers", loadChildren: "./blog/blog.module#BlogModule" },
-  { path: "term-conditions", loadChildren: "./blog/blog.module#BlogModule" },
+  {
+    path: "term-conditions",
+    loadChildren: "./blog/blog.module#BlogModule"
+  },
   { path: "our-team", loadChildren: "./blog/blog.module#BlogModule" },
   { path: "internship-tnc", loadChildren: "./blog/blog.module#BlogModule" },
   { path: "404", component: PageNotFoundComponent },

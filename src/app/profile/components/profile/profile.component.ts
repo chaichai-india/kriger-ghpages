@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ProfileLinkService } from 'src/app/services/database/profile-link.service';
-import { ProfileService } from 'src/app/services/database/profile.service';
+import { ProfileLinkService } from '../../../services/database/profile-link.service';
+import { ProfileService } from '../../../services/database/profile.service';
 
 @Component({
   selector: 'app-profile',

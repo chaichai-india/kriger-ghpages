@@ -1,10 +1,10 @@
 import { Component, OnInit, ViewChild, ElementRef } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { CdkTextareaAutosize } from "@angular/cdk/text-field";
-import { Post } from "src/app/models/post/post.model";
-import { AuthService } from "src/app/services/authentication/auth.service";
-import { TimestampService } from "src/app/services/utility/timestamp.service";
-import { PostService } from "src/app/services/database/post.service";
+import { Post } from "../../../models/post/post.model";
+import { AuthService } from "../../../services/authentication/auth.service";
+import { TimestampService } from "../../../services/utility/timestamp.service";
+import { PostService } from "../../../services/database/post.service";
 import { Router } from "@angular/router";
 import { Ng2ImgMaxService } from "ng2-img-max";
 import { DomSanitizer } from "@angular/platform-browser";

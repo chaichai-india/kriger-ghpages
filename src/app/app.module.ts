@@ -58,7 +58,7 @@ import { NewlandingpageComponent } from './components/newlandingpage/newlandingp
   ],
   entryComponents: [NavDialogComponent],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     // PostModule,
     // ProfileModule,
     // BlogModule,

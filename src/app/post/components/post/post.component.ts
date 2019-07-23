@@ -1,8 +1,8 @@
 import { Component, OnInit, Input, NgZone } from "@angular/core";
 import { MatDialog } from "@angular/material";
-import { LikeService } from "src/app/services/database/like.service";
-import { AuthService } from "src/app/services/authentication/auth.service";
-import { TimestampService } from "src/app/services/utility/timestamp.service";
+import { LikeService } from "../../../services/database/like.service";
+import { AuthService } from "../../../services/authentication/auth.service";
+import { TimestampService } from "../../../services/utility/timestamp.service";
 import { Router } from "@angular/router";
 
 @Component({

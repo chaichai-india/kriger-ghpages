@@ -1,4 +1,4 @@
-import { Performer } from 'src/app/models/internship/performer';
+import { Performer } from '../../../../models/internship/performer';
 
 export const PERFORMERS: Performer[] = [
   {

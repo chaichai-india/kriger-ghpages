@@ -1,11 +1,11 @@
 import { Component, OnInit } from "@angular/core";
 import { MatDialog, MatSnackBar } from "@angular/material";
 // import { DialogComponent } from "../../../post/components/post/post.component";
-import { AuthService } from "src/app/services/authentication/auth.service";
+import { AuthService } from "../../../services/authentication/auth.service";
 import { Router } from "@angular/router";
 // import { BehaviorSubject } from "rxjs";
 import { take } from "rxjs/operators";
-import { UserService } from "src/app/services/database/user.service";
+import { UserService } from "../../../services/database/user.service";
 
 @Component({
   selector: "app-navbar",

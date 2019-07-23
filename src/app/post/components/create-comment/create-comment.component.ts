@@ -1,9 +1,9 @@
 import { Component, OnInit, ViewChild, Input } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { CdkTextareaAutosize } from "@angular/cdk/text-field";
-import { CommentService } from "src/app/services/database/comment.service";
-import { AuthService } from "src/app/services/authentication/auth.service";
-import { TimestampService } from "src/app/services/utility/timestamp.service";
+import { CommentService } from "../../../services/database/comment.service";
+import { AuthService } from "../../../services/authentication/auth.service";
+import { TimestampService } from "../../../services/utility/timestamp.service";
 import { MatSnackBar } from "@angular/material";
 
 @Component({

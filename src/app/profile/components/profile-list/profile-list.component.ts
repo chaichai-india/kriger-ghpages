@@ -5,8 +5,8 @@ import {
   ChangeDetectorRef,
   NgZone
 } from '@angular/core';
-import { ElasticSearchService } from 'src/app/services/database/elastic-search.service';
-import { ProfileLinkService } from 'src/app/services/database/profile-link.service';
+import { ElasticSearchService } from '../../../services/database/elastic-search.service';
+import { ProfileLinkService } from '../../../services/database/profile-link.service';
 import { Router } from '@angular/router';
 
 @Component({

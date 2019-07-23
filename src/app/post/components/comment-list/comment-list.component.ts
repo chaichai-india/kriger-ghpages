@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from "@angular/core";
-import { CommentService } from "src/app/services/database/comment.service";
+import { CommentService } from "../../../services/database/comment.service";
 import { Observable } from "rxjs";
-import { tap } from "rxjs/operators";
+// import { tap } from "rxjs/operators";
 
 @Component({
   selector: "app-comment-list",

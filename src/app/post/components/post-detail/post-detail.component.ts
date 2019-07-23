@@ -2,7 +2,7 @@ import { Component, OnInit } from "@angular/core";
 
 import { PostService } from "../../../services/database/post.service";
 import { Router, ActivatedRoute, Params } from "@angular/router";
-import { AuthService } from "src/app/services/authentication/auth.service";
+// import { AuthService } from "../../../services/authentication/auth.service";
 
 @Component({
   selector: "app-post-detail",
