@@ -45,7 +45,7 @@
       </a>
 
       <a
-        *ngIf="!(isLoggedInObservable | async)"
+        *ngIf="!(isLoggedInObservable | async) && !isHome"
         id="signup"
         class="nav-item d-flex flex-column align-items-center justify-content-center mr-4 font-weight-bold"
         [routerLink]="['/register']"
@@ -62,7 +62,7 @@
         <span>Register</span>
       </a>
       <a
-        *ngIf="!(isLoggedInObservable | async)"
+        *ngIf="!(isLoggedInObservable | async) && !isHome"
         id="login"
         class="nav-item d-flex flex-column align-items-center justify-content-center mr-4 font-weight-bold"
         [routerLink]="['/login']"
@@ -169,6 +169,7 @@
         <span>Logout</span>
       </li> -->
       <li
+        *ngIf="!isHome"
         class="nav-item d-flex flex-column align-items-center justify-content-center"
       >
         <a

@@ -43,7 +43,7 @@ import {
   MatProgressBarModule,
   MatProgressSpinnerModule
 } from "@angular/material";
-import { NewlandingpageComponent } from './components/newlandingpage/newlandingpage.component';
+import { NewlandingpageComponent } from "./components/newlandingpage/newlandingpage.component";
 
 @NgModule({
   declarations: [
@@ -74,6 +74,7 @@ import { NewlandingpageComponent } from './components/newlandingpage/newlandingp
     MatSnackBarModule,
     MatMenuModule,
     MatDialogModule,
+    MatTabsModule,
     BrowserAnimationsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,

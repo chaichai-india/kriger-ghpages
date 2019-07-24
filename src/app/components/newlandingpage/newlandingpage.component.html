@@ -128,7 +128,7 @@
     India's Education Network
   </p>
   <p class="subheading">
-    Connecting Educators & Learners for a literate India
+    Connecting Learners, Educators, & Institutes for a literate India
   </p>
   <div class="cta">
     <a>Register</a>
@@ -161,4 +161,33 @@
   <div class="images">
     <img [src]="partner.url" *ngFor="let partner of partnerImages" />
   </div>
+</section>
+
+<section id="howitworks">
+  <p class="heading">How it Works</p>
+  <mat-tab-group mat-stretch-tabs mat-align-tabs="center" style="width: 100%">
+    <mat-tab class="label" label="Learner">
+      <ng-template matTabContent>
+        <div class="content" style="height: 500px">
+          <div class="learners">
+            <span>lorem</span>
+            <span>ipsum</span>
+            <span>lorem</span>
+            <span>ipsum</span>
+            <span>lorem</span>
+          </div>
+        </div>
+      </ng-template>
+    </mat-tab>
+    <mat-tab class="label" label="Educator">
+      <ng-template matTabContent>
+        <div class="content" style="height: 500px">Educator Info</div>
+      </ng-template>
+    </mat-tab>
+    <mat-tab class="label" label="Institute">
+      <ng-template matTabContent>
+        <div class="content" style="height: 500px">Institute Info</div>
+      </ng-template>
+    </mat-tab>
+  </mat-tab-group>
 </section>

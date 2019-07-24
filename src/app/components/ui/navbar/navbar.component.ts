@@ -17,6 +17,7 @@ export class NavbarComponent implements OnInit {
   isLoggedIn: boolean;
   isLoggedInObservable;
   userDetails;
+  isHome: boolean;
 
   constructor(
     private authService: AuthService,
@@ -71,6 +72,9 @@ export class NavbarComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.router.events.subscribe((url: any) => {
+      this.isHome = this.router.url == "/";
+    });
     this.setLoggedIn();
   }
 }
