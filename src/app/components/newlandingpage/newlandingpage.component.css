@@ -100,7 +100,7 @@ section#featured .images,
 section#awarded .images,
 section#partners .images {
   display: grid;
-  grid-template-columns: repeat(auto-fit, 100px);
+  grid-template-columns: repeat(auto-fit, 200px);
   grid-gap: 1em;
   place-items: center;
   width: 100%;
@@ -110,7 +110,7 @@ section#partners .images {
 section#featured .images img,
 section#awarded .images img,
 section#partners .images img {
-  width: 100px;
+  width: 200px;
   height: 100px;
   object-fit: contain;
   padding: 0.4em;
