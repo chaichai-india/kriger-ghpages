@@ -10,8 +10,6 @@ section#header {
   width: 100%;
   min-height: 80vh;
   max-height: 80vh;
-  /* background-image: url("/assets/landing-bg.jpg");
-  background-size: cover; */
   position: relative;
   display: flex;
   flex-direction: column;
@@ -19,6 +17,7 @@ section#header {
   align-items: center;
   font-family: var(--secondary-font-family);
   letter-spacing: 0.32px;
+  padding: 0 1rem;
 }
 
 section#header .bg-image {
@@ -28,6 +27,7 @@ section#header .bg-image {
   left: 0;
   right: 0;
   background-image: url("/assets/landing-bg.jpg");
+  background-color: #f4b902;
   background-size: cover;
   filter: blur(1px);
   z-index: -1;
@@ -67,6 +67,7 @@ section#header .cta a:not(:last-child) {
   /* box-shadow: 0px 0px 2px #00000078; */
   background-color: #1da1f2;
   color: white;
+  text-decoration: none;
 }
 
 section#header .playstore {
@@ -79,7 +80,7 @@ section#awarded,
 section#partners {
   width: 100%;
   /* margin: 2rem 0; */
-  padding: 1rem 0;
+  padding: 1rem 0 2rem 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -92,7 +93,7 @@ section#featured .heading,
 section#awarded .heading,
 section#partners .heading {
   font-size: 1.5rem;
-  margin: 1rem 0;
+  margin: 1rem 0 2rem 0;
   color: black;
 }
 
@@ -100,7 +101,7 @@ section#featured .images,
 section#awarded .images,
 section#partners .images {
   display: grid;
-  grid-template-columns: repeat(auto-fit, 200px);
+  grid-template-columns: repeat(auto-fit, 175px);
   grid-gap: 1em;
   place-items: center;
   width: 100%;
@@ -110,13 +111,35 @@ section#partners .images {
 section#featured .images img,
 section#awarded .images img,
 section#partners .images img {
-  width: 200px;
-  height: 100px;
+  width: 160px;
+  height: 80px;
   object-fit: contain;
   padding: 0.4em;
 }
 
 section#awarded {
+  background-color: #f3f3f3;
+}
+
+section#contact {
+  width: 100%;
+  /* margin: 2rem 0; */
+  padding: 1rem 0 2rem 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: var(--secondary-font-family);
+  letter-spacing: 0.32px;
+}
+
+section#contact .heading {
+  font-size: 1.5rem;
+  margin: 1rem 0 2rem 0;
+  color: black;
+}
+
+section#contact {
   background-color: #f3f3f3;
 }
 
@@ -133,7 +156,7 @@ section#howitworks {
 
 section#howitworks .heading {
   font-size: 1.5rem;
-  margin: 1rem 0;
+  margin: 1rem 0 2rem 0;
   color: black;
 }
 

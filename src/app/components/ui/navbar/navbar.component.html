@@ -5,6 +5,7 @@
     ><span class="beta">Beta</span></a
   >
   <button
+    *ngIf="!isHome"
     class="navbar-toggler hidden-sm-up"
     type="button"
     (click)="isNavbarCollapsed = !isNavbarCollapsed"

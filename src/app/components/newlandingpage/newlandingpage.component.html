@@ -131,8 +131,18 @@
     Connecting Learners, Educators, & Institutes for a literate India
   </p>
   <div class="cta">
-    <a>Register</a>
-    <a>Login</a>
+    <a
+      [routerLink]="['/register']"
+      href="/register"
+      routerLinkActive="router-link-active"
+      >Register</a
+    >
+    <a
+      [routerLink]="['/login']"
+      href="/login"
+      routerLinkActive="router-link-active"
+      >Login</a
+    >
     <a
       href="https://play.google.com/store/apps/details?id=in.kriger.krigercampus"
       target="_blank"
@@ -146,11 +156,6 @@
   <p class="heading">Featured In</p>
   <div class="images">
     <img [src]="featured.url" *ngFor="let featured of featuredImages" />
-    <!-- <img src="assets/images/test/r1.jpg" alt="" />
-    <img src="assets/images/test/r2.jpg" alt="" />
-    <img src="assets/images/test/r1.jpg" alt="" />
-    <img src="assets/images/test/r2.jpg" alt="" /> -->
-    <!-- <img src="assets/images/test/rang3.jpg" alt="" /> -->
   </div>
 </section>
 
@@ -168,7 +173,12 @@
   </div>
 </section>
 
-<section id="howitworks">
+<section id="contact">
+  <p class="heading">Contact us</p>
+  <app-contact></app-contact>
+</section>
+
+<!-- <section id="howitworks">
   <p class="heading">How it Works</p>
   <mat-tab-group mat-stretch-tabs mat-align-tabs="center" style="width: 100%">
     <mat-tab class="label" label="Learner">
@@ -195,4 +205,4 @@
       </ng-template>
     </mat-tab>
   </mat-tab-group>
-</section>
+</section> -->
