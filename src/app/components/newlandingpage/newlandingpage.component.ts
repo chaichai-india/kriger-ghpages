@@ -1,5 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { PARTNERS, FEATUREDIMAGES, AWARDS } from "../landingpage/images-data";
+import { MatDialog } from "@angular/material";
+
+import { NavDialogComponent } from "../ui/navbar/navbar.component";
 
 @Component({
   selector: "app-newlandingpage",
@@ -11,7 +14,11 @@ export class NewlandingpageComponent implements OnInit {
   partnerImages = PARTNERS;
   awardImages = AWARDS;
 
-  constructor() {}
+  constructor(public dialog: MatDialog) {}
+
+  openDialog() {
+    const dialogRef = this.dialog.open(NavDialogComponent);
+  }
 
   ngOnInit() {}
 }
