@@ -4,6 +4,7 @@
   grid-gap: 1em;
   place-items: center;
   place-content: center;
+  font-family: var(--secondary-font-family);
 }
 
 .performer__card {
@@ -15,6 +16,7 @@
   place-content: center;
   grid-template-rows: auto;
   grid-gap: 1em;
+  font-family: var(--secondary-font-family);
 }
 
 .performer__card mat-card-header {

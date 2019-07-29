@@ -13,7 +13,7 @@
   right: 0;
 
   font-family: var(--secondary-font-family);
-  box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.4);
+  /* box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.4); */
 }
 
 .footer__container .blog,
@@ -58,10 +58,10 @@
 }
 
 .socialmedia img {
-  width: 2em;
-  height: 2em;
-  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.55);
-  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  /* box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.55); */
+  /* border-radius: 50%; */
 }
 
 .footer__close {

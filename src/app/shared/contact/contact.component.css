@@ -4,6 +4,7 @@
   grid-gap: 1em;
   place-content: center;
   place-items: center;
+  font-family: var(--secondary-font-family);
 }
 
 .contact__container span {

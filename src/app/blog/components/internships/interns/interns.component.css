@@ -1,7 +1,8 @@
-@import '~bootstrap/dist/css/bootstrap.min.css';
+@import "~bootstrap/dist/css/bootstrap.min.css";
 
 .interns__container {
   margin: 2em 0;
+  font-family: var(--secondary-font-family);
 }
 
 .interns__container mat-form-field,

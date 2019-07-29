@@ -4,6 +4,7 @@
   grid-gap: 2em;
   place-items: center;
   place-content: center;
+  font-family: var(--secondary-font-family);
 }
 
 .member__card {
@@ -13,6 +14,7 @@
   display: grid;
   place-items: center;
   place-content: center;
+  font-family: var(--secondary-font-family);
 }
 
 .member__card mat-card-header {
