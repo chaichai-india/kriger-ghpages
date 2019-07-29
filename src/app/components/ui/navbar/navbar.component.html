@@ -5,6 +5,7 @@
     ><span class="beta">Beta</span></a
   >
   <button
+    *ngIf="!isHome"
     class="navbar-toggler hidden-sm-up"
     type="button"
     (click)="isNavbarCollapsed = !isNavbarCollapsed"
@@ -45,7 +46,7 @@
       </a>
 
       <a
-        *ngIf="!(isLoggedInObservable | async)"
+        *ngIf="!(isLoggedInObservable | async) && !isHome"
         id="signup"
         class="nav-item d-flex flex-column align-items-center justify-content-center mr-4 font-weight-bold"
         [routerLink]="['/register']"
@@ -53,15 +54,16 @@
         routerLinkActive="nav-link-active"
         (click)="!isNavbarCollapsed ? (isNavbarCollapsed = true) : false"
       >
-        <mat-icon
+        <!-- <mat-icon
           class="text-center"
           fontSet="fas"
           fontIcon="fa-user"
-        ></mat-icon>
+        ></mat-icon> -->
+        <img src="assets/add-contact.svg" width="32" />
         <span>Register</span>
       </a>
       <a
-        *ngIf="!(isLoggedInObservable | async)"
+        *ngIf="!(isLoggedInObservable | async) && !isHome"
         id="login"
         class="nav-item d-flex flex-column align-items-center justify-content-center mr-4 font-weight-bold"
         [routerLink]="['/login']"
@@ -69,12 +71,13 @@
         routerLinkActive="nav-link-active"
         (click)="!isNavbarCollapsed ? (isNavbarCollapsed = true) : false"
       >
-        <mat-icon
+        <!-- <mat-icon
           class="text-center"
           fontSet="fas"
           fontIcon="fa-sign-in-alt"
-        ></mat-icon>
-        <span>Login</span>
+        ></mat-icon> -->
+        <img src="assets/login.svg" width="24" />
+        <span style="margin-top: 8px">Login</span>
       </a>
 
       <!-- <li
@@ -167,6 +170,7 @@
         <span>Logout</span>
       </li> -->
       <li
+        *ngIf="!isHome"
         class="nav-item d-flex flex-column align-items-center justify-content-center"
       >
         <a

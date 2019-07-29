@@ -17,7 +17,9 @@ nav {
   background-color: var(--primary-color);
   color: white;
   font-weight: 600;
-  font-family: var(--primary-font-family);
+  font-family: var(--secondary-font-family);
+  font-weight: 400;
+  letter-spacing: 0.32px;
 }
 
 nav .navbar-brand {

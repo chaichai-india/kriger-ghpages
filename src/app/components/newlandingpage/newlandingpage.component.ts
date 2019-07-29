@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { PARTNERS, FEATUREDIMAGES, AWARDS } from "../landingpage/images-data";
 
 @Component({
   selector: "app-newlandingpage",
@@ -6,7 +7,9 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./newlandingpage.component.css"]
 })
 export class NewlandingpageComponent implements OnInit {
-  featured = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+  featuredImages = FEATUREDIMAGES;
+  partnerImages = PARTNERS;
+  awardImages = AWARDS;
 
   constructor() {}
 

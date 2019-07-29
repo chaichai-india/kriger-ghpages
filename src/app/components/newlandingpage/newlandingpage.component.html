@@ -100,8 +100,9 @@
     voluptatum autem!
   </div>
 </section> -->
+<!-- proto 1 -->
 
-<header>India's First Education Networking Platform</header>
+<!-- <header>India's First Education Networking Platform</header>
 <div class="countries">
   <p>India</p>
   <p>North America</p>
@@ -117,4 +118,91 @@
       *ngFor="let f of featured"
     />
   </div>
-</div>
+</div> -->
+
+<!-- proto2 -->
+
+<section id="header">
+  <div class="bg-image"></div>
+  <p class="heading">
+    India's Education Network
+  </p>
+  <p class="subheading">
+    Connecting Learners, Educators, & Institutes for a literate India
+  </p>
+  <div class="cta">
+    <a
+      [routerLink]="['/register']"
+      href="/register"
+      routerLinkActive="router-link-active"
+      >Register</a
+    >
+    <a
+      [routerLink]="['/login']"
+      href="/login"
+      routerLinkActive="router-link-active"
+      >Login</a
+    >
+    <a
+      href="https://play.google.com/store/apps/details?id=in.kriger.krigercampus"
+      target="_blank"
+      rel="noopener"
+      ><img class="playstore" src="/assets/images/play_store.png"/><img
+    /></a>
+  </div>
+</section>
+
+<section id="featured">
+  <p class="heading">Featured In</p>
+  <div class="images">
+    <img [src]="featured.url" *ngFor="let featured of featuredImages" />
+  </div>
+</section>
+
+<section id="awarded">
+  <p class="heading">Awarded at</p>
+  <div class="images">
+    <img [src]="award.url" *ngFor="let award of awardImages" />
+  </div>
+</section>
+
+<section id="partners">
+  <p class="heading">Our Partners</p>
+  <div class="images">
+    <img [src]="partner.url" *ngFor="let partner of partnerImages" />
+  </div>
+</section>
+
+<section id="contact">
+  <p class="heading">Contact us</p>
+  <app-contact></app-contact>
+</section>
+
+<!-- <section id="howitworks">
+  <p class="heading">How it Works</p>
+  <mat-tab-group mat-stretch-tabs mat-align-tabs="center" style="width: 100%">
+    <mat-tab class="label" label="Learner">
+      <ng-template matTabContent>
+        <div class="content" style="height: 500px">
+          <div class="learners">
+            <span>lorem</span>
+            <span>ipsum</span>
+            <span>lorem</span>
+            <span>ipsum</span>
+            <span>lorem</span>
+          </div>
+        </div>
+      </ng-template>
+    </mat-tab>
+    <mat-tab class="label" label="Educator">
+      <ng-template matTabContent>
+        <div class="content" style="height: 500px">Educator Info</div>
+      </ng-template>
+    </mat-tab>
+    <mat-tab class="label" label="Institute">
+      <ng-template matTabContent>
+        <div class="content" style="height: 500px">Institute Info</div>
+      </ng-template>
+    </mat-tab>
+  </mat-tab-group>
+</section> -->
