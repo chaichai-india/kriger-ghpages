@@ -7,7 +7,12 @@
     />
   </mat-form-field>
   <div class="table-responsive-sm">
-    <table mat-table [dataSource]="dataSource" class="mat-elevation-z2 table">
+    <table
+      mat-table
+      [dataSource]="dataSource"
+      class="mat-elevation-z2 table"
+      style="font-family: var(--secondary-font-family)"
+    >
       <!-- Name Column -->
       <ng-container matColumnDef="name">
         <th mat-header-cell *matHeaderCellDef>Name of Participant</th>

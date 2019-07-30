@@ -21,10 +21,10 @@ const routes: Routes = [
     path: "india",
     loadChildren: "./profile/profile.module#ProfileModule"
   },
-  {
-    path: "register",
-    loadChildren: "./signup/signup.module#SignupModule"
-  },
+  // {
+  //   path: "register",
+  //   loadChildren: "./signup/signup.module#SignupModule"
+  // },
   {
     path: "login",
     loadChildren: "./login/login.module#LoginModule"

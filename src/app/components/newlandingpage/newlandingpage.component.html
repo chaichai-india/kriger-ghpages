@@ -131,18 +131,8 @@
     Connecting Learners, Educators, & Institutes for a literate India
   </p>
   <div class="cta">
-    <a
-      [routerLink]="['/register']"
-      href="/register"
-      routerLinkActive="router-link-active"
-      >Register</a
-    >
-    <a
-      [routerLink]="['/login']"
-      href="/login"
-      routerLinkActive="router-link-active"
-      >Login</a
-    >
+    <a style="cursor: pointer" (click)="openDialog()">Register</a>
+    <a [routerLink]="['/login']" href="/login">Login</a>
     <a
       href="https://play.google.com/store/apps/details?id=in.kriger.krigercampus"
       target="_blank"
@@ -152,7 +142,11 @@
   </div>
 </section>
 
-<section id="featured">
+<section
+  id="featured"
+  style="cursor: pointer"
+  [routerLink]="['/media-coverage']"
+>
   <p class="heading">Featured In</p>
   <div class="images">
     <img [src]="featured.url" *ngFor="let featured of featuredImages" />
