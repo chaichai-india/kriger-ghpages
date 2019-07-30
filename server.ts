@@ -69,6 +69,7 @@ app.get("*.*", express.static(join(DIST_FOLDER, APP_NAME)));
 
 // All regular routes use the Universal engine
 app.get("*", (req, res) => {
+  res.set("Cache-Control", "public, max-age=300, s-maxage=600");
   res.render(join(DIST_FOLDER, APP_NAME, "index.html"), { req });
 });
 
