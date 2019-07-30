@@ -10,7 +10,7 @@
     "build:ssr": "ng run kriger-campus-website:server && npm run webpack:ssr",
     "webpack:ssr": "webpack --config webpack.server.config.js",
     "serve:ssr": "node dist/kriger-campus-website-webpack/server.js",
-    "build": "ng build --prod --extract-css=false  && npm run build:ssr && npm run build:functions && npm run remove:index",
+    "build": "ng build --prod  && npm run build:ssr && npm run build:functions && npm run remove:index",
     "remove:index": "rm ./dist/kriger-campus-website/index.html",
     "build:functions": "npm run --prefix functions build"
   },
@@ -48,8 +48,10 @@
     "ngx-linky": "^2.1.0",
     "ngx-moment": "^3.3.0",
     "popper.js": "^1.15.0",
+    "preboot": "^7.0.0",
     "rxjs": "~6.3.3",
     "tslib": "^1.9.0",
+    "wfk-montserrat": "^1.0.0",
     "zone.js": "~0.8.26"
   },
   "devDependencies": {

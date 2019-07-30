@@ -1,11 +1,17 @@
-import { BrowserModule } from "@angular/platform-browser";
-import { NgModule } from "@angular/core";
+import {
+  BrowserModule,
+  BrowserTransferStateModule,
+  ɵgetDOM,
+  DOCUMENT
+} from "@angular/platform-browser";
+import { NgModule, APP_INITIALIZER, PLATFORM_ID } from "@angular/core";
 import { AngularFireModule } from "@angular/fire";
 import { AngularFireDatabaseModule } from "@angular/fire/database";
 import { AngularFireAuthModule } from "@angular/fire/auth";
 import { AngularFireStorageModule } from "@angular/fire/storage";
 import { environment } from "../environments/environment";
 import { AppRoutingModule } from "./app-routing.module";
+import { PrebootModule } from "preboot";
 
 import { AppComponent } from "./app.component";
 import {
@@ -44,6 +50,7 @@ import {
   MatProgressSpinnerModule
 } from "@angular/material";
 import { NewlandingpageComponent } from "./components/newlandingpage/newlandingpage.component";
+import { isPlatformBrowser } from "@angular/common";
 
 @NgModule({
   declarations: [
@@ -58,11 +65,9 @@ import { NewlandingpageComponent } from "./components/newlandingpage/newlandingp
   ],
   entryComponents: [NavDialogComponent],
   imports: [
-    BrowserModule.withServerTransition({ appId: 'serverApp' }),
-    // PostModule,
-    // ProfileModule,
-    // BlogModule,
-    // LoginModule,
+    BrowserModule.withServerTransition({ appId: "serverApp" }),
+    PrebootModule.withConfig({ appRoot: "app-root" }),
+    // BrowserTransferStateModule,
     AppRoutingModule,
     MatToolbarModule,
     MatProgressBarModule,
@@ -85,7 +90,37 @@ import { NewlandingpageComponent } from "./components/newlandingpage/newlandingp
     // SlideshowModule,
     SharedModule
   ],
-  providers: [AuthGuard, LoginGuard],
+  providers: [
+    {
+      provide: APP_INITIALIZER,
+      useFactory: function(
+        document: HTMLDocument,
+        platformId: Object
+      ): Function {
+        return () => {
+          if (isPlatformBrowser(platformId)) {
+            const dom = ɵgetDOM();
+            const styles: any[] = Array.prototype.slice.apply(
+              dom.querySelectorAll(document, `style[ng-transition]`)
+            );
+            styles.forEach(el => {
+              // Remove ng-transition attribute to prevent Angular appInitializerFactory
+              // to remove server styles before preboot complete
+              el.removeAttribute("ng-transition");
+            });
+            document.addEventListener("PrebootComplete", () => {
+              // After preboot complete, remove the server scripts
+              setTimeout(() => styles.forEach(el => dom.remove(el)));
+            });
+          }
+        };
+      },
+      deps: [DOCUMENT, PLATFORM_ID],
+      multi: true
+    },
+    AuthGuard,
+    LoginGuard
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
