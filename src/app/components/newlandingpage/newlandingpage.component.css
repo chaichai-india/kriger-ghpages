@@ -161,16 +161,20 @@ section#howitworks .heading {
   color: black;
 }
 
-section#howitworks .learners {
+section#howitworks .types {
   display: grid;
   grid-template-columns: repeat(auto-fit, 100px);
+  grid-gap: 1rem;
   justify-content: center;
   padding: 1rem 0;
   background-color: #f3f3f3;
   width: 100%;
+  font-size: 0.75rem;
+  text-align: center;
 }
 
 ::ng-deep section#howitworks .mat-tab-label .mat-tab-label-content {
   font-family: var(--secondary-font-family) !important;
   font-size: 1rem !important;
+  font-weight: 600;
 }
