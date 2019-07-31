@@ -74,9 +74,9 @@ app.get("*", (req, res) => {
 });
 
 // If we're not in the Cloud Functions environment, spin up a Node server
-if (!process.env.FUNCTION_NAME) {
-  const PORT = process.env.PORT || 4000;
-  app.listen(PORT, () => {
-    console.log(`Node server listening on http://localhost:${PORT}`);
-  });
-}
+// if (!process.env.FUNCTION_NAME) {
+//   const PORT = process.env.PORT || 4000;
+//   app.listen(PORT, () => {
+//     console.log(`Node server listening on http://localhost:${PORT}`);
+//   });
+// }
