@@ -185,6 +185,7 @@ section#howitworks .types {
 
 section#howitworks .content .howitworks {
   width: 100%;
+  font-family: var(--secondary-font-family);
 }
 
 section#howitworks .content .howitworks > .row {
@@ -199,8 +200,14 @@ section#howitworks .content .howitworks > .row:nth-child(even) {
   background-color: #f3f3f3;
 }
 
+.howitworks > .row > .text {
+  width: 100%;
+  padding-left: 3rem;
+}
+
 .howitworks > .row .text-heading {
   font-size: 2rem;
+  margin-bottom: 1rem;
 }
 
 .howitworks > .row img {
