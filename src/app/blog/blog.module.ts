@@ -25,6 +25,7 @@ import { SharedModule } from "../shared/shared.module";
 import { PricingComponent } from "./components/pricing/pricing.component";
 import { InternshipTncComponent } from "./components/internship-tnc/internship-tnc.component";
 import { CentralComponent } from "./components/central/central.component";
+import { VisitusComponent } from "./components/visitus/visitus.component";
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { CentralComponent } from "./components/central/central.component";
     NewsletterFormComponent,
     PricingComponent,
     InternshipTncComponent,
-    CentralComponent
+    CentralComponent,
+    VisitusComponent
   ],
   entryComponents: [
     InternshipsComponent,
@@ -52,7 +54,8 @@ import { CentralComponent } from "./components/central/central.component";
     TeamMemberComponent,
     NewsletterFormComponent,
     PricingComponent,
-    InternshipTncComponent
+    InternshipTncComponent,
+    VisitusComponent
   ],
   imports: [
     CommonModule,

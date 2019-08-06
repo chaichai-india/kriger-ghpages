@@ -1,0 +1,32 @@
+:host {
+  width: 100%;
+}
+
+.footer_container {
+  width: 100%;
+  min-height: 200px;
+  padding: 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 200px);
+  justify-content: space-evenly;
+  color: var(--font-black);
+}
+
+.heading {
+  font-weight: 600;
+}
+
+.links {
+  display: grid;
+  grid-gap: 0.25rem;
+  padding-top: 1rem;
+}
+
+.links a {
+  all: unset;
+}
+
+.links a img {
+  width: 25px;
+  height: 25px;
+}

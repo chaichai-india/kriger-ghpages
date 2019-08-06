@@ -44,6 +44,7 @@ import {
   MatProgressSpinnerModule
 } from "@angular/material";
 import { NewlandingpageComponent } from "./components/newlandingpage/newlandingpage.component";
+import { FooterNewComponent } from './components/ui/footer-new/footer-new.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { NewlandingpageComponent } from "./components/newlandingpage/newlandingp
     PageNotFoundComponent,
     FooterComponent,
     LandingpageComponent,
-    NewlandingpageComponent
+    NewlandingpageComponent,
+    FooterNewComponent
   ],
   entryComponents: [NavDialogComponent],
   imports: [

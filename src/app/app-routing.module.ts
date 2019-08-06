@@ -36,6 +36,7 @@ const routes: Routes = [
   { path: "term-conditions", loadChildren: "./blog/blog.module#BlogModule" },
   { path: "our-team", loadChildren: "./blog/blog.module#BlogModule" },
   { path: "internship-tnc", loadChildren: "./blog/blog.module#BlogModule" },
+  { path: "visit-us", loadChildren: "./blog/blog.module#BlogModule" },
   { path: "404", component: PageNotFoundComponent },
   { path: "**", component: PageNotFoundComponent }
 ];

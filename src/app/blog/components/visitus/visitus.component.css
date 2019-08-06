@@ -1,0 +1,36 @@
+:host {
+  width: 100%;
+  font-family: var(--secondary-font-family);
+}
+
+.header {
+  width: 100%;
+  text-align: center;
+  padding: 2rem 0;
+  color: var(--primary-color);
+  font-size: 3rem;
+  text-transform: uppercase;
+}
+
+.address_container {
+  width: 100%;
+  /* height: 85%; */
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fit, 300px);
+  grid-gap: 2rem;
+  grid-template-rows: 200px;
+}
+
+.address {
+  width: 100%;
+  display: grid;
+  grid-template-rows: 50px 150px;
+  grid-gap: 1rem;
+}
+
+.flag-text {
+  display: flex;
+  align-items: center;
+  font-size: 40px;
+}

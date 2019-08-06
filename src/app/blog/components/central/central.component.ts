@@ -6,6 +6,7 @@ import { TncComponent } from "../tnc/tnc.component";
 import { OurteamComponent } from "../ourteam/ourteam.component";
 import { InternshipTncComponent } from "../internship-tnc/internship-tnc.component";
 import { Router, ActivatedRoute } from "@angular/router";
+import { VisitusComponent } from "../visitus/visitus.component";
 
 @Component({
   selector: "app-central",
@@ -34,6 +35,9 @@ export class CentralComponent implements OnInit {
     }
     if (this.router.url === "/internship-tnc") {
       this.currentComponent = InternshipTncComponent;
+    }
+    if (this.router.url === "/visit-us") {
+      this.currentComponent = VisitusComponent;
     }
   }
 }
