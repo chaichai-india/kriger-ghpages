@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { AuthService } from "./services/authentication/auth.service";
+// import { AuthService } from "./services/authentication/auth.service";
 import {
   Event,
   NavigationCancel,
@@ -19,7 +19,7 @@ export class AppComponent implements OnInit {
   title = "kriger-campus-website";
   loading: boolean = false;
 
-  constructor(private authService: AuthService, private router: Router) {
+  constructor(private router: Router) {
     // seo.setMetaTags();
     this.router.events.subscribe((event: Event) => {
       switch (true) {
@@ -38,19 +38,20 @@ export class AppComponent implements OnInit {
           break;
         }
       }
+      // console.log(this.loading);
     });
   }
 
-  logoutIfLogin() {
-    this.authService.isLoggedInPromise().then(user => {
-      if (user) {
-        const { email } = user;
-        if (email === "ashish@kriger.in") {
-          this.authService.signout();
-        }
-      }
-    });
-  }
+  // logoutIfLogin() {
+  //   this.authService.isLoggedInPromise().then(user => {
+  //     if (user) {
+  //       const { email } = user;
+  //       if (email === "ashish@kriger.in") {
+  //         this.authService.signout();
+  //       }
+  //     }
+  //   });
+  // }
 
   // async login() {
   //   await this.loginService.loginIfNotAuth();
@@ -58,7 +59,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     // this.login().then(() => console.log('logged In'));
-    localStorage.setItem("user", null);
+    // localStorage.setItem("user", null);
     // this.logoutIfLogin();
   }
 }
