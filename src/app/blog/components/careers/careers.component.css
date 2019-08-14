@@ -142,4 +142,10 @@ header .subheading {
 
 .role {
   padding: 0.25rem 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 25%);
+}
+
+.role p {
+  padding: 0 10px 0 0;
 }
