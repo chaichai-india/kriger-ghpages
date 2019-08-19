@@ -7,7 +7,7 @@ import {
 } from "@angular/core";
 import { ElasticSearchService } from "src/app/services/database/elastic-search.service";
 import { ProfileLinkService } from "src/app/services/database/profile-link.service";
-import { Router } from "@angular/router";
+import { Router, ActivatedRoute } from "@angular/router";
 // import { BehaviorSubject } from "rxjs";
 
 @Component({
@@ -63,6 +63,9 @@ export class ProfileListComponent implements OnInit {
     this.chRef.detectChanges();
     let from = (this.clicked - 1) * 10;
     this.filterByLetter(from);
+    this.router.navigate(["/profiles"], {
+      queryParams: { letter: this.selected, page: i }
+    });
   }
 
   receiveSelected($event) {
@@ -126,11 +129,24 @@ export class ProfileListComponent implements OnInit {
     private es: ElasticSearchService,
     private profileLinkService: ProfileLinkService,
     private router: Router,
+    private route: ActivatedRoute,
     private zone: NgZone,
     private chRef: ChangeDetectorRef
   ) {}
 
   ngOnInit() {
-    this.filterByLetter();
+    let from = 0;
+    this.route.queryParams.subscribe(params => {
+      // console.log(params);
+      if (params.letter) {
+        this.selected = params.letter;
+      }
+
+      if (params.page) {
+        this.clicked = params.page;
+        from = (this.clicked - 1) * 10;
+      }
+    });
+    this.filterByLetter(from);
   }
 }
