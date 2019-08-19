@@ -131,7 +131,11 @@
             style="border-radius: 50%; object-fit: cover; background-position: center;"
           />
         </span>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <div
+          class="dropdown-menu"
+          aria-labelledby="navbarDropdown"
+          [ngStyle]="{ left: isHome ? '-143px' : 0 }"
+        >
           <span class="dropdown-item text-center"
             >Hello,&nbsp; {{ userDetails?.details?.name }}</span
           >

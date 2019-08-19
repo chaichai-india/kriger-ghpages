@@ -13,29 +13,39 @@ export class ProfileLinkService {
   }
 
   async isProfileLink(name: string) {
-    // return this.ref
-    //   .orderByValue()
-    //   .equalTo(name)
-    //   .once('value')
-    //   .then(snap => snap.exists());
-    // await this.loginService.loginIfNotAuth();
     return this.ref
-      .orderByKey()
+      .orderByValue()
+      .equalTo(name)
       .once("value")
       .then(snap => {
-        let data = snap.val();
-        let response: any = false;
-        for (const key in data) {
-          if (data.hasOwnProperty(key)) {
-            const username = data[key];
-            if (username === name) {
-              response = { key, username };
-              break;
-            }
-          }
+        if (snap.exists()) {
+          let data = snap.val();
+          let key = Object.keys(data)[0];
+          let username = data[key];
+          // console.log(key, data[key]);
+          return { key, username };
+        } else {
+          return false;
         }
-        return response;
       });
+
+    // return this.ref
+    //   .orderByKey()
+    //   .once("value")
+    //   .then(snap => {
+    //     let data = snap.val();
+    //     let response: any = false;
+    //     for (const key in data) {
+    //       if (data.hasOwnProperty(key)) {
+    //         const username = data[key];
+    //         if (username === name) {
+    //           response = { key, username };
+    //           break;
+    //         }
+    //       }
+    //     }
+    //     return response;
+    //   });
   }
   constructor(private db: AngularFireDatabase) {}
 }
