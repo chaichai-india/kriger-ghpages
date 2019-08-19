@@ -19,7 +19,8 @@ import { MatFormFieldModule } from "@angular/material/form-field";
 import {
   MatInputModule,
   MatIconModule,
-  MatChipsModule
+  MatChipsModule,
+  MatButtonModule
 } from "@angular/material";
 import { SharedModule } from "../shared/shared.module";
 import { PricingComponent } from "./components/pricing/pricing.component";
@@ -66,6 +67,7 @@ import { VisitusComponent } from "./components/visitus/visitus.component";
     MatInputModule,
     MatIconModule,
     MatChipsModule,
+    MatButtonModule,
     SharedModule
   ]
 })
