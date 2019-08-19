@@ -11,11 +11,11 @@
       (click)="this.loading$.next(false)"
     ></mat-spinner>
     <mat-action-list *ngIf="data && !loading">
-      <mat-list-item role="listitem" *ngFor="let user of filteredList">
-        <a *ngIf="user.username" href="/india/{{ user.username }}">{{
-          user.name
-        }}</a>
-      </mat-list-item>
+      <div *ngFor="let user of filteredList">
+        <mat-list-item role="listitem" *ngIf="user.username">
+          <a href="/india/{{ user.username }}">{{ user.name }}</a>
+        </mat-list-item>
+      </div>
     </mat-action-list>
     <div *ngIf="!data && !loading">
       No profiles found!

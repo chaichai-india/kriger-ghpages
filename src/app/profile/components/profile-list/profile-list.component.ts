@@ -8,7 +8,7 @@ import {
 import { ElasticSearchService } from "src/app/services/database/elastic-search.service";
 import { ProfileLinkService } from "src/app/services/database/profile-link.service";
 import { Router } from "@angular/router";
-import { BehaviorSubject } from "rxjs";
+// import { BehaviorSubject } from "rxjs";
 
 @Component({
   selector: "app-profile-list",
@@ -89,7 +89,7 @@ export class ProfileListComponent implements OnInit {
           const username = await this.profileLinkService
             .getProfileLink(_id)
             .then(snap => snap.val());
-          console.log(username);
+          // console.log(username);
           dataList.push({ _id, name, username });
         }
         // data.forEach(el => {
