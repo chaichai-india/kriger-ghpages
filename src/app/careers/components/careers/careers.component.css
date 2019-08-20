@@ -166,3 +166,7 @@ header .subheading {
     margin-bottom: 2rem;
   }
 }
+
+::ng-deep .footer_container {
+  background-color: var(--bg-grey);
+}

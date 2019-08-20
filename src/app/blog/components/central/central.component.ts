@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { InternshipsComponent } from "../internships/internships.component";
 import { MediacoverageComponent } from "../mediacoverage/mediacoverage.component";
-import { CareersComponent } from "../careers/careers.component";
+// import { CareersComponent } from "../careers/careers.component";
 import { TncComponent } from "../tnc/tnc.component";
 import { OurteamComponent } from "../ourteam/ourteam.component";
 import { InternshipTncComponent } from "../internship-tnc/internship-tnc.component";
@@ -24,9 +24,9 @@ export class CentralComponent implements OnInit {
     if (this.router.url === "/media-coverage") {
       this.currentComponent = MediacoverageComponent;
     }
-    if (this.router.url === "/careers") {
-      this.currentComponent = CareersComponent;
-    }
+    // if (this.router.url === "/careers") {
+    //   this.currentComponent = CareersComponent;
+    // }
     if (this.router.url === "/term-conditions") {
       this.currentComponent = TncComponent;
     }

@@ -7,7 +7,7 @@ import { InternshipsComponent } from "./components/internships/internships.compo
 import { PerformersComponent } from "./components/internships/performers/performers.component";
 import { InternsComponent } from "./components/internships/interns/interns.component";
 import { MediacoverageComponent } from "./components/mediacoverage/mediacoverage.component";
-import { CareersComponent } from "./components/careers/careers.component";
+// import { CareersComponent } from "./components/careers/careers.component";
 import { TncComponent } from "./components/tnc/tnc.component";
 import { OurteamComponent } from "./components/ourteam/ourteam.component";
 import { TeamMemberComponent } from "./components/ourteam/team-member/team-member.component";
@@ -34,7 +34,6 @@ import { VisitusComponent } from "./components/visitus/visitus.component";
     PerformersComponent,
     InternsComponent,
     MediacoverageComponent,
-    CareersComponent,
     TncComponent,
     OurteamComponent,
     TeamMemberComponent,
@@ -49,7 +48,6 @@ import { VisitusComponent } from "./components/visitus/visitus.component";
     PerformersComponent,
     InternsComponent,
     MediacoverageComponent,
-    CareersComponent,
     TncComponent,
     OurteamComponent,
     TeamMemberComponent,

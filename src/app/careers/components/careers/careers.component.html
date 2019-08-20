@@ -30,7 +30,7 @@
 
 <div class="openings">
   <h2>Current Openings</h2>
-  <div class="declaration"></div>
+  <!-- <div class="declaration"></div> -->
   <div class="container technical">
     <p class="header">Technical</p>
     <div class="role">
@@ -40,8 +40,8 @@
       <a
         class="apply"
         mat-stroked-button
-        href="https://forms.gle/PSFhTcfq8bGHdLiz8"
-        target="_blank"
+        href="/careers/android-developer"
+        [routerLink]="['/careers/android-developer']"
         >Apply</a
       >
     </div>
@@ -52,12 +52,12 @@
       <a
         class="apply"
         mat-stroked-button
-        href="https://forms.gle/PSFhTcfq8bGHdLiz8"
-        target="_blank"
+        href="/careers/website-developer"
+        [routerLink]="['/careers/website-developer']"
         >Apply</a
       >
     </div>
-    <div class="role">
+    <!-- <div class="role">
       <p class="title">iOS Developer</p>
       <p>Full-Time</p>
       <p>New Delhi</p>
@@ -68,8 +68,8 @@
         target="_blank"
         >Apply</a
       >
-    </div>
-    <div class="role">
+    </div> -->
+    <!-- <div class="role">
       <p class="title">Product Manager</p>
       <p>Full-Time</p>
       <p>New Delhi</p>
@@ -80,9 +80,9 @@
         target="_blank"
         >Apply</a
       >
-    </div>
+    </div> -->
   </div>
-  <div class="container design">
+  <!-- <div class="container design">
     <p class="header">Design</p>
     <div class="role">
       <p class="title">UI/UX Designer</p>
@@ -96,10 +96,10 @@
         >Apply</a
       >
     </div>
-  </div>
+  </div> -->
   <div class="container marketing">
     <p class="header">Marketing</p>
-    <div class="role">
+    <!-- <div class="role">
       <p class="title">Social Media Manager</p>
       <p>Full-Time</p>
       <p>New Delhi</p>
@@ -110,8 +110,8 @@
         target="_blank"
         >Apply</a
       >
-    </div>
-    <div class="role">
+    </div> -->
+    <!-- <div class="role">
       <p class="title">Content Editor</p>
       <p>Full-Time</p>
       <p>New Delhi</p>
@@ -122,7 +122,7 @@
         target="_blank"
         >Apply</a
       >
-    </div>
+    </div> -->
     <div class="role">
       <p class="title">Content Writer</p>
       <p>Full-Time</p>
@@ -130,8 +130,8 @@
       <a
         class="apply"
         mat-stroked-button
-        href="https://forms.gle/PSFhTcfq8bGHdLiz8"
-        target="_blank"
+        href="/careers/content-writer"
+        [routerLink]="['/careers/content-writer']"
         >Apply</a
       >
     </div>
@@ -145,12 +145,12 @@
       <a
         class="apply"
         mat-stroked-button
-        href="https://forms.gle/PSFhTcfq8bGHdLiz8"
-        target="_blank"
+        href="/careers/sales-executive"
+        [routerLink]="['/careers/sales-executive']"
         >Apply</a
       >
     </div>
-    <div class="role">
+    <!-- <div class="role">
       <p class="title">National Sales Manager</p>
       <p>Full-Time</p>
       <p>New Delhi</p>
@@ -161,9 +161,9 @@
         target="_blank"
         >Apply</a
       >
-    </div>
+    </div> -->
   </div>
-  <div class="container sales">
+  <!-- <div class="container sales">
     <p class="header">International Sales</p>
     <div class="role">
       <p class="title">International Sales Executive</p>
@@ -189,8 +189,8 @@
         >Apply</a
       >
     </div>
-  </div>
-  <div class="container legal">
+  </div> -->
+  <!-- <div class="container legal">
     <p class="header">Legal</p>
     <div class="role">
       <p class="title">Policy Manager</p>
@@ -204,5 +204,7 @@
         >Apply</a
       >
     </div>
-  </div>
+  </div> -->
 </div>
+
+<app-footer-new></app-footer-new>
