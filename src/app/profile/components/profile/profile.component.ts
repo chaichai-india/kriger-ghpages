@@ -3,6 +3,8 @@ import { ActivatedRoute } from "@angular/router";
 import { ProfileLinkService } from "src/app/services/database/profile-link.service";
 import { ProfileService } from "src/app/services/database/profile.service";
 import { CorporateService } from "src/app/services/database/corporate.service";
+import { EXAMS } from '../../data/exams';
+import { SUBJECTS } from '../../data/subject';
 
 @Component({
   selector: "app-profile",
@@ -17,6 +19,9 @@ export class ProfileComponent implements OnInit {
   details: any;
   counters: any;
   userDetails: any;
+  userType: "learner" | "educator" | "corporate";
+  exams = EXAMS;
+  subjects = SUBJECTS;
 
   resetValues() {
     this.loading = true;
@@ -30,6 +35,13 @@ export class ProfileComponent implements OnInit {
     }
 
     this.details = snaps[0] ? snaps[0].val() : null;
+    if (this.details.type[0] < 20) {
+      this.userType = "learner";
+    } else if (this.details.type[0] >= 20 && this.details.type[0] <= 39) {
+      this.userType = "educator";
+    } else {
+      this.userType = "corporate";
+    }
     // console.log('TCL: ProfileComponent -> setValues -> details', this.details);
     this.counters = snaps[1];
     // console.log(
