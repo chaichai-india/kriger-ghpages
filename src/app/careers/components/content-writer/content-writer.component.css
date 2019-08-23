@@ -30,7 +30,3 @@ p.content {
   color: white;
   background-color: var(--primary-color);
 }
-
-::ng-deep .footer_container {
-  background-color: var(--bg-grey);
-}

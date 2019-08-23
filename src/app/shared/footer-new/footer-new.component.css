@@ -11,6 +11,15 @@
   grid-gap: 1rem 0;
   justify-content: space-evenly;
   color: var(--font-black);
+  /* background-color: white; */
+}
+
+::ng-deep .footer_white .footer_container {
+  background-color: white !important;
+}
+
+::ng-deep .footer_grey .footer_container {
+  background-color: var(--bg-grey) !important;
 }
 
 .heading {

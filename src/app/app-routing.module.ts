@@ -30,6 +30,7 @@ const routes: Routes = [
     loadChildren: "./login/login.module#LoginModule"
   },
   // { path: 'blog', loadChildren: 'blog/blog.module#BlogModule' },
+  { path: "blog/internships", pathMatch: "full", redirectTo: "internships" },
   { path: "internships", loadChildren: "./blog/blog.module#BlogModule" },
   { path: "media-coverage", loadChildren: "./blog/blog.module#BlogModule" },
   { path: "careers", loadChildren: "./careers/careers.module#CareersModule" },

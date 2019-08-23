@@ -72,7 +72,7 @@ export class NavbarComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.router.events.subscribe((url: any) => {
+    this.router.events.pipe(take(1)).subscribe((url: any) => {
       this.isHome = this.router.url == "/";
     });
     this.setLoggedIn();

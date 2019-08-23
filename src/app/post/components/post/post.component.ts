@@ -36,9 +36,9 @@ export class PostComponent implements OnInit {
   openComments() {
     if (this.uid) {
       this.showComments = true;
+    } else {
+      this.openDialog();
     }
-
-    this.openDialog();
   }
 
   postLiked(postid, uid) {
@@ -58,9 +58,9 @@ export class PostComponent implements OnInit {
         this.isPostLiked = false;
         this.likeService.postDislike(postid, uid);
       }
+    } else {
+      this.openDialog();
     }
-
-    this.openDialog();
   }
 
   openProfile() {
@@ -72,9 +72,9 @@ export class PostComponent implements OnInit {
           this.router.navigate([`/india/${username}`]);
         });
       });
+    } else {
+      this.openDialog();
     }
-
-    this.openDialog();
   }
 
   initialize() {

@@ -83,6 +83,8 @@ header {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding: 0 1rem;
+  text-shadow: 1px -1px 2px rgba(0, 0, 0, 0.1);
 }
 
 .bg-image {
@@ -165,8 +167,4 @@ header .subheading {
     grid-row-gap: 1rem;
     margin-bottom: 2rem;
   }
-}
-
-::ng-deep .footer_container {
-  background-color: var(--bg-grey);
 }
