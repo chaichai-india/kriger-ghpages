@@ -1,0 +1,36 @@
+:host {
+  width: 100%;
+  font-family: var(--secondary-font-family);
+}
+
+.android__container {
+  width: 100%;
+  padding: 1rem;
+  display: grid;
+  grid-row-gap: 2rem;
+}
+
+ul li {
+  margin-left: 2rem;
+  font-size: 0.9rem;
+}
+
+p.title {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+p.content {
+  font-size: 0.9rem;
+}
+
+.apply {
+  width: 100px;
+  border-color: var(--primary-color);
+  color: white;
+  background-color: var(--primary-color);
+}
+
+::ng-deep .footer_container {
+  background-color: var(--bg-grey);
+}

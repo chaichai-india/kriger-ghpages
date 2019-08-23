@@ -7,7 +7,7 @@ import { InternshipsComponent } from "./components/internships/internships.compo
 import { PerformersComponent } from "./components/internships/performers/performers.component";
 import { InternsComponent } from "./components/internships/interns/interns.component";
 import { MediacoverageComponent } from "./components/mediacoverage/mediacoverage.component";
-import { CareersComponent } from "./components/careers/careers.component";
+// import { CareersComponent } from "./components/careers/careers.component";
 import { TncComponent } from "./components/tnc/tnc.component";
 import { OurteamComponent } from "./components/ourteam/ourteam.component";
 import { TeamMemberComponent } from "./components/ourteam/team-member/team-member.component";
@@ -19,12 +19,14 @@ import { MatFormFieldModule } from "@angular/material/form-field";
 import {
   MatInputModule,
   MatIconModule,
-  MatChipsModule
+  MatChipsModule,
+  MatButtonModule
 } from "@angular/material";
 import { SharedModule } from "../shared/shared.module";
 import { PricingComponent } from "./components/pricing/pricing.component";
 import { InternshipTncComponent } from "./components/internship-tnc/internship-tnc.component";
 import { CentralComponent } from "./components/central/central.component";
+import { VisitusComponent } from "./components/visitus/visitus.component";
 
 @NgModule({
   declarations: [
@@ -32,27 +34,27 @@ import { CentralComponent } from "./components/central/central.component";
     PerformersComponent,
     InternsComponent,
     MediacoverageComponent,
-    CareersComponent,
     TncComponent,
     OurteamComponent,
     TeamMemberComponent,
     NewsletterFormComponent,
     PricingComponent,
     InternshipTncComponent,
-    CentralComponent
+    CentralComponent,
+    VisitusComponent
   ],
   entryComponents: [
     InternshipsComponent,
     PerformersComponent,
     InternsComponent,
     MediacoverageComponent,
-    CareersComponent,
     TncComponent,
     OurteamComponent,
     TeamMemberComponent,
     NewsletterFormComponent,
     PricingComponent,
-    InternshipTncComponent
+    InternshipTncComponent,
+    VisitusComponent
   ],
   imports: [
     CommonModule,
@@ -63,6 +65,7 @@ import { CentralComponent } from "./components/central/central.component";
     MatInputModule,
     MatIconModule,
     MatChipsModule,
+    MatButtonModule,
     SharedModule
   ]
 })

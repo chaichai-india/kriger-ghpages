@@ -30,6 +30,16 @@
             {{ details?.headline ? details?.headline : 'Fill your Info' }}
           </span>
         </div>
+        <div class="latestedu">
+          <mat-icon fontSet="fas" fontIcon="fa-graduation-cap"></mat-icon>
+          <span
+            [ngStyle]="
+              !userDetails?.latestedu ? { color: 'rgba(0, 0, 0, 0.55)' } : false
+            "
+          >
+            {{ userDetails?.latestedu ? userDetails?.latestedu : 'Fill your latest education' }}
+          </span>
+        </div>
         <div class="hometown">
           <mat-icon fontSet="fa" fontIcon="fa-home"></mat-icon>
           <span>
@@ -109,11 +119,49 @@
             counters?.count_connections ? counters?.count_connections : '0'
           }}</span>
         </div>
-        <div class="views">
+        <!-- <div class="views">
           <span>Profile Views</span>
           <span>{{
             counters?.count_profileviews ? counters?.count_profileviews : '0'
           }}</span>
+        </div> -->
+      </div>
+    </div>
+
+    <div class="profile__exams full_width">
+      <div class="ribbon">
+        <span>Exams {{ userType == 'learner' ? 'I am preparing for' : 'I teach'}}</span>
+      </div>
+      <div class="content">
+        <div class="exam details">
+            <mat-icon fontSet="far" fontIcon="fa-newspaper"></mat-icon>
+            <mat-chip-list *ngIf="userDetails?.exam">
+            <mat-chip *ngFor="let exam of userDetails?.exam" color="primary" selected>{{ exams[exam] }}</mat-chip>
+          </mat-chip-list>
+        </div>
+          
+        <div class="placeholder" *ngIf="!userDetails?.exam">
+          <mat-icon fontSet="far" fontIcon="fa-newspaper"></mat-icon>
+          <span>Fill your Exam Details</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="profile__subjects full_width">
+      <div class="ribbon">
+        <span>Subjects {{ userType == 'learner' ? 'I study' : 'I teach'}}</span>
+      </div>
+      <div class="content">
+        <div class="subject details">
+            <mat-icon fontSet="fas" fontIcon="fa-book-open"></mat-icon>
+            <mat-chip-list *ngIf="userDetails?.subject">
+            <mat-chip *ngFor="let subject of userDetails?.subject" color="primary" selected>{{ subjects[subject] }}</mat-chip>
+          </mat-chip-list>
+        </div>
+          
+        <div class="placeholder" *ngIf="!userDetails?.subject">
+          <mat-icon fontSet="fas" fontIcon="fa-book-open"></mat-icon>
+          <span>Fill your Subject Details</span>
         </div>
       </div>
     </div>

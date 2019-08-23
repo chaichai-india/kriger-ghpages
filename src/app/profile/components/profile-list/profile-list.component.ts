@@ -7,26 +7,30 @@ import {
 } from '@angular/core';
 import { ElasticSearchService } from '../../../services/database/elastic-search.service';
 import { ProfileLinkService } from '../../../services/database/profile-link.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-profile-list',
-  templateUrl: './profile-list.component.html',
-  styleUrls: ['./profile-list.component.css']
+  selector: "app-profile-list",
+  templateUrl: "./profile-list.component.html",
+  styleUrls: ["./profile-list.component.css"]
 })
-export class ProfileListComponent implements OnInit, OnDestroy {
-  selected: string = 'A';
+export class ProfileListComponent implements OnInit {
+  selected: string = "A";
   clicked: any;
   filteredList: any[];
-  data: boolean;
-  loading: boolean;
+  data: boolean = false;
+  // data$ = new BehaviorSubject<boolean>(false);
+  loading: boolean = true;
+  // loading$ = new BehaviorSubject<boolean>(true);
   total: number;
   pagination: any[];
 
   resetValues() {
     this.loading = true;
+    // this.loading$.next(true);
     this.filteredList = [];
     this.data = false;
+    // this.data$.next(false);
     this.total = 0;
     this.pagination = [];
     this.clicked = this.clicked > 1 ? this.clicked : 1;
@@ -37,7 +41,9 @@ export class ProfileListComponent implements OnInit, OnDestroy {
     this.filteredList = data;
     this.total = total;
     this.data = true;
+    // this.data$.next(true);
     this.loading = false;
+    // this.loading$.next(false);
     this.pagination = this.paginationCounter(total);
     this.chRef.detectChanges();
   }
@@ -56,6 +62,9 @@ export class ProfileListComponent implements OnInit, OnDestroy {
     this.chRef.detectChanges();
     let from = (this.clicked - 1) * 10;
     this.filterByLetter(from);
+    this.router.navigate(["/profiles"], {
+      queryParams: { letter: this.selected, page: i }
+    });
   }
 
   receiveSelected($event) {
@@ -65,9 +74,9 @@ export class ProfileListComponent implements OnInit, OnDestroy {
     this.filterByLetter();
   }
 
-  async filterByLetter(from: number = 0) {
+  filterByLetter(from: number = 0) {
     this.resetValues();
-    this.es.getUsersByStartChar(this.selected, from, res => {
+    this.es.getUsersByStartChar(this.selected, from, async res => {
       // console.log(res.hits);
       if (res.hits) {
         let data: any[] = res.hits;
@@ -76,11 +85,20 @@ export class ProfileListComponent implements OnInit, OnDestroy {
         // data
         // );
         let dataList: any[] = [];
-        data.forEach(el => {
-          const { _id } = el;
-          const { name } = el._source;
-          dataList.push({ _id, name });
-        });
+        for (const profile of data) {
+          const { _id } = profile;
+          const { name } = profile._source;
+          const username = await this.profileLinkService
+            .getProfileLink(_id)
+            .then(snap => snap.val());
+          // console.log(username);
+          dataList.push({ _id, name, username });
+        }
+        // data.forEach(el => {
+        //   const { _id } = el;
+        //   const { name } = el._source;
+        //   dataList.push({ _id, name });
+        // });
         this.setValues(dataList, res.total);
         // console.log(
         // 'TCL: ProfileListComponent -> filterByLetter -> this.filteredList',
@@ -88,37 +106,46 @@ export class ProfileListComponent implements OnInit, OnDestroy {
         // );
       } else {
         this.loading = false;
+        // this.loading$.next(false);
         this.chRef.detectChanges();
         this.data = false;
+        // this.data$.next(false);
         this.chRef.detectChanges();
       }
     });
   }
 
-  profileLink(key: string) {
-    this.profileLinkService.getProfileLink(key).then(snap => {
-      let username = snap.val();
-      // console.log(
-      // 'TCL: ProfileListComponent -> profileLink -> username',
-      // username
-      // );
-      this.zone.run(() => {
-        this.router.navigate([`/india/${username}`]);
-      });
-    });
-  }
+  // profileLink(key: string) {
+  //   this.profileLinkService.getProfileLink(key).then(snap => {
+  //     let username = snap.val();
+  //     this.zone.run(() => {
+  //       this.router.navigate([`/india/${username}`]);
+  //     });
+  //   });
+  // }
 
   constructor(
     private es: ElasticSearchService,
     private profileLinkService: ProfileLinkService,
     private router: Router,
+    private route: ActivatedRoute,
     private zone: NgZone,
     private chRef: ChangeDetectorRef
   ) {}
 
   ngOnInit() {
-    this.filterByLetter();
-  }
+    let from = 0;
+    this.route.queryParams.subscribe(params => {
+      // console.log(params);
+      if (params.letter) {
+        this.selected = params.letter;
+      }
 
-  ngOnDestroy() {}
+      if (params.page) {
+        this.clicked = params.page;
+        from = (this.clicked - 1) * 10;
+      }
+    });
+    this.filterByLetter(from);
+  }
 }

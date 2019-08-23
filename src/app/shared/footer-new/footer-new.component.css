@@ -1,0 +1,43 @@
+:host {
+  width: 100%;
+}
+
+.footer_container {
+  width: 100%;
+  min-height: 200px;
+  padding: 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 160px);
+  grid-gap: 1rem 0;
+  justify-content: space-evenly;
+  color: var(--font-black);
+}
+
+.heading {
+  font-weight: 600;
+  color: black;
+  text-decoration: underline;
+}
+
+.links {
+  display: grid;
+  grid-gap: 0.25rem;
+  padding-top: 0.25rem;
+  font-size: 0.9rem;
+}
+
+.links a {
+  all: unset;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.links a:hover {
+  font-weight: 600;
+}
+
+.links a img {
+  width: 25px;
+  height: 25px;
+}

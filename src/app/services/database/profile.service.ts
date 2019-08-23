@@ -1,23 +1,23 @@
-import { Injectable } from '@angular/core';
-import { AngularFireDatabase } from '@angular/fire/database';
+import { Injectable } from "@angular/core";
+import { AngularFireDatabase } from "@angular/fire/database";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class ProfileService {
   ref = this.db.database.ref();
-  detailRef = this.ref.child('User_Detail');
-  counterRef = this.ref.child('User_Counter');
-  userRef = this.ref.child('User');
+  detailRef = this.ref.child("User_Detail");
+  counterRef = this.ref.child("User_Counter");
+  userRef = this.ref.child("User");
 
   getDetails(key: string) {
-    return this.detailRef.child(key).once('value');
+    return this.detailRef.child(key).once("value");
   }
 
   getCounter(key: string) {
     return this.counterRef
       .child(key)
-      .once('value')
+      .once("value")
       .then(snap => {
         if (snap.exists()) {
           let data = snap.val();
@@ -47,11 +47,12 @@ export class ProfileService {
   getUserDetails(key: string) {
     return this.userRef
       .child(key)
-      .once('value')
+      .once("value")
       .then(snap => {
         if (snap.exists()) {
           let data = snap.val();
           const { country, hometown, state, summary } = data;
+          const { exam, subject, latestedu } = data;
           const {
             award,
             certification,
@@ -65,6 +66,9 @@ export class ProfileService {
           return {
             country,
             hometown,
+            exam,
+            subject,
+            latestedu,
             state,
             summary,
             award,

@@ -1,12 +1,19 @@
 import { Performer } from "../../../../models/internship/performer";
 
 export const PERFORMERS: Performer[] = [
+  // {
+  //   image_url: "nikhil_sarna",
+  //   name: "Nikhil Sarna",
+  //   job: "Internship: Beta Testing",
+  //   description:
+  //     "It was great working with the team Kriger. Organisation is supportive and responsive to all interns.I would like to work with the Kriger team again in future"
+  // },
   {
-    image_url: "nikhil_sarna",
-    name: "Nikhil Sarna",
-    job: "Internship: Beta Testing",
+    image_url: "varshini_ravi",
+    name: "Varshini Ravi",
+    job: "Internship: Website Development",
     description:
-      "It was great working with the team Kriger. Organisation is supportive and responsive to all interns.I would like to work with the Kriger team again in future"
+      "I am glad to be a part of Kriger Campus which helped and encouraged me in many ways. Thank you for recruited me as Intern by providing a platform to show my skills and which helped me during my placements."
   },
   {
     image_url: "apoorv_anupam",
