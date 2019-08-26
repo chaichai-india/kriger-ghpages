@@ -5,11 +5,7 @@
   ></app-profile-sort>
 
   <div class="list__container">
-    <mat-spinner
-      diameter="50"
-      *ngIf="loading"
-      (click)="this.loading$.next(false)"
-    ></mat-spinner>
+    <mat-spinner diameter="50" *ngIf="loading"></mat-spinner>
     <mat-action-list *ngIf="data && !loading">
       <div *ngFor="let user of filteredList">
         <mat-list-item role="listitem" *ngIf="user.username">

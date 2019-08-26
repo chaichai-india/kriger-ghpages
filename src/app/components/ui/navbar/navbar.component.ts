@@ -15,7 +15,7 @@ import { UserService } from "../../../services/database/user.service";
 export class NavbarComponent implements OnInit {
   isNavbarCollapsed: boolean = true;
   isLoggedIn: boolean;
-  isLoggedInObservable;
+  isLoggedIn$;
   userDetails;
   isHome: boolean;
 
@@ -33,8 +33,8 @@ export class NavbarComponent implements OnInit {
     // });
 
     this.authService.loggedInUpdateObservable().then(status => {
-      this.isLoggedInObservable = status;
-      let copy = this.isLoggedInObservable;
+      this.isLoggedIn$ = status;
+      let copy = this.isLoggedIn$;
       copy.subscribe(res => (res ? this.getUser() : false));
     });
   }
@@ -72,7 +72,7 @@ export class NavbarComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.router.events.pipe(take(1)).subscribe((url: any) => {
+    this.router.events.subscribe((url: any) => {
       this.isHome = this.router.url == "/";
     });
     this.setLoggedIn();

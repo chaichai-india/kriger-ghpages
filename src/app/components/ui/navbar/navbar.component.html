@@ -5,7 +5,7 @@
     ><span class="beta">Beta</span></a
   >
   <button
-    *ngIf="!isHome"
+    *ngIf="(isLoggedIn$ | async) || !isHome"
     class="navbar-toggler hidden-sm-up"
     type="button"
     (click)="isNavbarCollapsed = !isNavbarCollapsed"
@@ -23,7 +23,7 @@
   >
     <ul class="navbar-nav ml-auto h-100">
       <a
-        *ngIf="isLoggedInObservable | async"
+        *ngIf="isLoggedIn$ | async"
         class="nav-item d-flex flex-column align-items-center justify-content-center mr-4 font-weight-bold"
         [routerLink]="['/posts']"
         href="/posts"
@@ -34,7 +34,7 @@
         <span>Posts</span>
       </a>
       <a
-        *ngIf="isLoggedInObservable | async"
+        *ngIf="isLoggedIn$ | async"
         class="nav-item d-flex flex-column align-items-center justify-content-center mr-4 font-weight-bold"
         [routerLink]="['/profiles']"
         href="/profiles"
@@ -46,7 +46,7 @@
       </a>
 
       <!-- <a
-        *ngIf="!(isLoggedInObservable | async) && !isHome"
+        *ngIf="!(isLoggedIn$ | async) && !isHome"
         id="signup"
         class="nav-item d-flex flex-column align-items-center justify-content-center mr-4 font-weight-bold"
         [routerLink]="['/register']"
@@ -58,7 +58,7 @@
         <span>Register</span>
       </a> -->
       <a
-        *ngIf="!(isLoggedInObservable | async) && !isHome"
+        *ngIf="!(isLoggedIn$ | async) && !isHome"
         id="login"
         class="nav-item d-flex flex-column align-items-center justify-content-center mr-4 font-weight-bold"
         [routerLink]="['/login']"
@@ -76,7 +76,7 @@
       </a>
 
       <!-- <li
-        *ngIf="isLoggedInObservable | async"
+        *ngIf="isLoggedIn$ | async"
         id="logout"
         class="nav-item d-flex flex-column align-items-center justify-content-center mr-4 font-weight-bold"
       >
@@ -108,7 +108,7 @@
       </li> -->
 
       <li
-        *ngIf="isLoggedInObservable | async"
+        *ngIf="isLoggedIn$ | async"
         id="logout"
         class="nav-item dropdown d-flex flex-column align-items-center justify-content-center mr-4 font-weight-bold"
       >
@@ -155,7 +155,7 @@
       </li>
 
       <!-- <li
-        *ngIf="isLoggedInObservable | async"
+        *ngIf="isLoggedIn$ | async"
         id="logout"
         class="nav-item d-flex flex-column align-items-center justify-content-center mr-4 font-weight-bold"
         (click)="logout()"
