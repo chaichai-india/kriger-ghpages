@@ -9,7 +9,7 @@
     <mat-action-list *ngIf="data && !loading">
       <div *ngFor="let user of filteredList">
         <mat-list-item role="listitem" *ngIf="user.username">
-          <a href="/india/{{ user.username }}">{{ user.name }}</a>
+          <a href="/india/{{ user.username }}" (click)="profileLink(user.username)">{{ user.name }}</a>
         </mat-list-item>
       </div>
     </mat-action-list>

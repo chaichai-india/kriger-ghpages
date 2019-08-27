@@ -1,12 +1,11 @@
 import { NgModule } from "@angular/core";
-import { Routes, RouterModule, PreloadAllModules } from "@angular/router";
+import { Routes, RouterModule } from "@angular/router";
 import { PageNotFoundComponent } from "./components/page-not-found/page-not-found.component";
-import { LandingpageComponent } from "./components/landingpage/landingpage.component";
+// import { LandingpageComponent } from "./components/landingpage/landingpage.component";
 import { NewlandingpageComponent } from "./components/newlandingpage/newlandingpage.component";
 import { CustomPreloadingStrategy } from "./custom-preloading-strategy";
 
 const routes: Routes = [
-  // { path: "", component: LandingpageComponent },
   { path: "", component: NewlandingpageComponent },
   {
     path: "posts",

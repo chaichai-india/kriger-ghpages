@@ -4,10 +4,10 @@ import {
   OnDestroy,
   ChangeDetectorRef,
   NgZone
-} from '@angular/core';
-import { ElasticSearchService } from '../../../services/database/elastic-search.service';
-import { ProfileLinkService } from '../../../services/database/profile-link.service';
-import { Router, ActivatedRoute } from '@angular/router';
+} from "@angular/core";
+import { ElasticSearchService } from "../../../services/database/elastic-search.service";
+import { ProfileLinkService } from "../../../services/database/profile-link.service";
+import { Router, ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: "app-profile-list",
@@ -115,14 +115,12 @@ export class ProfileListComponent implements OnInit {
     });
   }
 
-  // profileLink(key: string) {
-  //   this.profileLinkService.getProfileLink(key).then(snap => {
-  //     let username = snap.val();
-  //     this.zone.run(() => {
-  //       this.router.navigate([`/india/${username}`]);
-  //     });
-  //   });
-  // }
+  profileLink(username: string) {
+    this.zone.run(() => {
+      this.router.navigate([`/india/${username}`]);
+    });
+    return false;
+  }
 
   constructor(
     private es: ElasticSearchService,
