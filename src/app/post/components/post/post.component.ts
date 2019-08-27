@@ -63,17 +63,15 @@ export class PostComponent implements OnInit {
     }
   }
 
-  openProfile() {
+  openProfile(username: string) {
     if (this.uid) {
-      this.post.profileLink.then(snap => {
-        let username = snap.val();
-
-        this.zone.run(() => {
-          this.router.navigate([`/india/${username}`]);
-        });
+      this.zone.run(() => {
+        this.router.navigate([`/india/${username}`]);
       });
+      return false;
     } else {
       this.openDialog();
+      return false;
     }
   }
 

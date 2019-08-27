@@ -11,6 +11,11 @@
   background-position: center;
 }
 
+a#profile_link {
+  all: unset;
+  cursor: pointer;
+}
+
 .post-card mat-card-title {
   font-size: 14px;
   line-height: 20px;

@@ -11,7 +11,7 @@ const routes: Routes = [
     component: PostListComponent
     // canActivate: [AuthGuard]
   },
-  { path: ":id", component: PostDetailComponent, canActivate: [AuthGuard] }
+  { path: ":id", component: PostDetailComponent }
 ];
 
 @NgModule({

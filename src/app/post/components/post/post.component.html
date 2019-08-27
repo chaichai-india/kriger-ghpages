@@ -1,28 +1,34 @@
 <mat-card class="post-card" *ngIf="post">
-  <mat-card-header>
-    <div
-      (click)="openProfile()"
-      style="cursor: pointer"
-      mat-card-avatar
-      class="post-header-image"
-      [ngStyle]="{
-        'background-image':
-          'url(' +
-          (post.userdetail | async)?.thumb +
-          '), url(../../../assets/images/user.svg)'
-      }"
-    ></div>
-    <mat-card-title (click)="openProfile()" style="cursor: pointer">{{
-      (post.userdetail | async)?.name
-    }}</mat-card-title>
-    <mat-card-subtitle>
-      {{ (post.userdetail | async)?.headline }}
-      <br />
-      {{ post.timestamp.substring(0, 8) | amDateFormat: "LL" }}
-      <!-- <br />
+  <input #profileLink [value]="post.profileLink | async" type="hidden" />
+  <a
+    href="/india/{{ post.profileLink | async }}"
+    id="profile_link"
+    (click)="openProfile(profileLink.value)"
+  >
+    <mat-card-header>
+      <div
+        style="cursor: pointer"
+        mat-card-avatar
+        class="post-header-image"
+        [ngStyle]="{
+          'background-image':
+            'url(' +
+            (post.userdetail | async)?.thumb +
+            '), url(../../../assets/images/user.svg)'
+        }"
+      ></div>
+      <mat-card-title style="cursor: pointer">{{
+        (post.userdetail | async)?.name
+      }}</mat-card-title>
+      <mat-card-subtitle>
+        {{ (post.userdetail | async)?.headline }}
+        <br />
+        {{ post.timestamp.substring(0, 8) | amDateFormat: "LL" }}
+        <!-- <br />
       {{ post.key }} -->
-    </mat-card-subtitle>
-  </mat-card-header>
+      </mat-card-subtitle>
+    </mat-card-header>
+  </a>
   <mat-card-content>
     <p
       [innerHTML]="

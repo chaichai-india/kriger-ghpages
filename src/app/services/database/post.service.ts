@@ -63,7 +63,8 @@ export class PostService {
             const userRef = "User_Detail";
             let uid = c.payload.val().uid;
             let userdetail = this.getData(userRef, uid);
-            let profileLink = this.profileLinkService.getProfileLink(uid);
+            // let profileLink = this.profileLinkService.getProfileLink(uid);
+            let profileLink = this.getData("User_Profile_Link", uid);
 
             const postCounterRef = "Post_Counter";
             let key = c.payload.key;
@@ -89,8 +90,10 @@ export class PostService {
     // await this.loginService.loginIfNotAuth();
     let id_exists = await this.db.database
       .ref("/Post")
+      .orderByKey()
+      .equalTo(id)
       .once("value")
-      .then(snapshot => snapshot.hasChild(id));
+      .then(snapshot => snapshot.exists());
     // console.log(id_exists);
     if (id_exists) {
       return await this.db
@@ -104,7 +107,8 @@ export class PostService {
             // console.log(payloadValue.uid);
             let uid = payloadValue.uid;
             let userdetail = this.getData(userRef, uid);
-            let profileLink = this.profileLinkService.getProfileLink(uid);
+            // let profileLink = this.profileLinkService.getProfileLink(uid);
+            let profileLink = this.getData("User_Profile_Link", uid);
 
             const postCounterRef = "Post_Counter";
             let key = post.payload.key;
