@@ -1,5 +1,5 @@
-import { Component, OnInit, Input, NgZone } from "@angular/core";
-import { MatDialog } from "@angular/material";
+import { Component, OnInit, Input, NgZone, Inject } from "@angular/core";
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from "@angular/material";
 import { LikeService } from "../../../services/database/like.service";
 import { AuthService } from "../../../services/authentication/auth.service";
 import { TimestampService } from "../../../services/utility/timestamp.service";
@@ -75,6 +75,20 @@ export class PostComponent implements OnInit {
     }
   }
 
+  openShare() {
+    if (this.uid) {
+      const dialogRef = this.dialog.open(ShareDialogComponent, {
+        data: { key: this.post.key }
+      });
+
+      dialogRef.afterClosed().subscribe(result => {
+        // console.log(`Dialog result: ${result}`);
+      });
+    } else {
+      this.openDialog();
+    }
+  }
+
   initialize() {
     if (this.uid) {
       this.postLiked(this.post.key, this.uid).then(res => {
@@ -96,3 +110,16 @@ export class PostComponent implements OnInit {
   styleUrls: ["./post.dialog.component.css"]
 })
 export class DialogComponent {}
+
+@Component({
+  selector: "app-post-share-dialog",
+  templateUrl: "./post-share.dialog.component.html",
+  styleUrls: ["./post-share.dialog.component.css"]
+})
+export class ShareDialogComponent {
+  isCopied: boolean = false;
+  constructor(
+    public dialogRef: MatDialogRef<ShareDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any
+  ) {}
+}

@@ -4,6 +4,7 @@
   grid-template-columns: 1fr 1.5fr 1fr;
   grid-template-rows: auto; */
   width: 100%;
+  height: 85%;
   display: grid;
   grid-template-columns: 550px;
   place-content: center;

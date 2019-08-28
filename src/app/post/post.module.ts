@@ -12,8 +12,12 @@ import { MatIconModule } from "@angular/material/icon";
 import { MatDialogModule } from "@angular/material/dialog";
 import { InfiniteScrollModule } from "ngx-infinite-scroll";
 // import { ImageCropperModule } from 'ngx-image-cropper';
+import { ClipboardModule } from "ngx-clipboard";
 
-import { PostComponent } from "./components/post/post.component";
+import {
+  PostComponent,
+  ShareDialogComponent
+} from "./components/post/post.component";
 import { DialogComponent } from "./components/post/post.component";
 import { PostListComponent } from "./components/post-list/post-list.component";
 import { PostDetailComponent } from "./components/post-detail/post-detail.component";
@@ -37,6 +41,7 @@ import { CreateCommentComponent } from "./components/create-comment/create-comme
   declarations: [
     PostComponent,
     DialogComponent,
+    ShareDialogComponent,
     PostListComponent,
     PostDetailComponent,
     AdbannerComponent,
@@ -46,7 +51,7 @@ import { CreateCommentComponent } from "./components/create-comment/create-comme
     CommentComponent,
     CreateCommentComponent
   ],
-  entryComponents: [DialogComponent],
+  entryComponents: [DialogComponent, ShareDialogComponent],
   imports: [
     CommonModule,
     PostRoutingModule,
@@ -63,6 +68,7 @@ import { CreateCommentComponent } from "./components/create-comment/create-comme
     MatInputModule,
     InfiniteScrollModule,
     MatSnackBarModule,
+    ClipboardModule,
     // ImageCropperModule,
     SharedModule
   ],

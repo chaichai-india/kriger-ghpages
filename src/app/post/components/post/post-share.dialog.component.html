@@ -1,0 +1,36 @@
+<button
+  mat-icon-button
+  style="float: right; margin-top: -1.5em;
+margin-right: -1.7em;"
+  mat-dialog-close
+  tabindex="-1"
+>
+  <mat-icon>close</mat-icon>
+</button>
+<h1 mat-dialog-title align="center">
+  Share this post
+</h1>
+
+<div mat-dialog-content align="center" #container>
+  <mat-form-field appearance="outline" id="postlink">
+    <input
+      matInput
+      type="text"
+      value="https://kriger.in/posts/{{ data.key }}"
+      #inputTarget
+      readonly
+      tabindex="-1"
+    />
+  </mat-form-field>
+
+  <button
+    id="copy_btn"
+    mat-button
+    [ngxClipboard]="inputTarget"
+    [container]="container"
+    (cbOnSuccess)="isCopied = true"
+    tabindex="-1"
+  >
+    {{ isCopied ? "Copied" : "Copy Link" }}
+  </button>
+</div>
