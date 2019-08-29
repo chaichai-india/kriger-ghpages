@@ -94,7 +94,7 @@ header {
   left: 0;
   right: 0;
   background-image: url("/assets/careers-bg.jpg");
-  /* background-color: #f4b902; */
+  background-color: #bfbbbc;
   background-size: cover;
   filter: blur(3px);
   z-index: -1;

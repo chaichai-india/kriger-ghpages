@@ -12,8 +12,8 @@ import { AppComponent } from "./app.component";
   imports: [
     AppModule,
     ServerModule,
-    ModuleMapLoaderModule
-    // ServerTransferStateModule
+    ModuleMapLoaderModule,
+    ServerTransferStateModule
   ],
   bootstrap: [AppComponent]
 })

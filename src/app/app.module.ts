@@ -67,7 +67,7 @@ import { isPlatformBrowser } from "@angular/common";
   imports: [
     BrowserModule.withServerTransition({ appId: "serverApp" }),
     PrebootModule.withConfig({ appRoot: "app-root" }),
-    // BrowserTransferStateModule,
+    BrowserTransferStateModule,
     AppRoutingModule,
     MatToolbarModule,
     MatProgressBarModule,
