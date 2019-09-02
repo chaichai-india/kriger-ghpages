@@ -97,5 +97,72 @@ export class ProfileService {
       });
   }
 
+  async getUserDetails1(key: string) {
+    const fields = {
+      country: undefined,
+      hometown: undefined,
+      exam: undefined,
+      subject: undefined,
+      latestedu: undefined,
+      state: undefined,
+      summary: undefined,
+      award: undefined,
+      certification: undefined,
+      college: undefined,
+      coaching: undefined,
+      internship: undefined,
+      publication: undefined,
+      specialisation: undefined
+    };
+
+    const promises = [];
+    for (const field in fields) {
+      if (fields.hasOwnProperty(field)) {
+        fields[field] = this.userRef
+          .child(key)
+          .child(field)
+          .once("value");
+        promises.push(fields[field]);
+      }
+    }
+
+    const [
+      country,
+      hometown,
+      exam,
+      subject,
+      latestedu,
+      state,
+      summary,
+      award,
+      certification,
+      college,
+      coaching,
+      internship,
+      publication,
+      specialisation
+    ] = await Promise.all(promises);
+
+    fields.country = country.val() ? country.val() : undefined;
+    fields.hometown = hometown.val() ? hometown.val() : undefined;
+    fields.exam = exam.val() ? exam.val() : undefined;
+    fields.subject = subject.val() ? subject.val() : undefined;
+    fields.latestedu = latestedu.val() ? latestedu.val() : undefined;
+    fields.state = state.val() ? state.val() : undefined;
+    fields.summary = summary.val() ? summary.val() : undefined;
+    fields.award = award.val() ? award.val() : undefined;
+    fields.certification = certification.val()
+      ? certification.val()
+      : undefined;
+    fields.coaching = coaching.val() ? coaching.val() : undefined;
+    fields.college = college.val() ? college.val() : undefined;
+    fields.internship = internship.val() ? internship.val() : undefined;
+    fields.publication = publication.val() ? publication.val() : undefined;
+    fields.specialisation = specialisation.val()
+      ? specialisation.val()
+      : undefined;
+
+    return fields;
+  }
   constructor(private db: AngularFireDatabase) {}
 }

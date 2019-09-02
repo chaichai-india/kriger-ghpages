@@ -3,8 +3,8 @@ import { ActivatedRoute } from "@angular/router";
 import { ProfileLinkService } from "../../../services/database/profile-link.service";
 import { ProfileService } from "../../../services/database/profile.service";
 import { CorporateService } from "../../../services/database/corporate.service";
-import { EXAMS } from '../../data/exams';
-import { SUBJECTS } from '../../data/subject';
+import { EXAMS } from "../../data/exams";
+import { SUBJECTS } from "../../data/subject";
 
 @Component({
   selector: "app-profile",
@@ -88,7 +88,7 @@ export class ProfileComponent implements OnInit {
     let isProfile = await this.profileLinkService
       .isProfileLink(username)
       .then(res => {
-        // console.log('TCL: ProfileComponent -> getProfileData -> res', res);
+        // console.log("TCL: ProfileComponent -> getProfileData -> res", res);
         return res;
       });
 
@@ -97,7 +97,7 @@ export class ProfileComponent implements OnInit {
         const { key } = isProfile;
         const details = this.profileService.getDetails(key);
         const counters = this.profileService.getCounter(key);
-        const userDetails = this.profileService.getUserDetails(key);
+        const userDetails = this.profileService.getUserDetails1(key);
 
         const profileInfo = await Promise.all([details, counters, userDetails]);
         return profileInfo;
@@ -125,7 +125,7 @@ export class ProfileComponent implements OnInit {
     // this.username
     // );
     this.getProfileData(this.username).then(snaps => {
-      // console.log('TCL: ProfileComponent -> ngOnInit -> snaps', snaps);
+      // console.log("TCL: ProfileComponent -> ngOnInit -> snaps", snaps);
       this.profile_found = snaps ? true : false;
       this.setValues(snaps);
     });

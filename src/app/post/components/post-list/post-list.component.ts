@@ -11,6 +11,7 @@ import { take, tap, shareReplay } from "rxjs/operators";
 
 import { PostService } from "../../../services/database/post.service";
 import { AuthService } from "../../../services/authentication/auth.service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-post-list",
@@ -80,6 +81,10 @@ export class PostListComponent implements OnInit, OnDestroy {
   }
 
   resetInfinite() {
+    if (!this.isAuth) {
+      this.router.navigate([`/login`]);
+      return;
+    }
     this.scrollCount = 1;
     this.infiniteDisable = false;
     this.loading = true;
@@ -133,7 +138,8 @@ export class PostListComponent implements OnInit, OnDestroy {
   constructor(
     private authService: AuthService,
     private postService: PostService,
-    private renderer: Renderer2
+    private renderer: Renderer2,
+    private router: Router
   ) {
     this.renderer.addClass(document.body, "body-bg");
   }
