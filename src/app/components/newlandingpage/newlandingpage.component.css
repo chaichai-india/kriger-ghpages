@@ -36,6 +36,11 @@ section#header .bg-image {
   z-index: -1;
 }
 
+section#header > p {
+  max-width: 750px;
+  text-align: center;
+}
+
 section#header .heading {
   font-size: 3.5rem;
   margin-bottom: 1rem;
@@ -223,44 +228,13 @@ section#howitworks .content .howitworks > .row:nth-child(even) {
   margin-bottom: 1rem;
 }
 
-/* .howitworks > .row > .image {
-  position: relative;
-  width: 222px;
-  height: 450px;
-  margin: auto;
-  border: 16px black solid;
-  border-top-width: 40px;
-  border-bottom-width: 40px;
-  border-radius: 36px;
-}
-
-.howitworks > .row > .image::before {
-  content: "";
-  display: block;
-  width: 60px;
-  height: 5px;
-  position: absolute;
-  top: -25px;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: #333;
-  border-radius: 10px;
-} */
-
-/* .howitworks > .row > .image::after {
-  content: "";
-  display: block;
-  width: 35px;
-  height: 35px;
-  position: absolute;
-  left: 50%;
-  bottom: -65px;
-  transform: translate(-50%, -50%);
-  background: #333;
-  border-radius: 50%;
-} */
-
 .howitworks > .row img {
   width: 190px;
   height: 370px;
+}
+
+@media screen and (max-width: 767px) {
+  section#header > p {
+    text-align: left;
+  }
 }
