@@ -12,10 +12,10 @@ const routes: Routes = [
     loadChildren: "./post/post.module#PostModule",
     data: { preload: true }
   },
-  {
-    path: "profiles",
-    loadChildren: "./profile/profile.module#ProfileModule"
-  },
+  // {
+  //   path: "profiles",
+  //   loadChildren: "./profile/profile.module#ProfileModule"
+  // },
   {
     path: "india",
     loadChildren: "./profile/profile.module#ProfileModule"
