@@ -32,7 +32,7 @@ body {
 body {
   margin: 0;
   text-rendering: optimizeLegibility;
-  font-family: var(--primary-font-family);
+  font-family: var(--secondary-font-family);
   background-color: white;
 }
 
