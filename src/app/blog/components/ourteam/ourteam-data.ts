@@ -18,13 +18,13 @@ export const MENTORS = [
 ];
 
 export const ADVISORS = [
-  {
-    firstname: "Sumeet",
-    lastname: "Agrawal",
-    role: "Financial Advisor",
-    linkedin: "https://www.linkedin.com/in/sumeetagrawal/",
-    image: "assets/images/ourteam/advisors/sumeet_agrawal.jpeg"
-  },
+  // {
+  //   firstname: "Sumeet",
+  //   lastname: "Agrawal",
+  //   role: "Financial Advisor",
+  //   linkedin: "https://www.linkedin.com/in/sumeetagrawal/",
+  //   image: "assets/images/ourteam/advisors/sumeet_agrawal.jpeg"
+  // },
   {
     firstname: "Rajesh",
     lastname: "Jha",
@@ -133,16 +133,17 @@ export const CORETEAM = [
     role: "Co-founder & CAO",
     linkedin: "https://www.linkedin.com/in/poojan-rathod-8a2013137/",
     image: "assets/images/ourteam/coreteam/poojan_rathod.jpg"
-  },
+  }
+];
+export const INSTITUTEPARTNERSHIP = [
   {
     firstname: "Neeraj",
     lastname: "Verma",
-    role: "Co-founder & Institute Partnership",
+    role: "",
     linkedin: "https://www.linkedin.com/in/neeraj-verma-380bb120/",
     image: "assets/images/ourteam/coreteam/neeraj_verma.jpeg"
   }
 ];
-
 export const TECHNICALTEAM = [
   // {
   //   firstname: "Neelu",

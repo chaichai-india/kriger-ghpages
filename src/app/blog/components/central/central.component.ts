@@ -15,6 +15,7 @@ import { VisitusComponent } from "../visitus/visitus.component";
 })
 export class CentralComponent implements OnInit {
   currentComponent;
+  footerWhite: boolean = false;
   constructor(public router: Router, public activatedRoute: ActivatedRoute) {}
 
   ngOnInit() {
@@ -31,6 +32,7 @@ export class CentralComponent implements OnInit {
       this.currentComponent = TncComponent;
     }
     if (this.router.url === "/our-team") {
+      this.footerWhite = true;
       this.currentComponent = OurteamComponent;
     }
     if (this.router.url === "/internship-tnc") {

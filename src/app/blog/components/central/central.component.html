@@ -3,4 +3,6 @@
 </p> -->
 
 <ng-container *ngComponentOutlet="currentComponent"></ng-container>
-<app-footer-new class="footer_grey"></app-footer-new>
+<app-footer-new
+  [ngClass]="footerWhite ? 'footer_white' : 'footer_grey'"
+></app-footer-new>
