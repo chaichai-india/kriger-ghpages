@@ -1,0 +1,369 @@
+<div class="profile__container">
+  <mat-card class="profile__card">
+    <div class="profile__header">
+      <div
+        mat-card-avatar
+        class="profile__photo"
+        [ngStyle]="{
+          'background-image':
+            'url(' + data?.thumb + '), url(../../../assets/images/user.svg)'
+        }"
+      ></div>
+      <h2 class="profile__name">{{ data.name }}</h2>
+    </div>
+
+    <div class="profile__intro full_width">
+      <div class="ribbon">
+        <span>Intro</span>
+      </div>
+      <div class="content">
+        <div class="headline">
+          <mat-icon fontSet="far" fontIcon="fa-list-alt"></mat-icon>
+          <span
+            [ngStyle]="
+              !data?.headline ? { color: 'rgba(0, 0, 0, 0.55)' } : false
+            "
+          >
+            {{ data?.headline ? data?.headline : "Fill your Info" }}
+          </span>
+        </div>
+        <div class="latestedu">
+          <mat-icon fontSet="fas" fontIcon="fa-graduation-cap"></mat-icon>
+          <span
+            [ngStyle]="
+              !data?.latestedu ? { color: 'rgba(0, 0, 0, 0.55)' } : false
+            "
+          >
+            {{
+              data?.latestedu ? data?.latestedu : "Fill your latest education"
+            }}
+          </span>
+        </div>
+        <div class="hometown">
+          <mat-icon fontSet="fa" fontIcon="fa-home"></mat-icon>
+          <span>
+            <span
+              [ngStyle]="
+                !data?.hometown ? { color: 'rgba(0, 0, 0, 0.55)' } : false
+              "
+              >{{ data?.hometown ? "New Delhi" : "Hometown" }},</span
+            >
+            <span
+              [ngStyle]="
+                !userDetails?.state ? { color: 'rgba(0, 0, 0, 0.55)' } : false
+              "
+              >{{ data?.state ? "Delhi" : "State" }},</span
+            >
+            <span
+              [ngStyle]="
+                !data?.country ? { color: 'rgba(0, 0, 0, 0.55)' } : false
+              "
+              >{{ data?.country ? " India" : "Country" }}</span
+            >
+          </span>
+        </div>
+        <div class="birthday">
+          <mat-icon fontSet="fa" fontIcon="fa-birthday-cake"></mat-icon>
+          <span>Private Information</span>
+        </div>
+        <div class="contact">
+          <mat-icon fontSet="fa" fontIcon="fa-phone-square"></mat-icon>
+          <span>Private Information</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="profile__about full_width">
+      <div class="ribbon">
+        <span>About Me</span>
+      </div>
+      <div class="content">
+        <div class="about">
+          <span
+            [ngStyle]="
+              !data?.summary ? { color: 'rgba(0, 0, 0, 0.55)' } : false
+            "
+            >{{ data?.summary ? data?.summary : "About Me" }}</span
+          >
+        </div>
+      </div>
+    </div>
+
+    <div class="profile__dashboard full_width">
+      <div class="ribbon">
+        <span>Dashboard</span>
+      </div>
+      <div class="content">
+        <div class="posts">
+          <span>Posts</span>
+          <span>{{ data?.count_posts ? data?.count_posts : "0" }}</span>
+        </div>
+        <div class="groups">
+          <span>Groups</span>
+          <span>{{ data?.count_groups ? data?.count_groups : "0" }}</span>
+        </div>
+        <div class="krigers">
+          <span>Krigers</span>
+          <span>{{
+            data?.count_connections ? data?.count_connections : "0"
+          }}</span>
+        </div>
+        <!-- <div class="views">
+          <span>Profile Views</span>
+          <span>{{
+            counters?.count_profileviews ? counters?.count_profileviews : '0'
+          }}</span>
+        </div> -->
+      </div>
+    </div>
+
+    <div class="profile__exams full_width">
+      <div class="ribbon">
+        <span
+          >Exams
+          {{ data.userType == "educator" ? "I teach" : "We teach" }}</span
+        >
+      </div>
+      <div class="content">
+        <div class="exam details" *ngIf="data?.exam">
+          <mat-icon fontSet="far" fontIcon="fa-newspaper"></mat-icon>
+          <mat-chip-list>
+            <mat-chip
+              *ngFor="let exam of data?.exam"
+              color="primary"
+              selected
+              >{{ exam }}</mat-chip
+            >
+          </mat-chip-list>
+        </div>
+
+        <div class="placeholder" *ngIf="!data?.exam">
+          <mat-icon fontSet="far" fontIcon="fa-newspaper"></mat-icon>
+          <span>Fill your Exam Details</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="profile__subjects full_width">
+      <div class="ribbon">
+        <span
+          >Subjects
+          {{ data.userType == "learner" ? "I teach" : "We teach" }}</span
+        >
+      </div>
+      <div class="content">
+        <div class="subject details" *ngIf="data?.subject">
+          <mat-icon fontSet="fas" fontIcon="fa-book-open"></mat-icon>
+          <mat-chip-list>
+            <mat-chip
+              *ngFor="let subject of data?.subject"
+              color="primary"
+              selected
+              >{{ subject }}</mat-chip
+            >
+          </mat-chip-list>
+        </div>
+
+        <div class="placeholder" *ngIf="!data?.subject">
+          <mat-icon fontSet="fas" fontIcon="fa-book-open"></mat-icon>
+          <span>Fill your Subject Details</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="profile__college full_width">
+      <div class="ribbon">
+        <span>School/College/Institute</span>
+      </div>
+      <div class="content">
+        <div *ngIf="data?.college">
+          <div class="college details" *ngFor="let college of data?.college">
+            <mat-icon fontSet="fas" fontIcon="fa-graduation-cap"></mat-icon>
+            <div>
+              <span class="name">{{ college.name }}</span>
+              <span class="description">{{ college.description }}</span>
+              <span class="year"
+                >{{ college.year_from }}
+                {{ college.year_to ? "- " + college.year_to : null }}</span
+              >
+            </div>
+          </div>
+        </div>
+        <div class="placeholder" *ngIf="!data?.college">
+          <mat-icon fontSet="fas" fontIcon="fa-graduation-cap"></mat-icon>
+          <span>Fill your Education Details</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="profile__coaching full_width">
+      <div class="ribbon">
+        <span>Coaching</span>
+      </div>
+      <div class="content">
+        <div *ngIf="data?.coaching">
+          <div class="coaching details" *ngFor="let coaching of data?.coaching">
+            <mat-icon fontSet="fas" fontIcon="fa-chalkboard-teacher"></mat-icon>
+            <div>
+              <span class="name">{{ coaching.name }}</span>
+              <span class="description">{{ coaching.description }}</span>
+              <span class="year"
+                >{{ coaching.year_from }}
+                {{ coaching.year_to ? "- " + coaching.year_to : null }}</span
+              >
+            </div>
+          </div>
+        </div>
+        <div class="placeholder" *ngIf="!data?.coaching">
+          <mat-icon fontSet="fas" fontIcon="fa-chalkboard-teacher"></mat-icon>
+          <span>Fill your Coaching Details</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="profile__award full_width">
+      <div class="ribbon">
+        <span>Award</span>
+      </div>
+      <div class="content">
+        <div *ngIf="data?.award">
+          <div class="award details" *ngFor="let award of data?.award">
+            <mat-icon fontSet="fas" fontIcon="fa-trophy"></mat-icon>
+            <div>
+              <span class="name">{{ award.name }}</span>
+              <span class="description">{{ award.description }}</span>
+              <span class="year"
+                >{{ award.year_from }}
+                {{ award.year_to ? "- " + award.year_to : null }}</span
+              >
+            </div>
+          </div>
+        </div>
+        <div class="placeholder" *ngIf="!data?.award">
+          <mat-icon fontSet="fas" fontIcon="fa-trophy"></mat-icon>
+          <span>Fill your Award Details</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="profile__certification full_width">
+      <div class="ribbon">
+        <span>Certification</span>
+      </div>
+      <div class="content">
+        <div *ngIf="data?.certification">
+          <div
+            class="certification details"
+            *ngFor="let certificate of data?.certification"
+          >
+            <mat-icon fontSet="fas" fontIcon="fa-award"></mat-icon>
+            <div>
+              <span class="name">{{ certificate.name }}</span>
+              <span class="description">{{ certificate.description }}</span>
+              <span class="year"
+                >{{ certificate.year_from }}
+                {{
+                  certificate.year_to ? "- " + certificate.year_to : null
+                }}</span
+              >
+            </div>
+          </div>
+        </div>
+        <div class="placeholder" *ngIf="!data?.certification">
+          <mat-icon fontSet="fas" fontIcon="fa-award"></mat-icon>
+          <span>Fill your Certification Details</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="profile__internship full_width">
+      <div class="ribbon">
+        <span>Internship/Research</span>
+      </div>
+      <div class="content">
+        <div *ngIf="data?.internship">
+          <div
+            class="internship details"
+            *ngFor="let internship of data?.internship"
+          >
+            <mat-icon fontSet="fas" fontIcon="fa-briefcase"></mat-icon>
+            <div>
+              <span class="name">{{ internship.name }}</span>
+              <span class="description">{{ internship.description }}</span>
+              <span class="year"
+                >{{ internship.year_from }}
+                {{
+                  internship.year_to ? "- " + internship.year_to : null
+                }}</span
+              >
+            </div>
+          </div>
+        </div>
+        <div class="placeholder" *ngIf="!data?.internship">
+          <mat-icon fontSet="fas" fontIcon="fa-briefcase"></mat-icon>
+          <span>Fill your Internship Details</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="profile__publication full_width">
+      <div class="ribbon">
+        <span>Publication</span>
+      </div>
+      <div class="content">
+        <div *ngIf="data?.publication">
+          <div
+            class="publication details"
+            *ngFor="let publication of data?.publication"
+          >
+            <mat-icon fontSet="fas" fontIcon="fa-book"></mat-icon>
+            <div>
+              <span class="name">{{ publication.name }}</span>
+              <span class="description">{{ publication.description }}</span>
+              <span class="year"
+                >{{ publication.year_from }}
+                {{
+                  publication.year_to ? "- " + publication.year_to : null
+                }}</span
+              >
+            </div>
+          </div>
+        </div>
+        <div class="placeholder" *ngIf="!data?.publication">
+          <mat-icon fontSet="fas" fontIcon="fa-book"></mat-icon>
+          <span>Fill your Publication Details</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="profile__specialisation full_width">
+      <div class="ribbon">
+        <span>Area of Specialisation</span>
+      </div>
+      <div class="content">
+        <div *ngIf="data?.specialisation">
+          <div
+            class="specialisation details"
+            *ngFor="let specialisation of data?.specialisation"
+          >
+            <mat-icon fontSet="fas" fontIcon="fa-medal"></mat-icon>
+            <div>
+              <span class="name">{{ specialisation.name }}</span>
+              <span class="description">{{ specialisation.description }}</span>
+              <span class="year"
+                >{{ specialisation.year_from }}
+                {{
+                  specialisation.year_to ? "- " + specialisation.year_to : null
+                }}</span
+              >
+            </div>
+          </div>
+        </div>
+        <div class="placeholder" *ngIf="!data?.specialisation">
+          <mat-icon fontSet="fas" fontIcon="fa-medal"></mat-icon>
+          <span>Fill your Specialisation Details</span>
+        </div>
+      </div>
+    </div>
+  </mat-card>
+</div>

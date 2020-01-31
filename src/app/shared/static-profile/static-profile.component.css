@@ -1,0 +1,117 @@
+.profile__container {
+  display: flex;
+  flex-direction: column;
+  width: 50vw;
+  min-width: 320px;
+  margin: 5rem auto;
+  align-items: center;
+}
+
+.profile__card {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15), 0 2px 3px rgba(0, 0, 0, 0.2);
+  border-radius: 0;
+}
+
+.profile__header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.profile__photo {
+  height: 9.5em;
+  width: 9.5em;
+  background-size: cover;
+  background-position: 50%;
+}
+
+.profile__name {
+  font-family: "Lato", "Helvetica Neue", sans-serif;
+}
+
+.ribbon {
+  width: 100%;
+  margin: 1em 0;
+  /* background-color: dodgerblue; */
+  background-color: var(--primary-color);
+  text-align: center;
+  color: white;
+  font-size: 1.2em;
+  font-weight: 500;
+  text-shadow: 2px 2px rgba(0, 0, 0, 0.31);
+  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.55);
+}
+
+.full_width {
+  width: 100%;
+}
+
+.content {
+  padding-left: 1em;
+}
+
+.profile__dashboard .content {
+  display: flex;
+  justify-content: space-around;
+}
+
+.profile__dashboard .content div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.content .placeholder {
+  display: flex;
+  align-items: center;
+}
+
+.content .placeholder span {
+  color: rgba(0, 0, 0, 0.55);
+}
+
+.content .placeholder mat-icon,
+.content .details mat-icon {
+  width: 2em;
+  height: 100%;
+  height: 1em;
+  font-size: 2em;
+}
+
+.content .details {
+  display: grid;
+  align-items: center;
+  grid-template-columns: 4em auto;
+}
+
+.content .details div {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1em;
+}
+
+.content .details div .name {
+  font-weight: 500;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+@media screen and (max-width: 1100px) {
+  .profile__container {
+    width: 60vw;
+  }
+}
+
+@media screen and (max-width: 585px) {
+  .profile__container {
+    width: 90vw;
+  }
+}

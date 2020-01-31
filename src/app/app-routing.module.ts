@@ -20,6 +20,14 @@ const routes: Routes = [
     path: "india",
     loadChildren: "./profile/profile.module#ProfileModule"
   },
+  {
+    path: "educator",
+    loadChildren: "./educator/educator.module#EducatorModule"
+  },
+  {
+    path: "institute",
+    loadChildren: "./institute/institute.module#InstituteModule"
+  },
   // {
   //   path: "register",
   //   loadChildren: "./signup/signup.module#SignupModule"
