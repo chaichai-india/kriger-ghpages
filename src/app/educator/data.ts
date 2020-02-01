@@ -1,28 +1,28 @@
 export const vineetData = {
   additional_details: {
-    admission_process: ["Walk In", "On Phone"],
+    admission_process: ["Walk In"], // "On Phone"
     batch_size: "40",
     demo: "Yes",
     doubt: "Yes",
     faculty_gender: "Male",
-    fee_structure: ["One Time", "Quarterly"],
+    fee_structure: ["One Time"], // "Quarterly"
     language_teaching: "Hindi",
     mode_of_teaching: ["Educator's Location"],
     number_batch: "4",
-    payment_modes: ["Credit/Debit Card", "Cheque"],
+    payment_modes: ["Credit/Debit Card"], // "Cheque"
     placement: "No",
-    resource_type: ["Counselling", "e-Learning"],
-    scholarship: ["Based on previous marks", "No"],
-    test_frequency: ["Bi Weekly", "Quarterly"]
+    resource_type: ["e-Learning"], // "Counselling"
+    scholarship: ["Based on previous marks"], // "No"
+    test_frequency: ["Bi Weekly"] // "Quarterly"
   },
   address: {
-    address_city: "",
-    address_country: 1,
-    address_state: 1,
-    house: "B",
-    landmark: "",
-    pincode: "",
-    street: ""
+    address_city: "lorem",
+    address_country: "ipsum",
+    address_state: "lorem",
+    house: "lorem ipsum",
+    landmark: "lorem ipsum",
+    pincode: "12313124",
+    street: "lorem ipsum"
   },
   birthday: "05/12/2019",
   classes_teaching: ["Class-9", "Class-10", "Class-11", "Class-12"],
@@ -55,11 +55,11 @@ export const vineetData = {
     linkedin: "www.linkedin.com",
     twitter: "www.twitter.com",
     website: "www.google.com",
-    youtube: ""
+    youtube: "www.youtube.com"
   },
   state: "Delhi",
   subject: ["Mathematics"],
-  summary: "Teacher",
+  summary: "Lorem Ipsum ",
   teaching: [
     {
       description: "Faculty",
@@ -83,5 +83,42 @@ export const vineetData = {
   count_posts: 20,
   count_groups: 7,
   count_connections: 35,
-  userType: "educator"
+  userType: "educator",
+  award: [
+    {
+      name: "Lorem Ipsum",
+      description: "lorem ipsum",
+      year_from: "2020"
+    }
+  ],
+  certification: [
+    {
+      name: "Lorem Ipsum",
+      description: "lorem ipsum",
+      year_from: "2020"
+    }
+  ],
+  internship: [
+    {
+      name: "Lorem Ipsum",
+      description: "lorem ipsum",
+      year_from: "2020",
+      year_to: "2020"
+    }
+  ],
+  publication: [
+    {
+      name: "Lorem Ipsum",
+      description: "lorem ipsum",
+      year_from: "2020"
+    }
+  ],
+  specialisation: [
+    {
+      name: "Lorem Ipsum",
+      description: "lorem ipsum",
+      year_from: "2020",
+      year_to: "2020"
+    }
+  ]
 };

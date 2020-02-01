@@ -10,26 +10,56 @@
         }"
       ></div>
       <h2 class="profile__name">{{ data.name }}</h2>
+      <div class="profile__type">{{ data.userType }}</div>
+      <div class="content">
+        <div class="posts">
+          <span>{{ data?.count_posts ? data?.count_posts : "0" }}</span>
+          <span>Posts</span>
+        </div>
+        <div class="groups">
+          <span>{{ data?.count_groups ? data?.count_groups : "0" }}</span>
+          <span>Groups</span>
+        </div>
+        <div class="krigers">
+          <span>{{
+            data?.count_connections ? data?.count_connections : "0"
+          }}</span>
+          <span>Krigers</span>
+        </div>
+        <!-- <div class="views">
+          <span>Profile Views</span>
+          <span>{{
+            counters?.count_profileviews ? counters?.count_profileviews : '0'
+          }}</span>
+        </div> -->
+      </div>
     </div>
 
-    <div class="profile__intro full_width">
+    <div class="profile__intro full_width divider">
       <div class="ribbon">
         <span>Intro</span>
       </div>
       <div class="content">
+        <div class="username">
+          <p class="title">Username</p>
+          <p>@{{ data.username }}</p>
+        </div>
         <div class="headline">
-          <mat-icon fontSet="far" fontIcon="fa-list-alt"></mat-icon>
-          <span
+          <!-- <mat-icon fontSet="far" fontIcon="fa-list-alt"></mat-icon> -->
+          <p class="title">Bio</p>
+          <p
             [ngStyle]="
               !data?.headline ? { color: 'rgba(0, 0, 0, 0.55)' } : false
             "
           >
             {{ data?.headline ? data?.headline : "Fill your Info" }}
-          </span>
+          </p>
         </div>
         <div class="latestedu">
-          <mat-icon fontSet="fas" fontIcon="fa-graduation-cap"></mat-icon>
-          <span
+          <!-- <mat-icon fontSet="fas" fontIcon="fa-graduation-cap"></mat-icon> -->
+          <p class="title">Latest Education</p>
+
+          <p
             [ngStyle]="
               !data?.latestedu ? { color: 'rgba(0, 0, 0, 0.55)' } : false
             "
@@ -37,11 +67,28 @@
             {{
               data?.latestedu ? data?.latestedu : "Fill your latest education"
             }}
-          </span>
+          </p>
         </div>
+        <div class="teachingsince">
+          <p class="title">Teaching Since</p>
+          <p>{{ data.teachingsince }}</p>
+        </div>
+        <div class="teachingat">
+          <p class="title">Teaching at</p>
+          <p>{{ data.teachingat }}</p>
+        </div>
+        <div class="classesteaching">
+          <p class="title">Classes Teaching</p>
+          <span *ngFor="let item of data.classes_teaching; let isLast = last"
+            >{{ item }}{{ isLast ? "" : ", " }}</span
+          >
+        </div>
+
         <div class="hometown">
-          <mat-icon fontSet="fa" fontIcon="fa-home"></mat-icon>
-          <span>
+          <!-- <mat-icon fontSet="fa" fontIcon="fa-home"></mat-icon> -->
+          <p class="title">Hometown</p>
+
+          <p>
             <span
               [ngStyle]="
                 !data?.hometown ? { color: 'rgba(0, 0, 0, 0.55)' } : false
@@ -50,7 +97,7 @@
             >
             <span
               [ngStyle]="
-                !userDetails?.state ? { color: 'rgba(0, 0, 0, 0.55)' } : false
+                !data?.state ? { color: 'rgba(0, 0, 0, 0.55)' } : false
               "
               >{{ data?.state ? "Delhi" : "State" }},</span
             >
@@ -60,20 +107,35 @@
               "
               >{{ data?.country ? " India" : "Country" }}</span
             >
-          </span>
+          </p>
         </div>
+        <div class="currentcity">
+          <p class="title">Current city</p>
+          <p>{{ data.current_city }}</p>
+        </div>
+
         <div class="birthday">
-          <mat-icon fontSet="fa" fontIcon="fa-birthday-cake"></mat-icon>
-          <span>Private Information</span>
+          <!-- <mat-icon fontSet="fa" fontIcon="fa-birthday-cake"></mat-icon> -->
+          <p class="title">Birthday</p>
+
+          <p>Private Information</p>
         </div>
         <div class="contact">
-          <mat-icon fontSet="fa" fontIcon="fa-phone-square"></mat-icon>
-          <span>Private Information</span>
+          <!-- <mat-icon fontSet="fa" fontIcon="fa-phone-square"></mat-icon> -->
+          <p class="title">Phone number</p>
+
+          <p>Private Information</p>
+        </div>
+        <div class="type">
+          <p class="title">Type</p>
+          <span *ngFor="let item of data.type; let isLast = last"
+            >{{ item }}{{ isLast ? "" : ", " }}</span
+          >
         </div>
       </div>
     </div>
 
-    <div class="profile__about full_width">
+    <div class="profile__about full_width divider">
       <div class="ribbon">
         <span>About Me</span>
       </div>
@@ -89,35 +151,113 @@
       </div>
     </div>
 
-    <div class="profile__dashboard full_width">
+    <div class="profile__additional full_width divider">
       <div class="ribbon">
-        <span>Dashboard</span>
+        <span>Additional Details</span>
       </div>
       <div class="content">
-        <div class="posts">
-          <span>Posts</span>
-          <span>{{ data?.count_posts ? data?.count_posts : "0" }}</span>
+        <div class="placement">
+          <p class="title">Placement after course completion</p>
+          <p>{{ data.additional_details.placement }}</p>
         </div>
-        <div class="groups">
-          <span>Groups</span>
-          <span>{{ data?.count_groups ? data?.count_groups : "0" }}</span>
+        <div class="resourcetype">
+          <p class="title">Resource Type Provided</p>
+          <span
+            *ngFor="
+              let item of data.additional_details.resource_type;
+              let isLast = last
+            "
+            >{{ item }}{{ isLast ? "" : ", " }}</span
+          >
         </div>
-        <div class="krigers">
-          <span>Krigers</span>
-          <span>{{
-            data?.count_connections ? data?.count_connections : "0"
-          }}</span>
+        <div class="admissionprocess">
+          <p class="title">Admission Registration Process</p>
+          <span
+            *ngFor="
+              let item of data.additional_details.admission_process;
+              let isLast = last
+            "
+            >{{ item }}{{ isLast ? "" : ", " }}</span
+          >
         </div>
-        <!-- <div class="views">
-          <span>Profile Views</span>
-          <span>{{
-            counters?.count_profileviews ? counters?.count_profileviews : '0'
-          }}</span>
-        </div> -->
+        <div class="modeofteaching">
+          <p class="title">Mode of Teaching</p>
+          <span
+            *ngFor="
+              let item of data.additional_details.mode_of_teaching;
+              let isLast = last
+            "
+            >{{ item }}{{ isLast ? "" : ", " }}</span
+          >
+        </div>
+        <div class="feestructure">
+          <p class="title">Fee Structure</p>
+          <span
+            *ngFor="
+              let item of data.additional_details.fee_structure;
+              let isLast = last
+            "
+            >{{ item }}{{ isLast ? "" : ", " }}</span
+          >
+        </div>
+        <div class="scholarship">
+          <p class="title">Scholarship</p>
+          <span
+            *ngFor="
+              let item of data.additional_details.scholarship;
+              let isLast = last
+            "
+            >{{ item }}{{ isLast ? "" : ", " }}</span
+          >
+        </div>
+        <div class="batchsize">
+          <p class="title">Batch Size</p>
+          <p>{{ data.additional_details.batch_size }}</p>
+        </div>
+        <div class="batchcount">
+          <p class="title">Number of Batches</p>
+          <p>{{ data.additional_details.number_batch }}</p>
+        </div>
+        <div class="paymentmodes">
+          <p class="title">Payment Modes Accepted</p>
+          <span
+            *ngFor="
+              let item of data.additional_details.payment_modes;
+              let isLast = last
+            "
+            >{{ item }}{{ isLast ? "" : ", " }}</span
+          >
+        </div>
+        <div class="extradoubtclasses">
+          <p class="title">Extra Doubt Classes</p>
+          <p>{{ data.additional_details.doubt }}</p>
+        </div>
+        <div class="medium">
+          <p class="title">Language of Teaching</p>
+          <p>{{ data.additional_details.language_teaching }}</p>
+        </div>
+        <div class="facultygender">
+          <p class="title">Faculty Gender</p>
+          <p>{{ data.additional_details.faculty_gender }}</p>
+        </div>
+        <div class="testsfrequency">
+          <p class="title">Tests Frequency</p>
+          <span
+            *ngFor="
+              let item of data.additional_details.test_frequency;
+              let isLast = last
+            "
+            >{{ item }}{{ isLast ? "" : ", " }}</span
+          >
+        </div>
+        <div class="democlasses">
+          <p class="title">Demo Classes</p>
+          <p>{{ data.additional_details.demo }}</p>
+        </div>
       </div>
     </div>
 
-    <div class="profile__exams full_width">
+    <div class="profile__exams full_width divider">
       <div class="ribbon">
         <span
           >Exams
@@ -144,11 +284,11 @@
       </div>
     </div>
 
-    <div class="profile__subjects full_width">
+    <div class="profile__subjects full_width divider">
       <div class="ribbon">
         <span
           >Subjects
-          {{ data.userType == "learner" ? "I teach" : "We teach" }}</span
+          {{ data.userType == "educator" ? "I teach" : "We teach" }}</span
         >
       </div>
       <div class="content">
@@ -171,7 +311,7 @@
       </div>
     </div>
 
-    <div class="profile__college full_width">
+    <div class="profile__college full_width divider">
       <div class="ribbon">
         <span>School/College/Institute</span>
       </div>
@@ -196,7 +336,7 @@
       </div>
     </div>
 
-    <div class="profile__coaching full_width">
+    <div class="profile__coaching full_width divider">
       <div class="ribbon">
         <span>Coaching</span>
       </div>
@@ -221,7 +361,7 @@
       </div>
     </div>
 
-    <div class="profile__award full_width">
+    <div class="profile__award full_width divider">
       <div class="ribbon">
         <span>Award</span>
       </div>
@@ -246,7 +386,7 @@
       </div>
     </div>
 
-    <div class="profile__certification full_width">
+    <div class="profile__certification full_width divider">
       <div class="ribbon">
         <span>Certification</span>
       </div>
@@ -276,7 +416,7 @@
       </div>
     </div>
 
-    <div class="profile__internship full_width">
+    <div class="profile__internship full_width divider">
       <div class="ribbon">
         <span>Internship/Research</span>
       </div>
@@ -306,7 +446,7 @@
       </div>
     </div>
 
-    <div class="profile__publication full_width">
+    <div class="profile__publication full_width divider">
       <div class="ribbon">
         <span>Publication</span>
       </div>
@@ -336,7 +476,7 @@
       </div>
     </div>
 
-    <div class="profile__specialisation full_width">
+    <div class="profile__specialisation full_width divider">
       <div class="ribbon">
         <span>Area of Specialisation</span>
       </div>
@@ -363,6 +503,49 @@
           <mat-icon fontSet="fas" fontIcon="fa-medal"></mat-icon>
           <span>Fill your Specialisation Details</span>
         </div>
+      </div>
+    </div>
+
+    <div class="profile__presence full_width divider">
+      <div class="ribbon"><span>Online Presence</span></div>
+      <div class="content">
+        <div class="website">
+          <p class="title">Website</p>
+          <p>{{ data.presence.website }}</p>
+        </div>
+        <div class="facebook">
+          <p class="title">Facebook</p>
+          <p>{{ data.presence.facebook }}</p>
+        </div>
+        <div class="instagram">
+          <p class="title">Instagram</p>
+          <p>{{ data.presence.instagram }}</p>
+        </div>
+        <div class="linkedin">
+          <p class="title">Linkedin</p>
+          <p>{{ data.presence.linkedin }}</p>
+        </div>
+        <div class="twitter">
+          <p class="title">Twitter</p>
+          <p>{{ data.presence.twitter }}</p>
+        </div>
+        <div class="youtube">
+          <p class="title">Youtube</p>
+          <p>{{ data.presence.youtube }}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="profile__address full_width divider">
+      <div class="ribbon"><span>Address</span></div>
+      <div class="content">
+        <span>{{ data.address.house }}, </span>
+        <span>{{ data.address.street }}, </span>
+        <span>{{ data.address.landmark }}, </span>
+        <span>{{ data.address.address_city }}, </span>
+        <span>{{ data.address.address_state }}, </span>
+        <span>{{ data.address.address_country }}, </span>
+        <span>{{ data.address.pincode }}</span>
       </div>
     </div>
   </mat-card>

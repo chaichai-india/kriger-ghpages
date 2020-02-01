@@ -15,6 +15,7 @@
   align-items: center;
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15), 0 2px 3px rgba(0, 0, 0, 0.2);
   border-radius: 0;
+  padding: 0;
 }
 
 .profile__header {
@@ -23,6 +24,9 @@
   align-items: center;
   justify-content: center;
   text-align: center;
+  width: 100%;
+  background: linear-gradient(135deg, #9c27b0, #3f51b5);
+  padding: 1rem;
 }
 
 .profile__photo {
@@ -34,35 +38,75 @@
 
 .profile__name {
   font-family: "Lato", "Helvetica Neue", sans-serif;
+  color: white;
+  padding-top: 1rem;
+}
+
+.profile__type {
+  color: var(--primary-color);
+  text-transform: uppercase;
+  background: white;
+  font-size: 0.8rem;
+  margin-top: 0.5rem;
+  padding: 0.2rem 1rem;
+  border-radius: 10px;
+  text-align: center;
+  font-weight: bold;
 }
 
 .ribbon {
   width: 100%;
   margin: 1em 0;
-  /* background-color: dodgerblue; */
-  background-color: var(--primary-color);
-  text-align: center;
-  color: white;
+  /* background-color: var(--primary-color); */
+  /* text-align: center; */
+  /* color: white; */
   font-size: 1.2em;
   font-weight: 500;
-  text-shadow: 2px 2px rgba(0, 0, 0, 0.31);
-  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.55);
+  /* text-shadow: 2px 2px rgba(0, 0, 0, 0.31); */
+  /* box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.55); */
+  padding-left: 1em;
 }
 
 .full_width {
   width: 100%;
 }
 
+.divider {
+  box-shadow: 0 8px 4px -5px #00000024;
+  padding-bottom: 1rem;
+}
+
 .content {
   padding-left: 1em;
 }
 
-.profile__dashboard .content {
-  display: flex;
-  justify-content: space-around;
+.profile__intro .content,
+.profile__additional .content,
+.profile__presence .content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 1rem 0;
 }
 
-.profile__dashboard .content div {
+.profile__intro .content .title,
+.profile__additional .content .title,
+.profile__presence .content .title {
+  color: rgba(0, 0, 0, 0.55);
+  font-size: 0.8rem;
+}
+
+/* .profile__dashboard .content, */
+.profile__header .content {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  color: white;
+  font-size: 0.8rem;
+  padding-top: 1rem;
+}
+
+/* .profile__dashboard .content div, */
+.profile__header .content div {
   display: flex;
   flex-direction: column;
   justify-content: center;
