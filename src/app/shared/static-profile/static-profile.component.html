@@ -55,7 +55,7 @@
             {{ data?.headline ? data?.headline : "Fill your Info" }}
           </p>
         </div>
-        <div class="latestedu">
+        <div class="latestedu" *ngIf="data.userType == 'educator'">
           <!-- <mat-icon fontSet="fas" fontIcon="fa-graduation-cap"></mat-icon> -->
           <p class="title">Latest Education</p>
 
@@ -69,11 +69,11 @@
             }}
           </p>
         </div>
-        <div class="teachingsince">
+        <div class="teachingsince" *ngIf="data.userType == 'educator'">
           <p class="title">Teaching Since</p>
           <p>{{ data.teachingsince }}</p>
         </div>
-        <div class="teachingat">
+        <div class="teachingat" *ngIf="data.userType == 'educator'">
           <p class="title">Teaching at</p>
           <p>{{ data.teachingat }}</p>
         </div>
@@ -86,7 +86,7 @@
 
         <div class="hometown">
           <!-- <mat-icon fontSet="fa" fontIcon="fa-home"></mat-icon> -->
-          <p class="title">Hometown</p>
+          <p class="title">{{data.userType == 'educator' ? 'Hometown': 'City'}}</p>
 
           <p>
             <span
@@ -109,16 +109,16 @@
             >
           </p>
         </div>
-        <div class="currentcity">
+        <div class="currentcity" *ngIf="data.userType == 'educator'">
           <p class="title">Current city</p>
           <p>{{ data.current_city }}</p>
         </div>
 
         <div class="birthday">
           <!-- <mat-icon fontSet="fa" fontIcon="fa-birthday-cake"></mat-icon> -->
-          <p class="title">Birthday</p>
+          <p class="title">{{ data.userType == 'educator' ? 'Birthday' : 'Foundation'}}</p>
 
-          <p>Private Information</p>
+          <p>{{ data.userType == 'educator' ? 'Private Information' : data.birthday}}</p>
         </div>
         <div class="contact">
           <!-- <mat-icon fontSet="fa" fontIcon="fa-phone-square"></mat-icon> -->
@@ -127,7 +127,7 @@
           <p>Private Information</p>
         </div>
         <div class="type">
-          <p class="title">Type</p>
+          <p class="title">{{ data.userType == 'educator' ? 'Type' : 'Institute Type'}}</p>
           <span *ngFor="let item of data.type; let isLast = last"
             >{{ item }}{{ isLast ? "" : ", " }}</span
           >
@@ -137,7 +137,7 @@
 
     <div class="profile__about full_width divider">
       <div class="ribbon">
-        <span>About Me</span>
+        <span>{{data.userType == 'educator' ? 'About Me' : 'About'}}</span>
       </div>
       <div class="content">
         <div class="about">
@@ -311,7 +311,7 @@
       </div>
     </div>
 
-    <div class="profile__college full_width divider">
+    <div class="profile__college full_width divider" *ngIf="data.userType == 'educator'">
       <div class="ribbon">
         <span>School/College/Institute</span>
       </div>
@@ -336,7 +336,7 @@
       </div>
     </div>
 
-    <div class="profile__coaching full_width divider">
+    <div class="profile__coaching full_width divider" *ngIf="data.userType == 'educator'">
       <div class="ribbon">
         <span>Coaching</span>
       </div>
@@ -386,7 +386,7 @@
       </div>
     </div>
 
-    <div class="profile__certification full_width divider">
+    <div class="profile__certification full_width divider" *ngIf="data.userType == 'educator'">
       <div class="ribbon">
         <span>Certification</span>
       </div>
@@ -416,7 +416,7 @@
       </div>
     </div>
 
-    <div class="profile__internship full_width divider">
+    <div class="profile__internship full_width divider" *ngIf="data.userType == 'educator'">
       <div class="ribbon">
         <span>Internship/Research</span>
       </div>
@@ -476,7 +476,7 @@
       </div>
     </div>
 
-    <div class="profile__specialisation full_width divider">
+    <div class="profile__specialisation full_width divider" *ngIf="data.userType == 'educator'">
       <div class="ribbon">
         <span>Area of Specialisation</span>
       </div>
@@ -539,13 +539,13 @@
     <div class="profile__address full_width divider">
       <div class="ribbon"><span>Address</span></div>
       <div class="content">
-        <span>{{ data.address.house }}, </span>
-        <span>{{ data.address.street }}, </span>
-        <span>{{ data.address.landmark }}, </span>
-        <span>{{ data.address.address_city }}, </span>
-        <span>{{ data.address.address_state }}, </span>
-        <span>{{ data.address.address_country }}, </span>
-        <span>{{ data.address.pincode }}</span>
+        <span *ngIf="data.address.house">{{ data.address.house }}, </span >
+        <span *ngIf="data.address.street">{{ data.address.street }}, </span>
+        <span *ngIf="data.address.landmark">{{ data.address.landmark }}, </span>
+        <span *ngIf="data.address.address_city">{{ data.address.address_city }}, </span>
+        <span *ngIf="data.address.address_state">{{ data.address.address_state }}, </span>
+        <span *ngIf="data.address.address_country">{{ data.address.address_country }}, </span>
+        <span *ngIf="data.address.pincode">{{ data.address.pincode }}</span>
       </div>
     </div>
   </mat-card>

@@ -4,8 +4,10 @@ import { CommonModule } from "@angular/common";
 import { InstituteRoutingModule } from "./institute-routing.module";
 import { ProfileComponent } from "./components/profile/profile.component";
 
+import { SharedModule } from "../shared/shared.module";
+
 @NgModule({
   declarations: [ProfileComponent],
-  imports: [CommonModule, InstituteRoutingModule]
+  imports: [CommonModule, InstituteRoutingModule, SharedModule]
 })
 export class InstituteModule {}

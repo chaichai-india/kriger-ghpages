@@ -13,7 +13,7 @@ export class ProfileComponent implements OnInit {
   ngOnInit() {
     this.activatedRoute.data.subscribe(data => {
       this.data = data;
-      console.log({ data: this.data });
+      // console.log({ data: this.data });
     });
   }
 }
