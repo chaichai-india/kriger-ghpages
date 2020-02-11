@@ -8,6 +8,7 @@ import {
   NavigationStart,
   Router
 } from "@angular/router";
+import { Gtag } from "angular-gtag";
 // import { LoginService } from './services/authentication/login.service';
 // import { SeoService } from './services/seo/seo.service';
 @Component({
@@ -19,7 +20,7 @@ export class AppComponent implements OnInit {
   title = "kriger-campus-website";
   loading: boolean = false;
 
-  constructor(private router: Router) {
+  constructor(private router: Router, gtag: Gtag) {
     // seo.setMetaTags();
     this.router.events.subscribe((event: Event) => {
       switch (true) {

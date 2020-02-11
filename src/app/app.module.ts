@@ -9,6 +9,8 @@ import { AngularFireModule } from "@angular/fire";
 import { AngularFireDatabaseModule } from "@angular/fire/database";
 import { AngularFireAuthModule } from "@angular/fire/auth";
 import { AngularFireStorageModule } from "@angular/fire/storage";
+// import { AngularFireAnalyticsModule } from "@angular/fire/analytics";
+import { GtagModule } from "angular-gtag";
 import { environment } from "../environments/environment";
 import { AppRoutingModule } from "./app-routing.module";
 import { PrebootModule } from "preboot";
@@ -82,6 +84,12 @@ import { isPlatformBrowser } from "@angular/common";
     MatTabsModule,
     BrowserAnimationsModule,
     AngularFireModule.initializeApp(environment.firebase),
+    GtagModule.forRoot({
+      trackingId: "UA-100099657-1",
+      trackPageviews: true
+      // debug: true
+    }),
+    // AngularFireAnalyticsModule,
     AngularFireAuthModule,
     AngularFireDatabaseModule,
     AngularFireStorageModule,

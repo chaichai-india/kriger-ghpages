@@ -1,0 +1,25 @@
+User-agent: Bingbot
+Disallow: 
+
+User-agent: Googlebot
+Disallow: 
+
+User-agent: Slurp
+Disallow: 
+
+User-agent: teoma
+Disallow: 
+
+User-agent: Twitterbot
+Disallow: 
+
+User-agent: Yandex
+Disallow: 
+
+User-agent: Yeti
+Disallow: 
+
+User-agent: *
+Disallow: /
+
+Sitemap: https://kriger.in/sitemap.xml
