@@ -10,9 +10,15 @@
     "build:ssr": "ng run kriger-campus-website:server && npm run webpack:ssr",
     "webpack:ssr": "webpack --config webpack.server.config.js",
     "serve:ssr": "node dist/kriger-campus-website-webpack/server.js",
-    "build": "ng build --prod  && npm run build:ssr && npm run build:functions && npm run remove:index",
+    "build": "npm run empty:dist && npm run empty:fdist && npm run create:fdist && ng build --prod  && npm run build:ssr && npm run build:functions && npm run remove:index",
     "remove:index": "rm ./dist/kriger-campus-website/index.html",
-    "build:functions": "npm run --prefix functions build"
+    "empty:dist": "rm -rf ./dist/",
+    "empty:fdist": "rm -rf ./functions/dist/",
+    "create:fdist": "mkdir ./functions/dist",
+    "build:functions": "npm run --prefix functions build",
+    "deploy:web": "firebase deploy --only hosting:prod",
+    "deploy:universal": "firebase deploy --only functions:universal",
+    "deploy": "npm run deploy:web && npm run deploy:universal"
   },
   "private": true,
   "dependencies": {

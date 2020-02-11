@@ -3,7 +3,7 @@ import "zone.js/dist/zone-node";
 import "reflect-metadata";
 
 import { enableProdMode } from "@angular/core";
-import { ngExpressEngine } from "@nguniversal/express-engine";
+// import { ngExpressEngine } from "@nguniversal/express-engine";
 import { provideModuleMap } from "@nguniversal/module-map-ngfactory-loader";
 
 import * as express from "express";
@@ -16,6 +16,10 @@ import * as domino from "domino";
 (global as any).WebSocket = require("ws");
 (global as any).XMLHttpRequest = require("xhr2");
 
+// gtag not defined workaround
+
+// @ts-ignore
+global.gtag = () => {};
 // Faster renders in prod mode
 enableProdMode();
 
@@ -23,7 +27,7 @@ enableProdMode();
 export const app = express();
 
 const DIST_FOLDER = join(process.cwd(), "dist");
-const APP_NAME = "kriger-campus-website"; // TODO: replace me!
+const APP_NAME = "kriger-campus-website";
 
 const {
   AppServerModuleNgFactory,
