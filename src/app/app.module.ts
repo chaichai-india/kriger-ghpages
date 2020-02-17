@@ -48,10 +48,11 @@ import {
   MatSnackBarModule,
   MatMenuModule,
   MatDialogModule,
-  MatProgressBarModule,
-  MatProgressSpinnerModule
+  MatProgressBarModule
+  // MatProgressSpinnerModule
 } from "@angular/material";
 import { NewlandingpageComponent } from "./components/newlandingpage/newlandingpage.component";
+import { CoreModule } from "./core/core.module";
 // import { isPlatformBrowser } from "@angular/common";
 
 @NgModule({
@@ -96,7 +97,8 @@ import { NewlandingpageComponent } from "./components/newlandingpage/newlandingp
     MatLinkPreviewModule.forRoot(),
     Ng2ImgMaxModule,
     // SlideshowModule,
-    SharedModule
+    SharedModule,
+    CoreModule
   ],
   providers: [
     // {

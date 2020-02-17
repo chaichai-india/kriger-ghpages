@@ -164,5 +164,8 @@
       }
     }
   },
-  "defaultProject": "kriger-campus-website"
+  "defaultProject": "kriger-campus-website",
+  "cli": {
+    "analytics": "dc8863d4-4833-4153-bab8-5542ecda153e"
+  }
 }

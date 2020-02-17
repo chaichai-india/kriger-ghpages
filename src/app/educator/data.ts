@@ -49,12 +49,12 @@ export const vineetData = {
   hometown: "New Delhi",
   latestedu: "Masters/Diploma",
   presence: {
-    facebook: "www.facebook.com/vineetsharma",
-    instagram: "www.instagram.com/vineetsharma",
-    linkedin: "www.linkedin.com/vineetsharma",
-    twitter: "www.twitter.com/vineetsharma",
-    website: "www.vineetsharma.in",
-    youtube: "www.youtube.com/vineetsharma"
+    facebook: "www.facebook.com/vineetasharma",
+    instagram: "www.instagram.com/vineetasharma",
+    linkedin: "www.linkedin.com/vineetasharma",
+    twitter: "www.twitter.com/vineetasharma",
+    website: "www.vineetasharma.in",
+    youtube: "www.youtube.com/vineetasharma"
   },
   state: "Delhi",
   subject: ["Chemistry"],
@@ -72,13 +72,13 @@ export const vineetData = {
   //   firstname: "Poojan",
   headline: "Teacher",
   //   lastname: "Rathod",
-  name: "Vineet Sharma",
+  name: "Vineeta Sharma",
   thumb:
-    "https://firebasestorage.googleapis.com/v0/b/kriger-campus-cfe41.appspot.com/o/Your%20Photo%2Fnew_LhSyRWoczHM7VxcCtSsgKrihKam1?alt=media&token=cc071ede-c349-4631-b3e9-ecb3aeb7257c",
+    "https://media-exp1.licdn.com/dms/image/C5603AQFJpEf1FOJ50g/profile-displayphoto-shrink_200_200/0?e=1585180800&v=beta&t=eqQg5eJJasTY_J4Rab2bEu5NPFC5fEhEn-v40b18pBM",
   original:
-    "https://firebasestorage.googleapis.com/v0/b/kriger-campus-cfe41.appspot.com/o/Your%20Photo%2Fnew_smallLhSyRWoczHM7VxcCtSsgKrihKam1?alt=media&token=fa3c62ab-ac62-47bd-889e-c6e04a8cea27",
+    "https://media-exp1.licdn.com/dms/image/C5603AQFJpEf1FOJ50g/profile-displayphoto-shrink_200_200/0?e=1585180800&v=beta&t=eqQg5eJJasTY_J4Rab2bEu5NPFC5fEhEn-v40b18pBM",
   type: ["Lecturer"],
-  username: "vineet_sharma",
+  username: "vineeta_sharma",
   count_posts: 20,
   count_groups: 7,
   count_connections: 35,

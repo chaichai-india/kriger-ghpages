@@ -8,9 +8,9 @@ const routes: Routes = [
   {
     path: "",
     children: [
-      { path: "", pathMatch: "prefix", redirectTo: "vineetsharma" },
+      { path: "", pathMatch: "prefix", redirectTo: "vineetasharma" },
       {
-        path: "vineetsharma",
+        path: "vineetasharma",
         component: ProfileComponent,
         data: { ...vineetData }
       },
