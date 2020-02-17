@@ -4,7 +4,7 @@ export const vineetData = {
     batch_size: "40",
     demo: "Yes",
     doubt: "Yes",
-    faculty_gender: "Male",
+    faculty_gender: "Female",
     fee_structure: ["One Time"], // "Quarterly"
     language_teaching: "Hindi",
     mode_of_teaching: ["Educator's Location"],
