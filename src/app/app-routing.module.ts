@@ -17,7 +17,7 @@ const routes: Routes = [
   //   loadChildren: "./profile/profile.module#ProfileModule"
   // },
   {
-    path: "india",
+    path: "in",
     loadChildren: "./profile/profile.module#ProfileModule"
   },
   {

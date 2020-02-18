@@ -2,8 +2,8 @@ import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 import { environment } from "../../../environments/environment";
 import { Observable, throwError } from "rxjs";
-import { catchError } from "rxjs/operators";
-
+import { catchError, tap } from "rxjs/operators";
+// import 'rxjs/operators/tap'
 interface apiInput {
   path: string;
   params?: HttpParams;
@@ -28,6 +28,6 @@ export class ApiService {
   }: apiInput): Observable<any> {
     return this.http
       .get(`${this.apiUrl}${path}`, { params, headers })
-      .pipe(catchError(this.formatError));
+      .pipe(tap(console.log), catchError(this.formatError));
   }
 }

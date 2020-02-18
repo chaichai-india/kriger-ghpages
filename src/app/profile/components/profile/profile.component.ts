@@ -10,22 +10,35 @@ import { ProfileService } from "../../../core";
   styleUrls: ["./profile.component.css"]
 })
 export class ProfileComponent implements OnInit {
-  username: string;
-  key: string;
-  profile_found: boolean;
-  loading: boolean;
-  details: any;
-  counters: any;
-  userDetails: any;
-  userType: "learner" | "educator" | "corporate";
-
+  data: any;
+  headerData: any;
   constructor(
     private route: ActivatedRoute,
     private profileService: ProfileService
   ) {}
 
+  setHeaderData(data) {
+    const {
+      userdetail,
+      count_posts = 0,
+      count_groups = 0,
+      count_connections = 0,
+      account_type = 0
+    } = data;
+    const { original = "", name = "" } = userdetail || {};
+    return {
+      original,
+      name,
+      account_type,
+      count_posts,
+      count_groups,
+      count_connections
+    };
+  }
+
   ngOnInit() {
-    this.username = this.route.snapshot.params["username"];
-    this.profileService;
+    this.data = this.route.snapshot.data.data;
+    this.headerData = this.setHeaderData(this.data);
+    console.log(this.data);
   }
 }
