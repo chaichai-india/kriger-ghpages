@@ -1,0 +1,108 @@
+<div class="ribbon">
+  <span>Intro</span>
+</div>
+<div class="content">
+  <div class="username">
+    <p class="title">Username</p>
+    <p>@{{ data?.username }}</p>
+  </div>
+  <div class="headline">
+    <p class="title">Bio</p>
+    <p [ngStyle]="!data?.headline ? { color: 'rgba(0, 0, 0, 0.55)' } : false">
+      {{ data?.headline ? data?.headline : "Fill your Info" }}
+    </p>
+  </div>
+  <div
+    class="latestedu"
+    *ngIf="data.account_type == 0 || data.account_type == 1"
+  >
+    <p class="title">Latest Education</p>
+
+    <p [ngStyle]="!data?.latestedu ? { color: 'rgba(0, 0, 0, 0.55)' } : false">
+      {{ data?.latestedu ? data?.latestedu : "Fill your latest education" }}
+    </p>
+  </div>
+  <div class="teachingsince" *ngIf="data.account_type == 1">
+    <p class="title">Teaching Since</p>
+    <p>
+      {{ data?.teachingsince ? data?.teachingsince : "Fill Teaching Since" }}
+    </p>
+  </div>
+  <div class="teachingat" *ngIf="data.account_type == 1">
+    <p class="title">Teaching at</p>
+    <p>{{ data?.teachingat ? data?.teachingat : "Fill Teaching at" }}</p>
+  </div>
+  <div class="classesteaching" *ngIf="data.account_type == 1">
+    <p class="title">Classes Teaching</p>
+    <div
+      *ngIf="data?.classes_teaching && data?.classes_teaching.length; else clTp"
+    >
+      <span *ngFor="let item of data?.classes_teaching; let isLast = last"
+        >{{ item }}{{ isLast ? "" : ", " }}</span
+      >
+      <ng-template #clTp>Fill Classes Teaching</ng-template>
+    </div>
+  </div>
+
+  <div class="hometown">
+    <p class="title">
+      {{ data.account_type < 2 ? "Hometown" : "City" }}
+    </p>
+
+    <p>
+      <span
+        [ngStyle]="!data?.hometown ? { color: 'rgba(0, 0, 0, 0.55)' } : false"
+        >{{
+          data?.hometown
+            ? data?.hometown
+            : data.account_type < 2
+            ? "Hometown"
+            : "City"
+        }},</span
+      >
+      <span [ngStyle]="!data?.state ? { color: 'rgba(0, 0, 0, 0.55)' } : false"
+        >{{ data?.state ? data?.state : "State" }},</span
+      >
+      <span
+        [ngStyle]="!data?.country ? { color: 'rgba(0, 0, 0, 0.55)' } : false"
+        >{{ data?.country ? data?.country : "Country" }}</span
+      >
+    </p>
+  </div>
+  <div
+    class="currentcity"
+    *ngIf="data.account_type == 0 || data.account_type == 1"
+  >
+    <p class="title">Current city</p>
+    <p>{{ data?.current_city ? data?.current_city : "Fill your Info" }}</p>
+  </div>
+
+  <div class="birthday">
+    <p class="title">
+      {{ data.account_type < 2 ? "Birthday" : "Foundation" }}
+    </p>
+
+    <p>
+      {{
+        data.account_type < 2
+          ? "Private Information"
+          : data?.birthday
+          ? data?.birthday
+          : "Foundation"
+      }}
+    </p>
+  </div>
+  <div class="contact">
+    <p class="title">Phone number</p>
+
+    <p>Private Information</p>
+  </div>
+  <div class="type">
+    <p class="title">
+      {{ data.account_type < 2 ? "Type" : "Institute Type" }}
+    </p>
+    <span *ngFor="let item of data.type; let isLast = last"
+      >{{ item }}{{ isLast ? "" : ", " }}</span
+    >
+  </div>
+</div>

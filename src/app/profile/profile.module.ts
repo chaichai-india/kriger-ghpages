@@ -17,6 +17,20 @@ import { ProfileListComponent } from "./components/profile-list/profile-list.com
 import { DebounceClickDirective } from "../directives/debounce-click.directive";
 import { ProfileResolver } from "./profile-resolver.service";
 import { HeaderComponent } from './components/profile/header/header.component';
+import { IntroComponent } from './components/profile/intro/intro.component';
+import { AboutComponent } from './components/profile/about/about.component';
+import { AdditionalComponent } from './components/profile/additional/additional.component';
+import { ExamsComponent } from './components/profile/exams/exams.component';
+import { SubjectsComponent } from './components/profile/subjects/subjects.component';
+import { CollegeComponent } from './components/profile/college/college.component';
+import { CoachingComponent } from './components/profile/coaching/coaching.component';
+import { AwardComponent } from './components/profile/award/award.component';
+import { CertificationComponent } from './components/profile/certification/certification.component';
+import { InternshipComponent } from './components/profile/internship/internship.component';
+import { PublicationComponent } from './components/profile/publication/publication.component';
+import { SpecialisationComponent } from './components/profile/specialisation/specialisation.component';
+import { PresenceComponent } from './components/profile/presence/presence.component';
+import { AddressComponent } from './components/profile/address/address.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +38,21 @@ import { HeaderComponent } from './components/profile/header/header.component';
     ProfileSortComponent,
     ProfileListComponent,
     DebounceClickDirective,
-    HeaderComponent
+    HeaderComponent,
+    IntroComponent,
+    AboutComponent,
+    AdditionalComponent,
+    ExamsComponent,
+    SubjectsComponent,
+    CollegeComponent,
+    CoachingComponent,
+    AwardComponent,
+    CertificationComponent,
+    InternshipComponent,
+    PublicationComponent,
+    SpecialisationComponent,
+    PresenceComponent,
+    AddressComponent
   ],
   imports: [
     CommonModule,
