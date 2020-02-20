@@ -53,22 +53,23 @@
 
 .content {
   padding-left: 1em;
+  padding-right: 1em;
 }
 
-.profile__intro .content,
+/* .profile__intro .content,
 .profile__additional .content,
 .profile__presence .content {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 1rem 0;
-}
+} */
 
-.profile__intro .content .title,
+/* .profile__intro .content .title,
 .profile__additional .content .title,
 .profile__presence .content .title {
   color: rgba(0, 0, 0, 0.55);
   font-size: 0.8rem;
-}
+} */
 
 .content .placeholder {
   display: flex;

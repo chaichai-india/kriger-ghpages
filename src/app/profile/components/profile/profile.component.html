@@ -84,27 +84,5 @@
       class="profile__address full_width divider"
       [data]="addressData"
     ></app-profile-address>
-
-    <!-- <div
-      class="profile__address full_width divider"
-      *ngIf="data.account_type > 0"
-    >
-      <div class="ribbon"><span>Address</span></div>
-      <div class="content">
-        <span *ngIf="data.address.house">{{ data.address.house }}, </span>
-        <span *ngIf="data.address.street">{{ data.address.street }}, </span>
-        <span *ngIf="data.address.landmark">{{ data.address.landmark }}, </span>
-        <span *ngIf="data.address.address_city"
-          >{{ data.address.address_city }},
-        </span>
-        <span *ngIf="data.address.address_state"
-          >{{ data.address.address_state }},
-        </span>
-        <span *ngIf="data.address.address_country"
-          >{{ data.address.address_country }},
-        </span>
-        <span *ngIf="data.address.pincode">{{ data.address.pincode }}</span>
-      </div>
-    </div> -->
   </mat-card>
 </div>

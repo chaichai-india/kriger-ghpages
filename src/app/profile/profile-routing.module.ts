@@ -7,15 +7,45 @@ import { ProfileResolver } from "./profile-resolver.service";
 
 const routes: Routes = [
   {
-    path: ":username",
-    component: ProfileComponent,
-    resolve: { data: ProfileResolver }
+    path: ""
+    // component: ProfileComponent,
+    // resolve: { data: ProfileResolver }
     // children: [
     //   {
     //     path: ":username",
     //     component: ProfileComponent
     //   }
     // ]
+  },
+  {
+    path: "l",
+    children: [
+      {
+        path: ":username",
+        component: ProfileComponent,
+        resolve: { data: ProfileResolver }
+      }
+    ]
+  },
+  {
+    path: "e",
+    children: [
+      {
+        path: ":username",
+        component: ProfileComponent,
+        resolve: { data: ProfileResolver }
+      }
+    ]
+  },
+  {
+    path: "i",
+    children: [
+      {
+        path: ":username",
+        component: ProfileComponent,
+        resolve: { data: ProfileResolver }
+      }
+    ]
   }
 ];
 
