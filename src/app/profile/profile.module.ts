@@ -34,6 +34,7 @@ import {
   PresenceLinkComponent
 } from "./components/profile/presence/presence.component";
 import { AddressComponent } from "./components/profile/address/address.component";
+import { ConnectComponent } from "./components/profile/connect/connect.component";
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { AddressComponent } from "./components/profile/address/address.component
     SpecialisationComponent,
     PresenceComponent,
     AddressComponent,
-    PresenceLinkComponent
+    PresenceLinkComponent,
+    ConnectComponent
   ],
   imports: [
     CommonModule,
