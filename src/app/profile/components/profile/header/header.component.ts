@@ -52,7 +52,7 @@ import { Component, OnInit, Input } from "@angular/core";
       }
 
       .profile__name {
-        font-family: "Lato", "Helvetica Neue", sans-serif;
+        /* font-family: "Lato", "Helvetica Neue", sans-serif; */
         color: white;
         padding-top: 1rem;
       }

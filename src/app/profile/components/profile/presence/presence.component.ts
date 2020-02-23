@@ -89,6 +89,7 @@ export class PresenceComponent implements OnInit {
     `
       a {
         text-decoration: unset;
+        font-size: 0.8rem;
       }
     `
   ]

@@ -27,6 +27,7 @@ export class PostListComponent implements OnInit, OnDestroy {
   infinite: boolean = false;
   scrollCount: number = 1;
   infiniteDisable: boolean = false;
+  isLoggedIn$: Observable<boolean>;
 
   @ViewChild("loadbtn", { read: ElementRef }) public laodbtn: ElementRef<any>;
 
@@ -95,6 +96,9 @@ export class PostListComponent implements OnInit, OnDestroy {
   }
 
   initialize() {
+    this.authService.loggedInUpdateObservable().then(status => {
+      this.isLoggedIn$ = status;
+    });
     this.resetValues();
     this.getPosts2();
     // this.getPosts(5).then(posts => {

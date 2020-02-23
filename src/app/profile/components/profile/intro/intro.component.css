@@ -9,3 +9,11 @@
   color: rgba(0, 0, 0, 0.55);
   font-size: 0.8rem;
 }
+
+#intro__connect {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 1rem;
+}

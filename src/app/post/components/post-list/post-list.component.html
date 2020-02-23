@@ -6,7 +6,7 @@
   [infiniteScrollThrottle]="5000"
   [infiniteScrollDisabled]="infiniteDisable"
 >
-  <app-create-post *ngIf="isAuth"></app-create-post>
+  <app-create-post *ngIf="isLoggedIn$ | async"></app-create-post>
   <hr style="width: 100%; margin-bottom:1em;" />
   <app-post *ngFor="let post of posts2 | async" [post]="post"> </app-post>
   <mat-spinner diameter="50" *ngIf="loading"></mat-spinner>

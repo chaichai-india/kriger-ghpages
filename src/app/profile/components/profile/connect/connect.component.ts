@@ -1,22 +1,31 @@
 import { Component, OnInit } from "@angular/core";
+import { NavDialogComponent } from "../../../../components/ui/navbar/navbar.component";
+import { MatDialog } from "@angular/material/dialog";
 
 @Component({
   selector: "app-profile-connect",
   template: `
-    <button id="connect" mat-raised-button>Connect</button>
+    <button id="connect" (click)="openDialog()" mat-raised-button>
+      Connect
+    </button>
   `,
   styles: [
     `
       #connect {
-        background-color: blue;
+        background-color: var(--primary-color);
         color: white;
+        border-radius: 20px;
+        font-family: var(--secondary-font-family);
       }
     `
   ]
 })
 export class ConnectComponent implements OnInit {
-  constructor() {}
+  constructor(public dialog: MatDialog) {}
 
+  openDialog() {
+    const dialogRef = this.dialog.open(NavDialogComponent);
+  }
   ngOnInit() {}
 }
 
