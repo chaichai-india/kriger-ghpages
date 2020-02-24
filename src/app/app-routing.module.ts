@@ -21,6 +21,10 @@ const routes: Routes = [
     loadChildren: "./profile/profile.module#ProfileModule"
   },
   {
+    path: "marketplace",
+    loadChildren: "./marketplace/marketplace.module#MarketplaceModule"
+  },
+  {
     path: "educator",
     loadChildren: "./educator/educator.module#EducatorModule"
   },
