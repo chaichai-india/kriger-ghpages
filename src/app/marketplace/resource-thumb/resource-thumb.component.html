@@ -1,2 +1,5 @@
-{{ resource | json }}
-<div class="resource-thumb__container"></div>
+<!-- {{ resource | json }} -->
+<div class="resource-thumb__container">
+  <app-resource-thumb-header [data]="headerData"></app-resource-thumb-header>
+  <app-resource-thumb-body [data]="bodyData"></app-resource-thumb-body>
+</div>

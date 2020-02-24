@@ -1,0 +1,8 @@
+.resource-list__container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 200px));
+  grid-gap: 1rem;
+  justify-content: space-evenly;
+  padding: 1rem 0;
+  background-color: var(--bg-grey);
+}
