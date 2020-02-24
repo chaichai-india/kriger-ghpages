@@ -12,6 +12,7 @@ export class ResourceListComponent implements OnInit {
   constructor(private resourceService: ResourceService) {}
   resources$: Observable<any>;
   loading = new BehaviorSubject<Boolean>(true);
+  loading$ = this.loading.asObservable();
   error: boolean = false;
   errorMessage: string;
 
@@ -34,7 +35,7 @@ export class ResourceListComponent implements OnInit {
     this.resources$ = this.resourceService
       .getResources({ count: "10", resource_id: "0" })
       .pipe(
-        tap(),
+        tap(_ => this.setSuccessStatus()),
         catchError(err => {
           this.setErrorStatus(err, "Error!");
           return of({ resources: [] });

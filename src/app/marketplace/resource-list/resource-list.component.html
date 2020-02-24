@@ -1,3 +1,13 @@
-<p>
-  {{ resources$ | async | json }}
-</p>
+<div class="resource-list__container">
+  <mat-toolbar>
+    <span>Marketplace</span>
+  </mat-toolbar>
+  <mat-spinner diameter="50" *ngIf="loading$ | async"></mat-spinner>
+  <app-resource-thumb
+    *ngFor="let resource of (resources$ | async)?.resources"
+    [resource]="resource"
+  ></app-resource-thumb>
+  <p>
+    <!-- {{ resources$ | async | json }} -->
+  </p>
+</div>
