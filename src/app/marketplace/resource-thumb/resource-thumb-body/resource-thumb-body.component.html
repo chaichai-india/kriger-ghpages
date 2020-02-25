@@ -3,14 +3,16 @@
   <p class="resource-body__owner">
     By: <span>{{ data?.owner_name }}</span>
   </p>
-  <div class="resource-body__subject">
-    <p>{{ data?.subject }}</p>
-  </div>
-  <div class="resource-body__exam">
-    <p>{{ data?.exam }}</p>
-  </div>
+  <fieldset class="resource-body__subject">
+    <legend>Subject</legend>
+    <p>{{ data?.subject ? data?.subject : "NA" }}</p>
+  </fieldset>
+  <fieldset class="resource-body__exam">
+    <legend>Exam</legend>
+    <p>{{ data?.exam ? data?.exam : "NA" }}</p>
+  </fieldset>
   <div class="resource-body__fees">
-    <p>{{ data?.fees }} Per {{ data?.fees_type }}</p>
+    <p>₹{{ data?.fees }} Per {{ data?.fees_type }}</p>
   </div>
   <button id="enquiry" (click)="openDialog()" mat-raised-button>
     Enquire Now
