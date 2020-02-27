@@ -1,13 +1,18 @@
 <mat-toolbar>
   <span>Marketplace</span>
 </mat-toolbar>
-<div class="resource-list__container">
-  <mat-spinner diameter="50" *ngIf="loading$ | async"></mat-spinner>
+<div
+  class="resource-list__container"
+  infinite-scroll
+  (scrolled)="nextBatch()"
+  [infiniteScrollDistance]="1"
+  [infiniteScrollThrottle]="5000"
+  [infiniteScrollDisabled]="infiniteDisable"
+>
   <app-resource-thumb
-    *ngFor="let resource of (resources$ | async)?.resources"
+    *ngFor="let resource of resource$ | async"
     [resource]="resource"
   ></app-resource-thumb>
-  <p>
-    <!-- {{ resources$ | async | json }} -->
-  </p>
+  <!-- *ngFor="let resource of (resources$ | async)?.resources" -->
+  <mat-spinner diameter="50" *ngIf="loading$ | async"></mat-spinner>
 </div>

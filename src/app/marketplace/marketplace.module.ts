@@ -15,6 +15,7 @@ import {
 import { ResourceThumbHeaderComponent } from "./resource-thumb/resource-thumb-header/resource-thumb-header.component";
 import { ResourceThumbRatingComponent } from "./resource-thumb/resource-thumb-rating/resource-thumb-rating.component";
 import { ResourceThumbBodyComponent } from "./resource-thumb/resource-thumb-body/resource-thumb-body.component";
+import { InfiniteScrollModule } from "ngx-infinite-scroll";
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { ResourceThumbBodyComponent } from "./resource-thumb/resource-thumb-body
     MatProgressSpinnerModule,
     MatIconModule,
     MatDialogModule,
-    MatButtonModule
+    MatButtonModule,
+    InfiniteScrollModule
   ]
 })
 export class MarketplaceModule {}

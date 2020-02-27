@@ -7,7 +7,7 @@ import {
   OnDestroy
 } from "@angular/core";
 import { Observable, BehaviorSubject } from "rxjs";
-import { take, tap, shareReplay } from "rxjs/operators";
+import { take, tap } from "rxjs/operators";
 
 import { PostService } from "../../../services/database/post.service";
 import { AuthService } from "../../../services/authentication/auth.service";

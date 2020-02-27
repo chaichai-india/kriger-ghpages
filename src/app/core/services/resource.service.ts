@@ -8,11 +8,13 @@ import { HttpHeaders } from "@angular/common/http";
 export class ResourceService {
   constructor(private apiService: ApiService) {}
 
-  getResources({ count = "10", resource_id = "0" }) {
+  getResources({ count = "10", resource_id = "0", mode = "refresh" }) {
     const path = `resource/all`;
     const headers = new HttpHeaders()
       .set("count", count)
-      .set("resource_id", resource_id);
+      .set("resource_id", resource_id)
+      .set("mode", mode);
+
     return this.apiService.get({ path, headers });
   }
 }

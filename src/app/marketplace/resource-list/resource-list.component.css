@@ -6,9 +6,11 @@ mat-toolbar {
 
 .resource-list__container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 200px));
+  grid-template-columns: 200px 200px 200px;
   grid-gap: 1rem;
-  justify-content: space-evenly;
+  justify-content: center;
   padding: 1rem 0;
   background-color: var(--bg-grey);
+  min-height: 100vh;
+  /* max-width: 800px; */
 }
