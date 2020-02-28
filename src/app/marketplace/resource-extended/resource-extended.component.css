@@ -1,0 +1,14 @@
+.resource-extended__container {
+  display: grid;
+  margin: 0 auto;
+  grid-template-columns: 400px;
+  grid-gap: 1rem;
+  background-color: var(--bg-grey);
+  justify-content: center;
+  min-height: 100vh;
+  padding: 4rem 0;
+}
+
+.resource-extended {
+  box-shadow: var(--primary-box-shadow);
+}

@@ -10,12 +10,22 @@ import {
   MatProgressSpinnerModule,
   MatIconModule,
   MatDialogModule,
-  MatButtonModule
+  MatButtonModule,
+  MatFormFieldModule,
+  MatInputModule
 } from "@angular/material";
 import { ResourceThumbHeaderComponent } from "./resource-thumb/resource-thumb-header/resource-thumb-header.component";
 import { ResourceThumbRatingComponent } from "./resource-thumb/resource-thumb-rating/resource-thumb-rating.component";
 import { ResourceThumbBodyComponent } from "./resource-thumb/resource-thumb-body/resource-thumb-body.component";
 import { InfiniteScrollModule } from "ngx-infinite-scroll";
+import {
+  ResourceShareComponent,
+  ShareResourceDialogComponent
+} from "./resource-share/resource-share.component";
+import { ClipboardModule } from "ngx-clipboard";
+import { ResourceResolver } from "./resource-resolver.service";
+import { ResourceExtendedHeaderComponent } from './resource-extended/resource-extended-header/resource-extended-header.component';
+import { ResourceExtendedBodyComponent } from './resource-extended/resource-extended-body/resource-extended-body.component';
 
 @NgModule({
   declarations: [
@@ -24,8 +34,13 @@ import { InfiniteScrollModule } from "ngx-infinite-scroll";
     ResourceExtendedComponent,
     ResourceThumbHeaderComponent,
     ResourceThumbRatingComponent,
-    ResourceThumbBodyComponent
+    ResourceThumbBodyComponent,
+    ResourceShareComponent,
+    ShareResourceDialogComponent,
+    ResourceExtendedHeaderComponent,
+    ResourceExtendedBodyComponent
   ],
+  entryComponents: [ShareResourceDialogComponent],
   imports: [
     CommonModule,
     MarketplaceRoutingModule,
@@ -34,7 +49,11 @@ import { InfiniteScrollModule } from "ngx-infinite-scroll";
     MatIconModule,
     MatDialogModule,
     MatButtonModule,
-    InfiniteScrollModule
-  ]
+    InfiniteScrollModule,
+    MatFormFieldModule,
+    ClipboardModule,
+    MatInputModule
+  ],
+  providers: [ResourceResolver]
 })
 export class MarketplaceModule {}

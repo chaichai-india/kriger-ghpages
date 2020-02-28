@@ -18,7 +18,7 @@ const routes: Routes = [
     // ]
   },
   {
-    path: "l",
+    path: "learner",
     children: [
       {
         path: ":username",
@@ -28,7 +28,7 @@ const routes: Routes = [
     ]
   },
   {
-    path: "e",
+    path: "educator",
     children: [
       {
         path: ":username",
@@ -38,7 +38,7 @@ const routes: Routes = [
     ]
   },
   {
-    path: "i",
+    path: "institute",
     children: [
       {
         path: ":username",

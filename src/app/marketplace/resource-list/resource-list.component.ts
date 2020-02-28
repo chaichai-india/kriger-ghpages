@@ -18,6 +18,7 @@ export class ResourceListComponent implements OnInit {
   error: boolean = false;
   errorMessage: string;
   infiniteDisable: boolean = false;
+  scrollCount: number = 0;
   lastResourceValue: number = 0;
 
   setResources({ count = "10", resource_id = "0" }) {
@@ -37,6 +38,11 @@ export class ResourceListComponent implements OnInit {
   }
 
   nextBatch() {
+    this.scrollCount++;
+    if (this.scrollCount > 2) {
+      this.infiniteDisable = true;
+      return;
+    }
     console.log("next batch");
     this.loading.next(true);
     this.resourceService
@@ -55,9 +61,20 @@ export class ResourceListComponent implements OnInit {
           console.log({ value });
           this.updateState(value);
         }),
-        take(1)
+        take(1),
+        catchError(err => {
+          this.setErrorStatus(err, "Something went wrong!");
+          this.resourceSubject.next([]);
+          return of({ resources: [] });
+        })
       )
       .subscribe();
+  }
+
+  resetInfinite() {
+    this.infiniteDisable = false;
+    this.scrollCount = 0;
+    this.nextBatch();
   }
 
   ngOnInit() {

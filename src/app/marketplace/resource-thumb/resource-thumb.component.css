@@ -1,3 +1,11 @@
 .resource-thumb__container {
   box-shadow: 0px -1px 5px 0px rgba(0, 0, 0, 0.12);
 }
+
+.resource-thumb__options {
+  display: flex;
+  justify-content: space-between;
+  background-color: white;
+  border-top: 1px solid var(--bg-grey);
+  color: grey;
+}

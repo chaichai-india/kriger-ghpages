@@ -3,11 +3,10 @@ import {
   ActivatedRouteSnapshot,
   Resolve,
   Router,
-  RouterStateSnapshot,
   ActivatedRoute
 } from "@angular/router";
 import { ProfileService } from "../core";
-import { catchError, switchMap, tap } from "rxjs/operators";
+// import { catchError, switchMap, tap } from "rxjs/operators";
 
 @Injectable()
 export class ProfileResolver implements Resolve<any> {
@@ -42,7 +41,7 @@ export class ProfileResolver implements Resolve<any> {
     const url = urlPath[urlPath.length - 1].path;
     console.log("parent url", { url });
     const { user_id, account_type } = data;
-    const pathMap = ["l", "e", "i"];
+    const pathMap = ["learner", "educator", "institute"];
     if (pathMap[account_type] == url) {
       return this.profileService.getProfile(user_id).toPromise();
     } else {

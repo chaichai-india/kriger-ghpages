@@ -6,7 +6,7 @@
   infinite-scroll
   (scrolled)="nextBatch()"
   [infiniteScrollDistance]="1"
-  [infiniteScrollThrottle]="5000"
+  [infiniteScrollThrottle]="500"
   [infiniteScrollDisabled]="infiniteDisable"
 >
   <app-resource-thumb
@@ -14,5 +14,15 @@
     [resource]="resource"
   ></app-resource-thumb>
   <!-- *ngFor="let resource of (resources$ | async)?.resources" -->
-  <mat-spinner diameter="50" *ngIf="loading$ | async"></mat-spinner>
 </div>
+<div class="loading-spinner" *ngIf="loading$ | async">
+  <mat-spinner diameter="50"></mat-spinner>
+</div>
+<div class="load__btn">
+  <button mat-stroked-button (click)="resetInfinite()" *ngIf="infiniteDisable">
+    Load More Resources
+  </button>
+</div>
+<!-- <div class="error" *ngIf="error">
+  {{ errorMessage }}
+</div> -->

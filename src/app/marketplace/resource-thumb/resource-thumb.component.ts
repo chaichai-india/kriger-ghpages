@@ -1,4 +1,6 @@
 import { Component, OnInit, Input } from "@angular/core";
+import { MatDialog } from "@angular/material";
+import { NavDialogComponent } from "src/app/components/ui/navbar/navbar.component";
 
 @Component({
   selector: "app-resource-thumb",
@@ -9,7 +11,8 @@ export class ResourceThumbComponent implements OnInit {
   @Input() resource;
   headerData;
   bodyData;
-  constructor() {}
+  shareData;
+  constructor(public dialog: MatDialog) {}
 
   setHeaderData(resource) {
     const { thumb, count_reviews, review } = resource;
@@ -43,8 +46,18 @@ export class ResourceThumbComponent implements OnInit {
     };
   }
 
+  setShareData(resource) {
+    const { _id } = resource;
+    return { resource_id: _id };
+  }
+
+  openDialog() {
+    const dialogRef = this.dialog.open(NavDialogComponent);
+  }
+
   ngOnInit() {
     this.headerData = this.setHeaderData(this.resource);
     this.bodyData = this.setBodyData(this.resource);
+    this.shareData = this.setShareData(this.resource);
   }
 }

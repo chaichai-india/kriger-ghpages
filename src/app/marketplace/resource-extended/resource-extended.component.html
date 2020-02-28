@@ -1,3 +1,10 @@
-<p>
-  resource-extended works!
-</p>
+<!-- {{ data | json }} -->
+
+<div class="resource-extended__container">
+  <div class="resource-extended">
+    <app-resource-extended-header
+      [data]="headerData"
+    ></app-resource-extended-header>
+    <app-resource-extended-body [data]="bodyData"></app-resource-extended-body>
+  </div>
+</div>

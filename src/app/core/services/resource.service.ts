@@ -17,4 +17,10 @@ export class ResourceService {
 
     return this.apiService.get({ path, headers });
   }
+
+  getExtendedResource(resource_id) {
+    const path = `resource`;
+    const headers = new HttpHeaders().set("resource_id", resource_id);
+    return this.apiService.get({ path, headers });
+  }
 }
