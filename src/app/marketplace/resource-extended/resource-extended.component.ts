@@ -35,7 +35,9 @@ export class ResourceExtendedComponent implements OnInit {
       count_shares,
       timestamp,
       type,
-      class_type
+      class_type,
+      review,
+      count_reviews
     } = resource;
     return {
       _id,
@@ -53,7 +55,9 @@ export class ResourceExtendedComponent implements OnInit {
       count_shares,
       timestamp,
       type,
-      class_type
+      class_type,
+      review,
+      count_reviews
     };
   }
 

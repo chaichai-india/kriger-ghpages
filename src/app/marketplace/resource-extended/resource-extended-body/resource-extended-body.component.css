@@ -10,6 +10,10 @@
   padding: 1rem 0;
 }
 
+.star__container {
+  padding-top: 1rem;
+}
+
 .info {
   display: grid;
   place-content: center;

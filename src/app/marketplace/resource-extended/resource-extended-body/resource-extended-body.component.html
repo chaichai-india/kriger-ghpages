@@ -2,6 +2,14 @@
   <div class="info">
     <p class="resource-name">{{ data?.name }}</p>
     <p class="resource-type">{{ data?.type }}</p>
+    <div class="star__container">
+      <span *ngFor="let ratingId of ratingArr; index as i">
+        <mat-icon>
+          {{ showIcon(i) }}
+        </mat-icon>
+      </span>
+    </div>
+    <p class="count-reviews">{{ data?.count_reviews }} Reviews</p>
   </div>
 
   <div class="owner-name">
