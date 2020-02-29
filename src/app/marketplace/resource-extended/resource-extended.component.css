@@ -1,7 +1,7 @@
 .resource-extended__container {
   display: grid;
   margin: 0 auto;
-  grid-template-columns: 400px;
+  grid-template-columns: 600px;
   grid-gap: 1rem;
   background-color: var(--bg-grey);
   justify-content: center;
@@ -11,4 +11,10 @@
 
 .resource-extended {
   box-shadow: var(--primary-box-shadow);
+}
+
+@media screen and (max-width: 700px) {
+  .resource-extended__container {
+    grid-template-columns: 90vw;
+  }
 }

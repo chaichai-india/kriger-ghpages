@@ -20,7 +20,7 @@ import { Component, OnInit, Input } from "@angular/core";
       .header {
         background-size: cover;
         background-position: center;
-        width: 400px;
+        width: 100%;
         height: 400px;
         position: relative;
       }

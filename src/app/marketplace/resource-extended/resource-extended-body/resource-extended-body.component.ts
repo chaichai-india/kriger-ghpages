@@ -1,4 +1,6 @@
 import { Component, OnInit, Input } from "@angular/core";
+import { MatDialog } from "@angular/material";
+import { NavDialogComponent } from "src/app/components/ui/navbar/navbar.component";
 
 @Component({
   selector: "app-resource-extended-body",
@@ -7,7 +9,12 @@ import { Component, OnInit, Input } from "@angular/core";
 })
 export class ResourceExtendedBodyComponent implements OnInit {
   @Input() data;
-  constructor() {}
+  constructor(public dialog: MatDialog) {}
 
-  ngOnInit() {}
+  openDialog() {
+    const dialogRef = this.dialog.open(NavDialogComponent);
+  }
+  ngOnInit() {
+    console.log(this.data, "body");
+  }
 }

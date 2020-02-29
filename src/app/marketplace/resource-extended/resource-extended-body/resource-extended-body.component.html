@@ -1,3 +1,46 @@
-<p>
-  resource-extended-body works!
-</p>
+<div class="resource-body__container">
+  <div class="info">
+    <p class="resource-name">{{ data?.name }}</p>
+    <p class="resource-type">{{ data?.type }}</p>
+  </div>
+
+  <div class="owner-name">
+    <p class="title">Listed By:</p>
+    <p class="content">{{ data?.owner_name }}</p>
+  </div>
+  <div class="subjects">
+    <p class="title">Subjects:</p>
+    <p class="content">{{ data?.subject }}</p>
+  </div>
+  <div class="exams">
+    <p class="title">Exams:</p>
+    <p class="content">{{ data?.exam }}</p>
+  </div>
+  <div class="class_type">
+    <p class="title">Class:</p>
+    <p class="content">{{ data?.class_type }}</p>
+  </div>
+  <div class="fee_type">
+    <p class="title">Fee:</p>
+    <p class="content">{{ data?.fees }} Per {{ data?.fees_type }}</p>
+  </div>
+  <div class="description">
+    <p class="title">Description:</p>
+    <p class="content">{{ data?.description }}</p>
+  </div>
+  <div class="views">
+    <p class="title">Views:</p>
+    <p class="content">{{ data?.count_views }}</p>
+  </div>
+  <div class="shares">
+    <p class="title">Shares:</p>
+    <p class="content">{{ data?.count_shares }}</p>
+  </div>
+  <div class="posted-on">
+    <p class="title">Posted on:</p>
+    <p class="content">{{ data?.timestamp * 1000 | date }}</p>
+  </div>
+  <button id="enquiry" (click)="openDialog()" mat-raised-button>
+    Enquire Now
+  </button>
+</div>
