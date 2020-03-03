@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { MatDialog } from "@angular/material";
-import { NavDialogComponent } from "src/app/components/ui/navbar/navbar.component";
+import { NavDialogComponent } from "../../../components/ui/navbar/navbar.component";
 
 @Component({
   selector: "app-resource-extended-body",

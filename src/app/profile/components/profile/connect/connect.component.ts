@@ -28,10 +28,3 @@ export class ConnectComponent implements OnInit {
   }
   ngOnInit() {}
 }
-
-@Component({
-  selector: "profile-connect-dialog",
-  template: ``,
-  styles: [``]
-})
-export class ProfileConnectDialogComponent {}

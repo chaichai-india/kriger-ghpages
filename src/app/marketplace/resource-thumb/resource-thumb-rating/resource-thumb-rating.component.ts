@@ -45,7 +45,7 @@ export class ResourceThumbRatingComponent implements OnInit {
   @Input("starCount") private starCount: number;
 
   constructor() {}
-  private ratingArr = [];
+  ratingArr = [];
 
   showIcon(index: number) {
     if (this.rating >= index + 1) {

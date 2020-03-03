@@ -1,4 +1,4 @@
-import { Injectable } from "@angular/core";
+import { Injectable, NgZone } from "@angular/core";
 import {
   ActivatedRouteSnapshot,
   Resolve,
@@ -13,7 +13,8 @@ export class ProfileResolver implements Resolve<any> {
   constructor(
     private profileService: ProfileService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private zone: NgZone
   ) {}
 
   resolve(route: ActivatedRouteSnapshot) {
@@ -45,7 +46,9 @@ export class ProfileResolver implements Resolve<any> {
     if (pathMap[account_type] == url) {
       return this.profileService.getProfile(user_id).toPromise();
     } else {
-      this.router.navigateByUrl(`/in/${pathMap[account_type]}/${username}`);
+      this.zone.run(_ =>
+        this.router.navigateByUrl(`/in/${pathMap[account_type]}/${username}`)
+      );
     }
   }
   // pathResolver(username: string) {

@@ -6,7 +6,11 @@
     {
       "target": "test",
       "public": "dist/kriger-campus-website",
-      "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
       "rewrites": [
         {
           "source": "**",
@@ -17,11 +21,15 @@
     {
       "target": "prod",
       "public": "dist/kriger-campus-website",
-      "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
       "rewrites": [
         {
           "source": "**",
-          "function": "universal"
+          "destination": "/index.html"
         }
       ]
     }
