@@ -135,15 +135,15 @@ export const CORETEAM = [
     image: "assets/images/ourteam/coreteam/poojan_rathod.jpg"
   }
 ];
-export const INSTITUTEPARTNERSHIP = [
-  {
-    firstname: "Neeraj",
-    lastname: "Verma",
-    role: "",
-    linkedin: "https://www.linkedin.com/in/neeraj-verma-380bb120/",
-    image: "assets/images/ourteam/coreteam/neeraj_verma.jpeg"
-  }
-];
+// export const INSTITUTEPARTNERSHIP = [
+//   {
+//     firstname: "Neeraj",
+//     lastname: "Verma",
+//     role: "",
+//     linkedin: "https://www.linkedin.com/in/neeraj-verma-380bb120/",
+//     image: "assets/images/ourteam/coreteam/neeraj_verma.jpeg"
+//   }
+// ];
 export const TECHNICALTEAM = [
   // {
   //   firstname: "Neelu",

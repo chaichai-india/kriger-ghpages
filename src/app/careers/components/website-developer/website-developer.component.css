@@ -8,6 +8,8 @@
   padding: 1rem;
   display: grid;
   grid-row-gap: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
 ul li {
@@ -22,6 +24,7 @@ p.title {
 
 p.content {
   font-size: 0.9rem;
+  max-width: 80%;
 }
 
 .apply {

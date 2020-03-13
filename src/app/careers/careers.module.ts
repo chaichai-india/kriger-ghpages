@@ -9,9 +9,11 @@ import { AndroidDeveloperComponent } from './components/android-developer/androi
 import { WebsiteDeveloperComponent } from './components/website-developer/website-developer.component';
 import { ContentWriterComponent } from './components/content-writer/content-writer.component';
 import { SalesExecutiveComponent } from './components/sales-executive/sales-executive.component';
+import { CareerRoleComponent } from './components/career-role/career-role.component';
+import { DemandExecutiveComponent } from './components/demand-executive/demand-executive.component';
 
 @NgModule({
-  declarations: [CareersComponent, AndroidDeveloperComponent, WebsiteDeveloperComponent, ContentWriterComponent, SalesExecutiveComponent],
+  declarations: [CareersComponent, AndroidDeveloperComponent, WebsiteDeveloperComponent, ContentWriterComponent, SalesExecutiveComponent, CareerRoleComponent, DemandExecutiveComponent],
   imports: [
     CommonModule,
     CareersRoutingModule,

@@ -4,8 +4,7 @@ import {
   ADVISORS,
   EXPERTS,
   CORETEAM,
-  TECHNICALTEAM,
-  INSTITUTEPARTNERSHIP
+  TECHNICALTEAM
 } from "./ourteam-data";
 
 @Component({
@@ -19,7 +18,6 @@ export class OurteamComponent implements OnInit {
   experts = EXPERTS;
   coreteam = CORETEAM;
   technicalteam = TECHNICALTEAM;
-  institutepartnership = INSTITUTEPARTNERSHIP;
   constructor() {}
 
   ngOnInit() {}
