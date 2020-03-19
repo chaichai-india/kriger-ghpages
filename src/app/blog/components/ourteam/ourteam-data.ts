@@ -28,9 +28,19 @@ export const ADVISORS = [
   {
     firstname: "Rajesh",
     lastname: "Jha",
-    role: "Legal Advisor",
+    role: "Company Secretary",
     linkedin: "https://www.linkedin.com/in/rajesh-jha-5b359322/",
-    image: "assets/images/ourteam/advisors/rajesh_jha.jpeg"
+    image: "assets/images/ourteam/advisors/rajesh_jha.jpg"
+  }
+];
+
+export const LEGAL = [
+  {
+    firstname: "Adv.",
+    lastname: "Anik",
+    role: "",
+    linkedin: "https://www.linkedin.com/in/adv-anik-a3904112/",
+    image: "assets/images/ourteam/legal/adv_anik.jpg"
   }
 ];
 

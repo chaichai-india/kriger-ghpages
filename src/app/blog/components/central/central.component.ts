@@ -32,7 +32,7 @@ export class CentralComponent implements OnInit {
       this.currentComponent = TncComponent;
     }
     if (this.router.url === "/our-team") {
-      // this.footerWhite = true;
+      this.footerWhite = true;
       this.currentComponent = OurteamComponent;
     }
     if (this.router.url === "/internship-tnc") {
