@@ -73,10 +73,8 @@ export const eduwaveData = {
   headline: "Shaping successful careers",
   //   lastname: "Rathod",
   name: "Eduwave Classes",
-  // thumb:
-  //   "https://firebasestorage.googleapis.com/v0/b/kriger-campus-cfe41.appspot.com/o/Your%20Photo%2Fnew_LhSyRWoczHM7VxcCtSsgKrihKam1?alt=media&token=cc071ede-c349-4631-b3e9-ecb3aeb7257c",
-  // original:
-  //   "https://firebasestorage.googleapis.com/v0/b/kriger-campus-cfe41.appspot.com/o/Your%20Photo%2Fnew_smallLhSyRWoczHM7VxcCtSsgKrihKam1?alt=media&token=fa3c62ab-ac62-47bd-889e-c6e04a8cea27",
+  thumb:
+    "https://cdn.dnaindia.com/sites/default/files/styles/full/public/2018/05/29/687423-cbse-students-07.jpg",
   type: ["Coaching Institute"],
   username: "eduwave_classes",
   count_posts: 75,
