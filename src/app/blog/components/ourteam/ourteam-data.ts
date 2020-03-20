@@ -31,6 +31,13 @@ export const ADVISORS = [
     role: "Company Secretary",
     linkedin: "https://www.linkedin.com/in/rajesh-jha-5b359322/",
     image: "assets/images/ourteam/advisors/rajesh_jha.jpg"
+  },
+  {
+    firstname: "Jagmohan",
+    lastname: "Singh",
+    role: "Technical Advisor",
+    linkedin: "https://www.linkedin.com/in/medoc/",
+    image: "assets/images/ourteam/advisors/jagmohan_singh.jpg"
   }
 ];
 
