@@ -14,6 +14,9 @@
       >{{ member.firstname }} {{ member.lastname }}</mat-card-title
     >
     <mat-card-subtitle>{{ member.role }}</mat-card-subtitle>
+    <mat-card-subtitle *ngIf="member.extra">{{
+      member.extra
+    }}</mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
     <blockquote *ngIf="member.description">

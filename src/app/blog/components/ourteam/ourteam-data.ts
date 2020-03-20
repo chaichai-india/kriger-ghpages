@@ -36,6 +36,7 @@ export const ADVISORS = [
     firstname: "Jagmohan",
     lastname: "Singh",
     role: "Technical Advisor",
+    extra: "Facebook (U.K.)",
     linkedin: "https://www.linkedin.com/in/medoc/",
     image: "assets/images/ourteam/advisors/jagmohan_singh.jpg"
   }
