@@ -11,6 +11,7 @@
     "webpack:ssr": "webpack --config webpack.server.config.js",
     "serve:ssr": "node dist/kriger-campus-website-webpack/server.js",
     "build": "npm run empty:dist && npm run empty:fdist && npm run create:fdist && ng build --prod  && npm run build:ssr && npm run build:functions",
+    "build:web": "npm run empty:dist && ng build --prod",
     "remove:index": "rm ./dist/kriger-campus-website/index.html",
     "empty:dist": "rm -rf ./dist/",
     "empty:fdist": "rm -rf ./functions/dist/",

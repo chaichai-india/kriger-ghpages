@@ -18,13 +18,13 @@ export const MENTORS = [
 ];
 
 export const ADVISORS = [
-  // {
-  //   firstname: "Sumeet",
-  //   lastname: "Agrawal",
-  //   role: "Financial Advisor",
-  //   linkedin: "https://www.linkedin.com/in/sumeetagrawal/",
-  //   image: "assets/images/ourteam/advisors/sumeet_agrawal.jpeg"
-  // },
+  {
+    firstname: "Sumeet",
+    lastname: "Agrawal",
+    role: "Financial Advisor",
+    linkedin: "https://www.linkedin.com/in/sumeetagrawal/",
+    image: "assets/images/ourteam/advisors/sumeet_agrawal.jpg"
+  },
   {
     firstname: "Rajesh",
     lastname: "Jha",
