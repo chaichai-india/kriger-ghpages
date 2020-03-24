@@ -1,0 +1,47 @@
+<div class="career_container">
+  <app-career-role [data]="data.roleData"></app-career-role>
+  <div class="about">
+    Kriger Campus is India’s first education networking platform with a
+    marketplace. We are a team of IIT IIM graduates working to remove
+    information and opportunity asymmetry from Indian education system. We are
+    disrupting education by connecting Learners with Educators and Institutes.
+    Our marketplace offers a varied selection of Books, notes, exams, classes
+    and mentorship for students to choose from. Join our team to bring
+    meaningful impact to the society and revolutionize education.
+  </div>
+  <div class="responsibilities">
+    <p class="title">Main Responsibilities</p>
+    <ul>
+      <li *ngFor="let item of data.responsibilities">
+        <span *ngIf="item.title" class="list__title">{{ item.title }}: </span>
+        <p>{{ item.text }}</p>
+      </li>
+    </ul>
+  </div>
+  <div class="requirements">
+    <p class="title">What we seek</p>
+    <ul>
+      <li *ngFor="let item of data.requirements">
+        <span *ngIf="item.title" class="list__title">{{ item.title }}: </span>
+        <p>{{ item.text }}</p>
+      </li>
+    </ul>
+  </div>
+  <div *ngIf="data.requisites" class="requisites">
+    <p class="title">What you'll need</p>
+    <ul>
+      <li *ngFor="let item of data.requisites">
+        <span *ngIf="item.title" class="list__title">{{ item.title }}: </span>
+        <p>{{ item.text }}</p>
+      </li>
+    </ul>
+  </div>
+  <a
+    class="apply"
+    mat-stroked-button
+    href="https://forms.gle/PSFhTcfq8bGHdLiz8"
+    target="_blank"
+    >Apply</a
+  >
+</div>
+<app-footer-new class="footer_grey"></app-footer-new>
