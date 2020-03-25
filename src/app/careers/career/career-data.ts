@@ -55,6 +55,15 @@ export const websiteDeveloper = {
       text:
         "Deadline oriented and able to multi-task in a fast paced environment."
     }
+  ],
+  requisites: [
+    { text: "Bachelor's degree or college experience preferred." },
+    {
+      text:
+        "Previous experience in driver/community management or field team recruitment is a plus."
+    },
+    { text: "Good command on English spoken and written." },
+    { text: "Command on Angular JS." }
   ]
 };
 
@@ -97,6 +106,15 @@ export const androidDeveloper = {
       text: "Comfortable with iterative development practices and code reviews"
     },
     { text: "Previous experience as part of a product-oriented team is a plus" }
+  ],
+  requisites: [
+    { text: "Bachelor's degree or college experience preferred." },
+    {
+      text:
+        "Previous experience in driver/community management or field team recruitment is a plus."
+    },
+    { text: "Good command on English spoken and written." },
+    { text: "Command on Android Development." }
   ]
 };
 
