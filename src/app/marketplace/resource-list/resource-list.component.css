@@ -1,17 +1,17 @@
-mat-toolbar {
+/* mat-toolbar {
   justify-content: center;
   font-size: 2rem;
   text-transform: uppercase;
-}
+} */
 
 .resource-list__container {
   display: grid;
-  grid-template-columns: repeat(3, 340px);
+  grid-template-columns: repeat(3, 300px);
   grid-template-rows: 150px;
   grid-gap: 1rem;
   justify-content: center;
   padding: 1rem 0;
-  background-color: var(--bg-grey);
+  /* background-color: var(--bg-grey); */
   min-height: 100vh;
   padding-bottom: 2rem;
 }
@@ -29,14 +29,14 @@ mat-toolbar {
   color: white;
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 1000px) {
   .resource-list__container {
-    grid-template-columns: repeat(2, 340px);
+    grid-template-columns: repeat(2, 300px);
   }
 }
 
 @media screen and (max-width: 550px) {
   .resource-list__container {
-    grid-template-columns: 340px;
+    grid-template-columns: 300px;
   }
 }

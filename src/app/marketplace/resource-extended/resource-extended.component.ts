@@ -13,9 +13,9 @@ export class ResourceExtendedComponent implements OnInit {
   constructor(private route: ActivatedRoute) {}
 
   setHeaderData(data) {
-    const { _id, original } = data;
+    const { _id, thumb, original } = data;
     console.log({ _id, original, data }, "setHeader");
-    return { original, resource_id: _id };
+    return { original, resource_id: _id, thumb };
   }
 
   setBodyData(resource) {

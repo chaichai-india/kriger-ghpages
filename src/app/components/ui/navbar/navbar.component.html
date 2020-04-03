@@ -30,8 +30,54 @@
         routerLinkActive="nav-link-active"
         (click)="!isNavbarCollapsed ? (isNavbarCollapsed = true) : false"
       >
-        <mat-icon>ballot</mat-icon>
-        <span>Posts</span>
+        <mat-icon>home</mat-icon>
+        <span>Timeline</span>
+      </a>
+
+      <a
+        *ngIf="!isHome"
+        class="nav-item d-flex flex-column align-items-center justify-content-center mr-4 font-weight-bold"
+        [routerLink]="['/marketplace']"
+        href="/marketplace"
+        routerLinkActive="nav-link-active"
+        (click)="!isNavbarCollapsed ? (isNavbarCollapsed = true) : false"
+      >
+        <mat-icon>school</mat-icon>
+        <span>Marketplace</span>
+      </a>
+
+      <a
+        *ngIf="isLoggedIn$ | async"
+        class="nav-item d-flex flex-column align-items-center justify-content-center mr-4 font-weight-bold"
+        [routerLink]="['/groups']"
+        href="/groups"
+        routerLinkActive="nav-link-active"
+        (click)="!isNavbarCollapsed ? (isNavbarCollapsed = true) : false"
+      >
+        <mat-icon>group</mat-icon>
+        <span>Groups</span>
+      </a>
+      <a
+        *ngIf="isLoggedIn$ | async"
+        class="nav-item d-flex flex-column align-items-center justify-content-center mr-4 font-weight-bold"
+        [routerLink]="['/network']"
+        href="/network"
+        routerLinkActive="nav-link-active"
+        (click)="!isNavbarCollapsed ? (isNavbarCollapsed = true) : false"
+      >
+        <mat-icon>group_add</mat-icon>
+        <span>Network</span>
+      </a>
+      <a
+        *ngIf="isLoggedIn$ | async"
+        class="nav-item d-flex flex-column align-items-center justify-content-center mr-4 font-weight-bold"
+        [routerLink]="['/notifications']"
+        href="/notifications"
+        routerLinkActive="nav-link-active"
+        (click)="!isNavbarCollapsed ? (isNavbarCollapsed = true) : false"
+      >
+        <mat-icon>notifications</mat-icon>
+        <span>Notifications</span>
       </a>
       <!-- <a
         *ngIf="isLoggedIn$ | async"
@@ -176,9 +222,7 @@
           href="https://play.google.com/store/apps/details?id=in.kriger.krigercampus"
           target="_blank"
           rel="noopener"
-          ><img
-            class="img-fluid playstore"
-            src="/assets/images/play_store.png"/><img
+          ><img class="playstore" src="/assets/images/play_store.png"/><img
         /></a>
       </li>
     </ul>

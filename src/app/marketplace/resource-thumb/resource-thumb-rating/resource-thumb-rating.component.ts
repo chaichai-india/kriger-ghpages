@@ -24,7 +24,7 @@ import { Component, OnInit, Input } from "@angular/core";
         border-radius: 20px;
         border: 2px solid var(--primary-color);
         height: 21px; */
-        background-color: #09e009;
+        background-color: #5ba829;
         max-width: 40px;
         height: 20px;
         padding: 0 5px;
@@ -32,6 +32,7 @@ import { Component, OnInit, Input } from "@angular/core";
         font-size: 0.9rem;
         color: white;
         text-shadow: 1px 1px 2px #0000004f;
+        border-radius: 6px;
       }
 
       /* span {

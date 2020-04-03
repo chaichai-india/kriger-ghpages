@@ -61,8 +61,8 @@ nav #navbarsDefault ul a {
 }
 
 nav #navbarsDefault ul a:not(:last-child) {
-  width: 60px;
-  font-size: 0.85em;
+  min-width: 60px;
+  font-size: 0.7rem;
   color: rgba(255, 255, 255, 0.95);
 }
 

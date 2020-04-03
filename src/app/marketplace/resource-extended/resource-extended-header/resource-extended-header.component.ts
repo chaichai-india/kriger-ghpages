@@ -7,7 +7,7 @@ import { Component, OnInit, Input } from "@angular/core";
       class="header"
       [ngStyle]="{
         'background-image':
-          'url(' + data?.original + '), url(../../../../assets/images/user.svg)'
+          'url(' + resourceCover + '), url(../../../../assets/images/user.svg)'
       }"
     >
       <div class="share">
@@ -34,10 +34,18 @@ import { Component, OnInit, Input } from "@angular/core";
 })
 export class ResourceExtendedHeaderComponent implements OnInit {
   @Input() data;
+  resourceCover;
   shareData;
   constructor() {}
 
+  setResourceCover(resource) {
+    const { thumb, original } = resource;
+    const cover = original ? original : thumb ? thumb : "";
+    return cover;
+  }
+
   ngOnInit() {
+    this.resourceCover = this.setResourceCover(this.data);
     console.log(this.data, "header");
     this.shareData = { resource_id: this.data.resource_id, extended: true };
   }
