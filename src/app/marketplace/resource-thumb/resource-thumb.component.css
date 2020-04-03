@@ -1,5 +1,6 @@
 .resource-thumb__container {
   box-shadow: 0px -1px 5px 0px rgba(0, 0, 0, 0.12);
+  display: flex;
 }
 
 .resource-thumb__options {
@@ -8,4 +9,10 @@
   background-color: white;
   border-top: 1px solid var(--bg-grey);
   color: grey;
+}
+
+.rating {
+  width: 40px;
+  height: 150px;
+  background-color: white;
 }

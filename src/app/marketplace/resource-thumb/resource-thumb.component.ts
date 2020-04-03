@@ -12,11 +12,12 @@ export class ResourceThumbComponent implements OnInit {
   headerData;
   bodyData;
   shareData;
+  review = 0;
   constructor(public dialog: MatDialog) {}
 
   setHeaderData(resource) {
-    const { thumb, count_reviews, review } = resource;
-    return { thumb, count_reviews, review };
+    const { thumb } = resource;
+    return { thumb };
   }
 
   setBodyData(resource) {
@@ -51,6 +52,11 @@ export class ResourceThumbComponent implements OnInit {
     return { resource_id: _id };
   }
 
+  setReview(resource) {
+    const { review } = resource;
+    return review;
+  }
+
   openDialog() {
     const dialogRef = this.dialog.open(NavDialogComponent);
   }
@@ -59,5 +65,6 @@ export class ResourceThumbComponent implements OnInit {
     this.headerData = this.setHeaderData(this.resource);
     this.bodyData = this.setBodyData(this.resource);
     this.shareData = this.setShareData(this.resource);
+    this.review = this.setReview(this.resource);
   }
 }

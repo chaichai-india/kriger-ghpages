@@ -1,52 +1,29 @@
-#enquiry {
-  background-color: var(--primary-color);
-  color: white;
-  border-radius: 4px;
-  font-family: var(--secondary-font-family);
-  width: 130px;
-  font-size: 0.7rem;
-  justify-self: center;
-  padding: 0 10px;
-  height: 1.4rem;
-  line-height: 1.4rem;
-  margin-bottom: 1rem;
-}
-
 .resource-body__container {
   display: grid;
-  justify-content: center;
   align-items: center;
-  text-align: center;
-  grid-gap: 1rem 0;
-  width: 200px;
-  height: 300px;
+  width: 150px;
+  height: 150px;
   background-color: white;
+  padding-left: 1rem;
+}
+
+.resource-body__owner,
+.resource-body__subject,
+.resource-body__exam,
+.resource-body__fees {
+  font-size: 0.8rem;
 }
 
 .resource-body__name {
-  padding-top: 1rem;
+  font-weight: bold;
 }
 
-.resource-body__owner > span {
+.resource-body__owner span,
+.resource-body__subject span,
+.resource-body__exam span {
   color: var(--primary-color);
 }
 
-fieldset {
-  border-radius: 24px;
-  border: 1px solid grey;
-  justify-self: center;
-  padding: 0 1rem 0.2rem 1rem;
-}
-
-fieldset legend {
-  color: grey;
-  font-size: 0.7rem;
-  text-align: left;
-}
-
-.resource-body__subject > p,
-.resource-body__exam > p {
-  color: var(--primary-color);
-  width: 100px;
-  font-size: 0.8rem;
+.resource-body__fees {
+  color: var(--danger-color);
 }

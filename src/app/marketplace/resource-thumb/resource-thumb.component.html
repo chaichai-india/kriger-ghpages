@@ -2,11 +2,14 @@
 <div class="resource-thumb__container">
   <app-resource-thumb-header [data]="headerData"></app-resource-thumb-header>
   <app-resource-thumb-body [data]="bodyData"></app-resource-thumb-body>
-  <div class="resource-thumb__options">
+  <div class="rating">
+    <app-resource-thumb-rating [rating]="+review"></app-resource-thumb-rating>
+  </div>
+  <!-- <div class="resource-thumb__options">
     <app-resource-share [data]="shareData"></app-resource-share>
     <button (click)="openDialog()" mat-button>
       <mat-icon>edit</mat-icon>
       <span>Review</span>
     </button>
-  </div>
+  </div> -->
 </div>

@@ -47,7 +47,7 @@ export class ResourceListComponent implements OnInit {
     this.loading.next(true);
     this.resourceService
       .getResources({
-        count: "3",
+        count: "10",
         resource_id: this.lastResourceValue.toString(),
         mode: "scroll"
       })
@@ -79,7 +79,7 @@ export class ResourceListComponent implements OnInit {
 
   ngOnInit() {
     this.resourceService
-      .getResources({ count: "3", resource_id: "0" })
+      .getResources({ count: "10", resource_id: "0" })
       .pipe(
         tap(data => {
           const { resources = [] } = data || {};

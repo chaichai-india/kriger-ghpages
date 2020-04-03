@@ -1,4 +1,4 @@
-<div class="resource-body__container">
+<!-- <div class="resource-body__container">
   <p class="resource-body__name">{{ data?.name }}</p>
   <p class="resource-body__owner">
     By: <span>{{ data?.owner_name }}</span>
@@ -17,4 +17,27 @@
   <button id="enquiry" (click)="openDialog()" mat-raised-button>
     Enquire Now
   </button>
+</div> -->
+
+<div class="resource-body__container">
+  <p class="resource-body__name">{{ data?.name }}</p>
+  <p class="resource-body__owner">
+    By: <span>{{ data?.owner_name }}</span>
+  </p>
+  <div class="resource-body__subject">
+    <p>
+      Subject: <span>{{ data?.subject ? data?.subject : "NA" }}</span>
+    </p>
+  </div>
+  <div class="resource-body__exam">
+    <p>
+      Exam: <span>{{ data?.exam ? data?.exam : "NA" }}</span>
+    </p>
+  </div>
+  <div class="resource-body__fees">
+    <p>₹{{ data?.fees }} Per {{ data?.fees_type }}</p>
+  </div>
+  <!-- <app-resource-thumb-rating
+    [rating]="+data?.review"
+  ></app-resource-thumb-rating> -->
 </div>
