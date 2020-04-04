@@ -79,7 +79,7 @@ app.get("*", (req, res) => {
 
 // If we're not in the Cloud Functions environment, spin up a Node server
 if (!process.env.FUNCTION_NAME) {
-  const PORT = process.env.PORT || 9000;
+  const PORT = process.env.PORT || 8500;
   app.listen(PORT, () => {
     console.log(`Angular Node server listening on ${PORT}`);
   });
