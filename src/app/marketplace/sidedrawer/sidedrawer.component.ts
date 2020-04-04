@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { DialogComponent } from "src/app/shared/dialog/dialog.component";
+import { DialogComponent } from "../../shared/dialog/dialog.component";
 import { MatDialog } from "@angular/material/dialog";
 
 @Component({
