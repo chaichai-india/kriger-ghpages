@@ -1,153 +1,30 @@
-<!-- <section id="icon-with-text">
-  <div class="item">
-    <mat-icon>done_outline</mat-icon>
-    <p>
-      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequuntur,
-      molestias? exercitationem ullam?
-    </p>
-  </div>
-  <div class="item">
-    <mat-icon>done_outline</mat-icon>
-    <p>
-      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequuntur,
-      molestias? exercitationem ullam?
-    </p>
-  </div>
-  <div class="item">
-    <mat-icon>done_outline</mat-icon>
-    <p>
-      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequuntur,
-      molestias? exercitationem ullam?
-    </p>
-  </div>
-  <div class="item">
-    <mat-icon>done_outline</mat-icon>
-    <p>
-      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequuntur,
-      molestias? exercitationem ullam?
-    </p>
-  </div>
-  <div class="item">
-    <mat-icon>done_outline</mat-icon>
-    <p>
-      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequuntur,
-      molestias? exercitationem ullam?
-    </p>
-  </div>
-</section>
-<section class="image-with-text">
-  <div class="image">
-    <img src="assets/images/screenshots/notification.png" alt="">
-  </div>
-  <div class="text">
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde repudiandae
-    perferendis quas id nisi quisquam numquam corrupti, reprehenderit nulla,
-    tempore vel a iste? Inventore perferendis sed labore! Quo consectetur in eos
-    inventore voluptatum vero, quam praesentium. Esse, error nostrum. Vero omnis
-    maiores reiciendis modi, reprehenderit voluptate officiis deserunt
-    voluptatum autem!
-  </div>
-</section>
-<section class="image-with-text">
-  <div class="text">
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde repudiandae
-    perferendis quas id nisi quisquam numquam corrupti, reprehenderit nulla,
-    tempore vel a iste? Inventore perferendis sed labore! Quo consectetur in eos
-    inventore voluptatum vero, quam praesentium. Esse, error nostrum. Vero omnis
-    maiores reiciendis modi, reprehenderit voluptate officiis deserunt
-    voluptatum autem!
-  </div>
-  <div class="image">
-    <img src="assets/images/screenshots/notification.png" alt="">
-  </div>
-</section>
-<section class="image-with-text">
-  <div class="image">
-    <img src="assets/images/screenshots/notification.png" alt="">
-  </div>
-  <div class="text">
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde repudiandae
-    perferendis quas id nisi quisquam numquam corrupti, reprehenderit nulla,
-    tempore vel a iste? Inventore perferendis sed labore! Quo consectetur in eos
-    inventore voluptatum vero, quam praesentium. Esse, error nostrum. Vero omnis
-    maiores reiciendis modi, reprehenderit voluptate officiis deserunt
-    voluptatum autem!
-  </div>
-</section>
-<section class="image-with-text">
-  <div class="text">
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde repudiandae
-    perferendis quas id nisi quisquam numquam corrupti, reprehenderit nulla,
-    tempore vel a iste? Inventore perferendis sed labore! Quo consectetur in eos
-    inventore voluptatum vero, quam praesentium. Esse, error nostrum. Vero omnis
-    maiores reiciendis modi, reprehenderit voluptate officiis deserunt
-    voluptatum autem!
-  </div>
-  <div class="image">
-    <img src="assets/images/screenshots/notification.png" alt="">
-  </div>
-</section>
-<section class="image-with-text">
-  <div class="image">
-    <img src="assets/images/screenshots/notification.png" alt="">
-  </div>
-  <div class="text">
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde repudiandae
-    perferendis quas id nisi quisquam numquam corrupti, reprehenderit nulla,
-    tempore vel a iste? Inventore perferendis sed labore! Quo consectetur in eos
-    inventore voluptatum vero, quam praesentium. Esse, error nostrum. Vero omnis
-    maiores reiciendis modi, reprehenderit voluptate officiis deserunt
-    voluptatum autem!
-  </div>
-</section> -->
-<!-- proto 1 -->
-
-<!-- <header>India's First Education Networking Platform</header>
-<div class="countries">
-  <p>India</p>
-  <p>North America</p>
-  <p>South America</p>
-  <p>Dubai</p>
-</div>
-
-<div id="featured">
-  <h2 class="heading">Featured In</h2>
-  <div class="images">
-    <img
-      src="http://www.earlypad.com/wp-content/uploads/2016/08/Earlypad_logo.png"
-      *ngFor="let f of featured"
-    />
-  </div>
-</div> -->
-
-<!-- proto2 -->
-
 <section id="header">
   <div class="bg-image"></div>
   <p class="heading">
     India's Education Network
   </p>
   <p class="subheading">
-      Our Vision: To Make India 100% Literate 
-    </p>
+    Our Vision: To Make India 100% Literate
+  </p>
   <p class="subheading">
-    Our Mission: To connect Learners, Educators and Institutes to remove the information and opportunity asymmetry in education
+    Our Mission: To connect Learners, Educators and Institutes to remove the
+    information and opportunity asymmetry in education
   </p>
   <div class="cta">
-    <a style="cursor: pointer" (click)="openDialog()">Register</a>
+    <a style="cursor: pointer;" (click)="openDialog()">Register</a>
     <a [routerLink]="['/login']" href="/login">Login</a>
     <a
       href="https://play.google.com/store/apps/details?id=in.kriger.krigercampus"
       target="_blank"
       rel="noopener"
-      ><img class="playstore" src="/assets/images/play_store.png"/><img
+      ><img class="playstore" src="/assets/images/play_store.png" /><img
     /></a>
   </div>
 </section>
 
 <section
   id="featured"
-  style="cursor: pointer"
+  style="cursor: pointer;"
   [routerLink]="['/media-coverage']"
 >
   <p class="heading">Featured In</p>
@@ -172,7 +49,7 @@
 
 <section id="howitworks">
   <p class="heading">How it Works</p>
-  <mat-tab-group mat-stretch-tabs mat-align-tabs="center" style="width: 100%">
+  <mat-tab-group mat-stretch-tabs mat-align-tabs="center" style="width: 100%;">
     <mat-tab class="label" label="Learner">
       <ng-template matTabContent>
         <div class="content">
@@ -189,11 +66,11 @@
                 <p class="text-heading">Profile</p>
                 <div class="text-content">
                   <p>Keep your profile upto date</p>
-                  <p>Get noticed to opportunities</p> 
+                  <p>Get noticed to opportunities</p>
                 </div>
               </div>
               <div class="image">
-                <img src="assets/images/screenshots/profile-eli.png" alt="">
+                <img src="assets/images/screenshots/profile-eli.png" alt="" />
               </div>
             </div>
             <div class="row">
@@ -201,25 +78,28 @@
                 <p class="text-heading">Timeline</p>
                 <div class="text-content">
                   <p>Follow educators and institutes</p>
-<p>Get updates</p>
-<p>Ask questions</p>
+                  <p>Get updates</p>
+                  <p>Ask questions</p>
                 </div>
               </div>
               <div class="image">
-                <img src="assets/images/screenshots/timeline-eli.png" alt="">
+                <img src="assets/images/screenshots/timeline-eli.png" alt="" />
               </div>
             </div>
             <div class="row">
               <div class="text">
                 <p class="text-heading">Marketplace</p>
                 <div class="text-content">
-                  <p>Search</p> 
-<p>Enquire</p>
-<p>Learn</p> 
+                  <p>Search</p>
+                  <p>Enquire</p>
+                  <p>Learn</p>
                 </div>
               </div>
               <div class="image">
-                <img src="assets/images/screenshots/marketplace-eli.png" alt="">
+                <img
+                  src="assets/images/screenshots/marketplace-eli.png"
+                  alt=""
+                />
               </div>
             </div>
             <div class="row">
@@ -227,28 +107,27 @@
                 <p class="text-heading">Group</p>
                 <div class="text-content">
                   <p>Join groups for</p>
-                  <br>
-<p>Study</p>
-<p>Exam prepration</p>
-<p>Current affairs</p>
-<p>Doubt clearing</p>
-<p>Study with 10000+ students and faculty</p>
+                  <br />
+                  <p>Study</p>
+                  <p>Exam prepration</p>
+                  <p>Current affairs</p>
+                  <p>Doubt clearing</p>
+                  <p>Study with 10000+ students and faculty</p>
                 </div>
               </div>
               <div class="image">
-                <img src="assets/images/screenshots/groups-eli.png" alt="">
+                <img src="assets/images/screenshots/groups-eli.png" alt="" />
               </div>
             </div>
             <div class="row">
               <div class="text">
                 <p class="text-heading">Krigers</p>
                 <div class="text-content">
-                  Connect with Learners
-Educators and Institutes
+                  Connect with Learners Educators and Institutes
                 </div>
               </div>
               <div class="image">
-                <img src="assets/images/screenshots/krigers-eli.png" alt="">
+                <img src="assets/images/screenshots/krigers-eli.png" alt="" />
               </div>
             </div>
             <div class="row">
@@ -259,7 +138,10 @@ Educators and Institutes
                 </div>
               </div>
               <div class="image">
-                <img src="assets/images/screenshots/notification-eli.png" alt="">
+                <img
+                  src="assets/images/screenshots/notification-eli.png"
+                  alt=""
+                />
               </div>
             </div>
           </div>
@@ -285,11 +167,11 @@ Educators and Institutes
                 <p class="text-heading">Profile</p>
                 <div class="text-content">
                   <p>Keep your profile upto date</p>
-                  <p>Get noticed to opportunities</p> 
+                  <p>Get noticed to opportunities</p>
                 </div>
               </div>
               <div class="image">
-                <img src="assets/images/screenshots/profile-eli.png" alt="">
+                <img src="assets/images/screenshots/profile-eli.png" alt="" />
               </div>
             </div>
             <div class="row">
@@ -297,12 +179,12 @@ Educators and Institutes
                 <p class="text-heading">Timeline</p>
                 <div class="text-content">
                   <p>Post regular updates</p>
-                  <p>Share content across web</p> 
+                  <p>Share content across web</p>
                   <p>Gain followers</p>
                 </div>
               </div>
               <div class="image">
-                <img src="assets/images/screenshots/timeline-eli.png" alt="">
+                <img src="assets/images/screenshots/timeline-eli.png" alt="" />
               </div>
             </div>
             <div class="row">
@@ -310,26 +192,29 @@ Educators and Institutes
                 <p class="text-heading">Marketplace</p>
                 <div class="text-content">
                   <p>Add your services and offerings</p>
-                  <br>
-<p>Books</p>
-<p>Classroom Learning</p>
-<p>Counselling</p>
-<p>Distance Learning</p>
-<p>e-Learning</p>
-<p>Home Tutions</p>
-<p>Mentorship</p>
-<p>Scholarship</p>
-<p>Study Material</p>
-<p>Test Paper</p>
-<p>Training Session</p>
-<br>
+                  <br />
+                  <p>Books</p>
+                  <p>Classroom Learning</p>
+                  <p>Counselling</p>
+                  <p>Distance Learning</p>
+                  <p>e-Learning</p>
+                  <p>Home Tutions</p>
+                  <p>Mentorship</p>
+                  <p>Scholarship</p>
+                  <p>Study Material</p>
+                  <p>Test Paper</p>
+                  <p>Training Session</p>
+                  <br />
 
-<p>Receive enquries </p>
-<p>Grow your business</p>
+                  <p>Receive enquries</p>
+                  <p>Grow your business</p>
                 </div>
               </div>
               <div class="image">
-                <img src="assets/images/screenshots/marketplace-eli.png" alt="">
+                <img
+                  src="assets/images/screenshots/marketplace-eli.png"
+                  alt=""
+                />
               </div>
             </div>
             <div class="row">
@@ -337,27 +222,26 @@ Educators and Institutes
                 <p class="text-heading">Group</p>
                 <div class="text-content">
                   <p>Create groups for</p>
-                  <br>
-<p>Study</p>
-<p>Current affairs</p>
-<p>Parents Teacher interaction</p>
-<p>Doubt clearing</p>
+                  <br />
+                  <p>Study</p>
+                  <p>Current affairs</p>
+                  <p>Parents Teacher interaction</p>
+                  <p>Doubt clearing</p>
                 </div>
               </div>
               <div class="image">
-                <img src="assets/images/screenshots/groups-eli.png" alt="">
+                <img src="assets/images/screenshots/groups-eli.png" alt="" />
               </div>
             </div>
             <div class="row">
               <div class="text">
                 <p class="text-heading">Krigers</p>
                 <div class="text-content">
-                  Connect with Learners
-Educators and Institutes
+                  Connect with Learners Educators and Institutes
                 </div>
               </div>
               <div class="image">
-                <img src="assets/images/screenshots/krigers-eli.png" alt="">
+                <img src="assets/images/screenshots/krigers-eli.png" alt="" />
               </div>
             </div>
             <div class="row">
@@ -368,7 +252,10 @@ Educators and Institutes
                 </div>
               </div>
               <div class="image">
-                <img src="assets/images/screenshots/notification-eli.png" alt="">
+                <img
+                  src="assets/images/screenshots/notification-eli.png"
+                  alt=""
+                />
               </div>
             </div>
           </div>
@@ -395,11 +282,11 @@ Educators and Institutes
                 <p class="text-heading">Profile</p>
                 <div class="text-content">
                   <p>Keep your profile upto date</p>
-                  <p>Get noticed to opportunities</p> 
+                  <p>Get noticed to opportunities</p>
                 </div>
               </div>
               <div class="image">
-                <img src="assets/images/screenshots/profile-eli.png" alt="">
+                <img src="assets/images/screenshots/profile-eli.png" alt="" />
               </div>
             </div>
             <div class="row">
@@ -407,12 +294,12 @@ Educators and Institutes
                 <p class="text-heading">Timeline</p>
                 <div class="text-content">
                   <p>Post regular updates</p>
-                  <p>Share content across web</p> 
+                  <p>Share content across web</p>
                   <p>Gain followers</p>
                 </div>
               </div>
               <div class="image">
-                <img src="assets/images/screenshots/timeline-eli.png" alt="">
+                <img src="assets/images/screenshots/timeline-eli.png" alt="" />
               </div>
             </div>
             <div class="row">
@@ -420,26 +307,29 @@ Educators and Institutes
                 <p class="text-heading">Marketplace</p>
                 <div class="text-content">
                   <p>Add your services and offerings</p>
-                  <br>
-<p>Books</p>
-<p>Classroom Learning</p>
-<p>Counselling</p>
-<p>Distance Learning</p>
-<p>e-Learning</p>
-<p>Home Tutions</p>
-<p>Mentorship</p>
-<p>Scholarship</p>
-<p>Study Material</p>
-<p>Test Paper</p>
-<p>Training Session</p>
-<br>
+                  <br />
+                  <p>Books</p>
+                  <p>Classroom Learning</p>
+                  <p>Counselling</p>
+                  <p>Distance Learning</p>
+                  <p>e-Learning</p>
+                  <p>Home Tutions</p>
+                  <p>Mentorship</p>
+                  <p>Scholarship</p>
+                  <p>Study Material</p>
+                  <p>Test Paper</p>
+                  <p>Training Session</p>
+                  <br />
 
-<p>Receive enquries </p>
-<p>Grow your revenue</p>
+                  <p>Receive enquries</p>
+                  <p>Grow your revenue</p>
                 </div>
               </div>
               <div class="image">
-                <img src="assets/images/screenshots/marketplace-eli.png" alt="">
+                <img
+                  src="assets/images/screenshots/marketplace-eli.png"
+                  alt=""
+                />
               </div>
             </div>
             <div class="row">
@@ -447,27 +337,26 @@ Educators and Institutes
                 <p class="text-heading">Group</p>
                 <div class="text-content">
                   <p>Create groups for</p>
-                  <br>
-<p>Study</p>
-<p>Current affairs</p>
-<p>Parents Teacher interaction</p>
-<p>Doubt clearing</p>
+                  <br />
+                  <p>Study</p>
+                  <p>Current affairs</p>
+                  <p>Parents Teacher interaction</p>
+                  <p>Doubt clearing</p>
                 </div>
               </div>
               <div class="image">
-                <img src="assets/images/screenshots/groups-eli.png" alt="">
+                <img src="assets/images/screenshots/groups-eli.png" alt="" />
               </div>
             </div>
             <div class="row">
               <div class="text">
                 <p class="text-heading">Krigers</p>
                 <div class="text-content">
-                 Connect with Learners
-Educators and Institutes
+                  Connect with Learners Educators and Institutes
                 </div>
               </div>
               <div class="image">
-                <img src="assets/images/screenshots/krigers-eli.png" alt="">
+                <img src="assets/images/screenshots/krigers-eli.png" alt="" />
               </div>
             </div>
             <div class="row">
@@ -478,7 +367,10 @@ Educators and Institutes
                 </div>
               </div>
               <div class="image">
-                <img src="assets/images/screenshots/notification-eli.png" alt="">
+                <img
+                  src="assets/images/screenshots/notification-eli.png"
+                  alt=""
+                />
               </div>
             </div>
           </div>

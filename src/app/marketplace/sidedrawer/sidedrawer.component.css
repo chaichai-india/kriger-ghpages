@@ -1,0 +1,18 @@
+.drawer__container {
+  display: flex;
+  flex-direction: column;
+  padding: 0 1rem;
+  /* pointer-events: none; */
+}
+
+.filters {
+  margin-top: 2rem;
+}
+
+.filters h3 {
+  padding-bottom: 1rem;
+}
+
+.filters mat-form-field {
+  width: 100%;
+}

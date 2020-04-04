@@ -1,28 +1,35 @@
-<!-- <mat-toolbar>
-  <span>Marketplace</span>
-</mat-toolbar> -->
-<div
-  class="resource-list__container"
-  infinite-scroll
-  (scrolled)="nextBatch()"
-  [infiniteScrollDistance]="1"
-  [infiniteScrollThrottle]="500"
-  [infiniteScrollDisabled]="infiniteDisable"
->
-  <app-resource-thumb
-    *ngFor="let resource of resource$ | async"
-    [resource]="resource"
-  ></app-resource-thumb>
-  <!-- *ngFor="let resource of (resources$ | async)?.resources" -->
-</div>
-<div class="loading-spinner" *ngIf="loading$ | async">
-  <mat-spinner diameter="50"></mat-spinner>
-</div>
-<div class="load__btn">
-  <button mat-stroked-button (click)="resetInfinite()" *ngIf="infiniteDisable">
-    Load More Resources
-  </button>
-</div>
-<!-- <div class="error" *ngIf="error">
+<mat-drawer-container class="example-container">
+  <mat-drawer mode="side" opened>
+    <app-marketplace-sidedrawer></app-marketplace-sidedrawer>
+  </mat-drawer>
+  <mat-drawer-content>
+    <div
+      class="resource-list__container"
+      infinite-scroll
+      (scrolled)="nextBatch()"
+      [infiniteScrollDistance]="1"
+      [infiniteScrollThrottle]="500"
+      [infiniteScrollDisabled]="infiniteDisable"
+    >
+      <app-resource-thumb
+        *ngFor="let resource of resource$ | async"
+        [resource]="resource"
+      ></app-resource-thumb>
+    </div>
+    <div class="loading-spinner" *ngIf="loading$ | async">
+      <mat-spinner diameter="50"></mat-spinner>
+    </div>
+    <div class="load__btn">
+      <button
+        mat-stroked-button
+        (click)="resetInfinite()"
+        *ngIf="infiniteDisable"
+      >
+        Load More Resources
+      </button>
+    </div>
+    <!-- <div class="error" *ngIf="error">
   {{ errorMessage }}
 </div> -->
+  </mat-drawer-content>
+</mat-drawer-container>

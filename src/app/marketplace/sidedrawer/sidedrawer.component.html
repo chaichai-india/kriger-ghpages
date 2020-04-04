@@ -1,0 +1,52 @@
+<div class="drawer__container" (click)="openDialog()">
+  <mat-form-field>
+    <mat-label>Sort by:</mat-label>
+    <mat-select>
+      <mat-option value="option1">New to Old</mat-option>
+      <mat-option value="option2">Old to New</mat-option>
+      <mat-option value="option3">High to Low</mat-option>
+      <mat-option value="option3">Low to High</mat-option>
+      <mat-option value="option3">A to Z</mat-option>
+      <mat-option value="option3">Z to A</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <div class="filters">
+    <h3>Filter</h3>
+    <mat-form-field>
+      <mat-label>Select Type</mat-label>
+      <mat-select>
+        <mat-option value="option1">Admission</mat-option>
+        <mat-option value="option2">Books</mat-option>
+        <mat-option value="option3">Home Tuitions</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input
+        type="text"
+        placeholder="Select Exam"
+        aria-label="Select Exam"
+        matInput
+      />
+    </mat-form-field>
+
+    <mat-form-field>
+      <input
+        type="text"
+        placeholder="Select Subject"
+        aria-label="Select Subject"
+        matInput
+      />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Select Class</mat-label>
+      <mat-select>
+        <mat-option value="option1">Class 10</mat-option>
+        <mat-option value="option2">Class 11</mat-option>
+        <mat-option value="option3">Class 12</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+</div>

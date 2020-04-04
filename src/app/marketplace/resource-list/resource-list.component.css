@@ -1,8 +1,14 @@
-/* mat-toolbar {
-  justify-content: center;
-  font-size: 2rem;
-  text-transform: uppercase;
-} */
+mat-drawer-container {
+  background-color: white;
+}
+
+mat-drawer {
+  position: fixed;
+  top: 60px;
+  width: 200px;
+  margin: 1rem 0;
+  border-right: 2px solid #ddd;
+}
 
 .resource-list__container {
   display: grid;
@@ -11,7 +17,6 @@
   grid-gap: 1rem;
   justify-content: center;
   padding: 1rem 0;
-  /* background-color: var(--bg-grey); */
   min-height: 100vh;
   padding-bottom: 2rem;
 }
@@ -29,13 +34,13 @@
   color: white;
 }
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 1200px) {
   .resource-list__container {
     grid-template-columns: repeat(2, 300px);
   }
 }
 
-@media screen and (max-width: 550px) {
+@media screen and (max-width: 850px) {
   .resource-list__container {
     grid-template-columns: 300px;
   }

@@ -12,20 +12,24 @@ import {
   MatDialogModule,
   MatButtonModule,
   MatFormFieldModule,
-  MatInputModule
+  MatInputModule,
 } from "@angular/material";
+import { MatSidenavModule } from "@angular/material/sidenav";
+import { MatSelectModule } from "@angular/material/select";
 import { ResourceThumbHeaderComponent } from "./resource-thumb/resource-thumb-header/resource-thumb-header.component";
 import { ResourceThumbRatingComponent } from "./resource-thumb/resource-thumb-rating/resource-thumb-rating.component";
 import { ResourceThumbBodyComponent } from "./resource-thumb/resource-thumb-body/resource-thumb-body.component";
 import { InfiniteScrollModule } from "ngx-infinite-scroll";
 import {
   ResourceShareComponent,
-  ShareResourceDialogComponent
+  ShareResourceDialogComponent,
 } from "./resource-share/resource-share.component";
 import { ClipboardModule } from "ngx-clipboard";
 import { ResourceResolver } from "./resource-resolver.service";
-import { ResourceExtendedHeaderComponent } from './resource-extended/resource-extended-header/resource-extended-header.component';
-import { ResourceExtendedBodyComponent } from './resource-extended/resource-extended-body/resource-extended-body.component';
+import { ResourceExtendedHeaderComponent } from "./resource-extended/resource-extended-header/resource-extended-header.component";
+import { ResourceExtendedBodyComponent } from "./resource-extended/resource-extended-body/resource-extended-body.component";
+import { SidedrawerComponent } from "./sidedrawer/sidedrawer.component";
+import { SharedModule } from "../shared/shared.module";
 
 @NgModule({
   declarations: [
@@ -38,7 +42,8 @@ import { ResourceExtendedBodyComponent } from './resource-extended/resource-exte
     ResourceShareComponent,
     ShareResourceDialogComponent,
     ResourceExtendedHeaderComponent,
-    ResourceExtendedBodyComponent
+    ResourceExtendedBodyComponent,
+    SidedrawerComponent,
   ],
   entryComponents: [ShareResourceDialogComponent],
   imports: [
@@ -52,8 +57,11 @@ import { ResourceExtendedBodyComponent } from './resource-extended/resource-exte
     InfiniteScrollModule,
     MatFormFieldModule,
     ClipboardModule,
-    MatInputModule
+    MatInputModule,
+    MatSidenavModule,
+    MatSelectModule,
+    SharedModule,
   ],
-  providers: [ResourceResolver]
+  providers: [ResourceResolver],
 })
 export class MarketplaceModule {}

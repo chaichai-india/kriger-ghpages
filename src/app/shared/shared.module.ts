@@ -17,14 +17,17 @@ import { ScrollTopComponent } from "./scroll-top/scroll-top.component";
 import { FooterNewComponent } from "./footer-new/footer-new.component";
 import { RouterModule } from "@angular/router";
 import { StaticProfileComponent } from "./static-profile/static-profile.component";
+import { DialogComponent } from "./dialog/dialog.component";
 
 @NgModule({
   declarations: [
     ContactComponent,
     ScrollTopComponent,
     FooterNewComponent,
-    StaticProfileComponent
+    StaticProfileComponent,
+    DialogComponent,
   ],
+  entryComponents: [DialogComponent],
   imports: [
     CommonModule,
     MatButtonModule,
@@ -33,16 +36,17 @@ import { StaticProfileComponent } from "./static-profile/static-profile.componen
     MatChipsModule,
     MatIconModule,
     NgbModule,
-    RouterModule
+    RouterModule,
   ],
   exports: [
     ContactComponent,
     ScrollTopComponent,
     FooterNewComponent,
     StaticProfileComponent,
+    DialogComponent,
     CommonModule,
     MatProgressSpinnerModule,
-    NgbModule
-  ]
+    NgbModule,
+  ],
 })
 export class SharedModule {}
