@@ -16,6 +16,8 @@ import {
 } from "@angular/material";
 import { MatSidenavModule } from "@angular/material/sidenav";
 import { MatSelectModule } from "@angular/material/select";
+import { MatRadioModule } from "@angular/material/radio";
+import { MatCheckboxModule } from "@angular/material/checkbox";
 import { ResourceThumbHeaderComponent } from "./resource-thumb/resource-thumb-header/resource-thumb-header.component";
 import { ResourceThumbRatingComponent } from "./resource-thumb/resource-thumb-rating/resource-thumb-rating.component";
 import { ResourceThumbBodyComponent } from "./resource-thumb/resource-thumb-body/resource-thumb-body.component";
@@ -60,6 +62,8 @@ import { SharedModule } from "../shared/shared.module";
     MatInputModule,
     MatSidenavModule,
     MatSelectModule,
+    MatRadioModule,
+    MatCheckboxModule,
     SharedModule,
   ],
   providers: [ResourceResolver],

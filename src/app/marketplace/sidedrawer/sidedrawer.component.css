@@ -5,6 +5,30 @@
   /* pointer-events: none; */
 }
 
+mat-radio-group {
+  margin-top: 0.4rem;
+}
+
+mat-radio-button {
+  display: block;
+  font-size: 0.8rem;
+  padding: 0.15rem 0;
+}
+
+::ng-deep .mat-radio-inner-circle,
+::ng-deep .mat-radio-outer-circle,
+::ng-deep .mat-radio-container {
+  width: 15px !important;
+  height: 15px !important;
+}
+
+::ng-deep .mat-radio-button .mat-radio-ripple {
+  left: calc(50% - 15px) !important;
+  top: calc(50% - 15px) !important;
+  height: 30px !important;
+  width: 30px !important;
+}
+
 .filters {
   margin-top: 2rem;
 }
@@ -13,6 +37,15 @@
   padding-bottom: 1rem;
 }
 
+mat-checkbox {
+  display: block;
+  font-size: 0.8rem;
+}
+
+.filters mat-label {
+  margin: 0.75rem 0 0.5rem 0;
+  display: block;
+}
 .filters mat-form-field {
   width: 100%;
 }
