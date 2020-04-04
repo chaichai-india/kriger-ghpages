@@ -31,7 +31,7 @@ const APP_NAME = "kriger-campus-website";
 
 const {
   AppServerModuleNgFactory,
-  LAZY_MODULE_MAP
+  LAZY_MODULE_MAP,
 } = require(`./dist/${APP_NAME}-server/main`);
 
 // index.html template
@@ -51,8 +51,8 @@ app.engine("html", (_, options, callback) => {
     document: template,
     url: options.req.url,
     // DI so that we can get lazy-loading to work differently (since we need it to just instantly render it)
-    extraProviders: [provideModuleMap(LAZY_MODULE_MAP)]
-  }).then(html => {
+    extraProviders: [provideModuleMap(LAZY_MODULE_MAP)],
+  }).then((html) => {
     callback(null, html);
   });
 });
@@ -78,9 +78,9 @@ app.get("*", (req, res) => {
 });
 
 // If we're not in the Cloud Functions environment, spin up a Node server
-// if (!process.env.FUNCTION_NAME) {
-//   const PORT = process.env.PORT || 4000;
-//   app.listen(PORT, () => {
-//     console.log(`Node server listening on http://localhost:${PORT}`);
-//   });
-// }
+if (!process.env.FUNCTION_NAME) {
+  const PORT = process.env.PORT || 9000;
+  app.listen(PORT, () => {
+    console.log(`Angular Node server listening on ${PORT}`);
+  });
+}
