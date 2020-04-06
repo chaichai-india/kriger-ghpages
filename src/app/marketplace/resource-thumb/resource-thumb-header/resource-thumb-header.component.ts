@@ -9,7 +9,9 @@ import { Component, OnInit, Input } from "@angular/core";
       class="header"
       [ngStyle]="{
         'background-image':
-          'url(' + data?.thumb + '), url(../../../../assets/images/user.svg)'
+          'url(' +
+          data?.thumb +
+          '), url(../../../../assets/images/resource_default.jpeg)'
       }"
     >
       <div class="rating">
@@ -57,8 +59,8 @@ import { Component, OnInit, Input } from "@angular/core";
         bottom: 5px;
         right: 5px;
       }
-    `
-  ]
+    `,
+  ],
 })
 export class ResourceThumbHeaderComponent implements OnInit {
   @Input() data;

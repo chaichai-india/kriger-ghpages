@@ -1,20 +1,12 @@
 <div class="drawer__container" (click)="openDialog()">
   <mat-label>Sort by:</mat-label>
-  <!-- <mat-select>
-      <mat-option value="option1">New to Old</mat-option>
-      <mat-option value="option2">Old to New</mat-option>
-      <mat-option value="option3">High to Low</mat-option>
-      <mat-option value="option3">Low to High</mat-option>
-      <mat-option value="option3">A to Z</mat-option>
-      <mat-option value="option3">Z to A</mat-option>
-    </mat-select> -->
   <mat-radio-group aria-label="Select an option">
     <mat-radio-button value="option1">New to Old</mat-radio-button>
     <mat-radio-button value="option2">Old to New</mat-radio-button>
     <mat-radio-button value="option3">High to Low</mat-radio-button>
-    <mat-radio-button value="option3">Low to High</mat-radio-button>
-    <mat-radio-button value="option3">A to Z</mat-radio-button>
-    <mat-radio-button value="option3">Z to A</mat-radio-button>
+    <mat-radio-button value="option4">Low to High</mat-radio-button>
+    <mat-radio-button value="option5">A to Z</mat-radio-button>
+    <mat-radio-button value="option6">Z to A</mat-radio-button>
   </mat-radio-group>
 
   <div class="filters">
@@ -28,36 +20,12 @@
     <mat-checkbox value="option1">SSC CGL</mat-checkbox>
     <mat-checkbox value="option2">UPSC</mat-checkbox>
     <mat-checkbox value="option3">SSC CHAL</mat-checkbox>
-    <!-- <mat-form-field>
-      <input
-        type="text"
-        placeholder="Select Exam"
-        aria-label="Select Exam"
-        matInput
-      />
-    </mat-form-field> -->
 
-    <!-- <mat-form-field>
-      <input
-        type="text"
-        placeholder="Select Subject"
-        aria-label="Select Subject"
-        matInput
-      />
-    </mat-form-field> -->
     <mat-label>Select Subject</mat-label>
     <mat-checkbox value="option1">Mathematics</mat-checkbox>
     <mat-checkbox value="option2">English</mat-checkbox>
     <mat-checkbox value="option3">Geography</mat-checkbox>
 
-    <!-- <mat-form-field>
-      <mat-label>Select Class</mat-label>
-      <mat-select>
-        <mat-option value="option1">Class 10</mat-option>
-        <mat-option value="option2">Class 11</mat-option>
-        <mat-option value="option3">Class 12</mat-option>
-      </mat-select>
-    </mat-form-field> -->
     <mat-label>Select Class</mat-label>
     <mat-checkbox value="option1">Class 10</mat-checkbox>
     <mat-checkbox value="option2">Class 11</mat-checkbox>

@@ -15,14 +15,33 @@ mat-radio-button {
   padding: 0.15rem 0;
 }
 
-::ng-deep .mat-radio-inner-circle,
-::ng-deep .mat-radio-outer-circle,
-::ng-deep .mat-radio-container {
+::ng-deep .drawer__container .mat-radio-inner-circle,
+::ng-deep .drawer__container .mat-radio-outer-circle,
+::ng-deep .drawer__container .mat-radio-container {
   width: 15px !important;
   height: 15px !important;
 }
+::ng-deep
+  .drawer__container
+  .mat-radio-button.mat-radio-checked
+  .mat-radio-outer-circle {
+  border-color: var(--primary-color);
+}
 
-::ng-deep .mat-radio-button .mat-radio-ripple {
+::ng-deep .drawer__container .mat-radio-button .mat-radio-inner-circle {
+  color: var(--primary-color);
+  background-color: var(--primary-color);
+}
+
+::ng-deep
+  .drawer__container
+  .mat-radio-button
+  .mat-radio-ripple
+  .mat-ripple-element {
+  background-color: var(--primary-color);
+}
+
+::ng-deep .drawer__container .mat-radio-button .mat-radio-ripple {
   left: calc(50% - 15px) !important;
   top: calc(50% - 15px) !important;
   height: 30px !important;
