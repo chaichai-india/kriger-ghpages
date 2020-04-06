@@ -2,12 +2,24 @@
   display: grid;
   overflow: hidden;
   padding: 1em;
-  max-width: 400px;
+  max-width: 300px;
   text-decoration: none;
   gap: 1rem;
+  place-items: center;
+  text-align: center;
 }
 
-img {
+h1 {
+  font-size: 1.2rem;
+  color: black;
+  margin-top: 1rem;
+}
+
+p {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+img#playstore {
   max-height: 100px;
   max-width: 300px;
   width: 100%;
