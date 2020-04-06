@@ -35,7 +35,7 @@
       </a>
 
       <a
-        *ngIf="!isHome"
+        *ngIf="isLoggedIn$ | async"
         class="nav-item d-flex flex-column align-items-center justify-content-center mr-4 font-weight-bold"
         [routerLink]="['/marketplace']"
         href="/marketplace"
@@ -118,7 +118,7 @@
           fontIcon="fa-sign-in-alt"
         ></mat-icon> -->
         <img src="assets/login.svg" width="24" />
-        <span style="margin-top: 8px">Login</span>
+        <span style="margin-top: 8px;">Login</span>
       </a>
 
       <!-- <li
@@ -165,6 +165,7 @@
           data-toggle="dropdown"
           aria-haspopup="true"
           aria-expanded="false"
+          style="padding-bottom: 0; padding-right: 0;"
         >
           <img
             [src]="
@@ -172,11 +173,18 @@
                 ? userDetails?.details?.thumb
                 : 'assets/images/user.svg'
             "
-            height="40"
-            width="40"
-            style="border-radius: 50%; object-fit: cover; background-position: center;"
+            height="24"
+            width="24"
+            style="
+              border-radius: 50%;
+              object-fit: cover;
+              background-position: center;
+            "
           />
         </span>
+        <span style="font-size: 0.7rem; margin-bottom: 10px; margin-top: 2px;"
+          >Profile</span
+        >
         <div
           class="dropdown-menu"
           aria-labelledby="navbarDropdown"
@@ -195,7 +203,7 @@
               fontSet="fas"
               fontIcon="fa-sign-out-alt"
             ></mat-icon>
-            <span style="height: 24px">Logout</span></span
+            <span style="height: 24px;">Logout</span></span
           >
         </div>
       </li>
@@ -222,7 +230,7 @@
           href="https://play.google.com/store/apps/details?id=in.kriger.krigercampus"
           target="_blank"
           rel="noopener"
-          ><img class="playstore" src="/assets/images/play_store.png"/><img
+          ><img class="playstore" src="/assets/images/play_store.png" /><img
         /></a>
       </li>
     </ul>
