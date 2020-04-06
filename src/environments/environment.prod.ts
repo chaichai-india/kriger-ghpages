@@ -7,8 +7,9 @@ export const environment = {
     projectId: "kriger-campus-cfe41",
     storageBucket: "kriger-campus-cfe41.appspot.com",
     appId: "1:144792054319:web:929e165b1b2026f45434da",
-    messagingSenderId: "144792054319"
+    messagingSenderId: "144792054319",
   },
+  api_url: "https://api.kriger.in/",
   // api_url: "http://134.209.157.104:5000/",
-  api_url: "http://167.71.226.244:5001/"
+  // api_url: "http://167.71.226.244:5001/"
 };
