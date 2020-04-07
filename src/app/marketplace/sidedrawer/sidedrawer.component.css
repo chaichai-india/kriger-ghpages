@@ -48,6 +48,41 @@ mat-radio-button {
   width: 30px !important;
 }
 
+::ng-deep
+  .drawer__container
+  .mat-radio-button.mat-accent
+  .mat-radio-ripple
+  .mat-ripple-element:not(.mat-radio-persistent-ripple),
+::ng-deep
+  .drawer__container
+  .mat-radio-button.mat-accent.mat-radio-checked
+  .mat-radio-persistent-ripple,
+::ng-deep
+  .drawer__container
+  .mat-radio-button.mat-accent:active
+  .mat-radio-persistent-ripple {
+  background-color: var(--primary-color);
+}
+
+::ng-deep
+  .drawer__container
+  .mat-checkbox-checked.mat-accent
+  .mat-checkbox-background,
+::ng-deep
+  .drawer__container
+  .mat-checkbox-indeterminate.mat-accent
+  .mat-checkbox-background {
+  background-color: var(--primary-color);
+}
+
+::ng-deep
+  .drawer__container
+  .mat-checkbox:not(.mat-checkbox-disabled).mat-accent
+  .mat-checkbox-ripple
+  .mat-ripple-element {
+  background-color: var(--primary-color);
+}
+
 .filters {
   margin-top: 2rem;
 }
