@@ -10,6 +10,10 @@ mat-drawer {
   border-right: 2px solid #ddd;
 }
 
+mat-drawer-content {
+  margin-left: 200px;
+}
+
 .resource-list__container {
   display: grid;
   grid-template-columns: repeat(3, 300px);

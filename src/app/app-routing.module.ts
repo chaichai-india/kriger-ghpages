@@ -10,7 +10,7 @@ const routes: Routes = [
   {
     path: "posts",
     loadChildren: "./post/post.module#PostModule",
-    data: { preload: true }
+    data: { preload: true },
   },
   // {
   //   path: "profiles",
@@ -18,19 +18,23 @@ const routes: Routes = [
   // },
   {
     path: "in",
-    loadChildren: "./profile/profile.module#ProfileModule"
+    loadChildren: "./profile/profile.module#ProfileModule",
   },
   {
     path: "marketplace",
-    loadChildren: "./marketplace/marketplace.module#MarketplaceModule"
+    loadChildren: "./marketplace/marketplace.module#MarketplaceModule",
+  },
+  {
+    path: "notifications",
+    loadChildren: "./notification/notification.module#NotificationModule",
   },
   {
     path: "educator",
-    loadChildren: "./educator/educator.module#EducatorModule"
+    loadChildren: "./educator/educator.module#EducatorModule",
   },
   {
     path: "institute",
-    loadChildren: "./institute/institute.module#InstituteModule"
+    loadChildren: "./institute/institute.module#InstituteModule",
   },
   // {
   //   path: "register",
@@ -38,7 +42,7 @@ const routes: Routes = [
   // },
   {
     path: "login",
-    loadChildren: "./login/login.module#LoginModule"
+    loadChildren: "./login/login.module#LoginModule",
   },
   // { path: 'blog', loadChildren: 'blog/blog.module#BlogModule' },
   { path: "blog/internships", pathMatch: "full", redirectTo: "internships" },
@@ -51,7 +55,7 @@ const routes: Routes = [
   { path: "internship-tnc", loadChildren: "./blog/blog.module#BlogModule" },
   { path: "visit-us", loadChildren: "./blog/blog.module#BlogModule" },
   { path: "404", component: PageNotFoundComponent },
-  { path: "**", component: PageNotFoundComponent }
+  { path: "**", component: PageNotFoundComponent },
 ];
 
 @NgModule({
@@ -59,10 +63,10 @@ const routes: Routes = [
     RouterModule.forRoot(routes, {
       initialNavigation: "enabled",
       scrollPositionRestoration: "enabled",
-      preloadingStrategy: CustomPreloadingStrategy
-    })
+      preloadingStrategy: CustomPreloadingStrategy,
+    }),
   ],
   exports: [RouterModule],
-  providers: [CustomPreloadingStrategy]
+  providers: [CustomPreloadingStrategy],
 })
 export class AppRoutingModule {}
