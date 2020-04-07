@@ -8,22 +8,22 @@ import { environment } from "./environments/environment";
 if (environment.production) {
   enableProdMode();
   if (window) {
-    window.console.log = function() {};
+    window.console.log = function () {};
   }
 }
 
-// document.addEventListener("DOMContentLoaded", () => {
-//   platformBrowserDynamic()
-//     .bootstrapModule(AppModule)
-//     .catch(err => console.error(err));
-// });
-
 document.addEventListener("DOMContentLoaded", () => {
-  setTimeout(
-    () =>
-      platformBrowserDynamic()
-        .bootstrapModule(AppModule)
-        .catch(err => console.log(err)),
-    10
-  );
+  platformBrowserDynamic()
+    .bootstrapModule(AppModule)
+    .catch((err) => console.error(err));
 });
+
+// document.addEventListener("DOMContentLoaded", () => {
+//   setTimeout(
+//     () =>
+//       platformBrowserDynamic()
+//         .bootstrapModule(AppModule)
+//         .catch(err => console.log(err)),
+//     10
+//   );
+// });

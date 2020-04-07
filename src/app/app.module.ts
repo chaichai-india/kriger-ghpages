@@ -2,7 +2,7 @@ import {
   BrowserModule,
   BrowserTransferStateModule,
   ɵgetDOM,
-  DOCUMENT
+  DOCUMENT,
 } from "@angular/platform-browser";
 import { NgModule, APP_INITIALIZER, PLATFORM_ID } from "@angular/core";
 import { AngularFireModule } from "@angular/fire";
@@ -13,20 +13,14 @@ import { AngularFireStorageModule } from "@angular/fire/storage";
 import { GtagModule } from "angular-gtag";
 import { environment } from "../environments/environment";
 import { AppRoutingModule } from "./app-routing.module";
-import { PrebootModule } from "preboot";
+// import { PrebootModule } from "preboot";
 
 import { AppComponent } from "./app.component";
 import {
   NavbarComponent,
-  NavDialogComponent
+  NavDialogComponent,
 } from "./components/ui/navbar/navbar.component";
-// import { DialogComponent } from "../app/post/components/post/post.component";
 import { PageNotFoundComponent } from "./components/page-not-found/page-not-found.component";
-
-// import { PostModule } from "./post/post.module";
-// import { ProfileModule } from "./profile/profile.module";
-// import { BlogModule } from "./blog/blog.module";
-// import { LoginModule } from "./login/login.module";
 
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatTabsModule } from "@angular/material/tabs";
@@ -48,12 +42,12 @@ import {
   MatSnackBarModule,
   MatMenuModule,
   MatDialogModule,
-  MatProgressBarModule
+  MatProgressBarModule,
   // MatProgressSpinnerModule
 } from "@angular/material";
 import { NewlandingpageComponent } from "./components/newlandingpage/newlandingpage.component";
 import { CoreModule } from "./core/core.module";
-import { isPlatformBrowser } from "@angular/common";
+// import { isPlatformBrowser } from "@angular/common";
 import { TransferHttpCacheModule } from "@nguniversal/common";
 @NgModule({
   declarations: [
@@ -64,12 +58,12 @@ import { TransferHttpCacheModule } from "@nguniversal/common";
     PageNotFoundComponent,
     FooterComponent,
     LandingpageComponent,
-    NewlandingpageComponent
+    NewlandingpageComponent,
   ],
   entryComponents: [NavDialogComponent],
   imports: [
     BrowserModule.withServerTransition({ appId: "serverApp" }),
-    PrebootModule.withConfig({ appRoot: "app-root" }),
+    // PrebootModule.withConfig({ appRoot: "app-root" }),
     TransferHttpCacheModule,
     BrowserTransferStateModule,
     AppRoutingModule,
@@ -88,7 +82,7 @@ import { TransferHttpCacheModule } from "@nguniversal/common";
     AngularFireModule.initializeApp(environment.firebase),
     GtagModule.forRoot({
       trackingId: "UA-100099657-1",
-      trackPageviews: true
+      trackPageviews: true,
       // debug: true
     }),
     // AngularFireAnalyticsModule,
@@ -99,39 +93,39 @@ import { TransferHttpCacheModule } from "@nguniversal/common";
     Ng2ImgMaxModule,
     // SlideshowModule,
     SharedModule,
-    CoreModule
+    CoreModule,
   ],
   providers: [
-    {
-      provide: APP_INITIALIZER,
-      useFactory: function(
-        document: HTMLDocument,
-        platformId: Object
-      ): Function {
-        return () => {
-          if (isPlatformBrowser(platformId)) {
-            const dom = ɵgetDOM();
-            const styles: any[] = Array.prototype.slice.apply(
-              dom.querySelectorAll(document, `style[ng-transition]`)
-            );
-            styles.forEach(el => {
-              // Remove ng-transition attribute to prevent Angular appInitializerFactory
-              // to remove server styles before preboot complete
-              el.removeAttribute("ng-transition");
-            });
-            document.addEventListener("PrebootComplete", () => {
-              // After preboot complete, remove the server scripts
-              setTimeout(() => styles.forEach(el => dom.remove(el)));
-            });
-          }
-        };
-      },
-      deps: [DOCUMENT, PLATFORM_ID],
-      multi: true
-    },
+    // {
+    //   provide: APP_INITIALIZER,
+    //   useFactory: function(
+    //     document: HTMLDocument,
+    //     platformId: Object
+    //   ): Function {
+    //     return () => {
+    //       if (isPlatformBrowser(platformId)) {
+    //         const dom = ɵgetDOM();
+    //         const styles: any[] = Array.prototype.slice.apply(
+    //           dom.querySelectorAll(document, `style[ng-transition]`)
+    //         );
+    //         styles.forEach(el => {
+    //           // Remove ng-transition attribute to prevent Angular appInitializerFactory
+    //           // to remove server styles before preboot complete
+    //           el.removeAttribute("ng-transition");
+    //         });
+    //         document.addEventListener("PrebootComplete", () => {
+    //           // After preboot complete, remove the server scripts
+    //           setTimeout(() => styles.forEach(el => dom.remove(el)));
+    //         });
+    //       }
+    //     };
+    //   },
+    //   deps: [DOCUMENT, PLATFORM_ID],
+    //   multi: true
+    // },
     AuthGuard,
-    LoginGuard
+    LoginGuard,
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {}
