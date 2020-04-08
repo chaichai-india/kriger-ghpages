@@ -6,7 +6,7 @@ import { BehaviorSubject } from "rxjs";
 import { SignupService } from "./signup.service";
 
 @Injectable({
-  providedIn: "root"
+  providedIn: "root",
 })
 export class AuthService {
   user: User;
@@ -17,7 +17,7 @@ export class AuthService {
     try {
       await this.afauth.auth
         .signInWithEmailAndPassword(email, password)
-        .then(async res => {
+        .then(async (res) => {
           if (res.user.emailVerified) {
             response = { message: "Success!", action: "Logged In" };
             this.loggedInUpdate.next(true);
@@ -31,11 +31,11 @@ export class AuthService {
               message:
                 "Email not verified!\n" +
                 "Kindly check your mail for verification email.",
-              action: "Please Verify"
+              action: "Please Verify",
             };
           }
         })
-        .catch(function(error) {
+        .catch(function (error) {
           // Handle Errors here.
           let errorCode = error.code;
           let errorMessage = error.message;
@@ -63,11 +63,11 @@ export class AuthService {
     let response;
     await this.afauth.auth
       .signInWithEmailAndPassword(email, password)
-      .then(async res => {
+      .then(async (res) => {
         await this.SendVerificationMail();
         response = "Verification mail sent.";
       })
-      .catch(err => {
+      .catch((err) => {
         if (err.code === "auth/user-not-found") {
           response = "No user found!";
         } else if (err.code === "auth/wrong-password") {
@@ -96,7 +96,7 @@ export class AuthService {
         // console.log("password reset email");
         response = "Success";
       })
-      .catch(err => {
+      .catch((err) => {
         // console.log("error in sending password reset email", err.code);
         if (err.code === "auth/user-not-found") {
           response = "No user found!";
@@ -112,7 +112,7 @@ export class AuthService {
   }
 
   isLoggedIn() {
-    this.isLoggedInPromise().then(user => {
+    this.isLoggedInPromise().then((user) => {
       this.loggedInUpdate.next(user ? true : false);
     });
   }
@@ -142,25 +142,25 @@ export class AuthService {
     return this.afauth.auth.currentUser.displayName;
   }
 
-  // getCurrentUser() {
-  //   return new Promise<any>((resolve, reject) => {
-  //     var user = firebase.auth().onAuthStateChanged(function(user) {
-  //       if (user) {
-  //         resolve(user);
-  //       } else {
-  //         reject('No user logged in');
-  //       }
-  //     });
-  //   });
-  // }
+  getCurrentUser() {
+    // return this.afauth.authState.subscribe((user) => user.uid);
+    return new Promise<any>((resolve, reject) => {
+      this.afauth.authState.subscribe(function (user) {
+        if (user) {
+          resolve(user.uid);
+        } else {
+          reject("No user logged in");
+        }
+      });
+    });
+    // return await this.afauth.auth.currentUser;
+  }
 
   constructor(public afauth: AngularFireAuth) {
-    // this.afauth.authState.subscribe(user => {
+    // this.afauth.authState.subscribe((user) => {
     //   if (user) {
     //     this.user = user;
-    //     localStorage.setItem('user', JSON.stringify(this.user));
-    //   } else {
-    //     localStorage.setItem('user', null);
+    //     // localStorage.setItem('user', JSON.stringify(this.user));
     //   }
     // });
   }

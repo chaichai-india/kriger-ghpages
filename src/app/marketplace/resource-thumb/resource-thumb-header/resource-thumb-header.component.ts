@@ -45,7 +45,7 @@ import { Component, OnInit, Input } from "@angular/core";
         left: 0px;
         width: 100%;
         height: 100%;
-        border-radius: border-radius: 6px 0 0 6px;
+        border-radius: 6px 0 0 6px;
         background: linear-gradient(
           305.27deg,
           rgba(0, 0, 0, 0.7) 0.19%,

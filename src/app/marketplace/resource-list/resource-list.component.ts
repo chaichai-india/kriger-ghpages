@@ -6,11 +6,10 @@ import { catchError, tap, take } from "rxjs/operators";
 @Component({
   selector: "app-resource-list",
   templateUrl: "./resource-list.component.html",
-  styleUrls: ["./resource-list.component.css"]
+  styleUrls: ["./resource-list.component.css"],
 })
 export class ResourceListComponent implements OnInit {
   constructor(private resourceService: ResourceService) {}
-  resources$: Observable<any>;
   resourceSubject = new BehaviorSubject<any>([]);
   resource$ = this.resourceSubject.asObservable();
   loading = new BehaviorSubject<Boolean>(true);
@@ -20,10 +19,6 @@ export class ResourceListComponent implements OnInit {
   infiniteDisable: boolean = false;
   scrollCount: number = 0;
   lastResourceValue: number = 0;
-
-  setResources({ count = "10", resource_id = "0" }) {
-    this.resources$ = this.resourceService.getResources({ count, resource_id });
-  }
 
   setErrorStatus(err, msg: string) {
     console.log({ err });
@@ -49,10 +44,10 @@ export class ResourceListComponent implements OnInit {
       .getResources({
         count: "10",
         resource_id: this.lastResourceValue.toString(),
-        mode: "scroll"
+        mode: "scroll",
       })
       .pipe(
-        tap(data => {
+        tap((data) => {
           const { resources = [] } = data || {};
           const currentresources = this.resourceSubject.getValue();
           this.resourceSubject.next([...currentresources, ...resources]);
@@ -62,7 +57,7 @@ export class ResourceListComponent implements OnInit {
           this.updateState(value);
         }),
         take(1),
-        catchError(err => {
+        catchError((err) => {
           this.setErrorStatus(err, "Something went wrong!");
           this.resourceSubject.next([]);
           return of({ resources: [] });
@@ -81,9 +76,9 @@ export class ResourceListComponent implements OnInit {
     this.resourceService
       .getResources({ count: "10", resource_id: "0" })
       .pipe(
-        tap(data => {
+        tap((data) => {
           const { resources = [] } = data || {};
-          const currentresources = this.resourceSubject.getValue();
+          // const currentresources = this.resourceSubject.getValue();
           this.resourceSubject.next(resources);
           const lastResource = resources[resources.length - 1] || {};
           const { value = 0 } = lastResource;
@@ -91,13 +86,12 @@ export class ResourceListComponent implements OnInit {
           this.updateState(value);
         }),
         take(1),
-        catchError(err => {
+        catchError((err) => {
           this.setErrorStatus(err, "Error!");
           this.resourceSubject.next([]);
           return of({ resources: [] });
         })
       )
       .subscribe();
-    // this.setResources({ count: "10", resource_id: "0" });
   }
 }
