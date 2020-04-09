@@ -7,7 +7,7 @@ const routes: Routes = [
   {
     path: "",
     component: NotificationListComponent,
-    // canActivate: [AuthGuard]
+    canActivate: [AuthGuard],
   },
 ];
 
