@@ -5,8 +5,9 @@ import { NotificationRoutingModule } from "./notification-routing.module";
 import { NotificationListComponent } from "./notification-list/notification-list.component";
 import { NotificationComponent } from "./notification/notification.component";
 import { InfiniteScrollModule } from "ngx-infinite-scroll";
-import { MatProgressSpinnerModule } from "@angular/material";
+import { MatProgressSpinnerModule, MatButtonModule } from "@angular/material";
 import { MomentModule } from "ngx-moment";
+import { SharedModule } from "../shared/shared.module";
 
 @NgModule({
   declarations: [NotificationListComponent, NotificationComponent],
@@ -16,6 +17,8 @@ import { MomentModule } from "ngx-moment";
     InfiniteScrollModule,
     MatProgressSpinnerModule,
     MomentModule,
+    MatButtonModule,
+    SharedModule,
   ],
 })
 export class NotificationModule {}

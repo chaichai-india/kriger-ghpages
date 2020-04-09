@@ -1,9 +1,11 @@
 import { Component, OnInit, Input } from "@angular/core";
+import { MatDialog } from "@angular/material";
+import { DialogComponent } from "../../shared/dialog/dialog.component";
 
 @Component({
   selector: "app-notification",
   template: `
-    <div class="notification__container">
+    <div class="notification__container" (click)="openDialog()">
       <div
         class="notification-thumb"
         [ngStyle]="{
@@ -16,7 +18,7 @@ import { Component, OnInit, Input } from "@angular/core";
       <div class="notification-body">
         <div class="notification-text">{{ notification?.text }}</div>
         <div class="notification-timestamp">
-          {{ notification?.timestamp | amFromUnix }}
+          {{ notification?.timestamp | amFromUnix | amDateFormat: "LLL" }}
         </div>
       </div>
     </div>
@@ -32,6 +34,7 @@ import { Component, OnInit, Input } from "@angular/core";
         box-shadow: var(--primary-box-shadow);
         /* border: 1px solid rgba(0, 0, 0, 0.1); */
         background-color: white;
+        cursor: pointer;
       }
 
       .notification-thumb {
@@ -77,7 +80,10 @@ import { Component, OnInit, Input } from "@angular/core";
 })
 export class NotificationComponent implements OnInit {
   @Input() notification;
-  constructor() {}
+  constructor(public dialog: MatDialog) {}
 
+  openDialog() {
+    const dialogRef = this.dialog.open(DialogComponent);
+  }
   ngOnInit() {}
 }

@@ -9,3 +9,16 @@
   padding: 1rem 0;
   background-color: var(--bg-grey);
 }
+
+.load__btn,
+.loading-spinner {
+  display: grid;
+  padding: 1rem 0;
+  place-items: center;
+  background-color: var(--bg-grey);
+}
+
+.load__btn button {
+  background-color: #1a1a96;
+  color: white;
+}

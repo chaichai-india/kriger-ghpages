@@ -18,9 +18,11 @@ export class NotificationListComponent implements OnInit {
   loading$ = this.loading.asObservable();
   error: boolean = false;
   errorMessage: string;
-  infiniteDisable: boolean = false;
+  infiniteDisable: boolean = true;
   scrollCount: number = 0;
   lastNotificationValue: number = 0;
+  isEmpty: boolean = false;
+  isComplete: boolean = false;
 
   constructor(
     private authService: AuthService,
@@ -69,6 +71,9 @@ export class NotificationListComponent implements OnInit {
           const { value = 0 } = lastNotification;
           console.log({ value });
           this.updateState(value);
+          if (notifications.length == 0 || notifications.length < 10) {
+            this.setCompleteState();
+          }
         }),
         take(1),
         catchError((err) => {
@@ -84,6 +89,20 @@ export class NotificationListComponent implements OnInit {
     this.infiniteDisable = false;
     this.scrollCount = 0;
     this.nextBatch();
+  }
+
+  setEmptyState() {
+    this.isEmpty = true;
+    this.infiniteDisable = true;
+  }
+
+  setCompleteState() {
+    this.infiniteDisable = true;
+    this.isComplete = true;
+  }
+
+  setContinueState() {
+    this.infiniteDisable = false;
   }
 
   async init() {
@@ -109,6 +128,13 @@ export class NotificationListComponent implements OnInit {
               const { value = 0 } = lastNotification;
               console.log({ value });
               this.updateState(value);
+              if (notifications.length == 0) {
+                this.setEmptyState();
+              } else if (notifications.length < 10) {
+                this.setCompleteState();
+              } else if (notifications.length == 10) {
+                this.setContinueState();
+              }
             }),
             take(1)
           )

@@ -3,19 +3,31 @@
   infinite-scroll
   (scrolled)="nextBatch()"
   [infiniteScrollDistance]="1"
-  [infiniteScrollThrottle]="500"
+  [infiniteScrollThrottle]="5000"
   [infiniteScrollDisabled]="infiniteDisable"
 >
   <app-notification
     *ngFor="let notification of notification$ | async"
     [notification]="notification"
-  ></app-notification>
+  >
+  </app-notification>
+  <div class="notification-placeholder" *ngIf="isEmpty">
+    Your notifications appear here.
+  </div>
+  <div class="notification-complete" *ngIf="isComplete">
+    <b>You're all caught up!</b>
+  </div>
+  <div class="loading-spinner" *ngIf="loading$ | async">
+    <mat-spinner diameter="50"></mat-spinner>
+  </div>
 </div>
-<div class="loading-spinner" *ngIf="loading$ | async">
-  <mat-spinner diameter="50"></mat-spinner>
-</div>
+
 <div class="load__btn">
-  <button mat-stroked-button (click)="resetInfinite()" *ngIf="infiniteDisable">
+  <button
+    mat-stroked-button
+    (click)="resetInfinite()"
+    *ngIf="infiniteDisable && !isEmpty && !isComplete"
+  >
     Load More Notifications
   </button>
 </div>
