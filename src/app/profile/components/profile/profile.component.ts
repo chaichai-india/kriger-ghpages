@@ -7,7 +7,7 @@ import { ProfileService } from "../../../core";
 @Component({
   selector: "app-profile",
   templateUrl: "./profile.component.html",
-  styleUrls: ["./profile.component.css"]
+  styleUrls: ["./profile.component.css"],
 })
 export class ProfileComponent implements OnInit {
   data: any;
@@ -25,6 +25,7 @@ export class ProfileComponent implements OnInit {
   specialisationData: any;
   presenceData: any;
   addressData: any;
+  additionalData: any;
 
   constructor(
     private route: ActivatedRoute,
@@ -37,7 +38,7 @@ export class ProfileComponent implements OnInit {
       count_posts = 0,
       count_groups = 0,
       count_connections = 0,
-      account_type = 0
+      account_type = 0,
     } = data;
     const { original, name } = userdetail;
     return {
@@ -46,7 +47,7 @@ export class ProfileComponent implements OnInit {
       account_type,
       count_posts,
       count_groups,
-      count_connections
+      count_connections,
     };
   }
 
@@ -62,7 +63,7 @@ export class ProfileComponent implements OnInit {
       state,
       country,
       current_city,
-      birthday
+      birthday,
     } = data;
     const { username, headline, type } = userdetail;
     return {
@@ -78,7 +79,7 @@ export class ProfileComponent implements OnInit {
       state,
       country,
       current_city,
-      birthday
+      birthday,
     };
   }
 
@@ -142,6 +143,11 @@ export class ProfileComponent implements OnInit {
     return { address, account_type };
   }
 
+  getAdditionalData(data) {
+    const { additional_details = {} } = data;
+    return { ...additional_details };
+  }
+
   ngOnInit() {
     this.data = this.route.snapshot.data.data;
     this.headerData = this.getHeaderData(this.data);
@@ -158,6 +164,7 @@ export class ProfileComponent implements OnInit {
     this.specialisationData = this.getSpecialisationData(this.data);
     this.presenceData = this.getPresenceData(this.data);
     this.addressData = this.getAddressData(this.data);
+    this.additionalData = this.getAdditionalData(this.data);
     console.log(this.data);
   }
 }

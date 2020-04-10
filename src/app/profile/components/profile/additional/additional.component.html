@@ -51,56 +51,44 @@
   </div>
   <div class="scholarship">
     <p class="title">Scholarship</p>
-    <span
-      *ngFor="
-        let item of data.additional_details.scholarship;
-        let isLast = last
-      "
+    <span *ngFor="let item of data.scholarship; let isLast = last"
       >{{ item }}{{ isLast ? "" : ", " }}</span
     >
   </div>
   <div class="batchsize">
     <p class="title">Batch Size</p>
-    <p>{{ data.additional_details.batch_size }}</p>
+    <p>{{ data.batch_size }}</p>
   </div>
   <div class="batchcount">
     <p class="title">Number of Batches</p>
-    <p>{{ data.additional_details.number_batch }}</p>
+    <p>{{ data.number_batch }}</p>
   </div>
   <div class="paymentmodes">
     <p class="title">Payment Modes Accepted</p>
-    <span
-      *ngFor="
-        let item of data.additional_details.payment_modes;
-        let isLast = last
-      "
+    <span *ngFor="let item of data.payment_modes; let isLast = last"
       >{{ item }}{{ isLast ? "" : ", " }}</span
     >
   </div>
   <div class="extradoubtclasses">
     <p class="title">Extra Doubt Classes</p>
-    <p>{{ data.additional_details.doubt }}</p>
+    <p>{{ data.doubt }}</p>
   </div>
   <div class="medium">
     <p class="title">Language of Teaching</p>
-    <p>{{ data.additional_details.language_teaching }}</p>
+    <p>{{ data.language_teaching }}</p>
   </div>
   <div class="facultygender">
     <p class="title">Faculty Gender</p>
-    <p>{{ data.additional_details.faculty_gender }}</p>
+    <p>{{ data.faculty_gender }}</p>
   </div>
   <div class="testsfrequency">
     <p class="title">Tests Frequency</p>
-    <span
-      *ngFor="
-        let item of data.additional_details.test_frequency;
-        let isLast = last
-      "
+    <span *ngFor="let item of data.test_frequency; let isLast = last"
       >{{ item }}{{ isLast ? "" : ", " }}</span
     >
   </div>
   <div class="democlasses">
     <p class="title">Demo Classes</p>
-    <p>{{ data.additional_details.demo }}</p>
+    <p>{{ data.demo }}</p>
   </div>
 </div>
