@@ -34,6 +34,7 @@ export class NotificationListComponent implements OnInit {
     console.log({ err });
     this.loading.next(false);
     this.error = true;
+    console.log({ err });
     this.errorMessage = msg;
   }
 
@@ -136,7 +137,12 @@ export class NotificationListComponent implements OnInit {
                 this.setContinueState();
               }
             }),
-            take(1)
+            take(1),
+            catchError((err) => {
+              this.setErrorStatus(err, "Something went wrong!");
+              this.notificationSubject.next([]);
+              return of({ notifications: [] });
+            })
           )
           .subscribe();
       }

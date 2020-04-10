@@ -11,6 +11,9 @@
     [notification]="notification"
   >
   </app-notification>
+  <div class="notification-error" *ngIf="error">
+    Something went wrong!
+  </div>
   <div class="notification-placeholder" *ngIf="isEmpty">
     Your notifications appear here.
   </div>
