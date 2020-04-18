@@ -1,120 +1,87 @@
 import { Component, OnInit, Input, NgZone, Inject } from "@angular/core";
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from "@angular/material";
-import { LikeService } from "../../../services/database/like.service";
+// import { LikeService } from "../../../services/database/like.service";
 import { AuthService } from "../../../services/authentication/auth.service";
-import { TimestampService } from "../../../services/utility/timestamp.service";
+// import { TimestampService } from "../../../services/utility/timestamp.service";
 import { Router } from "@angular/router";
+import { DialogComponent } from "../../../shared/dialog/dialog.component";
 
 @Component({
   selector: "app-post",
   templateUrl: "./post.component.html",
-  styleUrls: ["./post.component.css"]
+  styleUrls: ["./post.component.css"],
 })
 export class PostComponent implements OnInit {
   @Input() post;
-  uid = this.authService.userID;
-  isPostLiked: boolean;
+  profileUrl;
   showComments: boolean;
 
   constructor(
     public dialog: MatDialog,
-    private likeService: LikeService,
     private authService: AuthService,
-    private timeService: TimestampService,
     private router: Router,
     private zone: NgZone
   ) {}
 
   openDialog() {
     const dialogRef = this.dialog.open(DialogComponent);
-
-    dialogRef.afterClosed().subscribe(result => {
-      // console.log(`Dialog result: ${result}`);
-    });
   }
 
-  openComments() {
-    if (this.uid) {
-      this.showComments = true;
-    } else {
-      this.openDialog();
-    }
+  // openComments() {
+  //   if (this.uid) {
+  //     this.showComments = true;
+  //   } else {
+  //     this.openDialog();
+  //   }
+  // }
+
+  // openProfile(username: string) {
+  //   if (this.uid) {
+  //     this.zone.run(() => {
+  //       this.router.navigate([`/india/${username}`]);
+  //     });
+  //     return false;
+  //   } else {
+  //     this.openDialog();
+  //     return false;
+  //   }
+  // }
+
+  // openShare() {
+  //   if (this.uid) {
+  //     const dialogRef = this.dialog.open(ShareDialogComponent, {
+  //       data: { key: this.post.key }
+  //     });
+
+  //     dialogRef.afterClosed().subscribe(result => {
+  //       // console.log(`Dialog result: ${result}`);
+  //     });
+  //   } else {
+  //     this.openDialog();
+  //   }
+  // }
+  setProfileUrl(user) {
+    const { account_type = 0, username } = user;
+    const types = ["learner", "educator", "institute"];
+    const url0 = "in";
+    const url1 = types[account_type];
+    this.profileUrl = "/" + url0 + "/" + url1 + "/" + username;
   }
 
-  postLiked(postid, uid) {
-    return this.likeService.likedPost(postid, uid);
-  }
-
-  async likePost(postid: string) {
-    if (this.uid) {
-      const uid = await this.authService.userID;
-      const timestamp = this.timeService.timestamp;
-
-      // console.log({ postid, uid });
-      if (!this.isPostLiked) {
-        this.isPostLiked = true;
-        this.likeService.postLike(postid, uid, timestamp);
-      } else {
-        this.isPostLiked = false;
-        this.likeService.postDislike(postid, uid);
-      }
-    } else {
-      this.openDialog();
-    }
-  }
-
-  openProfile(username: string) {
-    if (this.uid) {
-      this.zone.run(() => {
-        this.router.navigate([`/india/${username}`]);
-      });
-      return false;
-    } else {
-      this.openDialog();
-      return false;
-    }
-  }
-
-  openShare() {
-    if (this.uid) {
-      const dialogRef = this.dialog.open(ShareDialogComponent, {
-        data: { key: this.post.key }
-      });
-
-      dialogRef.afterClosed().subscribe(result => {
-        // console.log(`Dialog result: ${result}`);
-      });
-    } else {
-      this.openDialog();
-    }
-  }
-
-  initialize() {
-    if (this.uid) {
-      this.postLiked(this.post.key, this.uid).then(res => {
-        this.isPostLiked = res ? true : false;
-      });
-    }
-
-    // console.log(this.post.profileLink);
+  initialize(post) {
+    const { user } = post;
+    this.setProfileUrl(user);
   }
 
   ngOnInit() {
-    this.initialize();
+    this.initialize(this.post);
   }
 }
 
 @Component({
-  selector: "app-post-dialog",
-  templateUrl: "./post.dialog.component.html",
-  styleUrls: ["./post.dialog.component.css"]
-})
-export class DialogComponent {}
-
-@Component({
   selector: "app-post-share-dialog",
   templateUrl: "./post-share.dialog.component.html",
-  styleUrls: ["./post-share.dialog.component.css"]
+  styleUrls: ["./post-share.dialog.component.css"],
 })
 export class ShareDialogComponent {
   isCopied: boolean = false;

@@ -1,29 +1,24 @@
 <mat-card class="post-card" *ngIf="post">
-  <input #profileLink [value]="post.profileLink | async" type="hidden" />
-  <a
-    href="/india/{{ post.profileLink | async }}"
-    id="profile_link"
-    (click)="openProfile(profileLink.value)"
-  >
+  <a href="{{ profileUrl }}" id="profile_link">
     <mat-card-header>
       <div
-        style="cursor: pointer"
+        style="cursor: pointer;"
         mat-card-avatar
         class="post-header-image"
         [ngStyle]="{
           'background-image':
             'url(' +
-            (post.userdetail | async)?.thumb +
+            post?.user.thumb +
             '), url(../../../assets/images/user.svg)'
         }"
       ></div>
-      <mat-card-title style="cursor: pointer">{{
-        (post.userdetail | async)?.name
+      <mat-card-title style="cursor: pointer;">{{
+        post?.user.name
       }}</mat-card-title>
       <mat-card-subtitle>
-        {{ (post.userdetail | async)?.headline }}
+        {{ post?.user.headline }}
         <br />
-        {{ post.timestamp.substring(0, 8) | amDateFormat: "LL" }}
+        {{ post?.timestamp | amFromUnix | amDateFormat: "LL" }}
         <!-- <br />
       {{ post.key }} -->
       </mat-card-subtitle>
@@ -57,39 +52,39 @@
       width="64px"
       height="64px"
     />
-    <span style="margin-left: 1em">Click here to open</span></a
+    <span style="margin-left: 1em;">Click here to open</span></a
   >
 
   <mat-card-subtitle>
-    <span> {{ (post.counter | async)?.count_views || 0 }} Views </span>
-    <span> {{ (post.counter | async)?.count_likes || 0 }} Likes </span>
-    <span> {{ (post.counter | async)?.count_comments || 0 }} Comments </span>
+    <span> {{ post?.count_views || 0 }} Views </span>
+    <span> {{ post?.count_likes || 0 }} Likes </span>
+    <span> {{ post?.count_comments || 0 }} Comments </span>
   </mat-card-subtitle>
   <!-- <hr /> -->
   <mat-card-actions>
     <button
-      (click)="likePost(post.key)"
-      [ngStyle]="{ color: isPostLiked ? 'var(--primary-color)' : 'inherit' }"
+      (click)="openDialog()"
+      [ngStyle]="{ color: post.isLike ? 'var(--primary-color)' : 'inherit' }"
       mat-button
     >
       <mat-icon>thumb_up_alt</mat-icon>
       <span>Like</span>
     </button>
-    <button (click)="openComments()" mat-button>
+    <button (click)="openDialog()" mat-button>
       <mat-icon>comment</mat-icon>
       <span>Comment</span>
     </button>
-    <button (click)="openShare()" mat-button>
+    <button (click)="openDialog()" mat-button>
       <mat-icon>share</mat-icon>
       <span>Share</span>
     </button>
   </mat-card-actions>
-  <app-create-comment
+  <!-- <app-create-comment
     *ngIf="showComments"
     [postid]="post.key"
   ></app-create-comment>
   <app-comment-list
     *ngIf="(post.counter | async)?.count_comments && showComments"
     [postid]="post.key"
-  ></app-comment-list>
+  ></app-comment-list> -->
 </mat-card>

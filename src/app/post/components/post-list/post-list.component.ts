@@ -4,143 +4,154 @@ import {
   ElementRef,
   ViewChild,
   Renderer2,
-  OnDestroy
+  OnDestroy,
 } from "@angular/core";
-import { Observable, BehaviorSubject } from "rxjs";
-import { take, tap } from "rxjs/operators";
+import { Observable, BehaviorSubject, of } from "rxjs";
+import { take, tap, switchMap, catchError } from "rxjs/operators";
 
-import { PostService } from "../../../services/database/post.service";
+import { PostService, ProfileService } from "../../../core";
 import { AuthService } from "../../../services/authentication/auth.service";
 import { Router } from "@angular/router";
 
 @Component({
   selector: "app-post-list",
   templateUrl: "./post-list.component.html",
-  styleUrls: ["./post-list.component.css"]
+  styleUrls: ["./post-list.component.css"],
 })
 export class PostListComponent implements OnInit, OnDestroy {
-  posts: Observable<any[]>;
-  posts2 = new BehaviorSubject([]);
-  isAuth: boolean = this.authService.userID ? true : false;
-  lastKey: string;
-  loading: boolean;
-  infinite: boolean = false;
-  scrollCount: number = 1;
-  infiniteDisable: boolean = false;
-  isLoggedIn$: Observable<boolean>;
+  uid: string;
+  user_id: string;
+  postSubject = new BehaviorSubject<any>([]);
+  post$ = this.postSubject.asObservable();
+  loading = new BehaviorSubject<Boolean>(true);
+  loading$ = this.loading.asObservable();
+  error: boolean = false;
+  errorMessage: string;
+  infiniteDisable: boolean = true;
+  scrollCount: number = 0;
+  lastPostValue: number = 0;
+  isEmpty: boolean = false;
+  isComplete: boolean = false;
 
   @ViewChild("loadbtn", { read: ElementRef }) public laodbtn: ElementRef<any>;
 
-  resetValues() {
-    this.loading = true;
-    // // console.log(
-    // // 'TCL: PostListComponent -> resetValues -> this.loading',
-    // // this.loading
-    // // );
+  updateState(lastPostValue: number) {
+    this.loading.next(false);
+    this.lastPostValue = lastPostValue;
   }
 
-  setValues(data) {
-    this.posts = data;
-    data.pipe(take(1)).subscribe(() => {
-      this.loading = false;
-      // // console.log(
-      // // 'TCL: PostListComponent -> setValues -> this.loading',
-      // // this.loading
-      // // );
-    });
-  }
-
-  // nextBatch() {
-  //   let scrollPos = window.scrollY;
-  //   // console.log(scrollPos);
-  //   this.lastKey = this.postService.lastkey;
-  //   // console.log(this.lastKey);
-  //   this.postService.getPosts(5, this.lastKey).then(res => {
-  //     this.posts = combineLatest(res, this.posts).pipe(
-  //       map(([next, prev]) => {
-  //         // console.log(next, prev);
-  //         next.pop();
-  //         let posts = next.concat(prev);
-  //         return posts;
-  //       })
-  //     );
-
-  //     setTimeout(() => {
-  //       window.scrollTo(0, scrollPos + 200);
-  //     }, 500);
-  //   });
-  // }
-
-  nextBatch2() {
+  nextBatch() {
     this.scrollCount++;
-    if (this.scrollCount >= 3) {
+    if (this.scrollCount > 2) {
       this.infiniteDisable = true;
-      this.loading = false;
-    } else {
-      this.getPosts2();
+      return;
+    }
+    console.log("next batch");
+    this.loading.next(true);
+    this.postService
+      .getPosts({
+        mode: "scroll",
+        user_id: this.user_id,
+        post_id: this.lastPostValue.toString(),
+      })
+      .pipe(
+        tap((data) => {
+          console.log({ data });
+          const { posts = [] } = data || {};
+          const currentposts = this.postSubject.getValue();
+          this.postSubject.next([...currentposts, ...posts]);
+
+          const lastPost = posts[posts.length - 1] || {};
+          const { value = 0 } = lastPost;
+          console.log({ value });
+          this.updateState(value);
+          // if (posts.length == 0 || posts.length < 10) {
+          //   this.setCompleteState();
+          // }
+        }),
+        take(1),
+        catchError((err) => {
+          this.setErrorStatus(err, "Something went wrong!");
+          this.postSubject.next([]);
+          return of({ posts: [] });
+        })
+      )
+      .subscribe();
+  }
+
+  async init() {
+    try {
+      this.uid = await this.authService.getCurrentUser();
+      console.log({ uid: this.uid });
+      if (this.uid) {
+        this.profileService
+          .getIdbyFirebaseuid(this.uid)
+          .pipe(
+            tap(({ _id }) => {
+              this.user_id = _id;
+            }),
+            switchMap(({ _id }) => this.postService.getPosts({ user_id: _id })),
+            tap((data) => {
+              console.log({ data });
+              const { posts = [] } = data || {};
+              this.postSubject.next(posts);
+              const lastPost = posts[posts.length - 1] || {};
+              const { value = 0 } = lastPost;
+              console.log({ value });
+              this.updateState(value);
+              if (posts.length == 0) {
+                this.setEmptyState();
+              } else if (posts.length < 10) {
+                // this.setCompleteState();
+              } else if (posts.length == 10) {
+                this.setContinueState();
+              }
+            }),
+            take(1),
+            catchError((err) => {
+              this.setErrorStatus(err, "Something went wrong!");
+              this.postSubject.next([]);
+              return of({ notifications: [] });
+            })
+          )
+          .subscribe();
+      }
+    } catch (error) {
+      console.log(error);
     }
   }
 
   resetInfinite() {
-    if (!this.isAuth) {
-      this.router.navigate([`/login`]);
-      return;
-    }
-    this.scrollCount = 1;
     this.infiniteDisable = false;
-    this.loading = true;
+    this.scrollCount = 0;
+    this.nextBatch();
   }
 
-  async getPosts(batch: number) {
-    return this.postService.getPosts(batch);
+  setEmptyState() {
+    this.isEmpty = true;
+    this.infiniteDisable = true;
   }
 
-  initialize() {
-    this.authService.loggedInUpdateObservable().then(status => {
-      this.isLoggedIn$ = status;
-    });
-    this.resetValues();
-    this.getPosts2();
-    // this.getPosts(5).then(posts => {
-    //   this.setValues(posts);
-    // });
+  setCompleteState() {
+    this.infiniteDisable = true;
+    this.isComplete = true;
   }
 
-  private getPosts2(key?) {
-    this.postService.getPosts(6, this.lastKey).then(res => {
-      // console.log('TCL: PostListComponent -> res', res);
-      res
-        .pipe(
-          tap(post => {
-            // console.log('TCL: PostListComponent -> post', post);
-            /// set the lastKey in preparation for next query
-            this.lastKey = post[0].key;
-            // console.log('TCL: PostListComponent -> lastKey', this.lastKey);
-            const newPosts = post.slice(1, 6);
-            // console.log('TCL: PostListComponent -> newPosts', newPosts);
+  setContinueState() {
+    this.infiniteDisable = false;
+  }
 
-            /// Get current Posts in BehaviorSubject
-            let currentPosts = this.posts2.getValue();
-            // console.log('TCL: PostListComponent -> currentPosts', currentPosts);
-
-            /// If data is identical, stop making queries
-            if (!this.infinite) {
-              currentPosts = currentPosts.reverse();
-            }
-            /// Concatenate new Posts to current Posts
-            this.posts2.next([...currentPosts, ...newPosts.reverse()]);
-            this.infinite = true;
-            this.loading = true;
-            // console.log('TCL: PostListComponent -> this.posts2', this.posts2);
-          }),
-          take(1)
-        )
-        .subscribe();
-    });
+  setErrorStatus(err, msg: string) {
+    console.log({ err });
+    this.loading.next(false);
+    this.error = true;
+    console.log({ err });
+    this.errorMessage = msg;
   }
 
   constructor(
     private authService: AuthService,
+    private profileService: ProfileService,
     private postService: PostService,
     private renderer: Renderer2,
     private router: Router
@@ -149,7 +160,7 @@ export class PostListComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.initialize();
+    this.init();
   }
 
   ngOnDestroy() {

@@ -1,25 +1,25 @@
 <div
   class="post-list__container"
   infinite-scroll
-  (scrolled)="nextBatch2()"
+  (scrolled)="nextBatch()"
   [infiniteScrollDistance]="1"
-  [infiniteScrollThrottle]="5000"
+  [infiniteScrollThrottle]="2000"
   [infiniteScrollDisabled]="infiniteDisable"
 >
-  <app-create-post *ngIf="isLoggedIn$ | async"></app-create-post>
-  <hr style="width: 100%; margin-bottom:1em;" />
-  <app-post *ngFor="let post of posts2 | async" [post]="post"> </app-post>
-  <mat-spinner diameter="50" *ngIf="loading"></mat-spinner>
-
-  <div class="load__btn">
-    <button
-      mat-stroked-button
-      (click)="resetInfinite()"
-      *ngIf="infiniteDisable"
-    >
-      Load More Posts
-    </button>
-  </div>
+  <!-- <app-create-post *ngIf="isLoggedIn$ | async"></app-create-post>
+  <hr style="width: 100%; margin-bottom:1em;" /> -->
+  <!-- <p>{{ post$ | json }}</p> -->
+  <app-post *ngFor="let post of post$ | async" [post]="post"> </app-post>
+  <mat-spinner diameter="50" *ngIf="loading$ | async"></mat-spinner>
+</div>
+<div class="load__btn">
+  <button
+    mat-stroked-button
+    (click)="resetInfinite()"
+    *ngIf="infiniteDisable && !isEmpty && !isComplete"
+  >
+    Load More Posts
+  </button>
 </div>
 
 <app-adbanner

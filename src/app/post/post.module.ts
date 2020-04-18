@@ -16,9 +16,8 @@ import { ClipboardModule } from "ngx-clipboard";
 
 import {
   PostComponent,
-  ShareDialogComponent
+  ShareDialogComponent,
 } from "./components/post/post.component";
-import { DialogComponent } from "./components/post/post.component";
 import { PostListComponent } from "./components/post-list/post-list.component";
 import { PostDetailComponent } from "./components/post-detail/post-detail.component";
 import { AdbannerComponent } from "../components/adbanner/adbanner.component";
@@ -30,7 +29,7 @@ import {
   MatFormFieldModule,
   MatInputModule,
   MatProgressBarModule,
-  MatSnackBarModule
+  MatSnackBarModule,
 } from "@angular/material";
 import { ReactiveFormsModule } from "@angular/forms";
 import { CommentListComponent } from "./components/comment-list/comment-list.component";
@@ -40,7 +39,6 @@ import { CreateCommentComponent } from "./components/create-comment/create-comme
 @NgModule({
   declarations: [
     PostComponent,
-    DialogComponent,
     ShareDialogComponent,
     PostListComponent,
     PostDetailComponent,
@@ -49,9 +47,9 @@ import { CreateCommentComponent } from "./components/create-comment/create-comme
     CreatePostComponent,
     CommentListComponent,
     CommentComponent,
-    CreateCommentComponent
+    CreateCommentComponent,
   ],
-  entryComponents: [DialogComponent, ShareDialogComponent],
+  entryComponents: [ShareDialogComponent],
   imports: [
     CommonModule,
     PostRoutingModule,
@@ -70,8 +68,8 @@ import { CreateCommentComponent } from "./components/create-comment/create-comme
     MatSnackBarModule,
     ClipboardModule,
     // ImageCropperModule,
-    SharedModule
+    SharedModule,
   ],
-  exports: [PostListComponent]
+  exports: [PostListComponent],
 })
 export class PostModule {}
