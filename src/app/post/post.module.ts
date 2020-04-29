@@ -19,12 +19,12 @@ import {
   ShareDialogComponent,
 } from "./components/post/post.component";
 import { PostListComponent } from "./components/post-list/post-list.component";
-import { PostDetailComponent } from "./components/post-detail/post-detail.component";
+// import { PostDetailComponent } from "./components/post-detail/post-detail.component";
 import { AdbannerComponent } from "../components/adbanner/adbanner.component";
 
 import { ReversePipe } from "../pipes/reverse.pipe";
 import { SharedModule } from "../shared/shared.module";
-import { CreatePostComponent } from "./components/create-post/create-post.component";
+// import { CreatePostComponent } from "./components/create-post/create-post.component";
 import {
   MatFormFieldModule,
   MatInputModule,
@@ -32,22 +32,22 @@ import {
   MatSnackBarModule,
 } from "@angular/material";
 import { ReactiveFormsModule } from "@angular/forms";
-import { CommentListComponent } from "./components/comment-list/comment-list.component";
-import { CommentComponent } from "./components/comment/comment.component";
-import { CreateCommentComponent } from "./components/create-comment/create-comment.component";
+// import { CommentListComponent } from "./components/comment-list/comment-list.component";
+// import { CommentComponent } from "./components/comment/comment.component";
+// import { CreateCommentComponent } from "./components/create-comment/create-comment.component";
 
 @NgModule({
   declarations: [
     PostComponent,
     ShareDialogComponent,
     PostListComponent,
-    PostDetailComponent,
+    // PostDetailComponent,
     AdbannerComponent,
     ReversePipe,
-    CreatePostComponent,
-    CommentListComponent,
-    CommentComponent,
-    CreateCommentComponent,
+    // CreatePostComponent,
+    // CommentListComponent,
+    // CommentComponent,
+    // CreateCommentComponent,
   ],
   entryComponents: [ShareDialogComponent],
   imports: [

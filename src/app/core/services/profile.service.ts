@@ -24,4 +24,10 @@ export class ProfileService {
     const headers = new HttpHeaders().set("user_id", id);
     return this.apiService.get({ path, headers });
   }
+
+  getUserDetail({ user_id }) {
+    const path = `profile/userdetail`;
+    const headers = new HttpHeaders().set("user_id", user_id);
+    return this.apiService.get({ path, headers });
+  }
 }

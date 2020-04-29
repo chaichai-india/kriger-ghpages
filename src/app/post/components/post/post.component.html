@@ -12,15 +12,13 @@
             '), url(../../../assets/images/user.svg)'
         }"
       ></div>
-      <mat-card-title style="cursor: pointer;">{{
+      <mat-card-title style="cursor: pointer; margin-bottom: 6px;">{{
         post?.user.name
       }}</mat-card-title>
       <mat-card-subtitle>
-        {{ post?.user.headline }}
-        <br />
+        <p *ngIf="post?.user?.username">@{{ post?.user.username }}</p>
+        <p *ngIf="post?.user?.headline">{{ post?.user.headline }}<br /></p>
         {{ post?.timestamp | amFromUnix | amDateFormat: "LL" }}
-        <!-- <br />
-      {{ post.key }} -->
       </mat-card-subtitle>
     </mat-card-header>
   </a>

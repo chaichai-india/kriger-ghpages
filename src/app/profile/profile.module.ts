@@ -13,7 +13,7 @@ import { MatIconModule } from "@angular/material/icon";
 
 import { ProfileComponent } from "./components/profile/profile.component";
 import { ProfileSortComponent } from "./components/profile-sort/profile-sort.component";
-import { ProfileListComponent } from "./components/profile-list/profile-list.component";
+// import { ProfileListComponent } from "./components/profile-list/profile-list.component";
 import { DebounceClickDirective } from "../directives/debounce-click.directive";
 import { ProfileResolver } from "./profile-resolver.service";
 import { HeaderComponent } from "./components/profile/header/header.component";
@@ -31,7 +31,7 @@ import { PublicationComponent } from "./components/profile/publication/publicati
 import { SpecialisationComponent } from "./components/profile/specialisation/specialisation.component";
 import {
   PresenceComponent,
-  PresenceLinkComponent
+  PresenceLinkComponent,
 } from "./components/profile/presence/presence.component";
 import { AddressComponent } from "./components/profile/address/address.component";
 import { ConnectComponent } from "./components/profile/connect/connect.component";
@@ -40,7 +40,7 @@ import { ConnectComponent } from "./components/profile/connect/connect.component
   declarations: [
     ProfileComponent,
     ProfileSortComponent,
-    ProfileListComponent,
+    // ProfileListComponent,
     DebounceClickDirective,
     HeaderComponent,
     IntroComponent,
@@ -58,7 +58,7 @@ import { ConnectComponent } from "./components/profile/connect/connect.component
     PresenceComponent,
     AddressComponent,
     PresenceLinkComponent,
-    ConnectComponent
+    ConnectComponent,
   ],
   imports: [
     CommonModule,
@@ -69,8 +69,8 @@ import { ConnectComponent } from "./components/profile/connect/connect.component
     MatChipsModule,
     MatListModule,
     MatCardModule,
-    MatIconModule
+    MatIconModule,
   ],
-  providers: [ProfileResolver]
+  providers: [ProfileResolver],
 })
 export class ProfileModule {}

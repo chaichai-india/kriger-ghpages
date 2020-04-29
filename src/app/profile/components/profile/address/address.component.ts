@@ -4,7 +4,7 @@ import { Component, OnInit, Input } from "@angular/core";
   selector: "app-profile-address",
   template: `
     <div class="ribbon"><span>Address</span></div>
-    <div class="content">
+    <div class="content" *ngIf="!isEmpty">
       <span *ngIf="data.address.house">{{ data.address.house }}, </span>
       <span *ngIf="data.address.street">{{ data.address.street }}, </span>
       <span *ngIf="data.address.landmark">{{ data.address.landmark }}, </span>
@@ -19,12 +19,30 @@ import { Component, OnInit, Input } from "@angular/core";
       </span>
       <span *ngIf="data.address.pincode">{{ data.address.pincode }}</span>
     </div>
+    <div class="placeholder" *ngIf="isEmpty">Details Not Filled</div>
   `,
-  styleUrls: ["../profile.component.css"]
+  styles: [
+    `
+      .placeholder {
+        padding-left: 1em;
+      }
+    `,
+  ],
+  styleUrls: ["../profile.component.css"],
 })
 export class AddressComponent implements OnInit {
   @Input() data;
+  isEmpty = false;
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    const { address = {} } = this.data || {};
+    if (Object.keys(address).length === 0) this.isEmpty = true;
+    const isValuesEmpty = Object.values(address).reduce(
+      (a, b) => +!!a + +!!b,
+      0
+    );
+    console.log({ isValuesEmpty });
+    if (isValuesEmpty === 0) this.isEmpty = true;
+  }
 }

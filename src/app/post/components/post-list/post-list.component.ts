@@ -57,7 +57,8 @@ export class PostListComponent implements OnInit, OnDestroy {
       .pipe(
         tap((data) => {
           console.log({ data });
-          const { posts = [] } = data || {};
+          // const { posts = [] } = data || {};
+          const posts = data || [];
           const currentposts = this.postSubject.getValue();
           this.postSubject.next([...currentposts, ...posts]);
 
@@ -93,9 +94,11 @@ export class PostListComponent implements OnInit, OnDestroy {
             switchMap(({ _id }) => this.postService.getPosts({ user_id: _id })),
             tap((data) => {
               console.log({ data });
-              const { posts = [] } = data || {};
+              // const { posts = [] } = data || {};
+              const posts = data || [];
               this.postSubject.next(posts);
               const lastPost = posts[posts.length - 1] || {};
+              console.log({ lastPost });
               const { value = 0 } = lastPost;
               console.log({ value });
               this.updateState(value);

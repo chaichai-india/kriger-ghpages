@@ -48,7 +48,8 @@ export class ResourceListComponent implements OnInit {
       })
       .pipe(
         tap((data) => {
-          const { resources = [] } = data || {};
+          // const { resources = [] } = data || {};
+          const resources = data || [];
           const currentresources = this.resourceSubject.getValue();
           this.resourceSubject.next([...currentresources, ...resources]);
           const lastResource = resources[resources.length - 1] || {};
@@ -77,8 +78,8 @@ export class ResourceListComponent implements OnInit {
       .getResources({ count: "10", resource_id: "0" })
       .pipe(
         tap((data) => {
-          const { resources = [] } = data || {};
-          // const currentresources = this.resourceSubject.getValue();
+          // const { resources = [] } = data || {};
+          const resources = data || [];
           this.resourceSubject.next(resources);
           const lastResource = resources[resources.length - 1] || {};
           const { value = 0 } = lastResource;

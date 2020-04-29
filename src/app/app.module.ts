@@ -6,9 +6,9 @@ import {
 } from "@angular/platform-browser";
 import { NgModule, APP_INITIALIZER, PLATFORM_ID } from "@angular/core";
 import { AngularFireModule } from "@angular/fire";
-import { AngularFireDatabaseModule } from "@angular/fire/database";
+// import { AngularFireDatabaseModule } from "@angular/fire/database";
 import { AngularFireAuthModule } from "@angular/fire/auth";
-import { AngularFireStorageModule } from "@angular/fire/storage";
+// import { AngularFireStorageModule } from "@angular/fire/storage";
 // import { AngularFireAnalyticsModule } from "@angular/fire/analytics";
 import { GtagModule } from "angular-gtag";
 import { environment } from "../environments/environment";
@@ -87,8 +87,8 @@ import { TransferHttpCacheModule } from "@nguniversal/common";
     }),
     // AngularFireAnalyticsModule,
     AngularFireAuthModule,
-    AngularFireDatabaseModule,
-    AngularFireStorageModule,
+    // AngularFireDatabaseModule,
+    // AngularFireStorageModule,
     MatLinkPreviewModule.forRoot(),
     Ng2ImgMaxModule,
     // SlideshowModule,

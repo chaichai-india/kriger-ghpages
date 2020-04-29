@@ -3,7 +3,7 @@ import { Routes, RouterModule } from "@angular/router";
 import { AuthGuard } from "../services/authentication/auth.guard";
 
 import { PostListComponent } from "./components/post-list/post-list.component";
-import { PostDetailComponent } from "./components/post-detail/post-detail.component";
+// import { PostDetailComponent } from "./components/post-detail/post-detail.component";
 
 const routes: Routes = [
   {
@@ -11,7 +11,7 @@ const routes: Routes = [
     component: PostListComponent,
     canActivate: [AuthGuard],
   },
-  { path: ":id", component: PostDetailComponent },
+  // { path: ":id", component: PostDetailComponent },
 ];
 
 @NgModule({

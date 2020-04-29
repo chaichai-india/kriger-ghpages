@@ -169,9 +169,7 @@
         >
           <img
             [src]="
-              userDetails?.details?.thumb
-                ? userDetails?.details?.thumb
-                : 'assets/images/user.svg'
+              userDetails?.thumb ? userDetails?.thumb : 'assets/images/user.svg'
             "
             height="24"
             width="24"
@@ -191,7 +189,7 @@
           [ngStyle]="{ left: isHome ? '-143px' : 0 }"
         >
           <span class="dropdown-item text-center"
-            >Hello,&nbsp; {{ userDetails?.details?.name }}</span
+            >Hello,&nbsp; {{ userDetails?.name }}</span
           >
           <div class="dropdown-divider"></div>
           <span

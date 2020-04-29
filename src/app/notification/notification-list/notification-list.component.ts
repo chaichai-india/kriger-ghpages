@@ -60,7 +60,8 @@ export class NotificationListComponent implements OnInit {
       .pipe(
         tap((data) => {
           console.log({ data });
-          const { notifications = [] } = data || {};
+          // const { notifications = [] } = data || {};
+          const notifications = data || [];
           const currentnotifications = this.notificationSubject.getValue();
           this.notificationSubject.next([
             ...currentnotifications,
@@ -122,7 +123,8 @@ export class NotificationListComponent implements OnInit {
             ),
             tap((data) => {
               console.log({ data });
-              const { notifications = [] } = data || {};
+              // const { notifications = [] } = data || {};
+              const notifications = data || [];
               this.notificationSubject.next(notifications);
               const lastNotification =
                 notifications[notifications.length - 1] || {};

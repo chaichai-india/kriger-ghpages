@@ -4,13 +4,14 @@ import { MatDialog, MatSnackBar } from "@angular/material";
 import { AuthService } from "../../../services/authentication/auth.service";
 import { Router } from "@angular/router";
 // import { BehaviorSubject } from "rxjs";
-import { take } from "rxjs/operators";
-import { UserService } from "../../../services/database/user.service";
+import { take, tap, switchMap } from "rxjs/operators";
+// import { UserService } from "../../../services/database/user.service";
+import { ProfileService, NotificationService } from "../../../core";
 
 @Component({
   selector: "app-navbar",
   templateUrl: "./navbar.component.html",
-  styleUrls: ["./navbar.component.css"]
+  styleUrls: ["./navbar.component.css"],
 })
 export class NavbarComponent implements OnInit {
   isNavbarCollapsed: boolean = true;
@@ -18,10 +19,12 @@ export class NavbarComponent implements OnInit {
   isLoggedIn$;
   userDetails;
   isHome: boolean;
+  uid: string;
+  user_id: string;
 
   constructor(
     private authService: AuthService,
-    private userService: UserService,
+    private profileService: ProfileService,
     public dialog: MatDialog,
     private router: Router,
     private _snackBar: MatSnackBar
@@ -32,20 +35,33 @@ export class NavbarComponent implements OnInit {
     //   this.isLoggedIn = user ? true : false;
     // });
 
-    this.authService.loggedInUpdateObservable().then(status => {
+    this.authService.loggedInUpdateObservable().then((status) => {
       this.isLoggedIn$ = status;
       let copy = this.isLoggedIn$;
-      copy.subscribe(res => (res ? this.getUser() : false));
+      copy.subscribe((res) => (res ? this.getUser() : false));
     });
   }
 
   async getUser() {
-    const uid = await this.authService.userID;
-    const userdetails = await this.userService.getUserDetail(uid);
-    userdetails.pipe(take(1)).subscribe(details => {
-      this.userDetails = { uid, details };
-    });
-    // console.log({ uid, userdetails });
+    this.uid = await this.authService.getCurrentUser();
+    if (this.uid) {
+      this.profileService
+        .getIdbyFirebaseuid(this.uid)
+        .pipe(
+          tap(({ _id }) => {
+            this.user_id = _id;
+          }),
+          switchMap(({ _id }) =>
+            this.profileService.getUserDetail({ user_id: _id })
+          ),
+          tap((data) => {
+            this.userDetails = data;
+            console.log({ userdetails: this.userDetails });
+          }),
+          take(1)
+        )
+        .subscribe();
+    }
   }
 
   async logout() {
@@ -59,14 +75,14 @@ export class NavbarComponent implements OnInit {
   openSnackBar(message: string, action: string) {
     this._snackBar.open(message, action, {
       duration: 2000,
-      panelClass: "success-dialog"
+      panelClass: "success-dialog",
     });
   }
 
   openDialog() {
     const dialogRef = this.dialog.open(NavDialogComponent);
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe((result) => {
       // console.log(`Dialog result: ${result}`);
     });
   }
@@ -82,6 +98,6 @@ export class NavbarComponent implements OnInit {
 @Component({
   selector: "nav-post-dialog",
   templateUrl: "./nav.dialog.component.html",
-  styleUrls: ["./nav.dialog.component.css"]
+  styleUrls: ["./nav.dialog.component.css"],
 })
 export class NavDialogComponent {}
