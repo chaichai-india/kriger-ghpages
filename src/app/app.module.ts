@@ -36,7 +36,7 @@ import { Ng2ImgMaxModule } from "ng2-img-max";
 import { SharedModule } from "./shared/shared.module";
 import { FooterComponent } from "./components/ui/footer/footer.component";
 import { LandingpageComponent } from "./components/landingpage/landingpage.component";
-import { AuthGuard } from "./services/authentication/auth.guard";
+// import { AuthGuard } from "./services/authentication/auth.guard";
 import { LoginGuard } from "./services/authentication/login.guard";
 import {
   MatSnackBarModule,
@@ -49,6 +49,7 @@ import { NewlandingpageComponent } from "./components/newlandingpage/newlandingp
 import { CoreModule } from "./core/core.module";
 // import { isPlatformBrowser } from "@angular/common";
 import { TransferHttpCacheModule } from "@nguniversal/common";
+import { AngularFireAuthGuard } from "@angular/fire/auth-guard";
 @NgModule({
   declarations: [
     AppComponent,
@@ -123,7 +124,7 @@ import { TransferHttpCacheModule } from "@nguniversal/common";
     //   deps: [DOCUMENT, PLATFORM_ID],
     //   multi: true
     // },
-    AuthGuard,
+    AngularFireAuthGuard,
     LoginGuard,
   ],
   bootstrap: [AppComponent],

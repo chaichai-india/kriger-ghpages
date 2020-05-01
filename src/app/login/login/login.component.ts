@@ -7,15 +7,35 @@ import {
   MatSnackBar,
   MatDialog,
   MAT_DIALOG_DATA,
-  MatDialogConfig
+  MatDialogConfig,
 } from "@angular/material";
 
 // import { AuthProvider } from 'ngx-auth-firebaseui';
 
+//TODO: solution for login flicker
+{
+  // authResolved = false;
+  // constructor(
+  //   private afAuth: AngularFireAuth,
+  //   @Inject(PLATFORM_ID) private platformId,
+  // ) {}
+  // ngOnInit() {
+  //     if (isPlatformBrowser(this.platformId)) {
+  //       // show spinner till frontend can determine if user is logged in
+  //       this.afAuth.authState.pipe(
+  //         map(user => !!user),
+  //         take(1) // this way the observable completes and we don't need to unsubscribe
+  //       ).subscribe(() => {
+  //         this.authResolved = true;
+  //       });
+  //     }
+  //   }
+}
+
 @Component({
   selector: "app-login",
   templateUrl: "./login.component.html",
-  styleUrls: ["./login.component.css"]
+  styleUrls: ["./login.component.css"],
 })
 export class LoginComponent implements OnInit, OnDestroy {
   loginForm: FormGroup;
@@ -55,7 +75,7 @@ export class LoginComponent implements OnInit, OnDestroy {
       return;
     }
     const { email, password } = this.loginForm.value;
-    this.authService.login(email, password).then(res => {
+    this.authService.login(email, password).then((res) => {
       this.loading.next(false);
       const { message, action } = res;
       if (message === "Success!") {
@@ -73,7 +93,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   openSnackBar(message: string, action: string) {
     this._snackBar.open(message, action, {
       duration: 2000,
-      panelClass: "success-dialog"
+      panelClass: "success-dialog",
     });
   }
 
@@ -93,7 +113,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
       email: ["", [Validators.required, Validators.email]],
-      password: ["", [Validators.required, Validators.minLength(6)]]
+      password: ["", [Validators.required, Validators.minLength(6)]],
     });
   }
 
@@ -105,7 +125,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 @Component({
   selector: "app-login-dialog",
   templateUrl: "../login-dialog/login-dialog.component.html",
-  styleUrls: ["../login-dialog/login-dialog.component.css"]
+  styleUrls: ["../login-dialog/login-dialog.component.css"],
 })
 export class LoginDialogComponent {
   constructor(@Inject(MAT_DIALOG_DATA) public data) {}
@@ -115,7 +135,7 @@ export class LoginDialogComponent {
   selector: "app-forgot-password-dialog",
   templateUrl:
     "../forgot-password-dialog/forgot-password-dialog.component.html",
-  styleUrls: ["../forgot-password-dialog/forgot-password-dialog.component.css"]
+  styleUrls: ["../forgot-password-dialog/forgot-password-dialog.component.css"],
 })
 export class ForgotPasswordDialogComponent implements OnInit {
   forgotPasswordForm: FormGroup;
@@ -137,7 +157,7 @@ export class ForgotPasswordDialogComponent implements OnInit {
       return;
     }
     const { email } = this.forgotPasswordForm.value;
-    await this.authService.sendPasswordResetMail(email).then(res => {
+    await this.authService.sendPasswordResetMail(email).then((res) => {
       if (res === "Success") {
         this.message = "Password reset link sent!";
       } else {
@@ -149,7 +169,7 @@ export class ForgotPasswordDialogComponent implements OnInit {
 
   ngOnInit(): void {
     this.forgotPasswordForm = this.formBuilder.group({
-      email: ["", [Validators.required, Validators.email]]
+      email: ["", [Validators.required, Validators.email]],
     });
   }
 }
@@ -157,7 +177,7 @@ export class ForgotPasswordDialogComponent implements OnInit {
 @Component({
   selector: "app-having-trouble-dialog",
   templateUrl: "../having-trouble-dialog/having-trouble-dialog.component.html",
-  styleUrls: ["../having-trouble-dialog/having-trouble-dialog.component.css"]
+  styleUrls: ["../having-trouble-dialog/having-trouble-dialog.component.css"],
 })
 export class HavingTroubleDialogComponent implements OnInit {
   isVerification: boolean;
@@ -185,7 +205,7 @@ export class HavingTroubleDialogComponent implements OnInit {
     this.isVerification = true;
     this.emailVerifyForm = this.formBuilder.group({
       email: ["", [Validators.required, Validators.email]],
-      password: ["", [Validators.required, Validators.minLength(6)]]
+      password: ["", [Validators.required, Validators.minLength(6)]],
     });
   }
 
@@ -196,7 +216,7 @@ export class HavingTroubleDialogComponent implements OnInit {
       return;
     }
     const { email, password } = this.emailVerifyForm.value;
-    this.authService.signInAndVerifyMail(email, password).then(res => {
+    this.authService.signInAndVerifyMail(email, password).then((res) => {
       this.message = res;
       if (res !== "Verification mail sent.") {
         this.isSubmitted = false;

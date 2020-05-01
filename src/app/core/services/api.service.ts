@@ -11,20 +11,20 @@ interface apiInput {
   headers?: HttpHeaders;
 }
 @Injectable({
-  providedIn: "root"
+  providedIn: "root",
 })
 export class ApiService {
   apiUrl = environment.api_url;
   constructor(private http: HttpClient) {}
 
   private formatError(error: any) {
-    return throwError(error.error);
+    return throwError(error);
   }
 
   get({
     path,
     params = new HttpParams(),
-    headers = new HttpHeaders()
+    headers = new HttpHeaders(),
   }: apiInput): Observable<any> {
     return this.http
       .get(`${this.apiUrl}${path}`, { params, headers })

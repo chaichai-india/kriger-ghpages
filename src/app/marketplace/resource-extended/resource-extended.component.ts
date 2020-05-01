@@ -4,7 +4,7 @@ import { Router, ActivatedRoute } from "@angular/router";
 @Component({
   selector: "app-resource-extended",
   templateUrl: "./resource-extended.component.html",
-  styleUrls: ["./resource-extended.component.css"]
+  styleUrls: ["./resource-extended.component.css"],
 })
 export class ResourceExtendedComponent implements OnInit {
   data;
@@ -37,7 +37,7 @@ export class ResourceExtendedComponent implements OnInit {
       type,
       class_type,
       review,
-      count_reviews
+      count_reviews,
     } = resource;
     return {
       _id,
@@ -57,12 +57,12 @@ export class ResourceExtendedComponent implements OnInit {
       type,
       class_type,
       review,
-      count_reviews
+      count_reviews,
     };
   }
 
   ngOnInit() {
-    this.data = this.route.snapshot.data.data.data;
+    this.data = this.route.snapshot.data.data;
     console.log({ data: this.data });
     this.headerData = this.setHeaderData(this.data);
     this.bodyData = this.setBodyData(this.data);

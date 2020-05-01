@@ -1,13 +1,19 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 import { NotificationListComponent } from "./notification-list/notification-list.component";
-import { AuthGuard } from "../services/authentication/auth.guard";
+// import { AuthGuard } from "../services/authentication/auth.guard";
+import {
+  AngularFireAuthGuard,
+  redirectUnauthorizedTo,
+} from "@angular/fire/auth-guard";
+const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(["login"]);
 
 const routes: Routes = [
   {
     path: "",
     component: NotificationListComponent,
-    canActivate: [AuthGuard],
+    canActivate: [AngularFireAuthGuard],
+    data: { authGuardPipe: redirectUnauthorizedToLogin },
   },
 ];
 

@@ -19,7 +19,7 @@ import {
   ShareDialogComponent,
 } from "./components/post/post.component";
 import { PostListComponent } from "./components/post-list/post-list.component";
-// import { PostDetailComponent } from "./components/post-detail/post-detail.component";
+import { PostDetailComponent } from "./components/post-detail/post-detail.component";
 import { AdbannerComponent } from "../components/adbanner/adbanner.component";
 
 import { ReversePipe } from "../pipes/reverse.pipe";
@@ -32,6 +32,7 @@ import {
   MatSnackBarModule,
 } from "@angular/material";
 import { ReactiveFormsModule } from "@angular/forms";
+import { PostResolver } from "./post-resolver.service";
 // import { CommentListComponent } from "./components/comment-list/comment-list.component";
 // import { CommentComponent } from "./components/comment/comment.component";
 // import { CreateCommentComponent } from "./components/create-comment/create-comment.component";
@@ -41,7 +42,7 @@ import { ReactiveFormsModule } from "@angular/forms";
     PostComponent,
     ShareDialogComponent,
     PostListComponent,
-    // PostDetailComponent,
+    PostDetailComponent,
     AdbannerComponent,
     ReversePipe,
     // CreatePostComponent,
@@ -70,6 +71,7 @@ import { ReactiveFormsModule } from "@angular/forms";
     // ImageCropperModule,
     SharedModule,
   ],
+  providers: [PostResolver],
   exports: [PostListComponent],
 })
 export class PostModule {}
