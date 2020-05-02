@@ -41,6 +41,17 @@ p.title {
   padding: 0.2rem 0.5rem;
 }
 
+.timings .day {
+  text-transform: capitalize;
+  width: 100px;
+  padding: 0.15rem 0;
+  display: inline-block;
+}
+
+.timings .timing.closed {
+  color: rgba(0, 0, 0, 0.55);
+}
+
 #enquiry {
   position: -webkit-sticky;
   position: sticky;

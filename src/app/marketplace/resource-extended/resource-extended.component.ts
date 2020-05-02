@@ -38,6 +38,9 @@ export class ResourceExtendedComponent implements OnInit {
       class_type,
       review,
       count_reviews,
+      author,
+      no_of_pages,
+      time,
     } = resource;
     return {
       _id,
@@ -58,6 +61,9 @@ export class ResourceExtendedComponent implements OnInit {
       class_type,
       review,
       count_reviews,
+      author,
+      no_of_pages,
+      time,
     };
   }
 

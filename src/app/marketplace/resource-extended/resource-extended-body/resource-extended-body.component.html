@@ -47,10 +47,17 @@
     <p class="title">{{ fieldTitle.fee }}:</p>
     <p class="content">{{ data?.fees }} Per {{ data?.fees_type }}</p>
   </div>
-  <!-- <div class="time" *ngIf="data?.time">
+  <div class="time" *ngIf="data?.time">
     <p class="title">Time:</p>
-    <p class="content">{{ data?.time }}</p>
-  </div> -->
+    <!-- <p class="content"> -->
+    <div class="timings" *ngFor="let time of timings | keyvalue: disableSort">
+      <span class="day">{{ time.key }}</span> :
+      <span class="timing" [ngClass]="{ closed: time.value == 'Closed' }">{{
+        time.value
+      }}</span>
+    </div>
+    <!-- </p> -->
+  </div>
   <div class="description">
     <p class="title">Description:</p>
     <p class="content">{{ data?.description }}</p>
