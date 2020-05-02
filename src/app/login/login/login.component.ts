@@ -1,4 +1,11 @@
-import { Component, OnInit, Inject, Renderer2, OnDestroy } from "@angular/core";
+import {
+  Component,
+  OnInit,
+  Inject,
+  Renderer2,
+  OnDestroy,
+  PLATFORM_ID,
+} from "@angular/core";
 import { Router } from "@angular/router";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { AuthService } from "../../services/authentication/auth.service";
@@ -9,6 +16,9 @@ import {
   MAT_DIALOG_DATA,
   MatDialogConfig,
 } from "@angular/material";
+import { AngularFireAuth } from "@angular/fire/auth";
+import { isPlatformBrowser } from "@angular/common";
+import { map, take } from "rxjs/operators";
 
 // import { AuthProvider } from 'ngx-auth-firebaseui';
 
@@ -38,6 +48,7 @@ import {
   styleUrls: ["./login.component.css"],
 })
 export class LoginComponent implements OnInit, OnDestroy {
+  authResolved = false;
   loginForm: FormGroup;
   isSubmitted = false;
   showPassword = false;
@@ -49,7 +60,9 @@ export class LoginComponent implements OnInit, OnDestroy {
     private formBuilder: FormBuilder,
     private _snackBar: MatSnackBar,
     public dialog: MatDialog,
-    private renderer: Renderer2
+    private renderer: Renderer2,
+    private afAuth: AngularFireAuth,
+    @Inject(PLATFORM_ID) private platformId
   ) {
     this.renderer.addClass(document.body, "body-bg");
   }
@@ -111,6 +124,17 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    if (isPlatformBrowser(this.platformId)) {
+      // show spinner till frontend can determine if user is logged in
+      this.afAuth.authState
+        .pipe(
+          map((user) => !!user),
+          take(1) // this way the observable completes and we don't need to unsubscribe
+        )
+        .subscribe(() => {
+          this.authResolved = true;
+        });
+    }
     this.loginForm = this.formBuilder.group({
       email: ["", [Validators.required, Validators.email]],
       password: ["", [Validators.required, Validators.minLength(6)]],

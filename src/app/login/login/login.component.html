@@ -1,4 +1,5 @@
-<div class="logo">
+<mat-spinner diameter="50" *ngIf="!authResolved"></mat-spinner>
+<div class="logo" *ngIf="authResolved">
   <img
     src="../../../assets/images/nav_logo.png"
     alt=""
@@ -7,7 +8,7 @@
   />
 </div>
 
-<mat-card class="login-card">
+<mat-card class="login-card" *ngIf="authResolved">
   <mat-toolbar>
     <span>LOGIN</span>
   </mat-toolbar>
@@ -67,7 +68,7 @@
         >
           Login
         </button>
-        <div style="display:flex; width:100%">
+        <div style="display: flex; width: 100%;">
           <button
             type="button"
             id="forgotpassword"
