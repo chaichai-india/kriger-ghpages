@@ -10,6 +10,8 @@ import * as express from "express";
 import { join } from "path";
 import { readFileSync } from "fs";
 
+import * as compression from "compression";
+
 import * as domino from "domino";
 
 // Polyfills required for Firebase
@@ -25,6 +27,7 @@ enableProdMode();
 
 // Export our express server
 export const app = express();
+app.use(compression());
 
 const DIST_FOLDER = join(process.cwd(), "dist");
 const APP_NAME = "kriger-campus-website";

@@ -16,22 +16,41 @@
     <p class="title">Listed By:</p>
     <p class="content">{{ data?.owner_name }}</p>
   </div>
-  <div class="subjects">
+  <div class="author" *ngIf="data?.author">
+    <p class="title">Author:</p>
+    <p class="content">{{ data?.author }}</p>
+  </div>
+  <div class="pages" *ngIf="data?.no_of_pages">
+    <p class="title">No of pages:</p>
+    <p class="content">{{ data?.no_of_pages }}</p>
+  </div>
+  <div class="language" *ngIf="data?.language">
+    <p class="title">{{ fieldTitle.language }}:</p>
+    <p class="content">{{ data?.language }}</p>
+  </div>
+  <div class="subjects" *ngIf="data?.subject">
     <p class="title">Subjects:</p>
     <p class="content">{{ data?.subject }}</p>
   </div>
-  <div class="exams">
+  <div class="exams" *ngIf="data?.exam">
     <p class="title">Exams:</p>
     <p class="content">{{ data?.exam }}</p>
   </div>
-  <div class="class_type">
+  <div
+    class="class_type"
+    *ngIf="data?.class_type && data?.class_type.length > 0"
+  >
     <p class="title">Class:</p>
     <p class="content">{{ data?.class_type }}</p>
   </div>
   <div class="fee_type">
-    <p class="title">Fee:</p>
+    <p class="title">{{ fieldTitle.fee }}:</p>
     <p class="content">{{ data?.fees }} Per {{ data?.fees_type }}</p>
   </div>
+  <!-- <div class="time" *ngIf="data?.time">
+    <p class="title">Time:</p>
+    <p class="content">{{ data?.time }}</p>
+  </div> -->
   <div class="description">
     <p class="title">Description:</p>
     <p class="content">{{ data?.description }}</p>
@@ -49,6 +68,6 @@
     <p class="content">{{ data?.timestamp * 1000 | date }}</p>
   </div>
   <button id="enquiry" (click)="openDialog()" mat-raised-button>
-    Enquire Now
+    {{ fieldTitle.enquire }}
   </button>
 </div>

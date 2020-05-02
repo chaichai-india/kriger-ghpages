@@ -7,7 +7,9 @@ import { Component, OnInit, Input } from "@angular/core";
       class="header"
       [ngStyle]="{
         'background-image':
-          'url(' + resourceCover + '), url(../../../../assets/images/user.svg)'
+          'url(' +
+          resourceCover +
+          '), url(../../../../assets/images/resource_default.jpeg)'
       }"
     >
       <div class="share">
@@ -29,8 +31,8 @@ import { Component, OnInit, Input } from "@angular/core";
         bottom: 2%;
         right: 2%;
       }
-    `
-  ]
+    `,
+  ],
 })
 export class ResourceExtendedHeaderComponent implements OnInit {
   @Input() data;
