@@ -1,7 +1,14 @@
-<app-navbar></app-navbar>
-<div class="navbar-placeholder"></div>
-<mat-progress-bar *ngIf="loading" color="primary" mode="indeterminate">
+<app-navbar *ngIf="authResolved"></app-navbar>
+<div class="navbar-placeholder" *ngIf="authResolved"></div>
+<mat-progress-bar
+  *ngIf="loading && authResolved"
+  color="primary"
+  mode="indeterminate"
+>
 </mat-progress-bar>
-<router-outlet></router-outlet>
+<router-outlet *ngIf="authResolved"></router-outlet>
+<div class="loading" *ngIf="!authResolved">
+  <mat-spinner diameter="50"></mat-spinner>
+</div>
 
 <!-- <app-footer></app-footer> -->

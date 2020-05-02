@@ -12,3 +12,11 @@ mat-progress-bar {
   top: 60px;
   z-index: 99;
 }
+
+.loading {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  place-content: center;
+}
