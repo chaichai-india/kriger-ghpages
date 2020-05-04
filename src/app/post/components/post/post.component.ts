@@ -47,19 +47,15 @@ export class PostComponent implements OnInit {
   //   }
   // }
 
-  // openShare() {
-  //   if (this.uid) {
-  //     const dialogRef = this.dialog.open(ShareDialogComponent, {
-  //       data: { key: this.post.key }
-  //     });
+  openShare() {
+    const dialogRef = this.dialog.open(ShareDialogComponent, {
+      data: { key: this.post._id },
+    });
 
-  //     dialogRef.afterClosed().subscribe(result => {
-  //       // console.log(`Dialog result: ${result}`);
-  //     });
-  //   } else {
-  //     this.openDialog();
-  //   }
-  // }
+    dialogRef.afterClosed().subscribe((result) => {
+      // console.log(`Dialog result: ${result}`);
+    });
+  }
   setProfileUrl(user) {
     const { account_type = 0, username } = user;
     const types = ["learner", "educator", "institute"];
