@@ -11,7 +11,11 @@
             post?.user.thumb +
             '), url(../../../assets/images/user.svg)'
         }"
-      ></div>
+      >
+        <app-user-badge
+          [account_type]="post?.user?.account_type"
+        ></app-user-badge>
+      </div>
       <mat-card-title style="cursor: pointer; margin-bottom: 6px;">{{
         post?.user.name
       }}</mat-card-title>

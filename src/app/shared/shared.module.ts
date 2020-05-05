@@ -16,16 +16,16 @@ import { ContactComponent } from "./contact/contact.component";
 import { ScrollTopComponent } from "./scroll-top/scroll-top.component";
 import { FooterNewComponent } from "./footer-new/footer-new.component";
 import { RouterModule } from "@angular/router";
-import { StaticProfileComponent } from "./static-profile/static-profile.component";
 import { DialogComponent } from "./dialog/dialog.component";
+import { UserBadgeComponent } from "./user-badge/user-badge.component";
 
 @NgModule({
   declarations: [
     ContactComponent,
     ScrollTopComponent,
     FooterNewComponent,
-    StaticProfileComponent,
     DialogComponent,
+    UserBadgeComponent,
   ],
   entryComponents: [DialogComponent],
   imports: [
@@ -42,7 +42,7 @@ import { DialogComponent } from "./dialog/dialog.component";
     ContactComponent,
     ScrollTopComponent,
     FooterNewComponent,
-    StaticProfileComponent,
+    UserBadgeComponent,
     DialogComponent,
     CommonModule,
     MatProgressSpinnerModule,

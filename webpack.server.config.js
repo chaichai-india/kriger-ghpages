@@ -1,7 +1,7 @@
 const path = require("path");
 const webpack = require("webpack");
 
-const BrotliPlugin = require("brotli-webpack-plugin");
+// const BrotliPlugin = require("brotli-webpack-plugin");
 
 const APP_NAME = "kriger-campus-website";
 
@@ -51,9 +51,9 @@ module.exports = {
       path.join(__dirname, "src"),
       {}
     ),
-    new BrotliPlugin({
-      asset: "[file].br",
-      test: /\.(js)$/,
-    }),
+    // new BrotliPlugin({
+    //   asset: "[file].br",
+    //   test: /\.(js)$/,
+    // }),
   ],
 };

@@ -28,14 +28,14 @@ const routes: Routes = [
     path: "notifications",
     loadChildren: "./notification/notification.module#NotificationModule",
   },
-  {
-    path: "educator",
-    loadChildren: "./educator/educator.module#EducatorModule",
-  },
-  {
-    path: "institute",
-    loadChildren: "./institute/institute.module#InstituteModule",
-  },
+  // {
+  //   path: "educator",
+  //   loadChildren: "./educator/educator.module#EducatorModule",
+  // },
+  // {
+  //   path: "institute",
+  //   loadChildren: "./institute/institute.module#InstituteModule",
+  // },
   // {
   //   path: "register",
   //   loadChildren: "./signup/signup.module#SignupModule"
