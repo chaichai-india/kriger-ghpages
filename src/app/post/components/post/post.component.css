@@ -9,15 +9,6 @@
 .post-header-image {
   background-size: cover;
   background-position: center;
-  position: relative;
-  /* border: 1px solid rgba(0, 0, 0, 0.1); */
-}
-
-.post-header-image app-user-badge {
-  position: absolute;
-  top: 34px;
-  left: -4px;
-  width: 48px;
 }
 
 a#profile_link {

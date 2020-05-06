@@ -10,8 +10,7 @@ import * as express from "express";
 import { join } from "path";
 import { readFileSync } from "fs";
 
-// import * as compression from "compression";
-import * as expressStaticGzip from "express-static-gzip";
+import * as compression from "compression";
 
 import * as domino from "domino";
 
@@ -28,7 +27,7 @@ enableProdMode();
 
 // Export our express server
 export const app = express();
-// app.use(compression());
+app.use(compression());
 
 const DIST_FOLDER = join(process.cwd(), "dist");
 const APP_NAME = "kriger-campus-website";
@@ -72,23 +71,8 @@ app.engine(
 app.set("view engine", "html");
 app.set("views", join(DIST_FOLDER, APP_NAME));
 
-// brotli webpack plugin
-// app.get("*.js", (req, res, next) => {
-//   if (req.header("Accept-Encoding").includes("br")) {
-//     req.url = req.url + ".br";
-//     // console.log(req.header("Accept-Encoding"));
-//     res.set("Content-Encoding", "br");
-//     res.set("Content-Type", "application/javascript; charset=UTF-8");
-//   }
-//   next();
-// });
-
 // Serve static files
-// app.get("*.*", express.static(join(DIST_FOLDER, APP_NAME)));
-app.get(
-  "*.*",
-  expressStaticGzip(join(DIST_FOLDER, APP_NAME), { enableBrotli: true })
-);
+app.get("*.*", express.static(join(DIST_FOLDER, APP_NAME)));
 
 // All regular routes use the Universal engine
 app.get("*", (req, res) => {

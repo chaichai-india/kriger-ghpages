@@ -63,8 +63,6 @@ export class AppComponent implements OnInit {
         .subscribe(() => {
           this.authResolved = true;
         });
-    } else {
-      this.authResolved = true;
     }
   }
 }

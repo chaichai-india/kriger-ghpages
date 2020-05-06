@@ -92,7 +92,7 @@ export class PostListComponent implements OnInit, OnDestroy {
               this.user_id = _id;
             }),
             switchMap(({ _id }) => this.postService.getPosts({ user_id: _id })),
-            tap((data: any[]) => {
+            tap((data) => {
               console.log({ data });
               // const { posts = [] } = data || {};
               const posts = data || [];
