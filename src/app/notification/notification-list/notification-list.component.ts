@@ -109,45 +109,41 @@ export class NotificationListComponent implements OnInit {
 
   async init() {
     try {
-      this.uid = await this.authService.getCurrentUser();
-      console.log({ uid: this.uid });
-      if (this.uid) {
-        this.profileService
-          .getIdbyFirebaseuid(this.uid)
-          .pipe(
-            tap(({ _id }) => {
-              this.user_id = _id;
-            }),
-            switchMap(({ _id }) =>
-              this.notificationService.getNotifications({ user_id: _id })
-            ),
-            tap((data) => {
-              console.log({ data });
-              // const { notifications = [] } = data || {};
-              const notifications = data || [];
-              this.notificationSubject.next(notifications);
-              const lastNotification =
-                notifications[notifications.length - 1] || {};
-              const { value = 0 } = lastNotification;
-              console.log({ value });
-              this.updateState(value);
-              if (notifications.length == 0) {
-                this.setEmptyState();
-              } else if (notifications.length < 10) {
-                this.setCompleteState();
-              } else if (notifications.length == 10) {
-                this.setContinueState();
-              }
-            }),
-            take(1),
-            catchError((err) => {
-              this.setErrorStatus(err, "Something went wrong!");
-              this.notificationSubject.next([]);
-              return of({ notifications: [] });
-            })
-          )
-          .subscribe();
-      }
+      const user$ = await this.profileService.getUser();
+      user$
+        .pipe(
+          tap(({ _id }) => {
+            this.user_id = _id;
+          }),
+          switchMap(({ _id }) =>
+            this.notificationService.getNotifications({ user_id: _id })
+          ),
+          tap((data: any[]) => {
+            console.log({ data });
+            // const { notifications = [] } = data || {};
+            const notifications = data || [];
+            this.notificationSubject.next(notifications);
+            const lastNotification =
+              notifications[notifications.length - 1] || {};
+            const { value = 0 } = lastNotification;
+            console.log({ value });
+            this.updateState(value);
+            if (notifications.length == 0) {
+              this.setEmptyState();
+            } else if (notifications.length < 10) {
+              this.setCompleteState();
+            } else if (notifications.length == 10) {
+              this.setContinueState();
+            }
+          }),
+          take(1),
+          catchError((err) => {
+            this.setErrorStatus(err, "Something went wrong!");
+            this.notificationSubject.next([]);
+            return of({ notifications: [] });
+          })
+        )
+        .subscribe();
     } catch (error) {
       console.log(error);
     }

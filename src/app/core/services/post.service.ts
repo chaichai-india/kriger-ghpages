@@ -26,4 +26,11 @@ export class PostService {
       .set("user_id", user_id);
     return this.apiService.get({ path, headers });
   }
+
+  likePost({ post_id, user_id, like }) {
+    const path = `post/like`;
+    const headers = new HttpHeaders().set("user_id", user_id);
+    const body = { like, post_id };
+    return this.apiService.post({ path, headers, body });
+  }
 }

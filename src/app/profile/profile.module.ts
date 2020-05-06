@@ -14,7 +14,6 @@ import { MatIconModule } from "@angular/material/icon";
 import { ProfileComponent } from "./components/profile/profile.component";
 import { ProfileSortComponent } from "./components/profile-sort/profile-sort.component";
 // import { ProfileListComponent } from "./components/profile-list/profile-list.component";
-import { DebounceClickDirective } from "../directives/debounce-click.directive";
 import { ProfileResolver } from "./profile-resolver.service";
 import { HeaderComponent } from "./components/profile/header/header.component";
 import { IntroComponent } from "./components/profile/intro/intro.component";
@@ -35,13 +34,13 @@ import {
 } from "./components/profile/presence/presence.component";
 import { AddressComponent } from "./components/profile/address/address.component";
 import { ConnectComponent } from "./components/profile/connect/connect.component";
+import { SharedModule } from "../shared/shared.module";
 
 @NgModule({
   declarations: [
     ProfileComponent,
     ProfileSortComponent,
     // ProfileListComponent,
-    DebounceClickDirective,
     HeaderComponent,
     IntroComponent,
     AboutComponent,
@@ -70,6 +69,7 @@ import { ConnectComponent } from "./components/profile/connect/connect.component
     MatListModule,
     MatCardModule,
     MatIconModule,
+    SharedModule,
   ],
   providers: [ProfileResolver],
 })

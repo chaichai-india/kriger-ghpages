@@ -30,4 +30,10 @@ export class ApiService {
       .get(`${this.apiUrl}${path}`, { params, headers })
       .pipe(tap(console.log), catchError(this.formatError));
   }
+
+  post({ path, headers = new HttpHeaders(), body }: apiInput): Observable<any> {
+    return this.http
+      .post(`${this.apiUrl}${path}`, body, { headers })
+      .pipe(tap(console.log), catchError(this.formatError));
+  }
 }

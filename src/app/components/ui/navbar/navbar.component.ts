@@ -31,10 +31,6 @@ export class NavbarComponent implements OnInit {
   ) {}
 
   setLoggedIn() {
-    // this.authService.isLoggedIn().then(user => {
-    //   this.isLoggedIn = user ? true : false;
-    // });
-
     this.authService.loggedInUpdateObservable().then((status) => {
       this.isLoggedIn$ = status;
       let copy = this.isLoggedIn$;
@@ -66,6 +62,7 @@ export class NavbarComponent implements OnInit {
 
   async logout() {
     await this.authService.signout();
+    this.profileService.resetUser();
     !this.isNavbarCollapsed ? (this.isNavbarCollapsed = true) : false;
 
     this.openSnackBar("Success!", "Logged Out");
