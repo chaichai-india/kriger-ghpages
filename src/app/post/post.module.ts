@@ -35,7 +35,7 @@ import { ReactiveFormsModule } from "@angular/forms";
 import { PostResolver } from "./post-resolver.service";
 import { CommentListComponent } from "./components/comment-list/comment-list.component";
 import { CommentComponent } from "./components/comment/comment.component";
-// import { CreateCommentComponent } from "./components/create-comment/create-comment.component";
+import { CreateCommentComponent } from "./components/create-comment/create-comment.component";
 
 @NgModule({
   declarations: [
@@ -48,7 +48,7 @@ import { CommentComponent } from "./components/comment/comment.component";
     // CreatePostComponent,
     CommentListComponent,
     CommentComponent,
-    // CreateCommentComponent,
+    CreateCommentComponent,
   ],
   entryComponents: [ShareDialogComponent],
   imports: [

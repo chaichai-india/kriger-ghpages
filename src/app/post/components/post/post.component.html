@@ -82,9 +82,9 @@
       <span>Share</span>
     </button>
   </mat-card-actions>
-  <!-- <app-create-comment
+  <app-create-comment
     *ngIf="showComments"
-    [postid]="post.key"
-  ></app-create-comment> -->
+    [postid]="post._id"
+  ></app-create-comment>
   <app-comment-list *ngIf="showComments" [postid]="post._id"></app-comment-list>
 </mat-card>

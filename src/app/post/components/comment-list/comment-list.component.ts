@@ -11,7 +11,7 @@ import { switchMap, take } from "rxjs/operators";
 })
 export class CommentListComponent implements OnInit {
   @Input() postid: string;
-  comments;
+  comments = [];
   comments$: Observable<any[]>;
   constructor(
     private commentService: CommentService,

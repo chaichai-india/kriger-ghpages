@@ -1,2 +1,7 @@
-<p class="comment-list__header">Comments</p>
-<app-comment *ngFor="let comment of comments" [comment]="comment"></app-comment>
+<div *ngIf="comments[0]">
+  <p class="comment-list__header">Comments</p>
+  <app-comment
+    *ngFor="let comment of comments"
+    [comment]="comment"
+  ></app-comment>
+</div>
