@@ -33,8 +33,8 @@ import {
 } from "@angular/material";
 import { ReactiveFormsModule } from "@angular/forms";
 import { PostResolver } from "./post-resolver.service";
-// import { CommentListComponent } from "./components/comment-list/comment-list.component";
-// import { CommentComponent } from "./components/comment/comment.component";
+import { CommentListComponent } from "./components/comment-list/comment-list.component";
+import { CommentComponent } from "./components/comment/comment.component";
 // import { CreateCommentComponent } from "./components/create-comment/create-comment.component";
 
 @NgModule({
@@ -46,8 +46,8 @@ import { PostResolver } from "./post-resolver.service";
     AdbannerComponent,
     ReversePipe,
     // CreatePostComponent,
-    // CommentListComponent,
-    // CommentComponent,
+    CommentListComponent,
+    CommentComponent,
     // CreateCommentComponent,
   ],
   entryComponents: [ShareDialogComponent],

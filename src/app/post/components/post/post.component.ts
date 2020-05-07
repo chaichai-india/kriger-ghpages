@@ -79,6 +79,7 @@ export class PostComponent implements OnInit {
       // console.log(`Dialog result: ${result}`);
     });
   }
+
   setProfileUrl(user) {
     const { account_type = 0, username } = user;
     const types = ["learner", "educator", "institute"];

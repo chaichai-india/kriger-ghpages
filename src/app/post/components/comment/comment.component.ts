@@ -1,64 +1,74 @@
-// import { Component, OnInit, Input, NgZone } from "@angular/core";
-// import { LikeService } from "../../../services/database/like.service";
-// import { AuthService } from "../../../services/authentication/auth.service";
-// import { TimestampService } from "../../../services/utility/timestamp.service";
-// import { Router } from "@angular/router";
+import { Component, OnInit, Input } from "@angular/core";
+import { ProfileService, CommentService } from "../../../core";
+import { switchMap, take } from "rxjs/operators";
 
-// @Component({
-//   selector: "app-comment",
-//   templateUrl: "./comment.component.html",
-//   styleUrls: ["./comment.component.css"]
-// })
-// export class CommentComponent implements OnInit {
-//   @Input() comment;
-//   isCommentLiked: boolean;
-//   uid = this.authService.userID;
+@Component({
+  selector: "app-comment",
+  templateUrl: "./comment.component.html",
+  styleUrls: ["./comment.component.css"],
+})
+export class CommentComponent implements OnInit {
+  @Input() comment;
+  liked: boolean;
+  profileUrl;
+  count_likes = 0;
 
-//   constructor(
-//     private likeService: LikeService,
-//     private authService: AuthService,
-//     private timeService: TimestampService,
-//     private router: Router,
-//     private zone: NgZone
-//   ) {}
+  constructor(
+    private profileService: ProfileService,
+    private commentService: CommentService
+  ) {}
 
-//   openProfile() {
-//     this.comment.profileLink.then(snap => {
-//       let username = snap.val();
+  setProfileUrl(user) {
+    const { account_type = 0, username } = user;
+    const types = ["learner", "educator", "institute"];
+    const url0 = "in";
+    const url1 = types[account_type];
+    this.profileUrl = "/" + url0 + "/" + url1 + "/" + username;
+  }
 
-//       this.zone.run(() => {
-//         this.router.navigate([`/india/${username}`]);
-//       });
-//     });
-//   }
+  async likeComment() {
+    const { _id: comment_id, post_id } = this.comment;
+    this.toggleLikeState();
 
-//   async likeComment(postid: string, commentid: string) {
-//     const uid = await this.authService.userID;
-//     const timestamp = this.timeService.timestamp;
+    const user$ = await this.profileService.getUser();
+    user$
+      .pipe(
+        switchMap(({ _id }) =>
+          this.commentService.likeComment({
+            post_id,
+            user_id: _id,
+            comment_id,
+            like: +this.liked,
+          })
+        ),
+        take(1)
+      )
+      .subscribe(
+        (response) => console.log("comment like response", response),
+        (error) => this.likeError(error),
+        () => console.log("comment like complete!")
+      );
+  }
 
-//     // console.log({ postid, uid });
-//     if (!this.isCommentLiked) {
-//       this.isCommentLiked = true;
-//       this.likeService.postCommentLike(postid, commentid, uid, timestamp);
-//     } else {
-//       this.isCommentLiked = false;
-//       this.likeService.postCommentDislike(postid, commentid, uid);
-//     }
-//   }
+  likeError(error) {
+    console.log("post like error", error);
+    this.toggleLikeState();
+  }
 
-//   commentLiked(postid, commentid, uid) {
-//     return this.likeService.likedPostComment(postid, commentid, uid);
-//   }
+  toggleLikeState() {
+    this.liked = !this.liked;
+    if (this.liked) this.count_likes++;
+    else this.count_likes--;
+  }
 
-//   initialize() {
-//     this.commentLiked(this.comment.postid, this.comment.key, this.uid).then(
-//       res => {
-//         this.isCommentLiked = res ? true : false;
-//       }
-//     );
-//   }
+  initialize() {
+    const { user, is_like, count_likes } = this.comment;
+    this.liked = !!is_like;
+    this.count_likes = +count_likes;
+    this.setProfileUrl(user);
+  }
 
-//   ngOnInit() {
-//     this.initialize();
-//   }
-// }
+  ngOnInit() {
+    this.initialize();
+  }
+}

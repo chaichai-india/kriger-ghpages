@@ -43,3 +43,8 @@
   border-bottom: 1px solid rgba(0, 0, 0, 0.54);
   align-items: center;
 }
+
+a#profile_link {
+  all: unset;
+  cursor: pointer;
+}

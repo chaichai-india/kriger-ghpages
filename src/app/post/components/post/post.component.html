@@ -73,7 +73,7 @@
       <mat-icon>thumb_up_alt</mat-icon>
       <span>Like</span>
     </button>
-    <button (click)="openDialog()" mat-button>
+    <button (click)="showComments = !showComments" mat-button>
       <mat-icon>comment</mat-icon>
       <span>Comment</span>
     </button>
@@ -85,9 +85,6 @@
   <!-- <app-create-comment
     *ngIf="showComments"
     [postid]="post.key"
-  ></app-create-comment>
-  <app-comment-list
-    *ngIf="(post.counter | async)?.count_comments && showComments"
-    [postid]="post.key"
-  ></app-comment-list> -->
+  ></app-create-comment> -->
+  <app-comment-list *ngIf="showComments" [postid]="post._id"></app-comment-list>
 </mat-card>
