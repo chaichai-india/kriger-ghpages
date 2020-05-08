@@ -81,7 +81,11 @@ export class CreateCommentComponent implements OnInit {
           if (event.type === HttpEventType.Response) {
             this.openSnackBar("Comment", "Success");
             const timestamp = Math.round(+new Date() / 1000);
-            this.commentService.updateNewComment({ ...body, timestamp });
+            this.commentService.updateNewComment({
+              ...body,
+              timestamp,
+              post_id: this.postid,
+            });
           }
         },
         (error) => {

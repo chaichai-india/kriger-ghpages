@@ -57,19 +57,21 @@ export class CommentListComponent implements OnInit {
   }
 
   async addNewCommentToList(comment) {
-    const user$ = await this.profileService.getUser();
-    user$
-      .pipe(
-        switchMap(({ _id }) =>
-          this.profileService.getUserDetail({ user_id: _id })
+    if (comment.post_id === this.postid) {
+      const user$ = await this.profileService.getUser();
+      user$
+        .pipe(
+          switchMap(({ _id }) =>
+            this.profileService.getUserDetail({ user_id: _id })
+          )
         )
-      )
-      .subscribe((response) => {
-        const user = response;
-        const new_comment = { user, ...comment };
-        const current_comments = this.comments.getValue();
-        this.comments.next([new_comment, ...current_comments]);
-      });
+        .subscribe((response) => {
+          const user = response;
+          const new_comment = { user, ...comment };
+          const current_comments = this.comments.getValue();
+          this.comments.next([new_comment, ...current_comments]);
+        });
+    }
   }
 
   ngOnInit() {
