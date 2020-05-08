@@ -28,6 +28,7 @@ export class CommentComponent implements OnInit {
 
   async likeComment() {
     const { _id: comment_id, post_id } = this.comment;
+    if (!comment_id) return;
     this.toggleLikeState();
 
     const user$ = await this.profileService.getUser();
@@ -62,7 +63,7 @@ export class CommentComponent implements OnInit {
   }
 
   initialize() {
-    const { user, is_like, count_likes } = this.comment;
+    const { user, is_like, count_likes = 0 } = this.comment;
     this.liked = !!is_like;
     this.count_likes = +count_likes;
     this.setProfileUrl(user);

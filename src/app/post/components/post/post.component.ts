@@ -1,6 +1,5 @@
 import { Component, OnInit, Input, Inject } from "@angular/core";
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from "@angular/material";
-import { AuthService } from "../../../services/authentication/auth.service";
 import { DialogComponent } from "../../../shared/dialog/dialog.component";
 import { ProfileService, PostService } from "../../../core";
 import { switchMap, take } from "rxjs/operators";
@@ -19,7 +18,6 @@ export class PostComponent implements OnInit {
 
   constructor(
     public dialog: MatDialog,
-    private authService: AuthService,
     private profileService: ProfileService,
     private postService: PostService
   ) {}
@@ -61,14 +59,6 @@ export class PostComponent implements OnInit {
     if (this.liked) this.count_likes++;
     else this.count_likes--;
   }
-
-  // openComments() {
-  //   if (this.uid) {
-  //     this.showComments = true;
-  //   } else {
-  //     this.openDialog();
-  //   }
-  // }
 
   openShare() {
     const dialogRef = this.dialog.open(ShareDialogComponent, {

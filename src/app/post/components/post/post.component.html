@@ -35,16 +35,16 @@
     <!-- <span>...see more</span> -->
   </mat-card-content>
   <img
-    *ngIf="post.image_url"
+    *ngIf="post?.image_url_original"
     mat-card-image
-    src="{{ post.image_url }}"
+    src="{{ post?.image_url_original }}"
     alt=""
   />
 
   <a
     class="post-pdf"
-    *ngIf="post.pdf_url"
-    href="{{ post.pdf_url }}"
+    *ngIf="post?.pdf_url"
+    href="{{ post?.pdf_url }}"
     target="_blank"
     rel="noopener"
   >
@@ -73,7 +73,11 @@
       <mat-icon>thumb_up_alt</mat-icon>
       <span>Like</span>
     </button>
-    <button (click)="showComments = !showComments" mat-button>
+    <button
+      appDebounceClick
+      (debounceClick)="showComments = !showComments"
+      mat-button
+    >
       <mat-icon>comment</mat-icon>
       <span>Comment</span>
     </button>

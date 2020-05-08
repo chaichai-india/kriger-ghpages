@@ -1,7 +1,11 @@
-<div *ngIf="comments[0]">
-  <p class="comment-list__header">Comments</p>
+<div class="comment-list__container" *ngIf="!(loading$ | async)">
+  <p class="comment-list__header">{{ (comments$ | async).length }} Comments</p>
   <app-comment
-    *ngFor="let comment of comments"
+    *ngFor="let comment of comments$ | async"
     [comment]="comment"
   ></app-comment>
+</div>
+
+<div class="comment-list__loading" *ngIf="loading$ | async">
+  Loading comments...
 </div>

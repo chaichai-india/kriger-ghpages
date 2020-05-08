@@ -8,6 +8,14 @@
 .comment-header-image {
   background-size: cover;
   background-position: center;
+  position: relative;
+}
+
+.comment-header-image app-user-badge {
+  position: absolute;
+  top: 34px;
+  left: -4px;
+  width: 48px;
 }
 
 .comment-card mat-card-title {

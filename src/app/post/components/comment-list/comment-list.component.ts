@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { CommentService, ProfileService } from "../../../core";
-import { Observable } from "rxjs";
+import { Observable, BehaviorSubject } from "rxjs";
 import { switchMap, take } from "rxjs/operators";
 // import { tap } from "rxjs/operators";
 
@@ -11,8 +11,11 @@ import { switchMap, take } from "rxjs/operators";
 })
 export class CommentListComponent implements OnInit {
   @Input() postid: string;
-  comments = [];
-  comments$: Observable<any[]>;
+  comments = new BehaviorSubject<any>([]);
+  comments$ = this.comments.asObservable();
+  loading = new BehaviorSubject<boolean>(true);
+  loading$ = this.loading.asObservable();
+
   constructor(
     private commentService: CommentService,
     private profileService: ProfileService
@@ -33,20 +36,44 @@ export class CommentListComponent implements OnInit {
         )
         .subscribe(
           (response) => {
-            this.comments = response.map((comment) => ({
+            const comments = response.map((comment) => ({
               ...comment,
               post_id: this.postid,
             }));
+            console.log({ comments });
+            this.comments.next(comments);
           },
           (error) => console.log(error),
-          () => console.log("getComments completed!")
+          () => {
+            this.loading.next(false);
+            console.log("getComments completed!");
+          }
         );
     } catch (error) {
       console.log(error);
     }
   }
 
+  async addNewCommentToList(comment) {
+    const user$ = await this.profileService.getUser();
+    user$
+      .pipe(
+        switchMap(({ _id }) =>
+          this.profileService.getUserDetail({ user_id: _id })
+        )
+      )
+      .subscribe((response) => {
+        const user = response;
+        const new_comment = { user, ...comment };
+        const current_comments = this.comments.getValue();
+        this.comments.next([new_comment, ...current_comments]);
+      });
+  }
+
   ngOnInit() {
     this.getComments();
+    this.commentService.new_comment_added$.subscribe((new_comment) => {
+      if (new_comment) this.addNewCommentToList(new_comment);
+    });
   }
 }
