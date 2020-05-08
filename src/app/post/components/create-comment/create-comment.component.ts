@@ -4,6 +4,7 @@ import { CdkTextareaAutosize } from "@angular/cdk/text-field";
 import { CommentService, ProfileService } from "../../../core";
 import { MatSnackBar } from "@angular/material";
 import { switchMap } from "rxjs/operators";
+import { HttpEventType } from "@angular/common/http";
 
 @Component({
   selector: "app-create-comment",
@@ -76,10 +77,12 @@ export class CreateCommentComponent implements OnInit {
         )
       )
       .subscribe(
-        (response) => {
-          this.openSnackBar("Comment", "Success");
-          const timestamp = Math.round(+new Date() / 1000);
-          this.commentService.updateNewComment({ ...body, timestamp });
+        (event) => {
+          if (event.type === HttpEventType.Response) {
+            this.openSnackBar("Comment", "Success");
+            const timestamp = Math.round(+new Date() / 1000);
+            this.commentService.updateNewComment({ ...body, timestamp });
+          }
         },
         (error) => {
           this.openSnackBar("Comment", "Failed");

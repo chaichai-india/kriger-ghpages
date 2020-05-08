@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import { ApiService } from "./api.service";
 import { HttpHeaders } from "@angular/common/http";
+import { of } from "rxjs";
 
 @Injectable({
   providedIn: "root",
@@ -32,5 +33,15 @@ export class PostService {
     const headers = new HttpHeaders().set("user_id", user_id);
     const body = { like, post_id };
     return this.apiService.post({ path, headers, body });
+  }
+
+  createPost({ user_id, body, file }) {
+    const path = `post`;
+    const formData: FormData = new FormData();
+    formData.append("post", JSON.stringify(body));
+    formData.append("file", file);
+    formData.forEach(console.log);
+    const headers = new HttpHeaders().set("user_id", user_id);
+    return this.apiService.post({ path, headers, body: formData });
   }
 }

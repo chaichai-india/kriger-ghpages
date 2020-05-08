@@ -33,7 +33,11 @@ export class ApiService {
 
   post({ path, headers = new HttpHeaders(), body }: apiInput): Observable<any> {
     return this.http
-      .post(`${this.apiUrl}${path}`, body, { headers })
+      .post(`${this.apiUrl}${path}`, body, {
+        headers,
+        observe: "events",
+        reportProgress: true,
+      })
       .pipe(tap(console.log), catchError(this.formatError));
   }
 }

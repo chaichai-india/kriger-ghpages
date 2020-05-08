@@ -3,6 +3,7 @@
   [formGroup]="postForm"
   (ngSubmit)="postSubmit()"
   class="post-form"
+  [ngStyle]="{ 'pointer-events': progress ? 'none' : 'inherit' }"
 >
   <mat-form-field id="text" appearance="outline">
     <textarea
@@ -18,13 +19,13 @@
       required
       #text
     ></textarea>
-    <small style="float: right" class="text-counter"
+    <small style="float: right;" class="text-counter"
       ><code>{{ text.value.length }}</code> of <code>5000</code></small
     >
   </mat-form-field>
 
   <input
-    style="display: none"
+    style="display: none;"
     type="file"
     accept="image/jpeg, image/png"
     name="image"
@@ -35,7 +36,7 @@
   />
 
   <input
-    style="display: none"
+    style="display: none;"
     type="file"
     accept="application/pdf"
     name="pdf"
@@ -107,6 +108,8 @@
 </form>
 <mat-progress-bar
   *ngIf="progress"
-  style="margin-top: 1em"
-  mode="indeterminate"
+  style="margin-top: 1em;"
+  [mode]="progressmode"
+  [value]="uploadprogress"
 ></mat-progress-bar>
+<p class="flash-message" *ngIf="message">{{ message }}</p>

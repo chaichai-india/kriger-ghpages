@@ -6,9 +6,9 @@
   [infiniteScrollThrottle]="2000"
   [infiniteScrollDisabled]="infiniteDisable"
 >
-  <!-- <app-create-post *ngIf="isLoggedIn$ | async"></app-create-post>
-  <hr style="width: 100%; margin-bottom:1em;" /> -->
-  <!-- <p>{{ post$ | json }}</p> -->
+  <app-create-post *ngIf="!(loading$ | async)"></app-create-post>
+  <hr style="width: 100%; margin-bottom: 1em;" *ngIf="!(loading$ | async)" />
+
   <app-post *ngFor="let post of post$ | async" [post]="post"> </app-post>
   <mat-spinner diameter="50" *ngIf="loading$ | async"></mat-spinner>
 </div>

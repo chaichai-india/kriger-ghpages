@@ -24,7 +24,7 @@ import { AdbannerComponent } from "../components/adbanner/adbanner.component";
 
 import { ReversePipe } from "../pipes/reverse.pipe";
 import { SharedModule } from "../shared/shared.module";
-// import { CreatePostComponent } from "./components/create-post/create-post.component";
+import { CreatePostComponent } from "./components/create-post/create-post.component";
 import {
   MatFormFieldModule,
   MatInputModule,
@@ -45,7 +45,7 @@ import { CreateCommentComponent } from "./components/create-comment/create-comme
     PostDetailComponent,
     AdbannerComponent,
     ReversePipe,
-    // CreatePostComponent,
+    CreatePostComponent,
     CommentListComponent,
     CommentComponent,
     CreateCommentComponent,

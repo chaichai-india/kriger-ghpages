@@ -2,7 +2,6 @@ import { Component, OnInit, Input } from "@angular/core";
 import { CommentService, ProfileService } from "../../../core";
 import { Observable, BehaviorSubject } from "rxjs";
 import { switchMap, take } from "rxjs/operators";
-// import { tap } from "rxjs/operators";
 
 @Component({
   selector: "app-comment-list",
@@ -43,7 +42,10 @@ export class CommentListComponent implements OnInit {
             console.log({ comments });
             this.comments.next(comments);
           },
-          (error) => console.log(error),
+          (error) => {
+            this.loading.next(false);
+            console.log(error);
+          },
           () => {
             this.loading.next(false);
             console.log("getComments completed!");
