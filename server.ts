@@ -87,7 +87,10 @@ app.set("views", join(DIST_FOLDER, APP_NAME));
 // app.get("*.*", express.static(join(DIST_FOLDER, APP_NAME)));
 app.get(
   "*.*",
-  expressStaticGzip(join(DIST_FOLDER, APP_NAME), { enableBrotli: true })
+  expressStaticGzip(join(DIST_FOLDER, APP_NAME), {
+    enableBrotli: true,
+    orderPreference: ["br"],
+  })
 );
 
 // All regular routes use the Universal engine
