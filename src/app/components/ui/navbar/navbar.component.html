@@ -49,10 +49,10 @@
       <a
         *ngIf="isLoggedIn$ | async"
         class="nav-item d-flex flex-column align-items-center justify-content-center mr-4 font-weight-bold"
-        [routerLink]="['/groups']"
-        href="/groups"
         routerLinkActive="nav-link-active"
-        (click)="!isNavbarCollapsed ? (isNavbarCollapsed = true) : false"
+        (click)="
+          openDialog(); !isNavbarCollapsed ? (isNavbarCollapsed = true) : false
+        "
       >
         <mat-icon>group</mat-icon>
         <span>Groups</span>
@@ -60,10 +60,10 @@
       <a
         *ngIf="isLoggedIn$ | async"
         class="nav-item d-flex flex-column align-items-center justify-content-center mr-4 font-weight-bold"
-        [routerLink]="['/network']"
-        href="/network"
         routerLinkActive="nav-link-active"
-        (click)="!isNavbarCollapsed ? (isNavbarCollapsed = true) : false"
+        (click)="
+          openDialog(); !isNavbarCollapsed ? (isNavbarCollapsed = true) : false
+        "
       >
         <mat-icon>group_add</mat-icon>
         <span>Network</span>
