@@ -87,7 +87,7 @@
     </button>
   </mat-card-actions>
   <app-create-comment
-    *ngIf="showComments"
+    *ngIf="showComments && isLoggedIn"
     [postid]="post._id"
   ></app-create-comment>
   <app-comment-list *ngIf="showComments" [postid]="post._id"></app-comment-list>

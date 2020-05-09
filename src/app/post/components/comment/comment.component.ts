@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { ProfileService, CommentService } from "../../../core";
 import { switchMap, take } from "rxjs/operators";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-comment",
@@ -15,7 +16,8 @@ export class CommentComponent implements OnInit {
 
   constructor(
     private profileService: ProfileService,
-    private commentService: CommentService
+    private commentService: CommentService,
+    private router: Router
   ) {}
 
   setProfileUrl(user) {
@@ -26,9 +28,18 @@ export class CommentComponent implements OnInit {
     this.profileUrl = "/" + url0 + "/" + url1 + "/" + username;
   }
 
+  redirectTo(uri: string) {
+    this.router
+      .navigateByUrl("/", { skipLocationChange: true })
+      .then(() => this.router.navigate([uri]));
+  }
+
   async likeComment() {
     const { _id: comment_id, post_id } = this.comment;
-    if (!comment_id) return;
+    if (!comment_id) {
+      this.redirectTo(`posts/${post_id}`);
+      return;
+    }
     this.toggleLikeState();
 
     const user$ = await this.profileService.getUser();
@@ -41,8 +52,7 @@ export class CommentComponent implements OnInit {
             comment_id,
             like: +this.liked,
           })
-        ),
-        take(1)
+        )
       )
       .subscribe(
         (response) => console.log("comment like response", response),

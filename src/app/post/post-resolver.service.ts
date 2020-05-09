@@ -36,18 +36,4 @@ export class PostResolver implements Resolve<any> {
         return data;
       });
   }
-
-  //   checkPathAndResolve({ data, username, urlPath }) {
-  //     const url = urlPath[urlPath.length - 1].path;
-  //     console.log("parent url", { url });
-  //     const { user_id, account_type } = data;
-  //     const pathMap = ["learner", "educator", "institute"];
-  //     if (pathMap[account_type] == url) {
-  //       return this.profileService.getProfile(user_id).toPromise();
-  //     } else {
-  //       this.zone.run(_ =>
-  //         this.router.navigateByUrl(`/in/${pathMap[account_type]}/${username}`)
-  //       );
-  //     }
-  //   }
 }

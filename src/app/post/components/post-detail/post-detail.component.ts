@@ -1,11 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-
-// import { PostService } from "../../../services/database/post.service";
-import { Router, ActivatedRoute, Params } from "@angular/router";
-import { PostService } from "../../../core";
-import { take, tap } from "rxjs/operators";
-import { BehaviorSubject, Observable } from "rxjs";
-// import { AuthService } from "../../../services/authentication/auth.service";
+import { Router, ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: "app-post-detail",
@@ -15,13 +9,10 @@ import { BehaviorSubject, Observable } from "rxjs";
 export class PostDetailComponent implements OnInit {
   data;
 
-  constructor(
-    private router: Router,
-    private route: ActivatedRoute,
-    private postService: PostService
-  ) {}
+  constructor(private router: Router, private route: ActivatedRoute) {}
 
   ngOnInit() {
     this.data = this.route.snapshot.data.data;
+    this.data.extended = true;
   }
 }

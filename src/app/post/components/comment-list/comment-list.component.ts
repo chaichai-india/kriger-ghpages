@@ -2,6 +2,8 @@ import { Component, OnInit, Input } from "@angular/core";
 import { CommentService, ProfileService } from "../../../core";
 import { Observable, BehaviorSubject } from "rxjs";
 import { switchMap, take } from "rxjs/operators";
+import { DialogComponent } from "../../../shared/dialog/dialog.component";
+import { MatDialog } from "@angular/material/dialog";
 
 @Component({
   selector: "app-comment-list",
@@ -14,10 +16,13 @@ export class CommentListComponent implements OnInit {
   comments$ = this.comments.asObservable();
   loading = new BehaviorSubject<boolean>(true);
   loading$ = this.loading.asObservable();
+  error = new BehaviorSubject<boolean>(false);
+  error$ = this.error.asObservable();
 
   constructor(
     private commentService: CommentService,
-    private profileService: ProfileService
+    private profileService: ProfileService,
+    public dialog: MatDialog
   ) {}
 
   async getComments() {
@@ -52,8 +57,17 @@ export class CommentListComponent implements OnInit {
           }
         );
     } catch (error) {
+      this.loading.next(false);
+      this.error.next(true);
       console.log(error);
+      if (error === "No user logged in") {
+        this.openDialog();
+      }
     }
+  }
+
+  openDialog() {
+    const dialogRef = this.dialog.open(DialogComponent);
   }
 
   async addNewCommentToList(comment) {

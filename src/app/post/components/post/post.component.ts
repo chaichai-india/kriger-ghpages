@@ -2,7 +2,8 @@ import { Component, OnInit, Input, Inject } from "@angular/core";
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from "@angular/material";
 import { DialogComponent } from "../../../shared/dialog/dialog.component";
 import { ProfileService, PostService } from "../../../core";
-import { switchMap, take } from "rxjs/operators";
+import { switchMap, take, tap, catchError } from "rxjs/operators";
+import { throwError } from "rxjs";
 
 @Component({
   selector: "app-post",
@@ -15,6 +16,7 @@ export class PostComponent implements OnInit {
   count_likes = 0;
   profileUrl;
   showComments: boolean;
+  isLoggedIn: boolean;
 
   constructor(
     public dialog: MatDialog,
@@ -27,30 +29,35 @@ export class PostComponent implements OnInit {
   }
 
   async likePost() {
-    const { _id: post_id } = this.post;
-    this.toggleLikeState();
+    try {
+      const { _id: post_id } = this.post;
+      this.toggleLikeState();
 
-    const user$ = await this.profileService.getUser();
-    user$
-      .pipe(
-        switchMap(({ _id }) =>
-          this.postService.likePost({
-            post_id,
-            user_id: _id,
-            like: +this.liked,
-          })
-        ),
-        take(1)
-      )
-      .subscribe(
-        (response) => console.log("post like response", response),
-        (error) => this.likeError(error),
-        () => console.log("post like complete!")
-      );
+      const user$ = await this.profileService.getUser();
+      user$
+        .pipe(
+          switchMap(({ _id }) =>
+            this.postService.likePost({
+              post_id,
+              user_id: _id,
+              like: +this.liked,
+            })
+          )
+        )
+        .subscribe(
+          (response) => console.log("post like response", response),
+          (error) => this.likeError(error),
+          () => console.log("post like complete!")
+        );
+    } catch (error) {
+      console.log(error);
+      this.likeError(error);
+    }
   }
 
   likeError(error) {
     console.log("post like error", error);
+    if (error === "No user logged in") this.openDialog();
     this.toggleLikeState();
   }
 
@@ -78,11 +85,23 @@ export class PostComponent implements OnInit {
     this.profileUrl = "/" + url0 + "/" + url1 + "/" + username;
   }
 
-  initialize(post) {
-    const { user, is_like = 0, count_likes } = post;
+  async initialize(post) {
+    const { user, is_like = 0, count_likes, extended = false } = post;
     this.liked = !!is_like;
     this.count_likes = count_likes;
     this.setProfileUrl(user);
+
+    try {
+      const user$ = await this.profileService.getUser();
+
+      user$.pipe(take(1)).subscribe((response) => {
+        if (extended) this.showComments = true;
+        this.isLoggedIn = true;
+      });
+    } catch (error) {
+      console.log(error);
+      if (error === "No user logged in") this.isLoggedIn = false;
+    }
   }
 
   ngOnInit() {
