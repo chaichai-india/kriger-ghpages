@@ -1,4 +1,4 @@
-/* -------------------------------------------------- */
+/* 
 :host {
   width: 100%;
   height: 60px;
@@ -12,7 +12,7 @@
 nav {
   z-index: 10 !important;
   padding: 0 1rem !important;
-  /* box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.4); */
+  
   background-color: var(--primary-color);
   color: white;
   font-weight: 600;
@@ -36,14 +36,14 @@ nav .navbar-brand img {
 nav .navbar-brand span.name {
   padding: 0 0.5em;
   font-size: 1.2em;
-  /* text-shadow: 1px 3px 0px rgba(0, 0, 0, 0.36); */
+  
   margin-bottom: 2px;
 }
 
 nav .navbar-brand span.beta {
   font-size: medium;
   background-color: rgba(239, 19, 19, 0.902);
-  /* box-shadow: 1px 1px 0px 0px rgba(0, 0, 0, 0.4); */
+  
   height: 25px;
   margin-left: 0.5em;
   margin-top: 4px;
@@ -79,9 +79,6 @@ nav #navbarsDefault ul a:focus {
   display: none;
 }
 
-/* .show {
-  display: 
-} */
 
 #signup mat-icon,
 #login mat-icon {
@@ -109,7 +106,7 @@ nav .playstore {
   color: var(--primary-color) !important;
 }
 
-/* responsive not collapsed */
+
 
 nav #navbarsDefault.show {
   height: auto;
@@ -130,4 +127,4 @@ nav #navbarsDefault.show ul a {
   nav {
     padding: 0 0.25rem !important;
   }
-}
+} */

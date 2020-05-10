@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-dark fixed-top">
+<!-- <nav class="navbar navbar-expand-md navbar-dark fixed-top">
   <a class="navbar-brand" [routerLink]="['/']"
     ><img src="/assets/images/nav_logo.png" /><span class="name"
       >Kriger Campus</span
@@ -79,30 +79,6 @@
         <mat-icon>notifications</mat-icon>
         <span>Notifications</span>
       </a>
-      <!-- <a
-        *ngIf="isLoggedIn$ | async"
-        class="nav-item d-flex flex-column align-items-center justify-content-center mr-4 font-weight-bold"
-        [routerLink]="['/profiles']"
-        href="/profiles"
-        routerLinkActive="nav-link-active"
-        (click)="!isNavbarCollapsed ? (isNavbarCollapsed = true) : false"
-      >
-        <mat-icon>account_box</mat-icon>
-        <span>Profiles</span>
-      </a> -->
-
-      <!-- <a
-        *ngIf="!(isLoggedIn$ | async) && !isHome"
-        id="signup"
-        class="nav-item d-flex flex-column align-items-center justify-content-center mr-4 font-weight-bold"
-        [routerLink]="['/register']"
-        href="/register"
-        routerLinkActive="nav-link-active"
-        (click)="!isNavbarCollapsed ? (isNavbarCollapsed = true) : false"
-      >
-        <img src="assets/add-contact.svg" width="32" />
-        <span>Register</span>
-      </a> -->
       <a
         *ngIf="!(isLoggedIn$ | async) && !isHome"
         id="login"
@@ -112,47 +88,11 @@
         routerLinkActive="nav-link-active"
         (click)="!isNavbarCollapsed ? (isNavbarCollapsed = true) : false"
       >
-        <!-- <mat-icon
-          class="text-center"
-          fontSet="fas"
-          fontIcon="fa-sign-in-alt"
-        ></mat-icon> -->
         <img src="assets/login.svg" width="24" />
         <span style="margin-top: 8px;">Login</span>
       </a>
 
-      <!-- <li
-        *ngIf="isLoggedIn$ | async"
-        id="logout"
-        class="nav-item d-flex flex-column align-items-center justify-content-center mr-4 font-weight-bold"
-      >
-        <button mat-button [matMenuTriggerFor]="menu" style="height: 100%">
-          <img
-            src="assets/images/nav_logo.png"
-            height="32"
-            width="32"
-            style="border-radius: 50%"
-          />
-          <mat-icon>arrow_drop_down</mat-icon>
-        </button>
-
-        <mat-menu #menu="matMenu" xPosition="before">
-          <span mat-menu-item>Hello, Ashish</span>
-          <span
-            mat-menu-item
-            class="d-flex align-items-center justify-content-center"
-            (click)="logout()"
-          >
-            <mat-icon
-              class="d-flex align-items-center justify-content-center"
-              fontSet="fas"
-              fontIcon="fa-sign-out-alt"
-            ></mat-icon>
-            <span>Logout</span>
-          </span>
-        </mat-menu>
-      </li> -->
-
+      
       <li
         *ngIf="isLoggedIn$ | async"
         id="logout"
@@ -205,21 +145,7 @@
           >
         </div>
       </li>
-
-      <!-- <li
-        *ngIf="isLoggedIn$ | async"
-        id="logout"
-        class="nav-item d-flex flex-column align-items-center justify-content-center mr-4 font-weight-bold"
-        (click)="logout()"
-        routerLinkActive="nav-link-active"
-      >
-        <mat-icon
-          class="text-center"
-          fontSet="fas"
-          fontIcon="fa-sign-out-alt"
-        ></mat-icon>
-        <span>Logout</span>
-      </li> -->
+ 
       <li
         *ngIf="!isHome"
         class="nav-item d-flex flex-column align-items-center justify-content-center"
@@ -233,4 +159,4 @@
       </li>
     </ul>
   </div>
-</nav>
+</nav> -->
