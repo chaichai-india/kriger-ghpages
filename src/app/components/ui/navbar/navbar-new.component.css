@@ -1,0 +1,98 @@
+nav {
+  height: 60px;
+  background-color: var(--primary-color);
+  position: fixed;
+  z-index: 10;
+  width: 100%;
+  display: flex;
+}
+
+a {
+  all: unset;
+}
+
+.nav-link-active {
+  border-bottom: 1px solid white;
+}
+
+.navbar-brand {
+  /* all: unset; */
+  cursor: pointer;
+  height: 100%;
+  display: inline-block;
+  padding: 5px 0;
+  margin-left: 1rem;
+  box-sizing: border-box;
+}
+
+.navbar-brand img {
+  height: 50px;
+  border-radius: 50%;
+  width: 50px;
+  margin-right: 1rem;
+}
+
+.navbar-brand span {
+  display: inline-block;
+  height: 50px;
+  vertical-align: top;
+  line-height: 50px;
+}
+
+.navbar-brand .name {
+  font-size: 1.5rem;
+  color: white;
+  margin-right: 1rem;
+}
+
+.navbar-brand .beta {
+  background-color: var(--danger-color);
+  color: white;
+  padding: 0 0.5rem;
+  height: 50%;
+  margin-top: 15px;
+  line-height: 25px;
+  transform: scale(0.85);
+}
+
+.navbar-nav {
+  height: 100%;
+  margin-left: auto;
+  display: inline-block;
+}
+
+.nav-item {
+  /* all: unset; */
+  display: inline-block;
+  height: 100%;
+  box-sizing: border-box;
+  padding: 5px 0;
+  margin: 0 1rem;
+  color: white;
+  vertical-align: top;
+  cursor: pointer;
+}
+
+.nav-item .wrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-item .wrapper span {
+  font-size: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.nav-item.playstore img {
+  height: 50px;
+  width: 150px;
+}
+
+.nav-item.profile img {
+  border-radius: 50%;
+  object-fit: cover;
+  background-position: center;
+}

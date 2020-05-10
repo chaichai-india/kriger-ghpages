@@ -1,8 +1,6 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 
-import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
-
 import { MatButtonModule } from "@angular/material/button";
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 // import { MatSelectModule } from '@angular/material/select';
@@ -37,7 +35,6 @@ import { DebounceClickDirective } from "./directives";
     MatCardModule,
     MatChipsModule,
     MatIconModule,
-    NgbModule,
     RouterModule,
   ],
   exports: [
@@ -49,7 +46,6 @@ import { DebounceClickDirective } from "./directives";
     DialogComponent,
     CommonModule,
     MatProgressSpinnerModule,
-    NgbModule,
   ],
 })
 export class SharedModule {}

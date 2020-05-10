@@ -1,5 +1,3 @@
-@import '~bootstrap/dist/css/bootstrap.min.css';
-
 :host {
   width: 80vw;
   margin: 0 auto;
@@ -70,7 +68,7 @@ th {
 }
 
 th:not(:first-child):hover::after {
-  content: '';
+  content: "";
   position: absolute;
   background-color: rgba(0, 0, 0, 0.075);
   left: 0;

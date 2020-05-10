@@ -1,0 +1,122 @@
+<nav>
+  <a class="navbar-brand" [routerLink]="['/']"
+    ><img src="/assets/images/nav_logo.png" /><span class="name"
+      >Kriger Campus</span
+    ><span class="beta">Beta</span></a
+  >
+  <div class="navbar-nav" *ngIf="isLoggedIn$ | async">
+    <a
+      class="nav-item"
+      [routerLink]="['/posts']"
+      href="/posts"
+      routerLinkActive="nav-link-active"
+    >
+      <div class="wrapper">
+        <mat-icon>home</mat-icon>
+        <span>Timeline</span>
+      </div>
+    </a>
+
+    <a
+      class="nav-item"
+      [routerLink]="['/marketplace']"
+      href="/marketplace"
+      routerLinkActive="nav-link-active"
+    >
+      <div class="wrapper">
+        <mat-icon>school</mat-icon>
+        <span>Marketplace</span>
+      </div>
+    </a>
+
+    <a
+      class="nav-item"
+      routerLinkActive="nav-link-active"
+      (click)="openDialog()"
+    >
+      <div class="wrapper">
+        <mat-icon>group</mat-icon>
+        <span>Groups</span>
+      </div>
+    </a>
+
+    <a
+      class="nav-item"
+      routerLinkActive="nav-link-active"
+      (click)="openDialog()"
+    >
+      <div class="wrapper">
+        <mat-icon>group_add</mat-icon>
+        <span>Network</span>
+      </div>
+    </a>
+
+    <a
+      class="nav-item"
+      [routerLink]="['/notifications']"
+      href="/notifications"
+      routerLinkActive="nav-link-active"
+    >
+      <div class="wrapper">
+        <mat-icon>notifications</mat-icon>
+        <span>Notifications</span>
+      </div>
+    </a>
+
+    <!-- <a
+          *ngIf="!(isLoggedIn$ | async) && !isHome"
+          id="signup"
+          class="nav-item"
+          [routerLink]="['/register']"
+          href="/register"
+          routerLinkActive="nav-link-active"
+          (click)="!isNavbarCollapsed ? (isNavbarCollapsed = true) : false"
+        >
+          <img src="assets/add-contact.svg" width="32" />
+          <span>Register</span>
+        </a> -->
+
+    <div class="nav-item profile" [matMenuTriggerFor]="beforeMenu">
+      <div class="wrapper">
+        <img
+          [src]="
+            userDetails?.thumb ? userDetails?.thumb : 'assets/images/user.svg'
+          "
+          height="24"
+          width="24"
+        />
+        <span>Profile</span>
+      </div>
+    </div>
+    <mat-menu #beforeMenu="matMenu" xPosition="before">
+      <button mat-menu-item>Hello,&nbsp; {{ userDetails?.name }}</button>
+      <button mat-menu-item (click)="logout()">
+        <mat-icon fontSet="fas" fontIcon="fa-sign-out-alt"></mat-icon>
+        <span>Logout</span>
+      </button>
+    </mat-menu>
+  </div>
+
+  <div *ngIf="!(isLoggedIn$ | async) && !isHome" class="navbar-nav logged-out">
+    <a
+      id="login"
+      class="nav-item"
+      [routerLink]="['/login']"
+      href="/login"
+      routerLinkActive="nav-link-active"
+    >
+      <div class="wrapper">
+        <img src="assets/login.svg" width="24" />
+        <span>Login</span>
+      </div>
+    </a>
+
+    <a
+      href="https://play.google.com/store/apps/details?id=in.kriger.krigercampus"
+      target="_blank"
+      rel="noopener"
+      class="nav-item playstore"
+      ><img src="/assets/images/play_store.png"
+    /></a>
+  </div>
+</nav>

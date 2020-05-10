@@ -10,8 +10,8 @@ import { ProfileService, NotificationService } from "../../../core";
 
 @Component({
   selector: "app-navbar",
-  templateUrl: "./navbar.component.html",
-  styleUrls: ["./navbar.component.css"],
+  templateUrl: "./navbar-new.component.html",
+  styleUrls: ["./navbar-new.component.css"],
 })
 export class NavbarComponent implements OnInit {
   isNavbarCollapsed: boolean = true;
