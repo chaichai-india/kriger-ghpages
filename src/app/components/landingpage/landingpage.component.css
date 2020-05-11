@@ -1,4 +1,4 @@
-:host {
+/* :host {
   width: 80vw;
   margin: 0 auto;
   display: flex;
@@ -24,17 +24,8 @@ h2.tagline {
   margin: 0 0 1em 0;
   word-spacing: 0.5em;
   letter-spacing: 0.1em;
-  /* text-align: center; */
   position: relative;
-  /* white-space: pre; */
-  /* text-indent: -0.8em; */
 }
-
-/* h2.tagline::first-letter {
-  letter-spacing: 0;
-  word-spacing: 0;
-  color: red;
-} */
 
 h2.tagline::after {
   content: "";
@@ -116,7 +107,6 @@ h2.tagline::after {
 .steps .counter {
   color: white;
   border-radius: 50%;
-  /* background-color: var(--primary-color); */
   padding: 0.5em;
   text-align: center;
   font-weight: bold;
@@ -134,8 +124,6 @@ h2.tagline::after {
   background-color: #138808;
 }
 
-/* from intro card */
-
 .partners,
 .featured,
 .awards,
@@ -149,10 +137,7 @@ h2.tagline::after {
 }
 
 .heading {
-  /* font-size: x-large; */
   color: red;
-  /* font-weight: 600; */
-  /* letter-spacing: 1px; */
   text-align: center;
   margin: 1em 0;
 }
@@ -174,7 +159,6 @@ h2.tagline::after {
   width: 100px;
   height: 100px;
   object-fit: contain;
-  /* box-shadow: 0 0 1px 0 rgb(0, 0, 0); */
   padding: 0.4em;
 }
 
@@ -226,4 +210,4 @@ h2.tagline::after {
   .steps div > span > span:first-child {
     justify-self: flex-end;
   }
-}
+} */
