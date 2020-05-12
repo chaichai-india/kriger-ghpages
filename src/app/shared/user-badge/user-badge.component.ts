@@ -19,7 +19,7 @@ import { Component, OnInit, Input } from "@angular/core";
         border-radius: 10px;
         width: 100%;
         color: white;
-        font-size: 0.5rem;
+        font-size: 8px;
         padding: 2px 0 2px 4px;
         text-transform: uppercase;
       }

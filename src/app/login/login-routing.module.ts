@@ -5,7 +5,6 @@ import {
   AngularFireAuthGuard,
   redirectLoggedInTo,
 } from "@angular/fire/auth-guard";
-// import { LoginGuard } from "../services/authentication/login.guard";
 
 const redirectLoggedInToPosts = () => redirectLoggedInTo(["posts"]);
 

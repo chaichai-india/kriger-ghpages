@@ -96,6 +96,7 @@ export class NotificationListComponent implements OnInit {
   setEmptyState() {
     this.isEmpty = true;
     this.infiniteDisable = true;
+    this.loading.next(false);
   }
 
   setCompleteState() {
@@ -138,7 +139,11 @@ export class NotificationListComponent implements OnInit {
           }),
           take(1),
           catchError((err) => {
-            this.setErrorStatus(err, "Something went wrong!");
+            if (err.status !== 404) {
+              this.setErrorStatus(err, "Something went wrong!");
+            } else {
+              this.setEmptyState();
+            }
             this.notificationSubject.next([]);
             return of({ notifications: [] });
           })
@@ -148,6 +153,7 @@ export class NotificationListComponent implements OnInit {
       console.log(error);
     }
   }
+
   ngOnInit() {
     this.init();
   }

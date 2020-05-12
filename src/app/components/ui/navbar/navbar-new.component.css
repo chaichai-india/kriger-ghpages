@@ -24,6 +24,7 @@ a {
   padding: 5px 0;
   margin-left: 1rem;
   box-sizing: border-box;
+  -webkit-text-fill-color: white;
 }
 
 .navbar-brand img {
@@ -72,6 +73,7 @@ a {
   color: white;
   vertical-align: top;
   cursor: pointer;
+  -webkit-text-fill-color: white;
 }
 
 .nav-item .wrapper {

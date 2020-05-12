@@ -9,10 +9,15 @@
   margin: 20px 0;
 }
 
+.learner-educator-card {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
 .learner-educator-card mat-card-content {
   display: grid;
-  grid-gap: 2rem;
-  grid-template-columns: repeat(2, minmax(144px, 232px));
+  grid-gap: 4rem;
+  grid-template-columns: repeat(3, minmax(144px, 232px));
 }
 
 .learner-educator-card header {
@@ -77,17 +82,4 @@ button#signup:enabled,
 button#next:enabled {
   background-color: var(--primary-color);
   color: white;
-}
-
-@media screen and (max-width: 550px) {
-  /* :host {
-    width: 95%;
-    margin: 5rem auto;
-  } */
-
-  .learner-educator-card,
-  .signup-card {
-    box-shadow: none;
-    border-radius: 0;
-  }
 }
