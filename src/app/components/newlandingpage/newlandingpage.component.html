@@ -31,7 +31,11 @@
 >
   <p class="heading">Featured In</p>
   <div class="images">
-    <img [src]="featured.url" *ngFor="let featured of featuredImages" />
+    <img
+      [src]="featured.url"
+      [alt]="featured.alt"
+      *ngFor="let featured of featuredImages"
+    />
   </div>
 </section>
 
