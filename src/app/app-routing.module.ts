@@ -25,6 +25,10 @@ const routes: Routes = [
     loadChildren: "./marketplace/marketplace.module#MarketplaceModule",
   },
   {
+    path: "network",
+    loadChildren: "./network/network.module#NetworkModule",
+  },
+  {
     path: "notifications",
     loadChildren: "./notification/notification.module#NotificationModule",
   },

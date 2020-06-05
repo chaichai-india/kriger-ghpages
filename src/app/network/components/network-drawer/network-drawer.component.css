@@ -1,0 +1,18 @@
+:host {
+  box-shadow: var(--primary-box-shadow);
+}
+
+mat-nav-list {
+  padding-top: 0;
+}
+
+mat-nav-list a {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+mat-nav-list a:hover,
+mat-nav-list a:focus {
+  color: black;
+  background-color: transparent;
+}

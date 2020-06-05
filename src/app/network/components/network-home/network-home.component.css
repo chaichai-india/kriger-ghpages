@@ -1,0 +1,16 @@
+:host {
+  min-height: calc(100vh - 60px);
+  display: block;
+  min-width: 700px;
+}
+
+app-network-drawer {
+  position: fixed;
+  width: 200px;
+  top: calc(50vh - 60px);
+  left: 20px;
+}
+
+.network-home__container {
+  margin-left: 240px;
+}

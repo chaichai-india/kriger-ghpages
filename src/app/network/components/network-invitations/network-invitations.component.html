@@ -1,0 +1,6 @@
+<h3>Pending Invitations</h3>
+<div class="invitations__container">
+  <div class="invite" *ngFor="let user of invitations$ | async">
+    <app-network-invitation-user [user]="user"></app-network-invitation-user>
+  </div>
+</div>
