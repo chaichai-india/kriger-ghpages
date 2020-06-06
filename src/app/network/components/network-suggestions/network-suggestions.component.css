@@ -1,0 +1,11 @@
+:host {
+  display: grid;
+  gap: 1rem;
+}
+
+h3 {
+  text-align: center;
+  padding: 0.5rem;
+  box-shadow: var(--primary-box-shadow);
+  height: 40px;
+}

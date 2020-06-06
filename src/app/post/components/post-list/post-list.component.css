@@ -36,9 +36,6 @@
 .post-list__container app-post {
   width: 550px;
   overflow-wrap: break-word;
-}
-
-.post-list__container app-post {
   justify-self: center;
 }
 

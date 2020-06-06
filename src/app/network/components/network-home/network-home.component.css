@@ -6,11 +6,15 @@
 
 app-network-drawer {
   position: fixed;
-  width: 200px;
+  width: 300px;
   top: calc(50vh - 60px);
-  left: 20px;
+  left: 80px;
 }
 
 .network-home__container {
-  margin-left: 240px;
+  margin-left: calc(400px + ((100vw - 400px) / 4));
+  width: 460px;
+  display: grid;
+  gap: 1rem;
+  margin-top: calc((100vh - 60px) / 4);
 }

@@ -1,0 +1,46 @@
+.user-card {
+  box-shadow: var(--primary-box-shadow);
+  padding: 0 16px;
+  display: flex;
+  width: 460px;
+  height: 80px;
+  align-items: center;
+}
+
+.avatar {
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  cursor: pointer;
+}
+
+app-user-badge {
+  position: absolute;
+  top: 34px;
+  left: -4px;
+  width: 48px;
+}
+
+a#profile_link {
+  all: unset;
+  cursor: pointer;
+}
+
+mat-card-title {
+  font-size: 14px;
+  line-height: 20px;
+  cursor: pointer;
+  margin-bottom: 6px;
+}
+
+mat-card-subtitle {
+  font-size: 12px;
+  line-height: 16px;
+  margin-bottom: 0;
+}
+
+mat-card-actions {
+  margin-left: auto;
+  padding: 0;
+  margin-bottom: 0 !important;
+}
