@@ -6,7 +6,8 @@ import { Router } from "@angular/router";
 // import { BehaviorSubject } from "rxjs";
 import { take, tap, switchMap } from "rxjs/operators";
 // import { UserService } from "../../../services/database/user.service";
-import { ProfileService, NotificationService } from "../../../core";
+import { ProfileService } from "../../../core";
+import { BehaviorSubject } from "rxjs";
 
 @Component({
   selector: "app-navbar",
@@ -15,8 +16,8 @@ import { ProfileService, NotificationService } from "../../../core";
 })
 export class NavbarComponent implements OnInit {
   isNavbarCollapsed: boolean = true;
-  isLoggedIn: boolean;
-  isLoggedIn$;
+  isLoggedIn = new BehaviorSubject<boolean>(false);
+  isLoggedIn$ = this.isLoggedIn.asObservable();
   userDetails;
   isHome: boolean;
   uid: string;
@@ -85,7 +86,9 @@ export class NavbarComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.isHome = this.router.url == "/";
     this.router.events.subscribe((url: any) => {
+      console.log(this.router.url);
       this.isHome = this.router.url == "/";
     });
     this.setLoggedIn();

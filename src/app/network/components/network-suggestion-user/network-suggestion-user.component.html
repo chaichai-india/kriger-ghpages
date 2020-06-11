@@ -20,8 +20,15 @@
   </a>
   <mat-card-actions>
     <!-- (debounceClick)="likePost()" -->
-    <button appDebounceClick mat-button>
+    <button
+      appDebounceClick
+      mat-stroked-button
+      class="kriger-primary-stroked-button send-button"
+    >
       <span>Send Request</span>
+    </button>
+    <button appDebounceClick mat-icon-button color="warn">
+      <mat-icon aria-label="Remove suggestion">highlight_off</mat-icon>
     </button>
   </mat-card-actions>
 </mat-card>

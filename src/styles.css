@@ -59,3 +59,14 @@ a:active {
 .mat-form-field-underline {
   background-color: black !important;
 }
+
+.kriger-primary-button {
+  border-color: var(--primary-color) !important;
+  color: white !important;
+  background-color: var(--primary-color) !important;
+}
+
+.kriger-primary-stroked-button {
+  border-color: var(--primary-color) !important;
+  color: var(--primary-color) !important;
+}

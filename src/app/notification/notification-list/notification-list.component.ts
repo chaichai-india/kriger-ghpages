@@ -10,7 +10,6 @@ import { BehaviorSubject, of } from "rxjs";
   styleUrls: ["./notification-list.component.css"],
 })
 export class NotificationListComponent implements OnInit {
-  uid: string;
   user_id: string;
   notificationSubject = new BehaviorSubject<any>([]);
   notification$ = this.notificationSubject.asObservable();
@@ -129,11 +128,11 @@ export class NotificationListComponent implements OnInit {
             const { value = 0 } = lastNotification;
             console.log({ value });
             this.updateState(value);
-            if (notifications.length == 0) {
+            if (notifications.length === 0) {
               this.setEmptyState();
             } else if (notifications.length < 10) {
               this.setCompleteState();
-            } else if (notifications.length == 10) {
+            } else if (notifications.length === 10) {
               this.setContinueState();
             }
           }),

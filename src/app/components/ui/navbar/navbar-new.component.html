@@ -98,9 +98,10 @@
     </mat-menu>
   </div>
 
-  <div *ngIf="!(isLoggedIn$ | async) && !isHome" class="navbar-nav logged-out">
+  <div *ngIf="!(isLoggedIn$ | async)" class="navbar-nav logged-out">
     <a
       id="login"
+      *ngIf="!isHome"
       class="nav-item"
       [routerLink]="['/login']"
       href="/login"
@@ -113,6 +114,7 @@
     </a>
 
     <a
+      *ngIf="!isHome"
       href="https://play.google.com/store/apps/details?id=in.kriger.krigercampus"
       target="_blank"
       rel="noopener"

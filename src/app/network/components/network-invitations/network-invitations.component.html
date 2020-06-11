@@ -1,6 +1,18 @@
 <h3>Pending Invitations</h3>
-<div class="invitations__container">
+<div class="invitations__container" *ngIf="!loading && !isEmpty">
   <div class="invite" *ngFor="let user of invitations$ | async">
     <app-network-invitation-user [user]="user"></app-network-invitation-user>
   </div>
+</div>
+
+<div class="loading-spinner" *ngIf="loading$ | async">
+  <mat-spinner diameter="50"></mat-spinner>
+</div>
+
+<div class="invitation-error" *ngIf="error">
+  Something went wrong!
+</div>
+
+<div class="invitation-placeholder" *ngIf="isEmpty">
+  No Invites Yet!
 </div>

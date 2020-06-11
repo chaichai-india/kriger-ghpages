@@ -44,3 +44,9 @@ mat-card-actions {
   padding: 0;
   margin-bottom: 0 !important;
 }
+
+.accept-button {
+  border: 1px solid #00c851;
+  vertical-align: middle;
+  color: #00c851;
+}

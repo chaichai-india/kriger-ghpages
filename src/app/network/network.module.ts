@@ -13,6 +13,7 @@ import { MatCardModule } from "@angular/material/card";
 import { SharedModule } from "../shared/shared.module";
 import { NetworkInvitationUserComponent } from "./components/network-invitation-user/network-invitation-user.component";
 import { NetworkSuggestionUserComponent } from "./components/network-suggestion-user/network-suggestion-user.component";
+import { MatButtonModule, MatIconModule } from "@angular/material";
 
 @NgModule({
   declarations: [
@@ -29,6 +30,8 @@ import { NetworkSuggestionUserComponent } from "./components/network-suggestion-
     MatListModule,
     MatDividerModule,
     MatCardModule,
+    MatButtonModule,
+    MatIconModule,
     SharedModule,
   ],
 })

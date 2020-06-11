@@ -9,3 +9,20 @@ h3 {
   box-shadow: var(--primary-box-shadow);
   height: 40px;
 }
+
+.loading-spinner {
+  display: grid;
+  padding: 1rem 0;
+  place-items: center;
+  background-color: var(--bg-grey);
+}
+
+.notification-error {
+  font-size: 1.5rem;
+  color: var(--danger-color);
+}
+
+.invitation-placeholder {
+  display: grid;
+  place-content: center;
+}

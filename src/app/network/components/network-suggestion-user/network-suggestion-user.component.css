@@ -44,3 +44,7 @@ mat-card-actions {
   padding: 0;
   margin-bottom: 0 !important;
 }
+
+.send-button {
+  border-radius: 20px;
+}
