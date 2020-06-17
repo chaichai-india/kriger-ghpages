@@ -14,15 +14,17 @@ h3 {
   display: grid;
   padding: 1rem 0;
   place-items: center;
-  background-color: var(--bg-grey);
+  height: 80px;
 }
 
 .notification-error {
   font-size: 1.5rem;
   color: var(--danger-color);
+  height: 80px;
 }
 
 .invitation-placeholder {
   display: grid;
   place-content: center;
+  height: 80px;
 }

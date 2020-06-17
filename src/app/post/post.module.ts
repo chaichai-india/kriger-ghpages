@@ -29,7 +29,6 @@ import {
   MatFormFieldModule,
   MatInputModule,
   MatProgressBarModule,
-  MatSnackBarModule,
 } from "@angular/material";
 import { ReactiveFormsModule } from "@angular/forms";
 import { PostResolver } from "./post-resolver.service";
@@ -66,7 +65,6 @@ import { CreateCommentComponent } from "./components/create-comment/create-comme
     MatFormFieldModule,
     MatInputModule,
     InfiniteScrollModule,
-    MatSnackBarModule,
     ClipboardModule,
     // ImageCropperModule,
     SharedModule,

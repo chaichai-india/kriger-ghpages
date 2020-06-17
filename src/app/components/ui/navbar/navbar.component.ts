@@ -1,12 +1,12 @@
 import { Component, OnInit } from "@angular/core";
-import { MatDialog, MatSnackBar } from "@angular/material";
+import { MatDialog } from "@angular/material";
 // import { DialogComponent } from "../../../post/components/post/post.component";
 import { AuthService } from "../../../services/authentication/auth.service";
 import { Router } from "@angular/router";
 // import { BehaviorSubject } from "rxjs";
 import { take, tap, switchMap } from "rxjs/operators";
 // import { UserService } from "../../../services/database/user.service";
-import { ProfileService } from "../../../core";
+import { ProfileService, SnackbarService } from "../../../core";
 import { BehaviorSubject } from "rxjs";
 
 @Component({
@@ -28,7 +28,7 @@ export class NavbarComponent implements OnInit {
     private profileService: ProfileService,
     public dialog: MatDialog,
     private router: Router,
-    private _snackBar: MatSnackBar
+    private snackbarService: SnackbarService
   ) {}
 
   setLoggedIn() {
@@ -66,15 +66,8 @@ export class NavbarComponent implements OnInit {
     this.profileService.resetUser();
     !this.isNavbarCollapsed ? (this.isNavbarCollapsed = true) : false;
 
-    this.openSnackBar("Success!", "Logged Out");
+    this.snackbarService.openSnackBar("Logged Out");
     this.router.navigate(["/"]);
-  }
-
-  openSnackBar(message: string, action: string) {
-    this._snackBar.open(message, action, {
-      duration: 2000,
-      panelClass: "success-dialog",
-    });
   }
 
   openDialog() {

@@ -1,13 +1,12 @@
 import { Component, OnInit, ViewChild, ElementRef } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { CdkTextareaAutosize } from "@angular/cdk/text-field";
-import { PostService, ProfileService } from "../../../core";
+import { PostService, ProfileService, SnackbarService } from "../../../core";
 import { Router } from "@angular/router";
 import { Ng2ImgMaxService } from "ng2-img-max";
 import { DomSanitizer } from "@angular/platform-browser";
 
 import { finalize, switchMap } from "rxjs/operators";
-import { MatSnackBar } from "@angular/material";
 import { HttpEventType } from "@angular/common/http";
 
 @Component({
@@ -33,7 +32,7 @@ export class CreatePostComponent implements OnInit {
     private router: Router,
     private ng2ImgMax: Ng2ImgMaxService,
     public sanitizer: DomSanitizer,
-    private _snackBar: MatSnackBar
+    private snackbarService: SnackbarService
   ) {}
 
   @ViewChild("postform") postform;
@@ -49,10 +48,7 @@ export class CreatePostComponent implements OnInit {
   message = "";
 
   openSnackBar(message: string, action: string) {
-    this._snackBar.open(message, action, {
-      duration: 2000,
-      panelClass: "success-dialog",
-    });
+    this.snackbarService.openSnackBar(message, action);
   }
 
   removeImage() {

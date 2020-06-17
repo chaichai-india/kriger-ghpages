@@ -1,8 +1,7 @@
 import { Component, OnInit, ViewChild, Input } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { CdkTextareaAutosize } from "@angular/cdk/text-field";
-import { CommentService, ProfileService } from "../../../core";
-import { MatSnackBar } from "@angular/material";
+import { CommentService, ProfileService, SnackbarService } from "../../../core";
 import { switchMap } from "rxjs/operators";
 import { HttpEventType } from "@angular/common/http";
 
@@ -20,7 +19,7 @@ export class CreateCommentComponent implements OnInit {
     private formBuilder: FormBuilder,
     private profileService: ProfileService,
     private commentService: CommentService,
-    private _snackBar: MatSnackBar
+    private snackbarService: SnackbarService
   ) {}
 
   @ViewChild("commentautosize") autosize: CdkTextareaAutosize;
@@ -33,10 +32,7 @@ export class CreateCommentComponent implements OnInit {
   }
 
   openSnackBar(message: string, action: string) {
-    this._snackBar.open(message, action, {
-      duration: 2000,
-      panelClass: "success-dialog",
-    });
+    this.snackbarService.openSnackBar(message, action);
   }
 
   getHashtags(text) {

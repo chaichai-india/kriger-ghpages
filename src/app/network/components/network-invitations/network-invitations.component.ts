@@ -9,15 +9,7 @@ import { tap, switchMap, take, catchError } from "rxjs/operators";
   styleUrls: ["./network-invitations.component.css"],
 })
 export class NetworkInvitationsComponent implements OnInit {
-  invitationsSubject = new BehaviorSubject<any>([
-    // {
-    //   name: "John Doe",
-    //   account_type: 1,
-    //   username: "johndoe",
-    //   headline: "i am the john doe",
-    //   _id: "1234567890",
-    // },
-  ]);
+  invitationsSubject = new BehaviorSubject<any>([]);
   invitations$ = this.invitationsSubject.asObservable();
   user_id;
   loading = new BehaviorSubject<Boolean>(true);
@@ -33,6 +25,10 @@ export class NetworkInvitationsComponent implements OnInit {
 
   getInvitations() {
     this.krigerService.getInvitations({ user_id: this.user_id });
+  }
+
+  setFillState() {
+    this.loading.next(false);
   }
 
   setEmptyState() {
@@ -63,6 +59,7 @@ export class NetworkInvitationsComponent implements OnInit {
             const invitations = data || [];
             this.invitationsSubject.next(invitations);
             if (invitations.length === 0) this.setEmptyState();
+            else this.setFillState();
           }),
           take(1),
           catchError((err) => {

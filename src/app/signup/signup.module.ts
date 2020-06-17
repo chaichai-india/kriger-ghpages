@@ -14,7 +14,6 @@ import {
   MatButtonModule,
   MatToolbarModule,
   MatProgressBarModule,
-  MatSnackBarModule,
   MatCheckboxModule,
   MatIconModule,
   MatDialogModule,
@@ -37,7 +36,6 @@ import {
     MatButtonModule,
     MatToolbarModule,
     MatProgressBarModule,
-    MatSnackBarModule,
   ],
 })
 export class SignupModule {}

@@ -4,3 +4,15 @@
     <app-network-suggestion-user [user]="user"></app-network-suggestion-user>
   </div>
 </div>
+
+<div class="loading-spinner" *ngIf="loading$ | async">
+  <mat-spinner diameter="50"></mat-spinner>
+</div>
+
+<div class="suggestion-error" *ngIf="error">
+  Something went wrong!
+</div>
+
+<div class="suggestion-placeholder" *ngIf="isEmpty">
+  No Suggestions Yet!
+</div>

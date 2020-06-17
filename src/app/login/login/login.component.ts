@@ -3,12 +3,7 @@ import { Router } from "@angular/router";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { AuthService } from "../../services/authentication/auth.service";
 import { BehaviorSubject } from "rxjs";
-import {
-  MatSnackBar,
-  MatDialog,
-  MAT_DIALOG_DATA,
-  MatDialogConfig,
-} from "@angular/material";
+import { MatDialog, MAT_DIALOG_DATA, MatDialogConfig } from "@angular/material";
 // import { AngularFireAuth } from "@angular/fire/auth";
 // import { isPlatformBrowser } from "@angular/common";
 // import { map, take } from "rxjs/operators";
@@ -30,7 +25,6 @@ export class LoginComponent implements OnInit, OnDestroy {
     private authService: AuthService,
     private router: Router,
     private formBuilder: FormBuilder,
-    private _snackBar: MatSnackBar,
     public dialog: MatDialog,
     private renderer: Renderer2
   ) {
@@ -68,15 +62,6 @@ export class LoginComponent implements OnInit, OnDestroy {
         this.dialog.open(LoginDialogComponent, { data: { message } });
         this.isSubmitted = false;
       }
-
-      // this.openSnackBar(message, action);
-    });
-  }
-
-  openSnackBar(message: string, action: string) {
-    this._snackBar.open(message, action, {
-      duration: 2000,
-      panelClass: "success-dialog",
     });
   }
 
