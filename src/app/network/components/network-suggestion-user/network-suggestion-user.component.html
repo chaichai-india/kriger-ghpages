@@ -23,12 +23,17 @@
     <button
       appDebounceClick
       mat-stroked-button
-      (click)="sendRequest()"
+      (click)="sendRequest(user.user_id, 1)"
       class="kriger-primary-stroked-button send-button"
     >
       <span>Send Request</span>
     </button>
-    <button appDebounceClick mat-icon-button color="warn">
+    <button
+      appDebounceClick
+      mat-icon-button
+      (click)="sendRequest(user.user_id, 0)"
+      color="warn"
+    >
       <mat-icon aria-label="Remove suggestion">highlight_off</mat-icon>
     </button>
   </mat-card-actions>

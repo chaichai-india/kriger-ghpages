@@ -44,6 +44,14 @@ export class NetworkInvitationsComponent implements OnInit {
     this.errorMessage = msg;
   }
 
+  updateInvitations($event) {
+    const invite_id = $event;
+    let invitations = this.invitationsSubject.getValue();
+    invitations = invitations.filter((user) => user.user_id !== invite_id);
+    this.invitationsSubject.next(invitations);
+    if (invitations.length === 0) this.setEmptyState();
+  }
+
   async init() {
     try {
       const user$ = await this.profileService.getUser();
@@ -56,6 +64,7 @@ export class NetworkInvitationsComponent implements OnInit {
             this.krigerService.getInvitations({ user_id: _id })
           ),
           tap((data: any[]) => {
+            console.log({ data });
             const invitations = data || [];
             this.invitationsSubject.next(invitations);
             if (invitations.length === 0) this.setEmptyState();
@@ -63,6 +72,7 @@ export class NetworkInvitationsComponent implements OnInit {
           }),
           take(1),
           catchError((err) => {
+            console.log({ err });
             if (err.status !== 404) {
               this.setErrorStatus(err, "Something went wrong!");
             } else {

@@ -17,7 +17,7 @@ h3 {
   height: 80px;
 }
 
-.notification-error {
+.suggestion-error {
   font-size: 1.5rem;
   color: var(--danger-color);
   height: 80px;

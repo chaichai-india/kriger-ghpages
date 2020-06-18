@@ -75,3 +75,8 @@ a:active {
   background-color: var(--primary-color);
   color: white;
 }
+
+.kriger-snackbar-error {
+  background-color: var(--danger-color);
+  color: white;
+}

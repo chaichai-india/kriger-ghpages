@@ -44,6 +44,14 @@ export class NetworkSuggestionsComponent implements OnInit {
     this.loading.next(false);
   }
 
+  updateSuggestions($event) {
+    const suggest_id = $event;
+    let suggestions = this.suggestionsSubject.getValue();
+    suggestions = suggestions.filter((user) => user.user_id !== suggest_id);
+    this.suggestionsSubject.next(suggestions);
+    if (suggestions.length === 0) this.setEmptyState();
+  }
+
   async init() {
     try {
       const user$ = await this.profileService.getUser();

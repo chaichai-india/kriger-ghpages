@@ -94,6 +94,7 @@ button#submit:enabled {
   color: var(--danger-color);
   padding: 1rem 0;
 }
+
 progress::-webkit-progress-inner-value {
   transition: width 0.1s ease;
 }

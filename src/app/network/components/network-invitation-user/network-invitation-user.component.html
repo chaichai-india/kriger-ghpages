@@ -20,12 +20,22 @@
   </a>
   <mat-card-actions>
     <!-- (debounceClick)="likePost()" -->
-    <button appDebounceClick mat-icon-button class="accept-button">
+    <button
+      appDebounceClick
+      mat-icon-button
+      (click)="sendRequest(user.user_id, 1)"
+      class="accept-button"
+    >
       <mat-icon fontSet="material-icons-outlined" aria-label="Accept invitation"
         >person_add_alt_1</mat-icon
       >
     </button>
-    <button appDebounceClick mat-icon-button color="warn">
+    <button
+      appDebounceClick
+      mat-icon-button
+      (click)="sendRequest(user.user_id, 0)"
+      color="warn"
+    >
       <mat-icon aria-label="Decline invitation">highlight_off</mat-icon>
     </button>
   </mat-card-actions>

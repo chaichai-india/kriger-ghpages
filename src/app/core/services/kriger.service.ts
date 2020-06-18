@@ -1,18 +1,25 @@
 import { Injectable } from "@angular/core";
 import { ApiService } from "./api.service";
 import { HttpHeaders } from "@angular/common/http";
+import { shareReplay } from "rxjs/operators";
 
 @Injectable({
   providedIn: "root",
 })
 export class KrigerService {
+  suggestions$;
   constructor(private apiService: ApiService) {}
 
   getSuggestions({ user_id }) {
     const path = `kriger/tab`;
     const headers = new HttpHeaders().set("user_id", user_id);
 
-    return this.apiService.get({ path, headers });
+    if (!this.suggestions$) {
+      this.suggestions$ = this.apiService
+        .get({ path, headers })
+        .pipe(shareReplay(1));
+    }
+    return this.suggestions$;
   }
 
   postSuggestion({ user_id, accept_id, accept }) {

@@ -1,7 +1,8 @@
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 import { KrigerService, ProfileService, SnackbarService } from "../../../core";
-import { take, catchError } from "rxjs/operators";
+import { take, catchError, switchMap } from "rxjs/operators";
 import { of } from "rxjs";
+import { HttpEventType } from "@angular/common/http";
 
 @Component({
   selector: "app-network-suggestion-user",
@@ -11,6 +12,12 @@ import { of } from "rxjs";
 export class NetworkSuggestionUserComponent implements OnInit {
   @Input() user;
   profileUrl = "/";
+  // test id
+  // 5d7f7c8fb3b18a0b1cd34d32
+  // user id
+  // 5d7f7c8fb3b18a0b1cd34c83
+  @Output() messageEvent = new EventEmitter<string>();
+
   constructor(
     private krigerService: KrigerService,
     private profileService: ProfileService,
@@ -25,21 +32,41 @@ export class NetworkSuggestionUserComponent implements OnInit {
     this.profileUrl = "/" + url0 + "/" + url1 + "/" + username;
   }
 
-  setError() {}
+  setError() {
+    this.snackbarService.openErrorBar("Something went wrong!");
+  }
 
-  async sendRequest() {
-    this.snackbarService.openSnackBar("request send");
-    // try {
-    //   const user$ = await this.profileService.getUser();
-    //   user$
-    //     .pipe(
-    //       take(1),
-    //       catchError((err) => {
-    //         return of({});
-    //       })
-    //     )
-    //     .subscribe();
-    // } catch (error) {}
+  async sendRequest(suggest_id, accept) {
+    try {
+      const user$ = await this.profileService.getUser();
+      user$
+        .pipe(
+          switchMap(({ _id }) =>
+            this.krigerService.postSuggestion({
+              user_id: _id,
+              accept_id: suggest_id,
+              accept,
+            })
+          ),
+          catchError((err) => {
+            console.log(err);
+            this.setError();
+            return of({});
+          })
+        )
+        .subscribe(
+          (event) => {
+            if (event.type === HttpEventType.Response) {
+              const message = accept ? "Request Sent!" : "Suggestion Removed!";
+              this.snackbarService.openSnackBar(message);
+              this.messageEvent.emit(this.user.user_id);
+            }
+          },
+          (err) => console.log({ err })
+        );
+    } catch (error) {
+      console.log({ error });
+    }
   }
 
   ngOnInit() {
