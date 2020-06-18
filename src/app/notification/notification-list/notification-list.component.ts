@@ -29,19 +29,6 @@ export class NotificationListComponent implements OnInit {
     private notificationService: NotificationService
   ) {}
 
-  setErrorStatus(err, msg: string) {
-    console.log({ err });
-    this.loading.next(false);
-    this.error = true;
-    console.log({ err });
-    this.errorMessage = msg;
-  }
-
-  updateState(lastNotificationValue: number) {
-    this.loading.next(false);
-    this.lastNotificationValue = lastNotificationValue;
-  }
-
   nextBatch() {
     this.scrollCount++;
     if (this.scrollCount > 2) {
@@ -90,6 +77,19 @@ export class NotificationListComponent implements OnInit {
     this.infiniteDisable = false;
     this.scrollCount = 0;
     this.nextBatch();
+  }
+
+  setErrorStatus(err, msg: string) {
+    console.log({ err });
+    this.loading.next(false);
+    this.error = true;
+    console.log({ err });
+    this.errorMessage = msg;
+  }
+
+  updateState(lastNotificationValue: number) {
+    this.loading.next(false);
+    this.lastNotificationValue = lastNotificationValue;
   }
 
   setEmptyState() {

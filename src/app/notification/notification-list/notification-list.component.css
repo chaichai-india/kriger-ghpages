@@ -7,7 +7,6 @@
   grid-template-columns: 400px;
   gap: 1rem 0;
   padding: 1rem 0;
-  background-color: var(--bg-grey);
 }
 
 .load__btn,

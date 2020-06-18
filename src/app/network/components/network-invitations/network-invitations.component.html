@@ -1,8 +1,10 @@
 <h3>Pending Invitations</h3>
 <div class="invitations__container" *ngIf="!(loading$ | async) && !isEmpty">
   <div class="invite" *ngFor="let user of invitations$ | async">
-    (messageEvent)="updateInvitations($event)"
-    <app-network-invitation-user [user]="user"></app-network-invitation-user>
+    <app-network-invitation-user
+      (messageEvent)="updateInvitations($event)"
+      [user]="user"
+    ></app-network-invitation-user>
   </div>
 </div>
 

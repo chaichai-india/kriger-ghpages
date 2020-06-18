@@ -1,0 +1,33 @@
+<div class="connections-list__container">
+  <h3>Connections</h3>
+  <app-connection-user
+    *ngFor="let user of connections$ | async"
+    [user]="user"
+  ></app-connection-user>
+
+  <div class="notification-error" *ngIf="error">
+    Something went wrong!
+  </div>
+
+  <div class="notification-placeholder" *ngIf="isEmpty">
+    Your notifications appear here.
+  </div>
+
+  <div class="notification-complete" *ngIf="isComplete">
+    <b>You're all caught up!</b>
+  </div>
+
+  <div class="loading-spinner" *ngIf="loading$ | async">
+    <mat-spinner diameter="50"></mat-spinner>
+  </div>
+
+  <div class="load__btn">
+    <button
+      mat-stroked-button
+      (click)="nextBatch()"
+      *ngIf="!isEmpty && !isComplete"
+    >
+      Load More Notifications
+    </button>
+  </div>
+</div>
