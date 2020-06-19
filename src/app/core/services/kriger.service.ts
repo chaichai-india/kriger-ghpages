@@ -1,13 +1,17 @@
 import { Injectable } from "@angular/core";
 import { ApiService } from "./api.service";
 import { HttpHeaders } from "@angular/common/http";
-import { shareReplay } from "rxjs/operators";
+import { shareReplay, take } from "rxjs/operators";
+import { BehaviorSubject } from "rxjs";
 
 @Injectable({
   providedIn: "root",
 })
 export class KrigerService {
   suggestions$;
+  connectionsCountSubject = new BehaviorSubject<number>(0);
+  connectionsCount$;
+
   constructor(private apiService: ApiService) {}
 
   getSuggestions({ user_id }) {
@@ -52,5 +56,32 @@ export class KrigerService {
       .set("page_number", page_number);
 
     return this.apiService.get({ path, headers });
+  }
+
+  getConnectionsCount({ user_id, refresh = false }) {
+    const path = `kriger/count`;
+    const headers = new HttpHeaders().set("user_id", user_id);
+
+    if (refresh || !this.connectionsCount$) {
+      if (!this.connectionsCount$) {
+        this.connectionsCount$ = this.connectionsCountSubject
+          .asObservable()
+          .pipe(shareReplay(1));
+      }
+      this.apiService
+        .get({ path, headers })
+        .pipe(take(1))
+        .subscribe(
+          (data) => {
+            const { count_connections = 0 } = data || {};
+            this.connectionsCountSubject.next(count_connections);
+          },
+          (err) => {
+            this.connectionsCountSubject.error(err);
+          }
+        );
+    }
+
+    return this.connectionsCount$;
   }
 }

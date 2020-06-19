@@ -55,4 +55,12 @@
 a#profile_link {
   all: unset;
   cursor: pointer;
+  width: 100%;
+}
+
+mat-card-title,
+mat-card-subtitle {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }

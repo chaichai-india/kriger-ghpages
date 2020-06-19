@@ -60,7 +60,7 @@ export class ResourceListComponent implements OnInit {
         take(1),
         catchError((err) => {
           this.setErrorStatus(err, "Something went wrong!");
-          this.resourceSubject.next([]);
+          // this.resourceSubject.next([]);
           return of({ resources: [] });
         })
       )
@@ -89,7 +89,7 @@ export class ResourceListComponent implements OnInit {
         take(1),
         catchError((err) => {
           this.setErrorStatus(err, "Error!");
-          this.resourceSubject.next([]);
+          // this.resourceSubject.next([]);
           return of({ resources: [] });
         })
       )

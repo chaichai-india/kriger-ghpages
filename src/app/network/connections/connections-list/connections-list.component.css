@@ -4,6 +4,7 @@
   width: 100%;
   place-items: center;
   place-content: center;
+  align-content: start;
   grid-template-columns: 460px;
   gap: 1rem 0;
   padding: 1rem 0;
@@ -15,4 +16,21 @@ h3 {
   box-shadow: var(--primary-box-shadow);
   height: 40px;
   width: 100%;
+}
+
+.load__btn,
+.loading-spinner {
+  display: grid;
+  padding: 1rem 0;
+  place-items: center;
+}
+
+.load__btn button {
+  background-color: #1a1a96;
+  color: white;
+}
+
+.connections-error {
+  font-size: 1.5rem;
+  color: var(--danger-color);
 }

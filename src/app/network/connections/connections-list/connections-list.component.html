@@ -1,19 +1,26 @@
-<div class="connections-list__container">
+<div
+  class="connections-list__container"
+  infinite-scroll
+  (scrolled)="nextBatch()"
+  [infiniteScrollDistance]="1"
+  [infiniteScrollThrottle]="1000"
+  [infiniteScrollDisabled]="infiniteDisable"
+>
   <h3>Connections</h3>
   <app-connection-user
     *ngFor="let user of connections$ | async"
     [user]="user"
   ></app-connection-user>
 
-  <div class="notification-error" *ngIf="error">
+  <div class="connections-error" *ngIf="error">
     Something went wrong!
   </div>
 
-  <div class="notification-placeholder" *ngIf="isEmpty">
-    Your notifications appear here.
+  <div class="connections-placeholder" *ngIf="isEmpty">
+    You have 0 connections!
   </div>
 
-  <div class="notification-complete" *ngIf="isComplete">
+  <div class="connections-complete" *ngIf="isComplete">
     <b>You're all caught up!</b>
   </div>
 
@@ -21,13 +28,13 @@
     <mat-spinner diameter="50"></mat-spinner>
   </div>
 
-  <div class="load__btn">
+  <!-- <div class="load__btn">
     <button
       mat-stroked-button
       (click)="nextBatch()"
       *ngIf="!isEmpty && !isComplete"
     >
-      Load More Notifications
+      Load More Connections
     </button>
-  </div>
+  </div> -->
 </div>

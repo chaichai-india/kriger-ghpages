@@ -7,6 +7,7 @@ import { ConnectionUserComponent } from "./connection-user/connection-user.compo
 import { MatCardModule } from "@angular/material/card";
 import { SharedModule } from "../../shared/shared.module";
 import { MatButtonModule } from "@angular/material";
+import { InfiniteScrollModule } from "ngx-infinite-scroll";
 
 @NgModule({
   declarations: [ConnectionsListComponent, ConnectionUserComponent],
@@ -15,6 +16,7 @@ import { MatButtonModule } from "@angular/material";
     ConnectionsRoutingModule,
     MatCardModule,
     MatButtonModule,
+    InfiniteScrollModule,
     SharedModule,
   ],
 })

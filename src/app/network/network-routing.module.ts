@@ -17,6 +17,8 @@ const routes: Routes = [
   {
     path: "connections",
     loadChildren: "./connections/connections.module#ConnectionsModule",
+    canActivate: [AngularFireAuthGuard],
+    data: { authGuardPipe: redirectUnauthorizedToLogin },
   },
 ];
 
