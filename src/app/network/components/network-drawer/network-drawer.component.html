@@ -4,10 +4,11 @@
     href="/network/connections"
     routerLink="/network/connections"
     rel="noopener noreferrer"
-    >Your Network</a
+    >Your Network
+    <span class="connection-count">{{ connectionsCount$ | async }}</span></a
   >
   <mat-divider></mat-divider>
-  <a mat-list-item>Tips</a>
+  <a (click)="openTipsDialog()" mat-list-item>Tips</a>
   <mat-divider></mat-divider>
-  <a mat-list-item>Invite Friends</a>
+  <a (click)="openDialog()" mat-list-item>Invite Friends</a>
 </mat-nav-list>

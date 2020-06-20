@@ -11,11 +11,13 @@
       >
         <app-user-badge [account_type]="user?.account_type"></app-user-badge>
       </div>
-      <mat-card-title>{{ user.name }}</mat-card-title>
-      <mat-card-subtitle>
-        <p *ngIf="user?.username">@{{ user.username }}</p>
-        <p *ngIf="user?.headline">{{ user.headline }}<br /></p>
-      </mat-card-subtitle>
+      <div class="header-text">
+        <mat-card-title>{{ user.name }}</mat-card-title>
+        <mat-card-subtitle>
+          <p *ngIf="user?.username">@{{ user.username }}</p>
+          <p *ngIf="user?.headline">{{ user.headline }}<br /></p>
+        </mat-card-subtitle>
+      </div>
     </mat-card-header>
   </a>
   <mat-card-actions>

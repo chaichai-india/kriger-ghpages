@@ -49,6 +49,29 @@ export class NetworkInvitationsComponent implements OnInit {
     let invitations = this.invitationsSubject.getValue();
     invitations = invitations.filter((user) => user.user_id !== invite_id);
     this.invitationsSubject.next(invitations);
+    this.krigerService
+      .getInvitations({ user_id: this.user_id })
+      .pipe(
+        tap((data: any[]) => {
+          console.log({ data });
+          const invitations = data || [];
+          this.invitationsSubject.next(invitations);
+          if (invitations.length === 0) this.setEmptyState();
+          else this.setFillState();
+        }),
+        take(1),
+        catchError((err) => {
+          console.log({ err });
+          if (err.status !== 404) {
+            this.setErrorStatus(err, "Something went wrong!");
+          } else {
+            this.setEmptyState();
+          }
+          this.invitationsSubject.next([]);
+          return of({ invitations: [] });
+        })
+      )
+      .subscribe();
     if (invitations.length === 0) this.setEmptyState();
   }
 

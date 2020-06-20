@@ -24,11 +24,16 @@ app-user-badge {
 a#profile_link {
   all: unset;
   cursor: pointer;
-  width: 100%;
+  width: 60%;
+}
+
+.header-text {
+  width: calc(100% - 64px);
+  margin-left: -8px;
 }
 
 mat-card-title,
-mat-card-subtitle {
+mat-card-subtitle > p {
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;

@@ -8,9 +8,9 @@ import { BehaviorSubject } from "rxjs";
   providedIn: "root",
 })
 export class KrigerService {
-  suggestions$;
-  connectionsCountSubject = new BehaviorSubject<number>(0);
-  connectionsCount$;
+  private suggestions$;
+  private connectionsCountSubject = new BehaviorSubject<number>(0);
+  private connectionsCount$;
 
   constructor(private apiService: ApiService) {}
 

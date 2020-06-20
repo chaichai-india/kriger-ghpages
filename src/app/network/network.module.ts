@@ -13,7 +13,12 @@ import { MatCardModule } from "@angular/material/card";
 import { SharedModule } from "../shared/shared.module";
 import { NetworkInvitationUserComponent } from "./components/network-invitation-user/network-invitation-user.component";
 import { NetworkSuggestionUserComponent } from "./components/network-suggestion-user/network-suggestion-user.component";
-import { MatButtonModule, MatIconModule } from "@angular/material";
+import {
+  MatButtonModule,
+  MatIconModule,
+  MatDialogModule,
+} from "@angular/material";
+import { NetworkTipsComponent } from "./network-tips/network-tips.component";
 
 @NgModule({
   declarations: [
@@ -23,7 +28,9 @@ import { MatButtonModule, MatIconModule } from "@angular/material";
     NetworkSuggestionsComponent,
     NetworkInvitationUserComponent,
     NetworkSuggestionUserComponent,
+    NetworkTipsComponent,
   ],
+  entryComponents: [NetworkTipsComponent],
   imports: [
     CommonModule,
     NetworkRoutingModule,
@@ -32,6 +39,7 @@ import { MatButtonModule, MatIconModule } from "@angular/material";
     MatCardModule,
     MatButtonModule,
     MatIconModule,
+    MatDialogModule,
     SharedModule,
   ],
 })

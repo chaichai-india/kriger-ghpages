@@ -16,3 +16,8 @@ mat-nav-list a:focus {
   color: black;
   background-color: transparent;
 }
+
+.connection-count {
+  margin-left: auto;
+  font-size: 1.5rem;
+}
