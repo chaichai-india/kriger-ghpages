@@ -3,6 +3,7 @@ import { ApiService } from "./api.service";
 import { HttpHeaders } from "@angular/common/http";
 import { shareReplay } from "rxjs/operators";
 import { AuthService } from "../../services/authentication/auth.service";
+import { KrigerService } from "./kriger.service";
 
 @Injectable({
   providedIn: "root",
@@ -10,7 +11,8 @@ import { AuthService } from "../../services/authentication/auth.service";
 export class ProfileService {
   constructor(
     private apiService: ApiService,
-    private authService: AuthService
+    private authService: AuthService,
+    private krigerService: KrigerService
   ) {}
 
   private userDetail$;
@@ -21,6 +23,7 @@ export class ProfileService {
     this.userDetail$ = null;
     this.idFromFirebaseUID$ = null;
     this.uid = null;
+    this.krigerService.clear();
   }
 
   async getUser() {

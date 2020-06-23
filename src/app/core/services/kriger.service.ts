@@ -14,6 +14,11 @@ export class KrigerService {
 
   constructor(private apiService: ApiService) {}
 
+  clear() {
+    this.suggestions$ = null;
+    this.connectionsCount$ = null;
+  }
+
   getSuggestions({ user_id }) {
     const path = `kriger/tab`;
     const headers = new HttpHeaders().set("user_id", user_id);
