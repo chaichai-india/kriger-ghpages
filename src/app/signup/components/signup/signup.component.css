@@ -83,3 +83,76 @@ button#next:enabled {
   background-color: var(--primary-color);
   color: white;
 }
+
+.signup-card mat-radio-button {
+  margin-right: 0.5rem;
+}
+
+.signup-card .genderform {
+  margin-bottom: 0.5rem;
+}
+
+::ng-deep .signup-card .mat-radio-inner-circle,
+::ng-deep .signup-card .mat-radio-outer-circle,
+::ng-deep .signup-card .mat-radio-container {
+  width: 15px !important;
+  height: 15px !important;
+}
+
+::ng-deep
+  .signup-card
+  .mat-radio-button.mat-radio-checked
+  .mat-radio-outer-circle {
+  border-color: var(--primary-color);
+}
+
+::ng-deep .signup-card .mat-radio-button .mat-radio-inner-circle {
+  color: var(--primary-color);
+  background-color: var(--primary-color);
+}
+
+::ng-deep .signup-card .mat-radio-button .mat-radio-ripple .mat-ripple-element {
+  background-color: var(--primary-color);
+}
+
+::ng-deep .signup-card .mat-radio-button .mat-radio-ripple {
+  left: calc(50% - 15px) !important;
+  top: calc(50% - 15px) !important;
+  height: 30px !important;
+  width: 30px !important;
+}
+
+::ng-deep
+  .signup-card
+  .mat-radio-button.mat-accent
+  .mat-radio-ripple
+  .mat-ripple-element:not(.mat-radio-persistent-ripple),
+::ng-deep
+  .signup-card
+  .mat-radio-button.mat-accent.mat-radio-checked
+  .mat-radio-persistent-ripple,
+::ng-deep
+  .signup-card
+  .mat-radio-button.mat-accent:active
+  .mat-radio-persistent-ripple {
+  background-color: var(--primary-color);
+}
+
+/* ::ng-deep
+  .signup-card
+  .mat-checkbox-checked.mat-accent
+  .mat-checkbox-background,
+::ng-deep
+  .signup-card
+  .mat-checkbox-indeterminate.mat-accent
+  .mat-checkbox-background {
+  background-color: var(--primary-color);
+} */
+
+::ng-deep
+  .signup-card
+  .mat-checkbox:not(.mat-checkbox-disabled).mat-accent
+  .mat-checkbox-ripple
+  .mat-ripple-element {
+  background-color: var(--primary-color);
+}

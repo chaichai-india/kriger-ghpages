@@ -129,7 +129,7 @@ export class ForgotPasswordDialogComponent implements OnInit {
       if (res === "Success") {
         this.message = "Password reset link sent!";
       } else {
-        this.message = res;
+        this.message = "Something went wrong!!";
         this.isSubmitted = false;
       }
     });

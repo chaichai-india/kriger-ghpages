@@ -1,5 +1,11 @@
 import { Component, OnInit, Inject, Renderer2, OnDestroy } from "@angular/core";
-import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+import {
+  FormGroup,
+  FormBuilder,
+  Validators,
+  ValidationErrors,
+  AbstractControl,
+} from "@angular/forms";
 import {
   trigger,
   state,
@@ -12,6 +18,10 @@ import {
 // import { AuthService } from "../../../services/authentication/auth.service";
 import { Router } from "@angular/router";
 import { MAT_DIALOG_DATA, MatDialog } from "@angular/material";
+import { SnackbarService, SignupService } from "../../../core";
+import { Observable, of, BehaviorSubject } from "rxjs";
+import { debounceTime, tap, map, catchError } from "rxjs/operators";
+import { HttpEventType } from "@angular/common/http";
 
 @Component({
   selector: "app-signup",
@@ -145,6 +155,11 @@ export class SignupComponent implements OnInit, OnDestroy {
       name: "Vocational School",
       checked: false,
     },
+    {
+      id: 46,
+      name: "Entrance Exam Coaching",
+      checked: false,
+    },
   ];
 
   checkBoxValue;
@@ -153,12 +168,16 @@ export class SignupComponent implements OnInit, OnDestroy {
   showPassword = false;
   currentFormState = "initial";
   currentCheckboxState = "final";
+  usernameAvailable = new BehaviorSubject(false);
+  usernameAvailable$ = this.usernameAvailable.asObservable();
 
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
     public dialog: MatDialog,
-    private renderer: Renderer2
+    private renderer: Renderer2,
+    private snackbarService: SnackbarService,
+    private signupService: SignupService
   ) {
     this.renderer.addClass(document.body, "body-bg");
   }
@@ -225,22 +244,21 @@ export class SignupComponent implements OnInit, OnDestroy {
     let instituteCheck = this.instituteCheckbox.filter(
       (institute) => institute.checked
     );
-    return educatorCheck.length
-      ? true
-      : false || learnerCheck.length
-      ? true
-      : false || instituteCheck.length
-      ? true
-      : false;
+
+    return (
+      !!educatorCheck.length || !!learnerCheck.length || !!instituteCheck.length
+    );
   }
 
   showSignupForm() {
     if (!this.isCheckbox) {
-      alert("Select a user type");
+      this.snackbarService.openErrorBar("Select a user type");
       return;
     }
     this.currentCheckboxState = "initial";
     this.currentFormState = "final";
+
+    this.setNameValidators();
   }
 
   showCheckedBox() {
@@ -248,34 +266,95 @@ export class SignupComponent implements OnInit, OnDestroy {
     this.currentFormState = "initial";
   }
 
+  setNameValidators() {
+    if (this.checkBoxValue[0] >= 40) {
+      this.institutename.setValidators([
+        Validators.pattern("[a-zA-Z ]*"),
+        Validators.maxLength(50),
+        Validators.required,
+      ]);
+      this.institutename.updateValueAndValidity();
+    } else {
+      this.firstname.setValidators([
+        Validators.pattern("[a-zA-Z ]*"),
+        Validators.maxLength(50),
+        Validators.required,
+      ]);
+      this.firstname.updateValueAndValidity();
+
+      this.lastname.setValidators([
+        Validators.pattern("[a-zA-Z ]*"),
+        Validators.maxLength(50),
+        Validators.required,
+      ]);
+      this.lastname.updateValueAndValidity();
+    }
+  }
+
+  checkUsernameAvailability({
+    value,
+  }: AbstractControl): Observable<ValidationErrors | null> {
+    console.log({ value });
+
+    return this.signupService.checkUsernameAvailability(value).pipe(
+      debounceTime(1000),
+      map((response) => {
+        console.log({ response });
+        let { available = false } = response || {};
+        if (!available) {
+          this.usernameAvailable.next(false);
+          return { isExists: true };
+        }
+        this.usernameAvailable.next(true);
+        return null;
+      }),
+      catchError((err) => {
+        console.log({ validatorError: err });
+        this.usernameAvailable.next(false);
+        return of({ available: false });
+      })
+    );
+  }
+
   buildSignupForm() {
-    this.signupForm = this.formBuilder.group({
-      institutename: [
-        "",
-        [Validators.pattern("[a-zA-Z ]*"), Validators.maxLength(50)],
-      ],
-      firstname: [
-        "",
-        [Validators.pattern("[a-zA-Z ]*"), Validators.maxLength(50)],
-      ],
-      lastname: [
-        "",
-        [Validators.pattern("[a-zA-Z ]*"), Validators.maxLength(50)],
-      ],
-      email: ["", [Validators.required, Validators.email]],
-      username: ["", [Validators.required]],
-      password: ["", [Validators.required, Validators.minLength(6)]],
-      //   city: ["", [Validators.required, Validators.pattern("[a-zA-Z ]*")]],
-      phone: [
-        "",
-        [
-          Validators.required,
-          Validators.pattern("^[6-9][0-9]{9}$"),
-          Validators.maxLength(10),
+    this.signupForm = this.formBuilder.group(
+      {
+        institutename: [
+          "",
+          [Validators.pattern("[a-zA-Z ]*"), Validators.maxLength(50)],
         ],
-      ],
-      referral: [""],
-    });
+        firstname: [
+          "",
+          [Validators.pattern("[a-zA-Z ]*"), Validators.maxLength(50)],
+        ],
+        lastname: [
+          "",
+          [Validators.pattern("[a-zA-Z ]*"), Validators.maxLength(50)],
+        ],
+        gender: ["1"],
+        email: ["", [Validators.required, Validators.email]],
+        username: [
+          "",
+          {
+            validators: [Validators.required],
+            asyncValidators: [this.checkUsernameAvailability.bind(this)],
+            updateOn: "blur",
+          },
+        ],
+        password: ["", [Validators.required, Validators.minLength(6)]],
+        //   city: ["", [Validators.required, Validators.pattern("[a-zA-Z ]*")]],
+        phone: [
+          "",
+          [
+            Validators.required,
+            Validators.pattern("^[6-9][0-9]{9}$"),
+            Validators.maxLength(10),
+          ],
+        ],
+        referral: [""],
+      }
+      // { updateOn: "blur" }
+    );
   }
 
   get formControls() {
@@ -310,61 +389,96 @@ export class SignupComponent implements OnInit, OnDestroy {
     return this.signupForm.get("phone");
   }
 
-  //   async signup() {
-  //     const isFormValid = this.signupForm.valid;
-  //     this.isFormSubmitted = true;
-  //     if (!isFormValid) {
-  //       alert("Form Details Invalid. Please Check.");
-  //       this.isFormSubmitted = false;
-  //       return;
-  //     }
-  //     const { email, password, phone: contact } = this.signupForm.value;
-  //     const type = this.checkBoxValue;
-  //     const date_of_joining = this.timeService.timestamp;
-  //     let firstname: string = this.signupForm.value.firstname;
-  //     let first_name = firstname.trim();
-  //     let lastname: string = this.signupForm.value.lastname;
-  //     let last_name = lastname.trim();
-  //     let city: string = this.signupForm.value.city;
-  //     let current_city = city.trim();
-  //     const name = first_name + " " + last_name;
-  //     const data = {
-  //       first_name,
-  //       last_name,
-  //       email,
-  //       password,
-  //       current_city,
-  //       contact,
-  //       type,
-  //       date_of_joining,
-  //       name,
-  //     };
-  //     // console.log(data);
-  //     // this.dialog.open(SignupDialogComponent, {
-  //     //   data: { message: "works" }
-  //     // });
-  //     await this.signupService
-  //       .signup(data)
-  //       .then((response) => {
-  //         // console.log(response);
-  //         this.dialog.open(SignupDialogComponent, {
-  //           data: { message: response },
-  //         });
-  //         this.router.navigate(["/login"]);
-  //       })
-  //       .catch((err) => {
-  //         // alert("something went wrong!! Please try again.");
-  //         this.dialog.open(SignupDialogComponent, {
-  //           data: { message: "something went wrong!! Please try again." },
-  //         });
-  //         this.isFormSubmitted = false;
-  //       });
-  //   }
+  get referral() {
+    return this.signupForm.get("referral");
+  }
 
-  signup() {
-    this.dialog.open(SignupDialogComponent, {
-      data: { message: "Something went wrong!" },
-    });
+  async signup() {
+    const isFormValid = this.signupForm.valid;
+    this.isFormSubmitted = true;
+    if (!isFormValid) {
+      this.snackbarService.openErrorBar("Form Details Invalid. Please Check.");
+      this.isFormSubmitted = false;
+      return;
+    }
+    console.log({ value: this.signupForm.value });
+
+    let {
+      email,
+      password,
+      firstname,
+      lastname,
+      institutename,
+      username,
+      referral: referral_code,
+      gender,
+      phone: contact,
+    } = this.signupForm.value;
+
+    if (institutename) firstname = institutename;
+    firstname = firstname.trim();
+    lastname = lastname.trim();
+    username = username.trim();
+    referral_code = referral_code.trim();
+    gender = +gender;
+
+    try {
+      let {
+        success,
+        response,
+        uid: firebase_uid,
+      } = await this.signupService.firebaseSignup({
+        email,
+        password,
+      });
+      console.log({ success, response, firebase_uid });
+
+      if (success) {
+        const body = {
+          firebase_uid,
+          firstname,
+          lastname,
+          email,
+          password,
+          gender,
+          contact,
+          username,
+          referral_code,
+          type: this.checkBoxValue,
+        };
+
+        this.signupService.serverSignup(body).subscribe(
+          (event) => {
+            if (event.type === HttpEventType.Response) {
+              this.openDialog({ message: response, success });
+            }
+          },
+          (err) => {
+            console.log({ serverSignupError: err });
+            response = "Something went wrong!";
+            this.openDialog({ message: response });
+          }
+        );
+      } else {
+        this.openDialog({ message: response });
+      }
+    } catch (error) {
+      console.log({ error });
+      let response = "Something went wrong!";
+      this.openDialog({ message: response });
+    }
+  }
+
+  openDialog(data) {
+    this.dialog
+      .open(SignupDialogComponent, { data })
+      .afterClosed()
+      .subscribe(() => {
+        if (data.success) {
+          this.router.navigate(["/login"]);
+        }
+        this.isFormSubmitted = false;
+      });
   }
 
   ngOnInit() {

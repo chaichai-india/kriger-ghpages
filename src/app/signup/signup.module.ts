@@ -17,6 +17,7 @@ import {
   MatCheckboxModule,
   MatIconModule,
   MatDialogModule,
+  MatRadioModule,
 } from "@angular/material";
 
 @NgModule({
@@ -36,6 +37,7 @@ import {
     MatButtonModule,
     MatToolbarModule,
     MatProgressBarModule,
+    MatRadioModule,
   ],
 })
 export class SignupModule {}

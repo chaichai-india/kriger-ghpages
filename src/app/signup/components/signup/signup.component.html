@@ -70,6 +70,7 @@
 <mat-card class="signup-card" [@toggleSignup]="currentFormState">
   <mat-toolbar>
     <span>Register</span>
+    <!-- {{ usernameAvailable$ | async }} -->
   </mat-toolbar>
   <mat-card-content>
     <form
@@ -83,6 +84,7 @@
           pattern="[a-zA-Z ]*"
           placeholder="Institute Name"
           formControlName="institutename"
+          [required]="checkBoxValue && checkBoxValue[0] >= 40"
         />
         <mat-error
           *ngIf="
@@ -90,7 +92,7 @@
             institutename.touched &&
             institutename.dirty
           "
-          >Not a valid first name</mat-error
+          >Not a valid name</mat-error
         >
         <!-- <mat-hint align="start"
         >Name cannot be changed after you register</mat-hint
@@ -102,6 +104,7 @@
           pattern="[a-zA-Z ]*"
           placeholder="First Name"
           formControlName="firstname"
+          [required]="checkBoxValue && checkBoxValue[0] < 40"
         />
         <mat-error
           *ngIf="firstname.invalid && firstname.touched && firstname.dirty"
@@ -117,6 +120,7 @@
           pattern="[a-zA-Z ]*"
           placeholder="Last Name"
           formControlName="lastname"
+          [required]="checkBoxValue && checkBoxValue[0] < 40"
         />
         <mat-error
           *ngIf="lastname.invalid && lastname.touched && lastname.dirty"
@@ -126,6 +130,15 @@
           >Name cannot be changed after you register</mat-hint
         > -->
       </mat-form-field>
+
+      <div class="genderform" *ngIf="checkBoxValue && checkBoxValue[0] < 40">
+        <mat-radio-group aria-label="Gender" formControlName="gender">
+          <mat-radio-button value="1">Male</mat-radio-button>
+          <mat-radio-button value="2">Female</mat-radio-button>
+          <mat-radio-button value="3">Other</mat-radio-button>
+        </mat-radio-group>
+      </div>
+
       <mat-form-field>
         <input
           matInput
@@ -142,12 +155,28 @@
         <input
           matInput
           placeholder="Username (cannot be changed)"
+          pattern="^[A-Za-z0-9_]{1,15}$"
+          maxlength="15"
           formControlName="username"
           required
         />
         <mat-error
-          *ngIf="username.invalid && username.touched && username.dirty"
+          *ngIf="
+            username.invalid &&
+            username.touched &&
+            username.dirty &&
+            !username.errors?.isExists
+          "
           >Not a valid username</mat-error
+        >
+        <mat-error *ngIf="username.errors?.isExists"
+          >username is not available.</mat-error
+        >
+
+        <mat-hint
+          *ngIf="usernameAvailable$ | async"
+          style="color: #00c851 !important;"
+          >username is available.</mat-hint
         >
       </mat-form-field>
 
@@ -206,6 +235,19 @@
         />
         <mat-error *ngIf="phone.invalid && phone.touched && phone.dirty"
           >Not a valid phone number</mat-error
+        >
+      </mat-form-field>
+      <mat-form-field>
+        <input
+          matInput
+          type="text"
+          maxlength="7"
+          placeholder="Referral Code"
+          formControlName="referral"
+        />
+        <mat-error
+          *ngIf="referral.invalid && referral.touched && referral.dirty"
+          >Not a valid referral code</mat-error
         >
       </mat-form-field>
       <mat-card-subtitle
