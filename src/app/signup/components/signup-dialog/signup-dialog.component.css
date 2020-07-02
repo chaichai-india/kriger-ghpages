@@ -1,0 +1,14 @@
+:host {
+  display: grid;
+  place-items: center;
+  place-content: center;
+  padding-bottom: 1rem;
+}
+
+h3 {
+  margin: 0;
+  font-size: 1rem;
+  text-align: center;
+  line-height: 2rem;
+  white-space: pre-line;
+}

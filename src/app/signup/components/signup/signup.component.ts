@@ -164,7 +164,7 @@ export class SignupComponent implements OnInit, OnDestroy {
 
   checkBoxValue;
   signupForm: FormGroup;
-  isFormSubmitted: boolean;
+  isFormSubmitted = false;
   showPassword = false;
   currentFormState = "initial";
   currentCheckboxState = "final";
@@ -266,6 +266,17 @@ export class SignupComponent implements OnInit, OnDestroy {
     this.currentFormState = "initial";
   }
 
+  resetSignupForm() {
+    this.signupForm.reset();
+    this.usernameAvailable.next(false);
+    this.gender.setValue("1");
+  }
+
+  showSelectUserType() {
+    this.showCheckedBox();
+    this.resetSignupForm();
+  }
+
   setNameValidators() {
     if (this.checkBoxValue[0] >= 40) {
       this.institutename.setValidators([
@@ -274,6 +285,17 @@ export class SignupComponent implements OnInit, OnDestroy {
         Validators.required,
       ]);
       this.institutename.updateValueAndValidity();
+      this.firstname.setValidators([
+        Validators.pattern("[a-zA-Z ]*"),
+        Validators.maxLength(50),
+      ]);
+      this.firstname.updateValueAndValidity();
+
+      this.lastname.setValidators([
+        Validators.pattern("[a-zA-Z ]*"),
+        Validators.maxLength(50),
+      ]);
+      this.lastname.updateValueAndValidity();
     } else {
       this.firstname.setValidators([
         Validators.pattern("[a-zA-Z ]*"),
@@ -288,6 +310,11 @@ export class SignupComponent implements OnInit, OnDestroy {
         Validators.required,
       ]);
       this.lastname.updateValueAndValidity();
+      this.institutename.setValidators([
+        Validators.pattern("[a-zA-Z ]*"),
+        Validators.maxLength(50),
+      ]);
+      this.institutename.updateValueAndValidity();
     }
   }
 
@@ -311,7 +338,7 @@ export class SignupComponent implements OnInit, OnDestroy {
       catchError((err) => {
         console.log({ validatorError: err });
         this.usernameAvailable.next(false);
-        return of({ available: false });
+        return of({ isExists: true });
       })
     );
   }
@@ -342,7 +369,6 @@ export class SignupComponent implements OnInit, OnDestroy {
           },
         ],
         password: ["", [Validators.required, Validators.minLength(6)]],
-        //   city: ["", [Validators.required, Validators.pattern("[a-zA-Z ]*")]],
         phone: [
           "",
           [
@@ -355,6 +381,10 @@ export class SignupComponent implements OnInit, OnDestroy {
       }
       // { updateOn: "blur" }
     );
+  }
+
+  debug() {
+    console.log(this.signupForm);
   }
 
   get formControls() {
@@ -391,6 +421,10 @@ export class SignupComponent implements OnInit, OnDestroy {
 
   get referral() {
     return this.signupForm.get("referral");
+  }
+
+  get gender() {
+    return this.signupForm.get("gender");
   }
 
   async signup() {

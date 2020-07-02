@@ -242,7 +242,7 @@
           matInput
           type="text"
           maxlength="7"
-          placeholder="Referral Code"
+          placeholder="Referral Code (optional)"
           formControlName="referral"
         />
         <mat-error
@@ -269,18 +269,23 @@
         <button
           id="signup"
           mat-raised-button
-          [disabled]="signupForm.invalid || isFormSubmitted"
+          [disabled]="!signupForm.valid || isFormSubmitted"
         >
           Accept & Register
         </button>
+        <!-- {{ signupForm.invalid }} {{ signupForm.pending }}
+        {{ signupForm.valid }} {{ isFormSubmitted }} -->
         <button
           type="button"
-          (click)="showCheckedBox()"
+          (click)="showSelectUserType()"
           mat-stroked-button
           [disabled]="isFormSubmitted"
         >
           Back
         </button>
+        <!-- <button type="button" (click)="debug()" mat-stroked-button>
+          Debug
+        </button> -->
       </mat-card-actions>
     </form>
   </mat-card-content>
