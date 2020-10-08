@@ -3,7 +3,7 @@
 /src/environments/
 # compiled output
 /functions/dist
-/dist
+# /dist
 /tmp
 /out-tsc
 
