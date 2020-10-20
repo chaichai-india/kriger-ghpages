@@ -29,6 +29,7 @@ import { CentralComponent } from "./components/central/central.component";
 import { VisitusComponent } from "./components/visitus/visitus.component";
 import { ContactusComponent } from './components/contactus/contactus.component';
 import { PrivacypolicyComponent } from './components/privacypolicy/privacypolicy.component';
+import { RefundcancelComponent } from './components/refundcancel/refundcancel.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { PrivacypolicyComponent } from './components/privacypolicy/privacypolicy
     CentralComponent,
     VisitusComponent,
     ContactusComponent,
-    PrivacypolicyComponent
+    PrivacypolicyComponent,
+    RefundcancelComponent
   ],
   entryComponents: [
     InternshipsComponent,
@@ -60,9 +62,8 @@ import { PrivacypolicyComponent } from './components/privacypolicy/privacypolicy
     InternshipTncComponent,
     VisitusComponent,
     ContactusComponent,
-    PrivacypolicyComponent
-
-
+    PrivacypolicyComponent,
+    RefundcancelComponent
   ],
   imports: [
     CommonModule,

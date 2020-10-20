@@ -9,6 +9,7 @@ import { Router, ActivatedRoute } from "@angular/router";
 import { VisitusComponent } from "../visitus/visitus.component";
 import { ContactusComponent } from '../contactus/contactus.component';
 import { PrivacypolicyComponent } from '../privacypolicy/privacypolicy.component';
+import { RefundcancelComponent } from '../refundcancel/refundcancel.component';
 
 @Component({
   selector: "app-central",
@@ -32,6 +33,9 @@ export class CentralComponent implements OnInit {
     }
     if (this.router.url === "/privacy-policy") {
       this.currentComponent = PrivacypolicyComponent;
+    }
+    if (this.router.url === "/refund-cancellation") {
+      this.currentComponent = RefundcancelComponent;
     }
     // if (this.router.url === "/careers") {
     //   this.currentComponent = CareersComponent;

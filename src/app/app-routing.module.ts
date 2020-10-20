@@ -53,6 +53,7 @@ const routes: Routes = [
   { path: "visit-us", loadChildren: "./blog/blog.module#BlogModule" },
   { path: "contact-us", loadChildren: "./blog/blog.module#BlogModule" },
   { path: "privacy-policy", loadChildren: "./blog/blog.module#BlogModule" },
+  { path: "refund-cancellation", loadChildren: "./blog/blog.module#BlogModule" },
   { path: "404", component: PageNotFoundComponent },
   { path: "**", component: PageNotFoundComponent },
 ];
