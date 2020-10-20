@@ -7,6 +7,7 @@ import { OurteamComponent } from "../ourteam/ourteam.component";
 import { InternshipTncComponent } from "../internship-tnc/internship-tnc.component";
 import { Router, ActivatedRoute } from "@angular/router";
 import { VisitusComponent } from "../visitus/visitus.component";
+import { ContactusComponent } from '../contactus/contactus.component';
 
 @Component({
   selector: "app-central",
@@ -24,6 +25,9 @@ export class CentralComponent implements OnInit {
     }
     if (this.router.url === "/media-coverage") {
       this.currentComponent = MediacoverageComponent;
+    }
+    if (this.router.url === "/contact-us") {
+      this.currentComponent = ContactusComponent;
     }
     // if (this.router.url === "/careers") {
     //   this.currentComponent = CareersComponent;
