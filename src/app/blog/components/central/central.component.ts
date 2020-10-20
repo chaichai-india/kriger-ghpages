@@ -31,7 +31,7 @@ export class CentralComponent implements OnInit {
     if (this.router.url === "/term-conditions") {
       this.currentComponent = TncComponent;
     }
-    if (this.router.url === "/our-team") {
+    if (this.router.url === "/about-us") {
       this.footerWhite = true;
       this.currentComponent = OurteamComponent;
     }
