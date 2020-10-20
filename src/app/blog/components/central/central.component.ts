@@ -8,6 +8,7 @@ import { InternshipTncComponent } from "../internship-tnc/internship-tnc.compone
 import { Router, ActivatedRoute } from "@angular/router";
 import { VisitusComponent } from "../visitus/visitus.component";
 import { ContactusComponent } from '../contactus/contactus.component';
+import { PrivacypolicyComponent } from '../privacypolicy/privacypolicy.component';
 
 @Component({
   selector: "app-central",
@@ -28,6 +29,9 @@ export class CentralComponent implements OnInit {
     }
     if (this.router.url === "/contact-us") {
       this.currentComponent = ContactusComponent;
+    }
+    if (this.router.url === "/privacy-policy") {
+      this.currentComponent = PrivacypolicyComponent;
     }
     // if (this.router.url === "/careers") {
     //   this.currentComponent = CareersComponent;

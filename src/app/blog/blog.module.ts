@@ -28,6 +28,7 @@ import { InternshipTncComponent } from "./components/internship-tnc/internship-t
 import { CentralComponent } from "./components/central/central.component";
 import { VisitusComponent } from "./components/visitus/visitus.component";
 import { ContactusComponent } from './components/contactus/contactus.component';
+import { PrivacypolicyComponent } from './components/privacypolicy/privacypolicy.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { ContactusComponent } from './components/contactus/contactus.component';
     InternshipTncComponent,
     CentralComponent,
     VisitusComponent,
-    ContactusComponent
+    ContactusComponent,
+    PrivacypolicyComponent
   ],
   entryComponents: [
     InternshipsComponent,
@@ -57,7 +59,9 @@ import { ContactusComponent } from './components/contactus/contactus.component';
     PricingComponent,
     InternshipTncComponent,
     VisitusComponent,
-    ContactusComponent
+    ContactusComponent,
+    PrivacypolicyComponent
+
 
   ],
   imports: [
