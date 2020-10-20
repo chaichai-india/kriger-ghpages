@@ -32,6 +32,15 @@ header h3 {
   font-weight: 600;
 }
 
+div {
+  margin-bottom: 1rem;
+}
+
+p,
+h4 {
+  margin-bottom: 0.5rem;
+}
+
 @media screen and (max-width: 585px) {
   :host {
     width: 100vw;
