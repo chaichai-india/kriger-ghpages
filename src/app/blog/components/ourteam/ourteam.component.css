@@ -48,6 +48,15 @@ header h3 {
   font-weight: 600;
 }
 
+.disclaimer {
+  padding: 0.5em;
+  margin-bottom: 4rem;
+  text-align: center;
+  font-size: 2rem;
+  color: black;
+  font-weight: 300;
+}
+
 /* @media screen and (max-width: 585px) {
   :host {
     width: 100vw;
