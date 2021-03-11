@@ -30,3 +30,4 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 ## ghpages
 ng build --prod --output-path docs --base-href /kriger-ghpages/
 copy index.html and rename to 404.html
+add CNAME file in docs folder with domain
