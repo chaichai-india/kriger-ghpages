@@ -39,6 +39,7 @@
     "@angular/platform-server": "~7.2.0",
     "@angular/router": "~7.2.0",
     "@nguniversal/common": "^9.0.1",
+    "angular-cli-ghpages": "^0.5.3",
     "angular-gtag": "^1.0.4",
     "autolinker": "^3.0.4",
     "blueimp-canvas-to-blob": "^3.14.0",
